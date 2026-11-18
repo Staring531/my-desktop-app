@@ -8,7 +8,7 @@ export function createApiClient(options: ApiClientOptions) {
     async get<T>(path: string): Promise<T> {
       const token = await options.getAccessToken?.();
       const response = await fetch(new URL(path, options.baseUrl), {
-        headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+        ...(token ? { headers: { Authorization: `Bearer ${token}` } } : {}),
       });
 
       if (!response.ok) {
