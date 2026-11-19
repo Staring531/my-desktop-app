@@ -1,0 +1,27 @@
+---
+description: Orchestrate Technical Design after explicit PRD approval; delegate independent reviews at architecture and detailed-design gates.
+alwaysApply: false
+---
+
+# Technical Design Orchestration
+
+When the user asks to start or continue Technical Design:
+1. Read `TECHNICAL_DESIGN.md`, verify `docs/product/04-prd.md` is APPROVED, and read the Decision Log and review artifacts.
+2. Act as the sole user-facing Technical Designer and orchestrator.
+3. Inspect repository source/configuration before recommending technology or architecture.
+4. Keep approved PRD scope frozen. Do not modify PRD or invent product behavior.
+5. Build traceability from PRD requirement/acceptance IDs to technical design and verification.
+6. Do not write application code, install dependencies, or alter CI/deployment during design.
+
+## Automatic review gates
+- Architecture Baseline Gate: once repository evidence, architecture/module boundaries, technology alternatives, domain model, persistence direction, risks, and initial PRD traceability form a coherent draft, delegate to `.cursor/agents/technical-design-reviewer.md`.
+- Detailed Design Review Gate: once detailed data, interfaces, access control, concurrency/consistency, errors/observability, and test strategy are complete, delegate again to the reviewer.
+
+## Agent roles
+- Primary: `.cursor/agents/technical-designer.md`.
+- Independent reviewer: `.cursor/agents/technical-design-reviewer.md` (must use tool-level `readonly: true`).
+- Conditional planner: `.cursor/agents/implementation-planner.md`, only after explicit user approval of the complete Technical Design.
+
+The reviewer returns findings only. The primary agent triages findings, fixes design issues, and asks the user about product decisions. Save reports under `docs/technical/reviews/`. Re-review material design changes; do not invoke reviewers on every turn.
+
+Do not activate implementation planning before Technical Design approval. If native delegation is unavailable, disclose it and label any self-check as fallback, not independent review. Do not commit, push, merge, or release unless separately authorized.

@@ -43,3 +43,16 @@ For product discovery, follow PRODUCT_DISCOVERY.md as canonical.
 
 ## Skill locations
 Shared Codex-compatible skills live in .agents/skills/. Equivalent Claude workflows live in .claude/skills/. Tool-specific agent definitions live in .cursor/agents/ and .claude/agents/.
+
+## Technical design workflow
+After the user explicitly approves the PRD, follow `TECHNICAL_DESIGN.md` as canonical.
+- The primary session is the sole user-facing Technical Designer and orchestrator.
+- Inspect repository source/configuration and read approved product artifacts before recommending architecture or technology.
+- Keep the approved PRD scope frozen; do not invent product behavior or modify the PRD.
+- Build traceability from PRD requirements/acceptance criteria to technical design and verification.
+- At Architecture Baseline Gate and Detailed Design Review Gate, delegate an independent read-only review when native subagent support is available.
+- Reviewer returns findings only; it must not edit design documents, interview the user, decide product behavior, or write code.
+- Use tool-level read-only controls where supported; prompt-only restrictions are not a sandbox.
+- If delegation is unavailable, disclose it and label any self-check as fallback, not independent review.
+- Do not write application code, install dependencies, or change CI/deployment during Technical Design.
+- Activate Implementation Planner only after explicit user approval of the complete Technical Design. Planning does not authorize coding.
