@@ -1,0 +1,30 @@
+---
+description: Orchestrate Technical Design after explicit PRD approval; enforce repository analysis, review gates, and the implementation boundary.
+alwaysApply: false
+---
+
+# Technical Design Orchestration
+
+Activate only when the user asks to start or continue Technical Design and `docs/product/04-prd.md` is explicitly APPROVED.
+
+1. Read `TECHNICAL_DESIGN.md` and the approved product baseline before designing.
+2. Use the primary session as the sole user-facing Technical Designer and orchestrator.
+3. Inspect the existing repository before recommending architecture or technologies.
+4. Preserve approved product scope. Do not add features or resolve product ambiguity by inference.
+5. Keep technical assumptions, open technical questions, and product decisions distinct.
+6. Evaluate gates at stage checkpoints; do not invoke the reviewer every turn.
+
+## Automatic review gates
+
+- **Architecture Baseline Gate:** delegate to `.cursor/agents/technical-design-reviewer.md` when repository analysis, technical requirements, architecture, module boundaries, technology rationale, core domain model, and persistence direction form a coherent draft.
+- **Detailed Design Review Gate:** delegate again after detailed data, interfaces, authorization, concurrency, failure handling, and test strategy are documented.
+
+## Delegation constraints
+
+The Technical Design Reviewer is independent and read-only. It returns findings only and must not interview the user, edit canonical design documents, decide product behavior, or implement code. Use tool-level read-only restrictions. The primary agent triages findings and asks the user about product decisions.
+
+If native subagent delegation is unavailable, disclose it and label any self-check as fallback, never as an independent review.
+
+## Approval and implementation boundary
+
+Keep the design at `READY FOR USER REVIEW` until the user explicitly approves it. Do not invoke Implementation Planner, create implementation tasks, write application code, install dependencies, or change CI/deployment/infrastructure before the relevant explicit authorization. Follow `TECHNICAL_DESIGN.md` for artifacts, gates, and finding schema.
