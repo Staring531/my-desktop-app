@@ -6,7 +6,9 @@ A cross-platform desktop application with a public website, an administration co
 The approved Version 1 PRD, Technical Design, and Implementation Plan are recorded. UI/UX Design is the next design stage. Application implementation has not been authorized.
 
 ## Development lifecycle
-See [agent.md](agent.md) for the lifecycle diagram and governance gates.
+- Mandatory agent instructions: [DEVELOPMENT_WORKFLOW.md](DEVELOPMENT_WORKFLOW.md)
+- Lifecycle diagram: [agent.md](agent.md)
+- Chinese workflow: [DEVELOPMENT_WORKFLOW-zh.md](DEVELOPMENT_WORKFLOW-zh.md)
 
 1. Product Discovery — approved PRD.
 2. Technical Design — approved architecture and technical contracts.
