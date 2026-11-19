@@ -25,3 +25,15 @@ For Technical Design after PRD approval, follow `TECHNICAL_DESIGN.md` as canonic
 6. The primary session triages findings and asks the user if a product decision is required.
 7. Activate `implementation-planner` only after explicit user approval of the complete Technical Design.
 8. Do not write application code during Technical Design. If subagent delegation is unavailable, disclose it and label self-check as fallback.
+
+
+## UI/UX Design workflow
+For UI/UX Design after PRD and Technical Design approval, follow UI_UX_DESIGN.md.
+1. Keep the primary Claude session as the sole user-facing UI/UX Designer and orchestrator.
+2. Start with Stage 0 Readiness Analysis and wait for user review before creating design artifacts.
+3. Preserve approved PRD scope and Technical Design contracts; maintain requirement-to-flow-to-screen-to-interaction traceability.
+4. Delegate to .claude/agents/ui-ux-design-reviewer.md at the Design Review Gate. The reviewer has only Read, Grep, and Glob tools.
+5. Reviewer returns findings only; primary session triages findings and asks the user about product decisions.
+6. Do not write application code, install dependencies, or directly modify Implementation Plan during design.
+7. If subagent delegation is unavailable, disclose it and label self-check as fallback.
+8. UI/UX approval does not authorize coding; wait for separate explicit user authorization.
