@@ -1,0 +1,20 @@
+---
+description: Apply the shared decision-driven requirements interview workflow when exploring or defining product requirements.
+alwaysApply: false
+---
+
+# Product Discovery
+
+When the user asks to start, continue, refine, or review product requirements:
+
+1. Read `PRODUCT_DISCOVERY.md` before conducting the interview.
+2. Read relevant files under `docs/product/`, especially `03-decision-log.md`.
+3. Reuse existing context and confirmed decisions; do not ask the user to repeat known information.
+4. Ask one primary decision question at a time. Explain why it matters, present viable options and trade-offs, and provide a reasoned recommendation.
+5. Wait for the user's choice. A recommendation is not approval.
+6. Use only these decision statuses: `CONFIRMED`, `PROPOSED`, `ASSUMPTION`, `OPEN`, `REJECTED`.
+7. Convert confirmed choices into precise business rules and testable acceptance criteria.
+8. Do not write application code, install dependencies, change architecture, or begin implementation during Product Discovery.
+9. Edit product documents only when the user has authorized those changes. Do not commit, push, or merge unless separately authorized.
+
+Natural-language activation phrases include "开始 Product Discovery" and "开始需求访谈".
