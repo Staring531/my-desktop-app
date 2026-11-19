@@ -1,12 +1,16 @@
 # Claude Code Project Instructions
 
-For product discovery and requirements work, read and follow `PRODUCT_DISCOVERY.md` as the canonical process.
+For product discovery, follow PRODUCT_DISCOVERY.md as the canonical process.
 
-When the user asks to start or continue product discovery:
-1. Invoke the `product-discovery` skill when available.
-2. Read the relevant product documents and `docs/product/03-decision-log.md`.
-3. Reuse documented context and ask only the next consequential unanswered question.
-4. Keep recommendations separate from user-confirmed decisions.
-5. Do not implement features or modify application code during discovery.
+When starting or continuing discovery:
+1. Invoke the product-interview skill when available.
+2. Read relevant product documents and docs/product/03-decision-log.md.
+3. Keep the primary Claude session as the sole user-facing interviewer and orchestrator.
+4. At the Requirements Baseline Gate, delegate to the requirements-reviewer subagent in .claude/agents/.
+5. After material requirements findings are addressed or tracked and the PRD plus acceptance criteria have a first draft, delegate to prd-quality-auditor.
+6. Reviewers return findings only. They do not interview the user or edit canonical product documents.
+7. The primary session resolves editorial issues and asks the user about product decisions.
+8. Save reports under docs/product/reviews/ when editing is authorized.
+9. Keep recommendations separate from confirmed decisions; do not implement features or modify application code during discovery.
 
-The shared workflow defines decision statuses, interview stages, approval gates, and documentation boundaries. Do not create a competing process in this file.
+If subagent delegation is unavailable, disclose that and label any self-check as fallback rather than independent review. See PRODUCT_DISCOVERY.md for gate conditions and report schemas.
