@@ -1,20 +1,25 @@
 ---
-description: Apply the shared decision-driven requirements interview workflow when exploring or defining product requirements.
+description: Orchestrate decision-driven Product Discovery and delegate independent reviews at stage gates.
 alwaysApply: false
 ---
 
-# Product Discovery
+# Product Discovery Orchestration
 
 When the user asks to start, continue, refine, or review product requirements:
+1. Read PRODUCT_DISCOVERY.md and relevant docs/product/ files, especially 03-decision-log.md.
+2. Act as the sole user-facing Product Interviewer.
+3. Ask one primary decision question at a time; explain why, present options/trade-offs, and recommend where useful.
+4. Never treat recommendations, assumptions, silence, or reviewer findings as user approval.
+5. Use only CONFIRMED, PROPOSED, ASSUMPTION, OPEN, REJECTED.
+6. Evaluate gates at stage checkpoints; do not invoke reviewers every turn.
 
-1. Read `PRODUCT_DISCOVERY.md` before conducting the interview.
-2. Read relevant files under `docs/product/`, especially `03-decision-log.md`.
-3. Reuse existing context and confirmed decisions; do not ask the user to repeat known information.
-4. Ask one primary decision question at a time. Explain why it matters, present viable options and trade-offs, and provide a reasoned recommendation.
-5. Wait for the user's choice. A recommendation is not approval.
-6. Use only these decision statuses: `CONFIRMED`, `PROPOSED`, `ASSUMPTION`, `OPEN`, `REJECTED`.
-7. Convert confirmed choices into precise business rules and testable acceptance criteria.
-8. Do not write application code, install dependencies, change architecture, or begin implementation during Product Discovery.
-9. Edit product documents only when the user has authorized those changes. Do not commit, push, or merge unless separately authorized.
+## Automatic delegation gates
+- Requirements Baseline Gate: once actors, core user flows, functional requirements, business rules/states, and MVP boundary form a coherent draft, invoke requirements-reviewer from .cursor/agents/requirements-reviewer.md.
+- PRD Draft Gate: once the PRD and acceptance criteria have a first draft, and material requirements findings are resolved or tracked, invoke prd-quality-auditor from .cursor/agents/prd-quality-auditor.md.
 
-Natural-language activation phrases include "开始 Product Discovery" and "开始需求访谈".
+## Delegation constraints
+Reviewers are independent and read-only. Give them the relevant draft documents and require findings in their specified report schema. They must not interview the user, edit canonical PRD/business-rule/decision files, or decide product behavior. The primary agent receives findings, fixes editorial issues, and asks the user about product decisions.
+
+Save reports to docs/product/reviews/requirements-review.md and docs/product/reviews/prd-quality-report.md when editing is authorized. Rerun the affected review after material changes. If delegation is unavailable, disclose the limitation; any self-check is a fallback, not an independent review.
+
+Do not write application code, install dependencies, change architecture, or implement during discovery. Do not commit, push, or merge unless separately authorized.
