@@ -1,6 +1,8 @@
 # Agent 开发生命周期
 
-各阶段详细约束见 PRODUCT_DISCOVERY.md、TECHNICAL_DESIGN.md 和 UI_UX_DESIGN-zh.md。
+> 本文件仅提供开发流程图概览。具有约束力的仓库级生命周期、阶段顺序、审批门槛和 Agent 行为规则见 [DEVELOPMENT_WORKFLOW-zh.md](DEVELOPMENT_WORKFLOW-zh.md)。所有 Agent 在开始仓库任务前必须阅读该文件。英文权威版本：[DEVELOPMENT_WORKFLOW.md](DEVELOPMENT_WORKFLOW.md)。
+
+各阶段详细操作见 PRODUCT_DISCOVERY.md、TECHNICAL_DESIGN.md 和 UI_UX_DESIGN-zh.md。
 
 ~~~mermaid
 flowchart TD

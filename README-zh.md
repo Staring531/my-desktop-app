@@ -6,7 +6,9 @@
 仓库已记录获批的 Version 1 PRD、Technical Design 和 Implementation Plan。下一阶段为 UI/UX Design。当前尚未获得应用代码开发授权。
 
 ## 开发生命周期
-开发流程图及治理门槛见 [agent-zh.md](agent-zh.md)，英文版见 [agent.md](agent.md)。
+- Agent 必须遵循的主流程：[DEVELOPMENT_WORKFLOW-zh.md](DEVELOPMENT_WORKFLOW-zh.md)
+- 开发流程图：[agent-zh.md](agent-zh.md)
+- English workflow：[DEVELOPMENT_WORKFLOW.md](DEVELOPMENT_WORKFLOW.md)
 
 1. Product Discovery（产品发现）——形成并由用户批准 PRD。
 2. Technical Design（技术设计）——形成并由用户批准技术架构和技术契约。
