@@ -37,3 +37,7 @@ For UI/UX Design after PRD and Technical Design approval, follow UI_UX_DESIGN.md
 6. Do not write application code, install dependencies, or directly modify Implementation Plan during design.
 7. If subagent delegation is unavailable, disclose it and label self-check as fallback.
 8. UI/UX approval does not authorize coding; wait for separate explicit user authorization.
+
+
+## Mandatory repository-wide lifecycle
+Before any repository task, read `DEVELOPMENT_WORKFLOW.md` in full. It is the canonical source for lifecycle order, stage gates, approval semantics, role boundaries, and authorization. Use `AGENTS.md` as the shared entry point and `agent.md` as a diagram-only overview. The Chinese translation is `DEVELOPMENT_WORKFLOW-zh.md`.
