@@ -1,6 +1,8 @@
 # Agent Development Lifecycle
 
-Detailed stage contracts are defined in PRODUCT_DISCOVERY.md, TECHNICAL_DESIGN.md, and UI_UX_DESIGN.md.
+> This file is a visual overview only. The binding repository-wide lifecycle, stage order, approval gates, and agent operating rules are defined in [DEVELOPMENT_WORKFLOW.md](DEVELOPMENT_WORKFLOW.md). All agents must read that file before repository work. The Chinese canonical translation is [DEVELOPMENT_WORKFLOW-zh.md](DEVELOPMENT_WORKFLOW-zh.md).
+
+Detailed stage procedures are defined in PRODUCT_DISCOVERY.md, TECHNICAL_DESIGN.md, and UI_UX_DESIGN.md.
 
 ~~~mermaid
 flowchart TD
