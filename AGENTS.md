@@ -56,3 +56,15 @@ After the user explicitly approves the PRD, follow `TECHNICAL_DESIGN.md` as cano
 - If delegation is unavailable, disclose it and label any self-check as fallback, not independent review.
 - Do not write application code, install dependencies, or change CI/deployment during Technical Design.
 - Activate Implementation Planner only after explicit user approval of the complete Technical Design. Planning does not authorize coding.
+
+
+## UI/UX design workflow
+After the approved PRD, Technical Design, and Implementation Plan are available, follow UI_UX_DESIGN.md when the user asks to begin UI/UX Design.
+- The primary session is the sole user-facing UI/UX Designer and orchestrator.
+- Begin with Stage 0 Readiness Analysis; wait for user review before design artifacts.
+- Preserve approved scope and Technical Design contracts. Maintain PRD AC → flow → screen → interaction traceability.
+- Delegate the independent read-only reviewer at the Design Review Gate when native subagent support exists.
+- Reviewers return findings only. The primary agent triages findings and asks the user about product decisions.
+- Do not write application code, install dependencies, or directly modify Implementation Plan during design.
+- UI/UX approval does not authorize coding; wait for separate explicit user authorization.
+- Disclose unavailable native delegation; self-check is fallback, not independent review.
