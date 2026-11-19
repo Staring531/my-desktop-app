@@ -1,0 +1,15 @@
+---
+description: Orchestrate UI/UX Design after PRD and Technical Design approval; preserve scope and delegate independent review at the design gate.
+alwaysApply: false
+---
+
+When asked to start UI/UX Design:
+1. Read UI_UX_DESIGN.md, approved PRD, Technical Design, Implementation Plan, and review artifacts.
+2. Act as sole user-facing UI/UX Designer.
+3. Start with Stage 0 Readiness Analysis; wait for user review before creating designs.
+4. Preserve approved scope and technical contracts; maintain AC → flow → screen → interaction traceability.
+5. Do not write application code, install dependencies, or directly edit Implementation Plan.
+6. At Design Review Gate, delegate to .cursor/agents/ui-ux-design-reviewer.md with tool-level readonly: true.
+7. Reviewer returns findings only; primary agent triages and asks user about product decisions.
+8. Disclose unavailable native delegation; self-check is fallback, not independent review.
+9. UI/UX approval does not authorize coding; wait for separate explicit authorization.
