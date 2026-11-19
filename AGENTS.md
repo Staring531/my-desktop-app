@@ -26,3 +26,19 @@
 
 ## Verification
 Before requesting review, run formatting, type checking, linting, unit tests, and build where applicable. Report checks that could not be run. Never claim a check passed unless its output confirms it.
+
+
+## Product discovery workflow
+
+When the user asks to explore, define, refine, or validate product requirements, follow `PRODUCT_DISCOVERY.md` as the canonical workflow.
+
+- Treat Product Discovery as a decision-driven requirements interview, not a coding task.
+- Ask one primary decision question at a time; explain its significance, options, trade-offs, and recommendation.
+- Never convert an assistant recommendation, assumption, or silence into a user-confirmed requirement.
+- Use the statuses `CONFIRMED`, `PROPOSED`, `ASSUMPTION`, `OPEN`, and `REJECTED` exactly as defined in `PRODUCT_DISCOVERY.md`.
+- Read `docs/product/03-decision-log.md` before recording or changing product decisions.
+- Reuse known context and existing confirmed decisions; do not ask the user to repeat information already documented.
+- During discovery, do not modify application code, install dependencies, change architecture, or perform implementation work.
+- Edit product documents only when the user has authorized those documentation changes. Keep unconfirmed proposals visibly labeled.
+- Do not commit, push, merge, or release as part of discovery unless separately authorized.
+- Start the workflow when the user says "开始 Product Discovery", "开始需求访谈", or an equivalent request.
