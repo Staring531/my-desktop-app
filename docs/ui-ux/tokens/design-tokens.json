@@ -1,0 +1,13 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "meta": {
+    "name": "My Desktop App UI Design Tokens",
+    "status": "DRAFT",
+    "visualDirection": "linear-inspired",
+    "approvalRequired": true,
+    "note": "Schema scaffold only. Populate proposed values after repository readiness and Visual Direction approval; do not treat any values as approved until the user approves the token baseline."
+  },
+  "primitive": {},
+  "semantic": {},
+  "component": {}
+}
