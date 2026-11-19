@@ -186,7 +186,7 @@ Each finding must include:
 
 - Cursor: `.cursor/agents/` role definitions and `.cursor/rules/technical-design.mdc` orchestration.
 - Claude Code: `.claude/agents/` role definitions and `.claude/skills/technical-design/SKILL.md`.
-- Codex: `.agents/skills/technical-design/SKILL.md` for the reusable workflow; actual independent delegation depends on the active Codex runtime's subagent support. A skill is not itself an isolated subagent.
+- Codex: `.codex/agents/technical_designer.toml`, `.codex/agents/technical_design_reviewer.toml`, and `.codex/agents/implementation_planner.toml` define the three custom agents; `.agents/skills/technical-design/SKILL.md` and `.agents/skills/implementation-planning/SKILL.md` provide reusable workflows. Codex reviewer uses `sandbox_mode = "read-only"`.
 
 Keep role prompts and gate conditions aligned. Tool-specific agent discovery and delegation behavior differs.
 
