@@ -29,6 +29,7 @@ Only `CONFIRMED` decisions may be treated as approved product requirements.
 | DEC-008 | Email identity and invitations | CONFIRMED | Identity | Accept required; one stored lowercase spelling |
 | DEC-009 | Record updates, failure, and conflicting writes | CONFIRMED | Record | First completed write wins |
 | DEC-010 | Accepted baseline is the PRD source | CONFIRMED | Baseline | PRD remains READY FOR USER REVIEW |
+| DEC-011 | User approves PRD version 0.1 draft | CONFIRMED | Approval | PRD status is APPROVED |
 
 ## DEC-001 — Version 1 manages schedule events for a small team
 
@@ -187,6 +188,24 @@ Only `CONFIRMED` decisions may be treated as approved product requirements.
 - **Consequences / scope impact:** PRD Quality Auditor runs after the draft exists. The auditor does not approve the PRD.
 - **Related decisions:** DEC-001
 - **Change history:** None.
+
+## DEC-011 — User approves PRD version 0.1 draft
+
+- **Status:** CONFIRMED
+- **Date:** 2026-11-19
+- **Topic:** PRD approval
+- **Context / question:** Whether the user approves the current PRD, `docs/product/04-prd.md`, version 0.1 draft.
+- **Options considered:**
+  - Approve the current PRD.
+  - Leave it READY FOR USER REVIEW.
+  - Change a requirement before approval.
+- **Assistant recommendation:** None. Approval was the user's explicit instruction.
+- **User's choice:** Formally approve the current PRD version. Keep its functional scope, business rules, and acceptance criteria unchanged. Record the approval in the Decision Log. Do not modify DEC-001 through DEC-010. Do not rerun reviews, write application code, or start technical design.
+- **Final business rule:** `docs/product/04-prd.md` version 0.1 draft has status APPROVED as of 2026-11-19. This approval does not add, remove, or change the confirmed requirements in DEC-001 through DEC-010.
+- **Rationale:** The user explicitly approved the current PRD version.
+- **Consequences / scope impact:** The approved document is the requirements baseline for a later implementation decision. This record does not authorize application code or technical design.
+- **Related decisions:** DEC-010
+- **Change history:** None. DEC-001 through DEC-010 are unchanged. DEC-010 still records that accepting the baseline did not itself approve the PRD.
 
 ## Recording rules
 

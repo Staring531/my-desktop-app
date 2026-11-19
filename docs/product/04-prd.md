@@ -1,10 +1,10 @@
 # PRD: Event Management Desktop App
 
-- Status: READY FOR USER REVIEW
+- Status: APPROVED
 - Version: 0.1 draft
 - Date: 2026-11-19
 - Source: confirmed decisions DEC-001 through DEC-010
-- This draft is not approved. A requirements review and a later PRD audit do not approve it.
+- Approved by the user on 2026-11-19. See DEC-011. A requirements review and a PRD audit did not approve this document.
 
 ## 1. Purpose
 
@@ -198,4 +198,4 @@ None. Items outside section 2 are out of this version rather than unresolved beh
 
 ## 10. Approval
 
-This PRD is READY FOR USER REVIEW. Neither the requirements review nor a PRD quality audit approves it. Only an explicit user approval can approve it.
+This PRD version 0.1 draft is APPROVED. The user approved it on 2026-11-19. See DEC-011. Neither the requirements review nor a PRD quality audit approved it.
