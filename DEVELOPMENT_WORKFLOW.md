@@ -1,6 +1,6 @@
 # Agent Development Workflow
 
-> Version: 1.0.0  
+> Version: 1.1.0  
 > Status: Canonical repository-wide agent workflow  
 > Audience: Every AI coding, planning, design, review, and documentation agent working in this repository
 
@@ -26,8 +26,8 @@ The required lifecycle is:
 4. **Technical Design approval** — the user explicitly approves the complete technical design.
 5. **Implementation Planning** — convert the approved design into sequenced epics/tasks, dependencies, milestones, and verification work. Planning is not implementation authorization.
 6. **Implementation Plan review / baseline confirmation** — present the plan, dependencies, risks, and any assumptions for user review. Do not treat a generated plan as approved unless the user explicitly confirms it.
-7. **UI/UX Design** — after approved PRD and Technical Design and an available implementation plan: readiness analysis, information architecture, user flows, screen inventory, wireframes, interaction/visual specifications, and independent review.
-8. **UI/UX approval and implementation readiness** — verify requirement traceability, design/technical consistency, review findings, accessibility/state coverage, and plan alignment. The user explicitly approves the design and any plan changes.
+7. **UI/UX Design** — after approved PRD and Technical Design and an available implementation plan: readiness analysis; information architecture, user flows, and screen inventory; user-approved visual direction; token and component system; wireframes, page specifications, high-fidelity visuals, and interaction specifications; visual/design-system validation; independent review.
+8. **UI/UX approval and implementation readiness** — verify requirement traceability, design/technical consistency, visual-system compliance, review findings, accessibility/state coverage, and plan alignment. The user explicitly approves the design and any plan changes.
 9. **Implementation authorization** — obtain separate, explicit user authorization to write application code. Approval of the PRD, Technical Design, Implementation Plan, or UI/UX Design is not coding authorization.
 10. **Coding & Testing** — implement only the approved scope and design, with tests and verification.
 11. **Implementation review and delivery** — review changes, verify acceptance criteria, report test evidence and limitations. Deploy/release only with separate authorization.

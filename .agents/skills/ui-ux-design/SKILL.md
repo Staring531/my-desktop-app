@@ -1,6 +1,10 @@
 ---
 name: ui-ux-design
-description: Reusable UI/UX design workflow from readiness analysis through review and implementation handoff.
+description: Reusable System-First UI/UX workflow from repository readiness through approved design-system handoff.
 ---
 
-Follow UI_UX_DESIGN.md. Read approved PRD, Technical Design, Implementation Plan, and repository evidence. Start with Readiness Analysis and wait for user review before design. Maintain traceability and preserve scope. A skill is not an isolated subagent. Use independent review only with native delegation; disclose fallback limitations. Do not write code or modify the plan without approval. UI/UX approval is not coding authorization.
+Read `DEVELOPMENT_WORKFLOW.md`, `AGENTS.md`, and follow `UI_UX_DESIGN.md`. Read approved PRD, Technical Design, Implementation Plan, decision records, and repository evidence.
+
+Follow the ordered stages and user gates. Establish structural requirements, obtain approval for Linear-inspired Visual Direction, then propose and obtain approval for primitive/semantic/component tokens and core component contracts before high-fidelity design at scale. Use the machine-readable token baseline and matching documentation. Maintain requirement traceability and preserve scope.
+
+A skill is a reusable procedure, not an isolated subagent. Use independent review only with native delegation and disclose fallback limitations. Do not write application code, install dependencies, or modify the plan without approval. UI/UX approval is not coding authorization.
