@@ -358,9 +358,7 @@ function Workspace({
           ) : null}
         </div>
       ))}
-      {projection.events.length === 0 ? (
-        <p className="secondary">No events</p>
-      ) : null}
+      {projection.events.length === 0 ? <p className="secondary">No events</p> : null}
       <button
         className="primary"
         type="button"
@@ -395,29 +393,29 @@ function Workspace({
       ) : null}
       {projection.isMaintainer ? (
         <>
-        <h2 className="region-title">Invite</h2>
-        <div className="inline">
-          <label>
-            Invite email
-            <input
-              value={state.inviteDraft}
-              onChange={(event) =>
-                run({
-                  state: { ...state, inviteDraft: event.target.value },
-                  effect: { type: 'none' },
-                })
-              }
-              onKeyDown={(event) => {
-                if (event.key !== 'Enter') return;
-                event.preventDefault();
-                void run(requestInvite(state));
-              }}
-            />
-          </label>
-          <button className="quiet" type="button" onClick={() => void run(requestInvite(state))}>
-            {state.pending === 'Inviting' ? 'Inviting' : 'Invite'}
-          </button>
-        </div>
+          <h2 className="region-title">Invite</h2>
+          <div className="inline">
+            <label>
+              Invite email
+              <input
+                value={state.inviteDraft}
+                onChange={(event) =>
+                  run({
+                    state: { ...state, inviteDraft: event.target.value },
+                    effect: { type: 'none' },
+                  })
+                }
+                onKeyDown={(event) => {
+                  if (event.key !== 'Enter') return;
+                  event.preventDefault();
+                  void run(requestInvite(state));
+                }}
+              />
+            </label>
+            <button className="quiet" type="button" onClick={() => void run(requestInvite(state))}>
+              {state.pending === 'Inviting' ? 'Inviting' : 'Invite'}
+            </button>
+          </div>
         </>
       ) : null}
       {projection.roster.length === 1 ? (

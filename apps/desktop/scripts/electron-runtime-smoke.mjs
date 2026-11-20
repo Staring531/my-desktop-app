@@ -21,12 +21,17 @@ function freePort() {
       const address = server.address();
       if (!address || typeof address === 'string') return reject(new Error('No free port'));
       const selected = address.port;
-      server.close((error) => error ? reject(error) : resolve(selected));
+      server.close((error) => (error ? reject(error) : resolve(selected)));
     });
   });
 }
 function launch(dataDir, debugPort) {
-  const args = ['--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage', '--remote-allow-origins=*'];
+  const args = [
+    '--no-sandbox',
+    '--disable-gpu',
+    '--disable-dev-shm-usage',
+    '--remote-allow-origins=*',
+  ];
   if (debugPort !== undefined) args.push(`--remote-debugging-port=${debugPort}`);
   args.push(appDir);
   const child = spawn(electron, args, {
@@ -34,8 +39,12 @@ function launch(dataDir, debugPort) {
     env: { ...process.env, DESKTOP_E2E_USER_DATA_DIR: dataDir, ELECTRON_ENABLE_LOGGING: '1' },
     stdio: ['ignore', 'pipe', 'pipe'],
   });
-  child.stdout.setEncoding('utf8').on('data', (chunk) => { logs += chunk; });
-  child.stderr.setEncoding('utf8').on('data', (chunk) => { logs += chunk; });
+  child.stdout.setEncoding('utf8').on('data', (chunk) => {
+    logs += chunk;
+  });
+  child.stderr.setEncoding('utf8').on('data', (chunk) => {
+    logs += chunk;
+  });
   return child;
 }
 async function listTargets(debugPort) {
@@ -48,10 +57,14 @@ async function waitPage(debugPort, predicate = () => true) {
   while (Date.now() < until) {
     try {
       const targets = await listTargets(debugPort);
-      const page = targets.find((item) => item.type === 'page' &&
-        item.url?.includes('/out/renderer/index.html') && predicate(item));
+      const page = targets.find(
+        (item) =>
+          item.type === 'page' && item.url?.includes('/out/renderer/index.html') && predicate(item),
+      );
       if (page) return page;
-    } catch { /* Wait for Electron's debugging server. */ }
+    } catch {
+      /* Wait for Electron's debugging server. */
+    }
     await delay(100);
   }
   throw new Error('Timed out waiting for Electron renderer');
@@ -63,16 +76,24 @@ function connectCdp(url) {
   let sequence = 0;
   const ready = new Promise((resolve, reject) => {
     socket.addEventListener('open', resolve, { once: true });
-    socket.addEventListener('error', () => reject(new Error('CDP connection failed')), { once: true });
+    socket.addEventListener('error', () => reject(new Error('CDP connection failed')), {
+      once: true,
+    });
   });
   socket.addEventListener('message', (event) => {
     let message;
-    try { message = JSON.parse(String(event.data)); } catch { return; }
+    try {
+      message = JSON.parse(String(event.data));
+    } catch {
+      return;
+    }
     const item = pending.get(message.id);
     if (!item) return;
     pending.delete(message.id);
     clearTimeout(item.timer);
-    message.error ? item.reject(new Error(message.error.message ?? 'CDP error')) : item.resolve(message.result);
+    message.error
+      ? item.reject(new Error(message.error.message ?? 'CDP error'))
+      : item.resolve(message.result);
   });
   return {
     ready,
@@ -88,17 +109,33 @@ function connectCdp(url) {
       });
     },
     async eval(expression) {
-      const response = await this.send('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true });
-      if (response.exceptionDetails) throw new Error(response.exceptionDetails.text ?? 'Renderer evaluation failed');
+      const response = await this.send('Runtime.evaluate', {
+        expression,
+        returnByValue: true,
+        awaitPromise: true,
+      });
+      if (response.exceptionDetails)
+        throw new Error(response.exceptionDetails.text ?? 'Renderer evaluation failed');
       return response.result?.value;
     },
-    close() { try { socket.close(); } catch { /* already closed */ } },
+    close() {
+      try {
+        socket.close();
+      } catch {
+        /* already closed */
+      }
+    },
   };
 }
 async function until(check, description) {
   const end = Date.now() + timeoutMs;
   while (Date.now() < end) {
-    try { const result = await check(); if (result) return result; } catch { /* renderer loading */ }
+    try {
+      const result = await check();
+      if (result) return result;
+    } catch {
+      /* renderer loading */
+    }
     await delay(100);
   }
   throw new Error('Timed out: ' + description);
@@ -126,11 +163,18 @@ function setValue(selector, value) {
 }
 function localClock(date, zone) {
   const parts = new Intl.DateTimeFormat('en', {
-    timeZone: zone, year: 'numeric', month: '2-digit', day: '2-digit',
-    hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
+    timeZone: zone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hourCycle: 'h23',
   }).formatToParts(date);
   const get = (type) => parts.find((item) => item.type === type)?.value ?? '';
-  return get('year') + '-' + get('month') + '-' + get('day') + ' ' + get('hour') + ':' + get('minute');
+  return (
+    get('year') + '-' + get('month') + '-' + get('day') + ' ' + get('hour') + ':' + get('minute')
+  );
 }
 async function stop(child) {
   if (!child || child.exitCode !== null || child.signalCode !== null) return;
@@ -144,7 +188,9 @@ async function waitExit(child) {
   if (child.exitCode !== null || child.signalCode !== null) return;
   await Promise.race([
     new Promise((resolve) => child.once('exit', resolve)),
-    delay(timeoutMs).then(() => { throw new Error('Duplicate instance did not exit after losing the lock'); }),
+    delay(timeoutMs).then(() => {
+      throw new Error('Duplicate instance did not exit after losing the lock');
+    }),
   ]);
 }
 
@@ -156,23 +202,54 @@ try {
   const firstTarget = await waitPage(debugPort);
   primaryPage = connectCdp(firstTarget.webSocketDebuggerUrl);
   await primaryPage.ready;
-  await until(() => primaryPage.eval(`document.querySelector('h1')?.textContent.trim() === 'Bind this session' && typeof window.desktop?.bind === 'function'`), 'bind page and preload');
+  await until(
+    () =>
+      primaryPage.eval(
+        `document.querySelector('h1')?.textContent.trim() === 'Bind this session' && typeof window.desktop?.bind === 'function'`,
+      ),
+    'bind page and preload',
+  );
   await primaryPage.eval(click('Bind'));
-  await until(() => primaryPage.eval(`document.querySelector('[role="alert"]')?.textContent.includes('unusable-email')`), 'empty bind validation');
+  await until(
+    () =>
+      primaryPage.eval(
+        `document.querySelector('[role="alert"]')?.textContent.includes('unusable-email')`,
+      ),
+    'empty bind validation',
+  );
   assert.equal(await primaryPage.eval(setValue('input', 'qa-smoke@example.test')), true);
   await primaryPage.eval(click('Bind'));
-  await until(() => primaryPage.eval(`document.querySelector('h1')?.textContent.trim() === 'Create the team'`), 'create team surface');
+  await until(
+    () =>
+      primaryPage.eval(`document.querySelector('h1')?.textContent.trim() === 'Create the team'`),
+    'create team surface',
+  );
   await primaryPage.eval(click('Create team'));
-  await until(() => primaryPage.eval(`document.querySelector('h1')?.textContent.trim() === 'Team'`), 'workspace surface');
+  await until(
+    () => primaryPage.eval(`document.querySelector('h1')?.textContent.trim() === 'Team'`),
+    'workspace surface',
+  );
   await primaryPage.eval(click('New event'));
-  await until(() => primaryPage.eval(`document.querySelector('h1')?.textContent.trim() === 'New event'`), 'event editor');
+  await until(
+    () => primaryPage.eval(`document.querySelector('h1')?.textContent.trim() === 'New event'`),
+    'event editor',
+  );
 
   const zone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
   const start = localClock(new Date(Date.now() + 2 * 3_600_000), zone);
   const end = localClock(new Date(Date.now() + 3 * 3_600_000), zone);
-  assert.equal(await primaryPage.eval(`(() => { const node = document.querySelector('input[name="visibility"]'); if (!node) return false; node.click(); return true; })()`), true);
-  assert.equal(await primaryPage.eval(setValue('input[placeholder="YYYY-MM-DD HH:mm"]', start)), true);
-  assert.equal(await primaryPage.eval(`(() => {
+  assert.equal(
+    await primaryPage.eval(
+      `(() => { const node = document.querySelector('input[name="visibility"]'); if (!node) return false; node.click(); return true; })()`,
+    ),
+    true,
+  );
+  assert.equal(
+    await primaryPage.eval(setValue('input[placeholder="YYYY-MM-DD HH:mm"]', start)),
+    true,
+  );
+  assert.equal(
+    await primaryPage.eval(`(() => {
     const inputs = document.querySelectorAll('input[placeholder="YYYY-MM-DD HH:mm"]');
     if (inputs.length < 2) return false;
     const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
@@ -180,8 +257,11 @@ try {
     inputs[1].dispatchEvent(new Event('input', { bubbles: true }));
     inputs[1].dispatchEvent(new Event('change', { bubbles: true }));
     return true;
-  })()`), true);
-  assert.equal(await primaryPage.eval(`(() => {
+  })()`),
+    true,
+  );
+  assert.equal(
+    await primaryPage.eval(`(() => {
     const label = Array.from(document.querySelectorAll('label')).find((item) => item.textContent.trim().startsWith('Title'));
     const input = label?.querySelector('input');
     if (!input) return false;
@@ -190,23 +270,46 @@ try {
     input.dispatchEvent(new Event('input', { bubbles: true }));
     input.dispatchEvent(new Event('change', { bubbles: true }));
     return true;
-  })()`), true);
+  })()`),
+    true,
+  );
   await primaryPage.eval(click('Save'));
-  await until(() => primaryPage.eval(`document.querySelector('h1')?.textContent.trim() === 'Team' && document.body.innerText.includes('Electron smoke event')`), 'saved event visible');
+  await until(
+    () =>
+      primaryPage.eval(
+        `document.querySelector('h1')?.textContent.trim() === 'Team' && document.body.innerText.includes('Electron smoke event')`,
+      ),
+    'saved event visible',
+  );
   const documentData = JSON.parse(await readFile(join(dataDir, 'team-record.json'), 'utf8'));
   assert.equal(documentData.status, 'active');
   assert.ok(documentData.events.some((item) => item.title === 'Electron smoke event'));
 
   await primaryPage.eval(click('Open another session'));
-  const secondTarget = await until(async () => (await listTargets(debugPort)).find((item) =>
-    item.type === 'page' && item.url?.includes('/out/renderer/index.html') && item.id !== firstTarget.id), 'second window');
+  const secondTarget = await until(
+    async () =>
+      (await listTargets(debugPort)).find(
+        (item) =>
+          item.type === 'page' &&
+          item.url?.includes('/out/renderer/index.html') &&
+          item.id !== firstTarget.id,
+      ),
+    'second window',
+  );
   secondPage = connectCdp(secondTarget.webSocketDebuggerUrl);
   await secondPage.ready;
-  await until(() => secondPage.eval(`document.querySelector('h1')?.textContent.trim() === 'Bind this session'`), 'unbound second session');
+  await until(
+    () =>
+      secondPage.eval(`document.querySelector('h1')?.textContent.trim() === 'Bind this session'`),
+    'unbound second session',
+  );
 
   duplicate = launch(dataDir, undefined);
   await waitExit(duplicate);
-  await until(() => primaryPage.eval(`document.body.innerText.includes('A writer already exists.')`), 'single instance notice');
+  await until(
+    () => primaryPage.eval(`document.body.innerText.includes('A writer already exists.')`),
+    'single instance notice',
+  );
 
   primaryPage.close();
   secondPage.close();
@@ -220,11 +323,25 @@ try {
   const restartTarget = await waitPage(restartPort);
   restartedPage = connectCdp(restartTarget.webSocketDebuggerUrl);
   await restartedPage.ready;
-  await until(() => restartedPage.eval(`document.querySelector('h1')?.textContent.trim() === 'Bind this session'`), 'restarted bind page');
+  await until(
+    () =>
+      restartedPage.eval(
+        `document.querySelector('h1')?.textContent.trim() === 'Bind this session'`,
+      ),
+    'restarted bind page',
+  );
   await restartedPage.eval(setValue('input', 'qa-smoke@example.test'));
   await restartedPage.eval(click('Bind'));
-  await until(() => restartedPage.eval(`document.querySelector('h1')?.textContent.trim() === 'Team' && document.body.innerText.includes('Electron smoke event')`), 'persisted record after restart');
-  console.log('Electron runtime smoke passed: window, preload, IPC, bind, create, event save, persistence, second window/process, and restart.');
+  await until(
+    () =>
+      restartedPage.eval(
+        `document.querySelector('h1')?.textContent.trim() === 'Team' && document.body.innerText.includes('Electron smoke event')`,
+      ),
+    'persisted record after restart',
+  );
+  console.log(
+    'Electron runtime smoke passed: window, preload, IPC, bind, create, event save, persistence, second window/process, and restart.',
+  );
 } catch (error) {
   console.error(error);
   console.error(logs);

@@ -76,12 +76,22 @@ export function clockLabel(instant: string, zone: string): string {
       hourCycle: 'h23',
       timeZoneName: 'longOffset',
     }).formatToParts(date);
-    const part = (type: string): string =>
-      parts.find((item) => item.type === type)?.value ?? '';
+    const part = (type: string): string => parts.find((item) => item.type === type)?.value ?? '';
     const rawOffset = part('timeZoneName');
     const offset = rawOffset.replace(/^GMT/u, '') || '+00:00';
-    return part('year') + '-' + part('month') + '-' + part('day') + ' ' +
-      part('hour') + ':' + part('minute') + ' ' + offset;
+    return (
+      part('year') +
+      '-' +
+      part('month') +
+      '-' +
+      part('day') +
+      ' ' +
+      part('hour') +
+      ':' +
+      part('minute') +
+      ' ' +
+      offset
+    );
   } catch {
     return instant;
   }

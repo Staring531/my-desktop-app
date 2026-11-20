@@ -29,12 +29,6 @@ jobs:
         run: pnpm install --no-frozen-lockfile
       - name: Type check
         run: pnpm typecheck
-      - name: Diagnose Prettier formatting
-        run: |
-          pnpm --filter @app/desktop exec prettier --write scripts/electron-runtime-smoke.mjs src/renderer/src/App.tsx src/renderer/src/model.test.ts src/renderer/src/model.ts src/renderer/src/styles.css
-          git diff --no-ext-diff --unified=2 -- apps/desktop/scripts/electron-runtime-smoke.mjs apps/desktop/src/renderer/src/App.tsx apps/desktop/src/renderer/src/model.test.ts apps/desktop/src/renderer/src/model.ts apps/desktop/src/renderer/src/styles.css
-          exit 1
-
       - name: Lint
         run: pnpm lint
       - name: Test
