@@ -3,7 +3,7 @@
 A cross-platform desktop application with a public website, an administration console, and a backend API.
 
 ## Project status
-The approved Version 1 PRD, Technical Design, and Implementation Plan are recorded. UI/UX Design is the next design stage and follows a System-First, Linear-inspired direction with user-approved visual and design-system gates. Application implementation has not been authorized.
+The Version 1 PRD, Technical Design, Implementation Plan, and UI/UX package are accepted. Application implementation was authorized on 2026-11-20 and is underway. The current main commit has passing typecheck, lint, Vitest, and electron-vite build checks. Real Electron runtime verification, packaged-installer testing, final independent UI review, and runtime screenshot comparison remain outstanding. Deployment is not authorized.
 
 ## Development lifecycle
 - Mandatory agent instructions: [DEVELOPMENT_WORKFLOW.md](DEVELOPMENT_WORKFLOW.md)
@@ -13,9 +13,10 @@ The approved Version 1 PRD, Technical Design, and Implementation Plan are record
 1. Product Discovery — approved PRD.
 2. Technical Design — approved architecture and technical contracts.
 3. Implementation Planning — sequenced tasks; not coding authorization.
-4. UI/UX Design — readiness, structure, approved visual direction, design tokens/components, wireframes, high-fidelity/interaction specs, validation, independent review.
-5. Implementation Readiness — traceability and plan alignment; explicit user approval.
-6. Coding & Testing — only after separate explicit authorization.
+4. UI/UX Design — accepted package and handoff.
+5. Implementation Readiness — accepted plan delta IMP-022 and explicit coding authorization recorded.
+6. Coding & Testing — implementation underway; desktop runtime and visual verification remain open.
+7. Implementation Review & Delivery — acceptance evidence and any final review; deployment/release requires separate authorization.
 
 ## Workflow documents
 - [Product Discovery](PRODUCT_DISCOVERY.md)

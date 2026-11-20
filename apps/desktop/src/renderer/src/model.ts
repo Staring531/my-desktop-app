@@ -62,9 +62,39 @@ export function initialState(now: string): UiState {
   };
 }
 
-export function clockLabel(instant: string, offsets: Record<string, string>): string {
-  const offset = offsets[instant];
-  return offset === undefined || offset.length === 0 ? instant : `${instant} ${offset}`;
+export function clockLabel(instant: string, zone: string): string {
+  const date = new Date(instant);
+  if (Number.isNaN(date.getTime())) return instant;
+  try {
+    const parts = new Intl.DateTimeFormat('en', {
+      timeZone: zone,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hourCycle: 'h23',
+      timeZoneName: 'longOffset',
+    }).formatToParts(date);
+    const part = (type: string): string => parts.find((item) => item.type === type)?.value ?? '';
+    const rawOffset = part('timeZoneName');
+    const offset = rawOffset.replace(/^GMT/u, '') || '+00:00';
+    return (
+      part('year') +
+      '-' +
+      part('month') +
+      '-' +
+      part('day') +
+      ' ' +
+      part('hour') +
+      ':' +
+      part('minute') +
+      ' ' +
+      offset
+    );
+  } catch {
+    return instant;
+  }
 }
 
 export function parseClock(text: string): CivilTime | undefined {
@@ -201,8 +231,8 @@ export function openEdit(state: UiState, eventId: string): UiState {
       description: event.description,
       visibility: event.visibility,
       custody: !ownerPresent,
-      startText: clockLabel(event.start, projection.offsets),
-      endText: clockLabel(event.end, projection.offsets),
+      startText: clockLabel(event.start, projection.zone),
+      endText: clockLabel(event.end, projection.zone),
       startEdited: false,
       endEdited: false,
     },

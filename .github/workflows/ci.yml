@@ -35,3 +35,7 @@ jobs:
         run: pnpm test
       - name: Build
         run: pnpm build
+      - name: Download Electron runtime
+        run: pnpm --filter @app/desktop exec install-electron --no
+      - name: Electron runtime smoke test
+        run: xvfb-run -a pnpm --filter @app/desktop test:e2e
