@@ -3,7 +3,7 @@
 一个跨平台桌面应用项目，仓库还包含公共网站、管理控制台和后端 API 的基础结构。
 
 ## 项目状态
-仓库已记录获批的 Version 1 PRD、Technical Design 和 Implementation Plan。下一阶段为 UI/UX Design，采用 System-First、Linear-inspired 方向，并设置用户批准的视觉方向和设计系统 Gate。当前尚未获得应用代码开发授权。
+Version 1 PRD、Technical Design、Implementation Plan 和 UI/UX 设计包均已接受。用户于 2026-11-20 授权应用实现，目前正在实施。当前 main 提交已通过 Typecheck、Lint、Vitest 和 electron-vite 构建。真实 Electron 运行验证、安装包测试、最终独立 UI 复审和运行时截图对比仍未完成。部署尚未获授权。
 
 ## 开发生命周期
 - Agent 必须遵循的主流程：[DEVELOPMENT_WORKFLOW-zh.md](DEVELOPMENT_WORKFLOW-zh.md)
@@ -13,9 +13,10 @@
 1. Product Discovery（产品发现）——形成并由用户批准 PRD。
 2. Technical Design（技术设计）——形成并由用户批准技术架构和技术契约。
 3. Implementation Planning（实施规划）——拆解实施任务；规划不等于编码授权。
-4. UI/UX Design（界面与体验设计）——就绪分析、结构设计、批准视觉方向、Design Tokens/组件系统、线框、高保真/交互规格、验证和独立评审。
-5. Implementation Readiness（实施就绪）——检查需求追溯和计划对齐，等待用户明确批准。
-6. Coding & Testing（编码与测试）——只有获得单独明确授权后才能开始。
+4. UI/UX Design（界面与体验设计）——设计包已接受并完成交接。
+5. Implementation Readiness（实施就绪）——IMP-022 计划差额和明确编码授权已有记录。
+6. Coding & Testing（编码与测试）——实现进行中；桌面运行和视觉验证仍待完成。
+7. Implementation Review & Delivery（实施评审与交付）——整理验收证据并完成必要复审；部署/发布需要单独授权。
 
 ## 正式工作流文档
 - [Product Discovery（产品发现）](PRODUCT_DISCOVERY.md)

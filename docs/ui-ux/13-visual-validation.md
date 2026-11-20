@@ -22,7 +22,7 @@
 | Destructive confirmation | The user required an in-place confirmation before remove, delete, and dissolve. | I-15 specifies that step. The first press does not send. No dialog was added. | PASS |
 | Scope | No theme, calendar, reminder, recurring, or all-day control. | Section 6 of `05-visual-design.md` and I-10. | PASS |
 | Contrast certification | Design-time ratios are not a certified audit. | Ratios remain the notes in `10-design-tokens.md`. No rendered measurement was taken. | NOT CHECKED |
-| Runtime screenshots | Deferred until coding is authorized. | No application code was run. | NOT CHECKED |
+| Runtime screenshots | Compare the running Electron window with the accepted page and token specifications. | Implementation is authorized, but no runtime screenshot was captured in this verification pass. | NOT CHECKED |
 | Independent review | A separate read-only reviewer at the Design Review Gate. | First review returned UX-REV-001 through UX-REV-010. Design revisions are recorded in `08-design-review.md`. Re-review is pending. | REVISED |
 
 ## Recorded exceptions
@@ -33,8 +33,13 @@
 
 ## Plan alignment
 
-The Implementation Plan was not edited. IMP-020 names bind, another session, one event, an occurrence choice, and `busyAt`. S-03, the maintainer actions on S-05, and dissolve are specified here because the PRD requires them. They remain outside that task's named renderer list. A plan delta can be presented at the readiness review. It is not applied in this file.
+The user accepted renderer scope IMP-022 in `docs/technical/10-implementation-plan.md` and authorized implementation on 2026-11-20. The first implementation is on `main` at `75bc717`. Static comparison found UI conformance gaps being corrected in a follow-up PR. This design-stage validation is not a runtime screenshot result and does not close the final independent re-review.
 
 ## Open item
 
 Q-04 was closed by the user on 2026-11-20. The confirmation step is I-15. Dismissing an ambiguous-time choice still returns to S-05 and discards the unsent edit.
+
+
+## Post-implementation verification boundary
+
+The current CI result proves typecheck, lint, Vitest, and electron-vite build only. It does not prove a running Electron window, production IPC, or an installed application. Those require a runtime test on the built app and, separately, a packaged-installer test.

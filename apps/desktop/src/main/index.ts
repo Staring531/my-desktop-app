@@ -7,6 +7,9 @@ import { showIfRegistered, startOwner } from './owner.js';
 import { createFileStore } from './store/index.js';
 import { createTemporalPort } from './time/temporal.js';
 
+const e2eUserDataDir = process.env.DESKTOP_E2E_USER_DATA_DIR;
+if (e2eUserDataDir !== undefined) app.setPath('userData', e2eUserDataDir);
+
 const registered = new Set<string>();
 
 function isRecord(value: unknown): value is Record<string, unknown> {

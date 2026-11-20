@@ -78,10 +78,20 @@ export function App(): JSX.Element {
       Open another session
     </button>
   );
+  const shellRow = (
+    <div className="shell-row">
+      <strong className="app-name">My Desktop App</strong>
+      {state.projection?.access === 'member' ? (
+        <span className="meta zone-label">{state.projection.zone}</span>
+      ) : null}
+      <span className="shell-spacer" />
+      {openAnother}
+    </div>
+  );
 
   return (
     <div className="shell">
-      {state.screen !== 'S-01' ? <div className="shell-row">{openAnother}</div> : null}
+      {state.screen !== 'S-01' ? shellRow : null}
       {state.writer ? (
         <div className="notice">
           <p>A writer already exists.</p>
@@ -103,7 +113,7 @@ export function App(): JSX.Element {
           </p>
         ) : null}
       </div>
-      {state.screen === 'S-01' ? <div className="shell-row">{openAnother}</div> : null}
+      {state.screen === 'S-01' ? shellRow : null}
     </div>
   );
 }
@@ -115,11 +125,23 @@ function Surface({
   state: UiState;
   run: (next: { state: UiState; effect: Effect }) => Promise<void>;
 }): JSX.Element {
-  if (state.screen === 'S-07') return <h1>Record unreadable</h1>;
+  if (state.screen === 'S-07')
+    return (
+      <>
+        <h1>This team record cannot be read.</h1>
+        <p className="secondary">No replacement team is created.</p>
+      </>
+    );
   if (state.screen === 'S-01') return <Bind state={state} run={run} />;
   if (state.screen === 'S-02') return <CreateTeam state={state} run={run} />;
   if (state.screen === 'S-03') return <Invite state={state} run={run} />;
-  if (state.screen === 'S-04') return <h1>No team access</h1>;
+  if (state.screen === 'S-04')
+    return (
+      <>
+        <h1>No team access</h1>
+        <p className="secondary">{state.boundEmail ?? ''} cannot see this team.</p>
+      </>
+    );
   if (state.screen === 'S-06' && state.editor !== undefined)
     return <EventEditor state={state} run={run} />;
   return <Workspace state={state} run={run} />;
@@ -172,7 +194,7 @@ function CreateTeam({
   return (
     <>
       <h1>Create the team</h1>
-      <p>{state.boundEmail ?? ''}</p>
+      <p>This session is {state.boundEmail ?? ''}</p>
       <button
         className="primary"
         type="button"
@@ -194,7 +216,7 @@ function Invite({
   const email = state.projection?.access === 'invite' ? state.projection.invite.email : '';
   return (
     <>
-      <h1>This invite</h1>
+      <h1>Invitation</h1>
       <p>{email}</p>
       <button
         className="primary"
@@ -226,8 +248,7 @@ function Workspace({
   const rows = board(state);
   return (
     <>
-      <h1>Team workspace</h1>
-      <p className="meta">{projection.zone}</p>
+      <h1>Team</h1>
       <button
         className="quiet"
         type="button"
@@ -240,7 +261,8 @@ function Workspace({
       >
         Now
       </button>
-      <p className="meta">{state.viewedInstant}</p>
+      <p className="meta">Showing {clockLabel(state.viewedInstant, projection.zone)}</p>
+      <h2 className="region-title">Members</h2>
       {projection.roster.map((entry) => {
         const busy = rows.find((row) => row.email === entry.email)?.busy === true;
         const confirming =
@@ -293,6 +315,7 @@ function Workspace({
           </div>
         );
       })}
+      <h2 className="region-title">Events</h2>
       {projection.events.map((event) => (
         <div className="row event" key={event.id}>
           <span className={event.visibility === 'team-visible' ? 'mark filled' : 'mark'} />
@@ -300,9 +323,12 @@ function Workspace({
           <span>{event.title}</span>
           <span>{event.location}</span>
           <span>{event.description}</span>
-          <span>{clockLabel(event.start, projection.offsets)}</span>
-          <span>{clockLabel(event.end, projection.offsets)}</span>
-          <span className="meta">{event.ownerEmail}</span>
+          <span className="meta">
+            {clockLabel(event.start, projection.zone)} – {clockLabel(event.end, projection.zone)}
+          </span>
+          {event.visibility === 'team-visible' ? (
+            <span className="meta">{event.ownerEmail}</span>
+          ) : null}
           <button
             className="quiet"
             type="button"
@@ -332,6 +358,9 @@ function Workspace({
           ) : null}
         </div>
       ))}
+      {projection.events.length === 0 ? (
+        <p className="secondary">No events</p>
+      ) : null}
       <button
         className="primary"
         type="button"
@@ -339,8 +368,10 @@ function Workspace({
       >
         New event
       </button>
-      {projection.isMaintainer
-        ? projection.invites.map((invite) => (
+      {projection.isMaintainer && projection.invites.length > 0 ? (
+        <>
+          <h2 className="region-title">Pending invites</h2>
+          {projection.invites.map((invite) => (
             <div className="row" key={invite.email}>
               <span>{invite.email}</span>
               <button
@@ -359,9 +390,12 @@ function Workspace({
                 {state.pending === 'Canceling' ? 'Canceling' : 'Cancel invite'}
               </button>
             </div>
-          ))
-        : null}
+          ))}
+        </>
+      ) : null}
       {projection.isMaintainer ? (
+        <>
+        <h2 className="region-title">Invite</h2>
         <div className="inline">
           <label>
             Invite email
@@ -384,6 +418,7 @@ function Workspace({
             {state.pending === 'Inviting' ? 'Inviting' : 'Invite'}
           </button>
         </div>
+        </>
       ) : null}
       {projection.roster.length === 1 ? (
         state.confirmation?.kind === 'dissolve' ? (
@@ -422,7 +457,7 @@ function EventEditor({
   const zone = state.projection?.zone ?? '';
   return (
     <>
-      <h1>One event</h1>
+      <h1>{editor.eventId === undefined ? 'New event' : 'Edit event'}</h1>
       <p className="meta">{zone}</p>
       {editor.custody ? (
         <p>Team</p>
@@ -523,7 +558,7 @@ function EventEditor({
                 run({ state: chooseOccurrence(state, 'earlier'), effect: { type: 'none' } })
               }
             />
-            Earlier {clockLabel(editor.prompt.earlier, state.projection?.offsets ?? {})}
+            Earlier {clockLabel(editor.prompt.earlier, zone)}
           </label>
           <label>
             <input
@@ -534,7 +569,7 @@ function EventEditor({
                 run({ state: chooseOccurrence(state, 'later'), effect: { type: 'none' } })
               }
             />
-            Later {clockLabel(editor.prompt.later, state.projection?.offsets ?? {})}
+            Later {clockLabel(editor.prompt.later, zone)}
           </label>
         </div>
       ) : null}

@@ -54,6 +54,13 @@ function member(): Extract<PushedProjection, { access: 'member' }> {
 }
 
 describe('renderer interactions', () => {
+  it('formats instants as local wall-clock labels with the correct DST offset', () => {
+    expect(clockLabel('2026-01-15T17:00:00.000Z', 'America/New_York')).toBe('2026-01-15 12:00 -05:00');
+    expect(clockLabel('2026-07-15T16:00:00.000Z', 'America/New_York')).toBe('2026-07-15 12:00 -04:00');
+    expect(clockLabel('2026-11-01T05:30:00.000Z', 'America/New_York')).toBe('2026-11-01 01:30 -04:00');
+    expect(clockLabel('2026-11-01T06:30:00.000Z', 'America/New_York')).toBe('2026-11-01 01:30 -05:00');
+  });
+
   it('binds, creates a team, and answers an invite without sending a team write on bind', () => {
     const empty = requestBind(initialState(now));
     expect(empty.effect).toEqual({ type: 'none' });
@@ -187,11 +194,11 @@ describe('renderer interactions', () => {
         (row) => row.email === 'sam@team.com',
       )?.busy,
     ).toBe(false);
-    expect(clockLabel('2026-01-15T17:00:00.000Z', projection.offsets)).toBe(
-      '2026-01-15T17:00:00.000Z -05:00',
+    expect(clockLabel('2026-01-15T17:00:00.000Z', projection.zone)).toBe(
+      '2026-01-15 12:00 -05:00',
     );
-    expect(clockLabel('2026-07-15T16:00:00.000Z', projection.offsets)).toBe(
-      '2026-07-15T16:00:00.000Z -04:00',
+    expect(clockLabel('2026-07-15T16:00:00.000Z', projection.zone)).toBe(
+      '2026-07-15 12:00 -04:00',
     );
     const empty = requestInvite(state);
     expect(empty.effect.type).toBe('none');
