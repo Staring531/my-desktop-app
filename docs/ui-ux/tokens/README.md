@@ -2,8 +2,9 @@
 
 `design-tokens.json` is the machine-readable design-token baseline.
 
-- Current status: DRAFT scaffold; no final visual values have been approved.
-- Populate only after Stage 0 confirms the actual styling/runtime stack and the user approves Visual Direction.
-- Follow `../10-design-tokens.md` for primitive, semantic, and component layers, naming, validation, and governance.
+- Current status: APPROVED by the user on 2026-11-20. `meta.tokenBaselineApproved` is true. This approval does not authorize application code.
+- Format: Design Tokens Community Group groups `primitive`, `semantic`, and `component`, with `$type` and `$value`. Aliases use `{group.token}` references.
+- The Electron renderer has no styling framework. The proposed later mapping is plain CSS custom properties. This design stage installs nothing.
+- Follow `../10-design-tokens.md` for rationale, contrast, and usage.
 - Keep this JSON valid; do not add comments.
-- User approval must be recorded in the design decision/documentation before changing token status to APPROVED.
+- User approval of the token baseline must be recorded before changing `meta.status` to APPROVED or `meta.tokenBaselineApproved` to true.

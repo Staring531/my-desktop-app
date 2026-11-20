@@ -3,14 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "main": "./out/main/index.js",
   "scripts": {
     "dev": "electron-vite dev",
     "build": "electron-vite build",
     "typecheck": "tsc --noEmit",
     "lint": "prettier --check .",
-    "test": "vitest run --passWithNoTests"
+    "test": "vitest run"
   },
   "dependencies": {
+    "@js-temporal/polyfill": "^0.5.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

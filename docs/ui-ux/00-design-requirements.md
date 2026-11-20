@@ -2,9 +2,9 @@
 
 - Stage: 0 — Readiness Analysis
 - Date: 2026-11-19
-- Status: READY FOR USER REVIEW. This is not approval of information architecture, screens, wireframes, or visual design.
+- Status: Stage 0 readiness record accepted by the user on 2026-11-20. This acceptance does not approve information architecture, screens, wireframes, or visual design. F-01 through F-09 remain proposals.
 - Authority order: approved PRD → approved Technical Design → available Implementation Plan → this UI/UX analysis.
-- This stage does not start Stage 1. No independent UI/UX review was invoked. A self-check is not an independent review.
+- Stage 1 structural baseline accepted by the user on 2026-11-20. Direction L and the Stage 3 token and component baseline were approved by the user on 2026-11-20. The user accepted the UI/UX design package on 2026-11-20: Stage 4 wireframes and page specifications, and Stage 5 high-fidelity and interaction specifications, including I-15. This acceptance does not authorize application code. Stage 6 validation is in `13-visual-validation.md`. The independent review is in `08-design-review.md`. Corrections made after the last re-review, including I-15, were part of the accepted package and have not had a further independent re-review. The Implementation Plan was not changed. Stage 9 handoff is in `14-handoff.md`. Its plan delta is proposed and not approved.
 
 ## 1. Principles
 
@@ -35,7 +35,7 @@ The design set required by `TECHNICAL_DESIGN.md` is present: repository analysis
 
 ### Implementation Plan
 
-`docs/technical/10-implementation-plan.md` exists. It has six epics and IMP-001 through IMP-021, and it names AC-001 through AC-051. Its own status is plan only. `DEVELOPMENT_WORKFLOW.md` treats plan-baseline confirmation as a separate user decision. This repository has no later record that the user confirmed that baseline. The plan is available, which is the UI/UX entry condition. It is not recorded here as an approved plan.
+`docs/technical/10-implementation-plan.md` exists. It has six epics and IMP-001 through IMP-021, and it names AC-001 through AC-051. Its own status is plan only. `DEVELOPMENT_WORKFLOW.md` treats plan-baseline confirmation as a separate user decision. This repository has no later record that the user confirmed that baseline. The plan is available, which is the UI/UX entry condition. On 2026-11-20 the user said this unconfirmed plan is a sequencing reference only. It is not a confirmed baseline and does not override the PRD or Technical Design.
 
 UI-relevant tasks already named by the plan:
 
@@ -154,7 +154,7 @@ Status of every row: PROPOSED. Flow and screen IDs are not accepted.
 | AC-019, AC-020, AC-021, AC-022, AC-023, AC-029, AC-041, AC-047, AC-048, AC-049 | F-07 | Removal ends that session's member view. Custody edit cannot send a visibility change. |
 | AC-024, AC-025, AC-026, AC-031 | F-08 | Another local session, or a later view of this record. Not another computer. |
 | AC-027 | None | No reminder UI. |
-| AC-042 two device zones | F-06 | Conflict. See section 11. Do not add a zone control while this is open. |
+| AC-042 two device zones | F-06 | Closed for UI by option A on 2026-11-20. One OS zone. Busy still uses absolute instants. No zone picker and no second live zone. |
 
 ## 10. Design dependencies
 
@@ -174,9 +174,15 @@ Status of every row: PROPOSED. Flow and screen IDs are not accepted.
 - PRD AC-042 says two members whose devices are in different zones view the same instant, agree whether the owner is busy, and each see clock labels in that viewer's own current device-local zone.
 - TD-001, approved with the technical design, keeps one record on one computer and does not synchronize to another computer. The approved application design reads one OS IANA zone in the main process. The renderer cannot supply a trusted zone. Two sessions on that computer therefore share one zone at a given moment.
 - Impact: a Version 1 screen cannot honestly show two simultaneous viewers in two device zones without a Technical Design change, and a zone picker would contradict the current contract.
-- This analysis does not resolve C-01. It does not add a zone control.
+The user chose option A on 2026-11-20. The PRD text and the Technical Design were not changed.
 
-The user's earlier choice on AC-024 is already recorded as TD-001: the other member is another local session or a later view. That choice is not reopened here. C-01 is the remaining zone wording.
+- Version 1 UI shows one operating-system zone, the zone read by the main process.
+- Busy and free still follow absolute instants. Two sessions on this computer share that zone at one moment.
+- Clock labels use that zone's offset at each instant.
+- Two simultaneous device zones are not a Version 1 screen. There is no zone picker.
+- AC-042's agreement about whether someone is busy remains in scope. Its wording about each viewer having a different device zone is not implemented as two live windows.
+
+The user's earlier choice on AC-024 remains TD-001: the other member is another local session or a later view. That choice is not reopened.
 
 ### Risks
 
@@ -194,14 +200,14 @@ These are not decisions.
 
 | ID | Question | Owner |
 |---|---|---|
-| Q-01 | How should Version 1 UI treat AC-042's two device zones, given C-01? | User. Product wording or a Technical Design change. |
-| Q-02 | Should the Implementation Plan baseline be explicitly confirmed before Stage 1? The plan is available either way. | User. |
+| Q-01 | How should Version 1 UI treat AC-042's two device zones, given C-01? | Closed on 2026-11-20 by option A. One OS zone. No zone picker. The PRD text was not edited. |
+| Q-02 | Should the Implementation Plan baseline be explicitly confirmed before Stage 1? | Closed on 2026-11-20. The plan stays unconfirmed and is a sequencing reference only. |
 | Q-03 | After Stage 0 review, which proposed flows become the structural baseline? | User, at the Stage 1 review. Not asked as a decision in this file. |
-| Q-04 | Whether destructive actions use a confirmation step. The PRD does not require one. | Later interaction design, unless the user wants it decided as product behavior. |
+| Q-04 | Whether destructive actions use a confirmation step. The PRD does not require one. | Closed on 2026-11-20. The user chose a confirmation step on the same surface before remove, delete, or dissolve. It is not a new destination and not an authorization boundary. Dismissing an ambiguous-time choice still returns to S-05 and discards the unsent edit. |
 
 ### Assumptions
 
-None are promoted to decisions. One working assumption for later drafts, if the user leaves C-01 unresolved: do not draw a zone picker. That assumption is not approval to drop AC-042.
+The working assumption about leaving C-01 unresolved is retired. Option A is the user's decision for Version 1 UI. It does not delete AC-042 from the PRD.
 
 ## 12. UI/UX readiness assessment
 
@@ -211,16 +217,17 @@ Stage 0 is ready for user review.
 |---|---|
 | PRD approved | Yes. DEC-011. Scope is section 2 plus AC-001 through AC-051. |
 | Technical Design approved | Yes. 2026-11-19, including TD-001 through TD-004. |
-| Implementation Plan available | Yes. Not recorded as a user-confirmed baseline. |
+| Implementation Plan available | Yes. On 2026-11-20 the user limited it to a sequencing reference. It is not a confirmed baseline. |
 | Existing UI to extend | A desktop shell and a one-page scaffold only. |
 | Blocker to writing this analysis | None. |
-| Blocker to Stage 1 | This review. C-01 should be confirmed or explicitly deferred before flows treat two time zones as a screen. |
+| User review | Accepted on 2026-11-20, together with C-01 option A. |
+| Blocker inside this file | None. The user asked for Stage 1 on 2026-11-20. The Stage 1 draft is not accepted. |
 
 ## 13. Recommended next steps
 
-1. User reviews this Stage 0 analysis.
-2. User confirms or defers C-01.
-3. Only after that review, Stage 1 may turn the proposed flows into an information architecture for acceptance.
+1. The user accepted this readiness record on 2026-11-20 and chose C-01 option A.
+2. The user asked for Stage 1 on 2026-11-20. The draft is ready for review and is not the accepted information architecture.
+3. That draft uses the Implementation Plan as a sequencing reference only.
 4. Do not start wireframes, visual design, or application code from this document.
 
 ## 14. Work not done
@@ -229,5 +236,5 @@ Stage 0 is ready for user review.
 - No dependency was installed.
 - No wireframe, visual design, or interaction specification was started.
 - The approved PRD, Technical Design, and Implementation Plan were not modified.
-- Stage 1 was not started.
+- Stage 1 was drafted for review. Wireframes and visual design were not started.
 - No independent design review was run.

@@ -1,0 +1,200 @@
+:root {
+  --primitive-color-neutral-0: #f4f5f6;
+  --primitive-color-neutral-0-strong: #ffffff;
+  --primitive-color-neutral-200: #d0d5db;
+  --primitive-color-neutral-500: #6b7280;
+  --primitive-color-neutral-700: #3e4651;
+  --primitive-color-neutral-800: #4a5160;
+  --primitive-color-neutral-900: #1b1f24;
+  --primitive-color-teal-700: #0f5f66;
+  --primitive-color-teal-50: #e6f3f3;
+  --primitive-color-red-800: #8e1b1b;
+  --semantic-color-canvas: var(--primitive-color-neutral-0);
+  --semantic-color-surface: var(--primitive-color-neutral-0-strong);
+  --semantic-color-text-primary: var(--primitive-color-neutral-900);
+  --semantic-color-text-secondary: var(--primitive-color-neutral-700);
+  --semantic-color-text-meta: var(--primitive-color-neutral-800);
+  --semantic-color-text-on-action: var(--primitive-color-neutral-0-strong);
+  --semantic-color-text-danger: var(--primitive-color-red-800);
+  --semantic-color-border-hairline: var(--primitive-color-neutral-200);
+  --semantic-color-border-field: var(--primitive-color-neutral-500);
+  --semantic-color-action-primary: var(--primitive-color-teal-700);
+  --semantic-color-focus: var(--primitive-color-teal-700);
+  --semantic-color-selection-wash: var(--primitive-color-teal-50);
+  --component-button-height: 32px;
+  --component-button-radius: 4px;
+  --component-button-padding-inline: 12px;
+  --component-field-height: 32px;
+  --component-field-padding-inline: 8px;
+  --component-row-min-height: 32px;
+  --component-row-padding-inline: 8px;
+  --component-mark-size: 16px;
+  --component-notice-padding: 12px;
+  --semantic-space-inset: 16px;
+  --semantic-space-stack: 12px;
+  --semantic-space-inline: 8px;
+  --semantic-font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --semantic-font-title-size: 16px;
+  --semantic-font-title-line: 20px;
+  --semantic-font-body-size: 13px;
+  --semantic-font-body-line: 18px;
+  --semantic-font-meta-size: 12px;
+  color: var(--semantic-color-text-primary);
+  background: var(--semantic-color-canvas);
+  font-family: var(--semantic-font-family);
+  font-size: var(--semantic-font-body-size);
+  line-height: var(--semantic-font-body-line);
+  font-weight: 400;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--semantic-color-focus);
+  outline-offset: 2px;
+}
+
+.shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.shell-row,
+.surface {
+  padding: var(--semantic-space-inset);
+}
+
+.surface {
+  display: flex;
+  flex-direction: column;
+  gap: var(--semantic-space-stack);
+  overflow: auto;
+}
+
+h1 {
+  margin: 0;
+  font-size: var(--semantic-font-title-size);
+  line-height: var(--semantic-font-title-line);
+  font-weight: 600;
+}
+
+.meta {
+  color: var(--semantic-color-text-meta);
+  font-size: var(--semantic-font-meta-size);
+  line-height: var(--semantic-font-body-line);
+}
+
+.primary,
+.quiet,
+.danger {
+  min-height: var(--component-button-height);
+  border-radius: var(--component-button-radius);
+  padding-inline: var(--component-button-padding-inline);
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+.primary {
+  background: var(--semantic-color-action-primary);
+  color: var(--semantic-color-text-on-action);
+}
+.quiet {
+  color: var(--semantic-color-text-primary);
+  border-color: var(--semantic-color-border-hairline);
+}
+.danger {
+  color: var(--semantic-color-text-danger);
+  border-color: var(--semantic-color-border-hairline);
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+input,
+textarea {
+  min-height: var(--component-field-height);
+  border: 1px solid var(--semantic-color-border-field);
+  border-radius: 4px;
+  background: var(--semantic-color-surface);
+  padding-inline: var(--component-field-padding-inline);
+}
+
+textarea {
+  min-height: calc(var(--semantic-font-body-line) * 3);
+  resize: vertical;
+  white-space: pre-wrap;
+}
+
+.danger-field {
+  border-color: var(--semantic-color-text-danger);
+}
+
+.alert {
+  color: var(--semantic-color-text-danger);
+  margin: 0;
+}
+
+.row {
+  min-height: var(--component-row-min-height);
+  padding-inline: var(--component-row-padding-inline);
+  border-top: 1px solid var(--semantic-color-border-hairline);
+  display: flex;
+  gap: var(--semantic-space-inline);
+  align-items: flex-start;
+  padding-block: 8px;
+}
+
+.event {
+  white-space: pre-wrap;
+}
+
+.mark {
+  width: var(--component-mark-size);
+  height: var(--component-mark-size);
+  border: 1px solid var(--semantic-color-text-primary);
+  display: inline-block;
+  flex: none;
+  margin-top: 1px;
+}
+
+.mark.filled {
+  background: var(--semantic-color-text-primary);
+}
+
+.notice {
+  margin: 0 var(--semantic-space-inset);
+  padding: var(--component-notice-padding);
+  background: var(--semantic-color-surface);
+  border: 1px solid var(--semantic-color-border-hairline);
+  position: relative;
+  z-index: 1;
+}
+
+.choice {
+  display: flex;
+  gap: var(--semantic-space-inline);
+}
+.inline {
+  display: flex;
+  gap: var(--semantic-space-inline);
+  align-items: end;
+}

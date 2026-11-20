@@ -1,7 +1,7 @@
 # Design System
 
 ## Purpose and status
-A lightweight application-level design contract for the approved Version 1 desktop UI, not a generalized component platform. The system is **DRAFT until the user approves the Visual Direction and token/component baseline**. Do not treat example values or references as approved design decisions.
+A lightweight application-level design contract for the approved Version 1 desktop UI, not a generalized component platform. Direction L and the token and component baseline were approved on 2026-11-20. The user accepted the high-fidelity and interaction specifications on 2026-11-20. They are in `05-visual-design.md` and `06-interaction-specifications.md`. This acceptance does not authorize application code.
 
 ## Governance
 - Visual Direction is approved before final token values.

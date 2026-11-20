@@ -1,7 +1,7 @@
 # 设计系统
 
 ## 目的与状态
-面向已批准 Version 1 桌面 UI 的轻量应用级设计契约，不建设通用组件平台。用户批准 Visual Direction 和 Token/组件基线前，设计系统状态为 **DRAFT**。不得将示例值或参考资料视为已批准设计决策。
+面向已批准 Version 1 桌面 UI 的轻量应用级设计契约，不建设通用组件平台。用户于 2026-11-20 批准方向 L 以及 Token 与组件基线。用户于 2026-11-20 接受高保真和交互规格。它们在 `05-visual-design.md` 与 `06-interaction-specifications.md`。该接受不授权应用代码。
 
 ## 治理规则
 - 先批准 Visual Direction，再确定最终 Token 值。

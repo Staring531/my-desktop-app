@@ -2,7 +2,7 @@
 
 - Stage: 6 — Implementation Planning
 - Date: 2026-11-19
-- Status: Plan only. This document does not authorize application code, dependency installation, or a change to the approved PRD or technical design.
+- Status: The user accepted the UI plan delta and authorized implementation on 2026-11-20. This document still does not change the approved PRD or technical design. Dependency installation remains limited to IMP-010.
 - Product authority: `docs/product/04-prd.md`, version 0.1 draft, APPROVED (DEC-011, user approval 2026-11-19)
 - Design authority: `docs/technical/02-architecture.md` through `09-test-strategy.md` and `docs/technical/technical-decisions/log.md`, APPROVED by the user on 2026-11-19, including TD-001 through TD-004
 - Review disposition: `docs/technical/reviews/technical-design-review.md` records TDR-REV-010 through TDR-REV-030 as ADDRESSED. Those findings stay closed. This plan implements the revised text. It does not redesign architecture or add product behavior.
@@ -11,12 +11,12 @@
 
 - The PRD remains APPROVED. Version text is `0.1 draft`. DEC-011 records the user's approval on 2026-11-19. A requirements review and a PRD audit did not approve the PRD.
 - The technical design is APPROVED by the user on 2026-11-19. TD-001 and TD-002 were confirmed earlier that day. TD-003 and TD-004 were recommendations included in that approval.
-- That approval does not authorize application code. Completing this plan does not authorize it either. Implementation waits for a separate authorization.
+- The user authorized implementation on 2026-11-20 and accepted the UI plan delta recorded as IMP-022. That authorization covers the approved plan plus IMP-022. It does not authorize deployment or a change to the PRD.
 - The current desktop shell is the code this plan extends, not a behavior source. `apps/desktop/src/main/index.ts` opens one `BrowserWindow` with `contextIsolation: true`, `nodeIntegration: false`, `sandbox: true`, and the existing preload. `app.whenReady` creates that window. On `activate`, if no window is open, the same file creates another window outside any coordinator. `window-all-closed` quits except on `darwin`. There is no single-instance lock, no team record, and no command queue. `apps/desktop/package.json` script `test` is `vitest run --passWithNoTests`. This planning stage does not change those files.
 
 ## 1. Epics
 
-The default order is IMP-001 through IMP-021. A later epic starts after the tasks it lists as prerequisites. Section 3 names the only parallel splits.
+The default order is IMP-001 through IMP-022. A later epic starts after the tasks it lists as prerequisites. Section 3 names the only parallel splits.
 
 | Epic | Tasks | Approved work |
 |---|---|---|
@@ -24,7 +24,7 @@ The default order is IMP-001 through IMP-021. A later epic starts after the task
 | E2 Time adapter | IMP-010 | `@js-temporal/polyfill` and `America/New_York` gap, overlap, and zone-label tests. This is the only install task. |
 | E3 Store | IMP-011 – IMP-012 | `userData/team-record.json`, atomic synced replace, unreadable file, leftover temp file. |
 | E4 Coordinator and sessions | IMP-013 – IMP-018 | Queue including bind, generation stamp, single-instance lock, second instance handled by the first process, projections per session, ignored payload actor, zone, generation, and create id, window registration including darwin `activate`. |
-| E5 Preload and renderer | IMP-019 – IMP-020 | Bind, open a session, edit one event, choose an occurrence, and call `busyAt`. Layout beyond that is not specified. |
+| E5 Preload and renderer | IMP-019 – IMP-022 | IMP-020 covers bind, another session, one event, an occurrence choice, and `busyAt`. IMP-022 implements the accepted UI package, S-01 through S-08 and I-01 through I-15. |
 | E6 Acceptance gate | IMP-021 | `vitest run` without `--passWithNoTests` becomes the desktop test script after the acceptance tests exist. |
 
 ## 2. Task rules
@@ -57,7 +57,8 @@ Serial order is the default, because the domain, store, and coordinator land in 
 | IMP-018 | IMP-012, IMP-013, IMP-015, IMP-017 | IMP-019's type sketch only. The shell edit waits until the coordinator registers windows. |
 | IMP-019 | IMP-013, IMP-014, IMP-016 | IMP-018, after the command and bind contracts are stable. |
 | IMP-020 | IMP-009, IMP-016, IMP-019 | None. It is the first renderer behavior. |
-| IMP-021 | IMP-001 through IMP-020 | None. |
+| IMP-022 | IMP-020 | None. It applies the accepted UI package on that renderer path. |
+| IMP-021 | IMP-001 through IMP-022 | None. |
 
 Integration boundaries:
 
@@ -290,13 +291,24 @@ Integration boundaries:
 - Tests: Binding sends the requested email and renders the returned projection. Opening a session requests a new window without an email. An event submit sends the edited fields and omits an unedited clock field. An ambiguous result lets the operator choose `earlier` or `later`, and the next submit includes that occurrence and that field. Cancel and dismissing the choice send no command. A successful rebind drops the previous unsent fields. The board calls `busyAt` at a chosen instant and again at a later now. A source check, or an equivalent test, shows the renderer does not import domain command or record writers. AC-016 and AC-042 labels come from the supplied zone at each instant.
 - Done when: Those interactions work against the preload API, and no layout beyond them has been added.
 
+### IMP-022 — Accepted UI package
+
+- Epic: E5
+- Scope: Implement S-01 through S-08 and I-01 through I-15 from the accepted UI documents under `docs/ui-ux/`. Map `docs/ui-ux/tokens/design-tokens.json` to plain CSS custom properties in the desktop renderer. Do not install a token compiler or a component library. The renderer may import `busyAt` and no other domain export. Include create-team, invite accept and decline, no-access, the team workspace, maintainer actions, custody edit, I-15 in-place confirmation, the unreadable-record surface, and the writer notice. Clock entry is `YYYY-MM-DD HH:mm`. Dismissing an ambiguous choice returns to the workspace and discards the unsent edit. The first press of remove, delete, or dissolve does not send.
+- Design: accepted UI package, 2026-11-20. Technical contracts stay `05-application-design.md` and `08-error-handling-and-observability.md`.
+- PRD: AC-001 through AC-051, except AC-027, which has no reminder surface.
+- Prerequisites: IMP-020.
+- Deliverables: The renderer surfaces and token variables. No new domain rule.
+- Tests: A source check still shows the renderer imports no domain command writer. Interaction tests cover bind, create team, invite response, one event save, an occurrence choice, busyAt, and the confirmation step not sending on the first press.
+- Done when: Those surfaces follow the accepted English UI documents.
+
 ### IMP-021 — Acceptance command
 
 - Epic: E6
 - Scope: Change the `@app/desktop` test script from `vitest run --passWithNoTests` to `vitest run`. Run that command. Do not add `--passWithNoTests` back. This is the only planned edit to the test script. Leave the script unchanged until this task, so the current script is not treated as evidence that AC-001 through AC-051 passed.
 - Design: `09-test-strategy.md` section 1. TDR-REV-021 is addressed by this gate. The design stage itself did not change `package.json`.
 - PRD: AC-001 through AC-051.
-- Prerequisites: IMP-001 through IMP-020.
+- Prerequisites: IMP-001 through IMP-022.
 - Deliverables: The updated script and a passing Vitest run whose tests cover every acceptance id in section 6.
 - Tests: `vitest run` in `@app/desktop`, with no `--passWithNoTests`. A missing test file fails the command. The run includes the domain, time-adapter, store, coordinator, board, and second-process layers named in `09-test-strategy.md`.
 - Done when: That command exits successfully and every id in section 6 has an assertion in the run.
@@ -309,7 +321,7 @@ Integration boundaries:
 | M2 Time | IMP-010 | The polyfill adapter passes the New York gap, overlap, and January/July label cases. |
 | M3 Store | IMP-012 | Temporary-directory tests cover a missing file, a failed replace, a leftover temp file, and an unreadable file. |
 | M4 Coordinator | IMP-018 | One queue, bind, generation stamps, per-session projections, the lock, and coordinator-owned windows including darwin `activate`. |
-| M5 Operator path | IMP-020 | A session can bind, another session can open, one event can be edited, an occurrence can be chosen, and `busyAt` is the board rule. |
+| M5 Operator path | IMP-022 | IMP-020's operations are in place, and the accepted surfaces S-01 through S-08 and I-01 through I-15 are implemented. |
 | M6 Gate | IMP-021 | `vitest run` without `--passWithNoTests` is the acceptance command and passes. |
 
 ## 6. Risks
@@ -346,7 +358,7 @@ The approved design already excludes these. No task implements them.
 - File encryption. Another process that can read the user-data directory is outside the actor model.
 - SQLite, a server database, or a migration from an older document. An unknown `formatVersion` stays unreadable.
 - Remote logs, metrics, or error reporting.
-- A visual design beyond bind, open session, one event edit, occurrence choice, and `busyAt`.
+- A visual design other than the accepted UI package implemented by IMP-022.
 - A cross-process file lock in addition to the single-instance lock.
 - Restoring a dissolved team, a deleted only-self event, or a deleted event.
 - Installing packages during planning or during any task other than IMP-010.
@@ -355,7 +367,7 @@ The approved design already excludes these. No task implements them.
 
 Version 1 of this plan is done when all of the following are true:
 
-- IMP-001 through IMP-021 meet their done criteria.
+- IMP-001 through IMP-022 meet their done criteria.
 - The `@app/desktop` acceptance command is `vitest run` without `--passWithNoTests`, and that command passes.
 - Until IMP-021 changes the script, `apps/desktop/package.json` still has `vitest run --passWithNoTests`. A run of the unchanged script is not evidence that the acceptance map passed.
 - AC-001 through AC-051 each have an assertion, in the groups in section 6.
@@ -363,7 +375,7 @@ Version 1 of this plan is done when all of the following are true:
 - Website, admin, API, shared, and API client packages have no new team behavior.
 - No task has added a reminder, a recurrence rule, an all-day success path, encryption, or a second computer.
 
-This document's existence does not start that work.
+The user authorized that work on 2026-11-20. This document still does not deploy it.
 
 ## 9. Acceptance traceability
 
