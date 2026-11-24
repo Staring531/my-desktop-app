@@ -26,10 +26,6 @@ jobs:
           node-version: 22
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      - name: Diagnose Electron smoke test formatting
-        run: |
-          pnpm exec prettier apps/desktop/scripts/electron-runtime-smoke.mjs > /tmp/electron-runtime-smoke.formatted.mjs
-          diff -u apps/desktop/scripts/electron-runtime-smoke.mjs /tmp/electron-runtime-smoke.formatted.mjs || true
       - name: Type check
         run: pnpm typecheck
       - name: Lint
