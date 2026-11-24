@@ -307,15 +307,12 @@ try {
   duplicate = launch(dataDir, undefined);
   await waitExit(duplicate);
   await until(
-    async () => {
-      const notice = `document.body.innerText.includes('A writer already exists.')`;
-      const [primaryNotice, secondNotice] = await Promise.all([
-        primaryPage.eval(notice),
-        secondPage.eval(notice),
-      ]);
-      return primaryNotice || secondNotice;
-    },
-    'single instance notice in an existing window',
+    async () =>
+      (await primaryPage.eval(
+        `document.body.innerText.includes('A writer already exists.')`,
+      )) ||
+      (await secondPage.eval(`document.body.innerText.includes('A writer already exists.')`)),
+    'single instance notice',
   );
 
   primaryPage.close();
