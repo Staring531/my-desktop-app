@@ -308,7 +308,7 @@ try {
   await waitExit(duplicate);
   await until(
     async () => {
-      const expression = `document.body.innerText.includes('A writer already exists.')`;
+      const expression = 'document.body.innerText.includes("A writer already exists.")';
       const primaryNotice = await primaryPage.eval(expression);
       const secondNotice = await secondPage.eval(expression);
       return primaryNotice || secondNotice;
