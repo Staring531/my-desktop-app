@@ -306,15 +306,12 @@ try {
 
   duplicate = launch(dataDir, undefined);
   await waitExit(duplicate);
-  await until(
-    async () => {
-      const expression = 'document.body.innerText.includes("A writer already exists.")';
-      const primaryNotice = await primaryPage.eval(expression);
-      const secondNotice = await secondPage.eval(expression);
-      return primaryNotice || secondNotice;
-    },
-    'single instance notice',
-  );
+  await until(async () => {
+    const expression = 'document.body.innerText.includes("A writer already exists.")';
+    const primaryNotice = await primaryPage.eval(expression);
+    const secondNotice = await secondPage.eval(expression);
+    return primaryNotice || secondNotice;
+  }, 'single instance notice');
 
   primaryPage.close();
   secondPage.close();
