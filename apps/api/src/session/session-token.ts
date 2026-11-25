@@ -1,0 +1,1 @@
+export const SECURE_SESSION_COOKIE = Symbol('SECURE_SESSION_COOKIE');
