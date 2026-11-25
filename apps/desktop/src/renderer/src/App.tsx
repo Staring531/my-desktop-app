@@ -296,9 +296,7 @@ function Workspace({
               Current team status at the selected instant
             </p>
           </div>
-          <span className="section-count">
-            {projection.roster.length} members
-          </span>
+          <span className="section-count">{projection.roster.length} members</span>
         </div>
         <div className="member-list">
           {projection.roster.map((entry) => {
@@ -472,11 +470,9 @@ function Workspace({
           <div className="section-heading">
             <div>
               <h2 className="region-title" id="management-heading">
-              Team management
-            </h2>
-              <p className="section-description">
-              Invitations and membership controls
-            </p>
+                Team management
+              </h2>
+              <p className="section-description">Invitations and membership controls</p>
             </div>
           </div>
           {projection.invites.length > 0 ? (
