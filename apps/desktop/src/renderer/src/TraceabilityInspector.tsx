@@ -74,7 +74,7 @@ export function TraceabilityInspector({
         ]} />
         <TraceList title="Automated tests" values={record.tests} />
         <p className="qa-evidence-note">
-          Runtime screenshot: NOT RUN · Manual acceptance: NOT RUN
+          Runtime screenshot: {traceability.evidencePolicy.runtimeScreenshots} · Manual acceptance: {traceability.evidencePolicy.manualAcceptance}
         </p>
         <p className="qa-footnote">
           This panel displays registry mappings. Empty test mappings are not evidence of passing tests.
