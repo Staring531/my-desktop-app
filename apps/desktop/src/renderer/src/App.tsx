@@ -1,4 +1,5 @@
 import { useEffect, useState, type JSX, type KeyboardEvent as ReactKeyboardEvent } from 'react';
+import { TraceabilityInspector } from './TraceabilityInspector.js';
 import {
   applyProjection,
   applyResult,
@@ -24,6 +25,7 @@ import {
 
 export function App(): JSX.Element {
   const [state, setState] = useState(() => initialState(new Date().toISOString()));
+  const [inspectorOpen, setInspectorOpen] = useState(false);
 
   useEffect(() => {
     const desktop = window.desktop;
@@ -85,6 +87,11 @@ export function App(): JSX.Element {
         <span className="meta zone-label">{state.projection.zone}</span>
       ) : null}
       <span className="shell-spacer" />
+      {import.meta.env.DEV ? (
+        <button className="quiet qa-toggle" type="button" onClick={() => setInspectorOpen(true)}>
+          QA trace
+        </button>
+      ) : null}
       {openAnother}
     </div>
   );
@@ -114,6 +121,13 @@ export function App(): JSX.Element {
         ) : null}
       </div>
       {state.screen === 'S-01' ? shellRow : null}
+      {import.meta.env.DEV ? (
+        <TraceabilityInspector
+          screen={state.screen}
+          open={inspectorOpen}
+          onClose={() => setInspectorOpen(false)}
+        />
+      ) : null}
     </div>
   );
 }
@@ -248,52 +262,272 @@ function Workspace({
   const rows = board(state);
   return (
     <>
-      <h1>Team</h1>
+      <header className="workspace-header">
+        <div className="workspace-heading">
+          <h1>Team workspace</h1>
+          <p className="meta">Availability at {clockLabel(state.viewedInstant, projection.zone)}</p>
+        </div>
+        <button
+          className="quiet"
+          type="button"
+          onClick={() =>
+            run({
+              state: { ...state, viewedInstant: new Date().toISOString() },
+              effect: { type: 'none' },
+            })
+          }
+        >
+          Now
+        </button>
+      </header>
+
+      <section className="workspace-section" aria-labelledby="members-heading">
+        <div className="section-heading">
+          <div>
+            <h2 className="region-title" id="members-heading">
+              Member availability
+            </h2>
+            <p className="section-description">Current team status at the selected instant</p>
+          </div>
+          <span className="section-count">{projection.roster.length} members</span>
+        </div>
+        <div className="member-list">
+          {projection.roster.map((entry) => {
+            const busy = rows.find((row) => row.email === entry.email)?.busy === true;
+            const confirming =
+              state.confirmation?.kind === 'remove' && state.confirmation.email === entry.email;
+            return (
+              <article className="member-row" key={entry.email}>
+                <div className="member-primary">
+                  <span
+                    className={busy ? 'status-indicator busy' : 'status-indicator free'}
+                    aria-hidden="true"
+                  />
+                  <div className="member-copy">
+                    <strong className={busy ? 'member-status busy-text' : 'member-status'}>
+                      {busy ? 'Busy' : 'Free'}
+                    </strong>
+                    <span className="member-email">{entry.email}</span>
+                  </div>
+                </div>
+                {projection.isMaintainer && entry.email !== projection.actorEmail ? (
+                  <div className="member-actions">
+                    <button
+                      className="quiet"
+                      type="button"
+                      onClick={() =>
+                        void run(
+                          requestCommand(
+                            state,
+                            { name: 'designate', email: entry.email },
+                            'Making maintainer',
+                          ),
+                        )
+                      }
+                    >
+                      {state.pending === 'Making maintainer'
+                        ? 'Making maintainer'
+                        : 'Make maintainer'}
+                    </button>
+                    {confirming ? (
+                      <Confirm
+                        question={`Remove ${entry.email}?`}
+                        verb="Remove"
+                        pending={state.pending}
+                        onCancel={() =>
+                          void run({ state: withoutConfirmation(state), effect: { type: 'none' } })
+                        }
+                        onConfirm={() => void run(confirmArmed(state))}
+                      />
+                    ) : (
+                      <button
+                        className="danger"
+                        type="button"
+                        onClick={() =>
+                          void run(armConfirmation(state, { kind: 'remove', email: entry.email }))
+                        }
+                      >
+                        Remove
+                      </button>
+                    )}
+                  </div>
+                ) : null}
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="workspace-section" aria-labelledby="events-heading">
+        <div className="section-heading">
+          <div>
+            <h2 className="region-title" id="events-heading">
+              Team events
+            </h2>
+            <p className="section-description">Shared events and events visible to this session</p>
+          </div>
+          <span className="section-count">{projection.events.length} events</span>
+        </div>
+        {projection.events.length > 0 ? (
+          <div className="event-list">
+            {projection.events.map((event) => (
+              <article className="event-card" key={event.id}>
+                <div className="event-content">
+                  <div className="event-heading">
+                    <span
+                      className={
+                        event.visibility === 'team-visible'
+                          ? 'visibility-label team'
+                          : 'visibility-label private'
+                      }
+                    >
+                      {event.visibility === 'team-visible' ? 'Team' : 'Only you'}
+                    </span>
+                    <h3>{event.title}</h3>
+                  </div>
+                  {event.location ? <p className="event-location">{event.location}</p> : null}
+                  {event.description ? (
+                    <p className="event-description">{event.description}</p>
+                  ) : null}
+                  <p className="event-time">
+                    {clockLabel(event.start, projection.zone)} –{' '}
+                    {clockLabel(event.end, projection.zone)}
+                  </p>
+                  {event.visibility === 'team-visible' ? (
+                    <p className="event-owner">Owner · {event.ownerEmail}</p>
+                  ) : null}
+                </div>
+                <div className="event-actions">
+                  <button
+                    className="quiet"
+                    type="button"
+                    onClick={() =>
+                      run({
+                        state: { ...state, viewedInstant: event.start },
+                        effect: { type: 'none' },
+                      })
+                    }
+                  >
+                    At start
+                  </button>
+                  <button
+                    className="quiet"
+                    type="button"
+                    onClick={() =>
+                      run({
+                        state: { ...state, viewedInstant: event.end },
+                        effect: { type: 'none' },
+                      })
+                    }
+                  >
+                    At end
+                  </button>
+                  {mayEdit(projection, event) ? (
+                    <button
+                      className="quiet"
+                      type="button"
+                      onClick={() =>
+                        run({
+                          state: openEdit(state, event.id),
+                          effect: { type: 'none' },
+                        })
+                      }
+                    >
+                      Edit
+                    </button>
+                  ) : null}
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <p className="empty-state">
+            No events yet. Create an event to add it to the team workspace.
+          </p>
+        )}
+      </section>
+
       <button
-        className="quiet"
+        className="primary new-event-button"
         type="button"
-        onClick={() =>
-          run({
-            state: { ...state, viewedInstant: new Date().toISOString() },
-            effect: { type: 'none' },
-          })
-        }
+        onClick={() => run({ state: openCreate(state), effect: { type: 'none' } })}
       >
-        Now
+        New event
       </button>
-      <p className="meta">Showing {clockLabel(state.viewedInstant, projection.zone)}</p>
-      <h2 className="region-title">Members</h2>
-      {projection.roster.map((entry) => {
-        const busy = rows.find((row) => row.email === entry.email)?.busy === true;
-        const confirming =
-          state.confirmation?.kind === 'remove' && state.confirmation.email === entry.email;
-        return (
-          <div className="row" key={entry.email}>
-            <span className={busy ? 'mark filled' : 'mark'} />
-            <span>{busy ? 'Busy' : 'Free'}</span>
-            <span>{entry.email}</span>
-            {projection.isMaintainer && entry.email !== projection.actorEmail ? (
+
+      {projection.isMaintainer ? (
+        <section
+          className="workspace-section management-section"
+          aria-labelledby="management-heading"
+        >
+          <div className="section-heading">
+            <div>
+              <h2 className="region-title" id="management-heading">
+                Team management
+              </h2>
+              <p className="section-description">Invitations and membership controls</p>
+            </div>
+          </div>
+          {projection.invites.length > 0 ? (
+            <div className="management-subsection">
+              <h3 className="subsection-title">Pending invitations</h3>
+              {projection.invites.map((invite) => (
+                <div className="invite-row" key={invite.email}>
+                  <span>{invite.email}</span>
+                  <button
+                    className="quiet"
+                    type="button"
+                    onClick={() =>
+                      void run(
+                        requestCommand(
+                          state,
+                          { name: 'cancelInvite', email: invite.email },
+                          'Canceling',
+                        ),
+                      )
+                    }
+                  >
+                    {state.pending === 'Canceling' ? 'Canceling' : 'Cancel invite'}
+                  </button>
+                </div>
+              ))}
+            </div>
+          ) : null}
+          <div className="management-subsection">
+            <h3 className="subsection-title">Invite a member</h3>
+            <div className="inline invite-form">
+              <label>
+                Invite email
+                <input
+                  value={state.inviteDraft}
+                  onChange={(event) =>
+                    run({
+                      state: { ...state, inviteDraft: event.target.value },
+                      effect: { type: 'none' },
+                    })
+                  }
+                  onKeyDown={(event) => {
+                    if (event.key !== 'Enter') return;
+                    event.preventDefault();
+                    void run(requestInvite(state));
+                  }}
+                />
+              </label>
               <button
                 className="quiet"
                 type="button"
-                onClick={() =>
-                  void run(
-                    requestCommand(
-                      state,
-                      { name: 'designate', email: entry.email },
-                      'Making maintainer',
-                    ),
-                  )
-                }
+                onClick={() => void run(requestInvite(state))}
               >
-                {state.pending === 'Making maintainer' ? 'Making maintainer' : 'Make maintainer'}
+                {state.pending === 'Inviting' ? 'Inviting' : 'Invite'}
               </button>
-            ) : null}
-            {projection.isMaintainer && entry.email !== projection.actorEmail ? (
-              confirming ? (
+            </div>
+          </div>
+          {projection.roster.length === 1 ? (
+            <div className="management-subsection dissolve-area">
+              {state.confirmation?.kind === 'dissolve' ? (
                 <Confirm
-                  question={`Remove ${entry.email}?`}
-                  verb="Remove"
+                  question="Dissolve this team?"
+                  verb="Dissolve"
                   pending={state.pending}
                   onCancel={() =>
                     void run({ state: withoutConfirmation(state), effect: { type: 'none' } })
@@ -304,140 +538,14 @@ function Workspace({
                 <button
                   className="danger"
                   type="button"
-                  onClick={() =>
-                    void run(armConfirmation(state, { kind: 'remove', email: entry.email }))
-                  }
+                  onClick={() => void run(armConfirmation(state, { kind: 'dissolve' }))}
                 >
-                  Remove
+                  Dissolve team
                 </button>
-              )
-            ) : null}
-          </div>
-        );
-      })}
-      <h2 className="region-title">Events</h2>
-      {projection.events.map((event) => (
-        <div className="row event" key={event.id}>
-          <span className={event.visibility === 'team-visible' ? 'mark filled' : 'mark'} />
-          <span>{event.visibility === 'team-visible' ? 'Team' : 'Only you'}</span>
-          <span>{event.title}</span>
-          <span>{event.location}</span>
-          <span>{event.description}</span>
-          <span className="meta">
-            {clockLabel(event.start, projection.zone)} – {clockLabel(event.end, projection.zone)}
-          </span>
-          {event.visibility === 'team-visible' ? (
-            <span className="meta">{event.ownerEmail}</span>
-          ) : null}
-          <button
-            className="quiet"
-            type="button"
-            onClick={() =>
-              run({ state: { ...state, viewedInstant: event.start }, effect: { type: 'none' } })
-            }
-          >
-            At start
-          </button>
-          <button
-            className="quiet"
-            type="button"
-            onClick={() =>
-              run({ state: { ...state, viewedInstant: event.end }, effect: { type: 'none' } })
-            }
-          >
-            At end
-          </button>
-          {mayEdit(projection, event) ? (
-            <button
-              className="quiet"
-              type="button"
-              onClick={() => run({ state: openEdit(state, event.id), effect: { type: 'none' } })}
-            >
-              Edit
-            </button>
-          ) : null}
-        </div>
-      ))}
-      {projection.events.length === 0 ? <p className="secondary">No events</p> : null}
-      <button
-        className="primary"
-        type="button"
-        onClick={() => run({ state: openCreate(state), effect: { type: 'none' } })}
-      >
-        New event
-      </button>
-      {projection.isMaintainer && projection.invites.length > 0 ? (
-        <>
-          <h2 className="region-title">Pending invites</h2>
-          {projection.invites.map((invite) => (
-            <div className="row" key={invite.email}>
-              <span>{invite.email}</span>
-              <button
-                className="quiet"
-                type="button"
-                onClick={() =>
-                  void run(
-                    requestCommand(
-                      state,
-                      { name: 'cancelInvite', email: invite.email },
-                      'Canceling',
-                    ),
-                  )
-                }
-              >
-                {state.pending === 'Canceling' ? 'Canceling' : 'Cancel invite'}
-              </button>
+              )}
             </div>
-          ))}
-        </>
-      ) : null}
-      {projection.isMaintainer ? (
-        <>
-          <h2 className="region-title">Invite</h2>
-          <div className="inline">
-            <label>
-              Invite email
-              <input
-                value={state.inviteDraft}
-                onChange={(event) =>
-                  run({
-                    state: { ...state, inviteDraft: event.target.value },
-                    effect: { type: 'none' },
-                  })
-                }
-                onKeyDown={(event) => {
-                  if (event.key !== 'Enter') return;
-                  event.preventDefault();
-                  void run(requestInvite(state));
-                }}
-              />
-            </label>
-            <button className="quiet" type="button" onClick={() => void run(requestInvite(state))}>
-              {state.pending === 'Inviting' ? 'Inviting' : 'Invite'}
-            </button>
-          </div>
-        </>
-      ) : null}
-      {projection.roster.length === 1 ? (
-        state.confirmation?.kind === 'dissolve' ? (
-          <Confirm
-            question="Dissolve this team?"
-            verb="Dissolve"
-            pending={state.pending}
-            onCancel={() =>
-              void run({ state: withoutConfirmation(state), effect: { type: 'none' } })
-            }
-            onConfirm={() => void run(confirmArmed(state))}
-          />
-        ) : (
-          <button
-            className="danger"
-            type="button"
-            onClick={() => void run(armConfirmation(state, { kind: 'dissolve' }))}
-          >
-            Dissolve
-          </button>
-        )
+          ) : null}
+        </section>
       ) : null}
     </>
   );

@@ -21,6 +21,9 @@ Version 1 PRD、Technical Design、Implementation Plan 和 UI/UX 设计包均已
 - [Product Discovery（产品发现）](docs/process/PRODUCT_DISCOVERY.md)
 - [Technical Design（技术设计）](docs/process/TECHNICAL_DESIGN.md)
 - [UI/UX Design（界面与体验设计）](docs/process/UI_UX_DESIGN-zh.md)
+- [UI/UX 工程标准](docs/ui-ux/ENGINEERING-STANDARD-zh.md) · [English](docs/ui-ux/ENGINEERING-STANDARD.md)
+- [项目采用检查清单](docs/ui-ux/PROJECT-ADOPTION-CHECKLIST.md)
+- [UI 追溯注册表](docs/traceability/ui-traceability.json)
 - [English README](README.md)
 
 英文源文档及对应中文翻译位于 [docs/ui-ux/](docs/ui-ux/)。可从 [中文设计需求](docs/ui-ux/00-design-requirements-zh.md) 或 [英文设计需求](docs/ui-ux/00-design-requirements.md) 开始。

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UI Traceability Registry",
+  "type": "object",
+  "required": ["schemaVersion", "standardVersion", "project", "architecture", "screens", "overlays", "evidencePolicy"],
+  "properties": {
+    "schemaVersion": {"type": "string"},
+    "standardVersion": {"type": "string"},
+    "project": {"type": "string"},
+    "architecture": {"type": "object"},
+    "screens": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "flows", "businessRules", "acceptanceCriteria", "design", "renderer"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^S-[0-9]{2}$"},
+          "name": {"type": "string", "minLength": 1},
+          "flows": {"type": "array", "items": {"type": "string"}},
+          "businessRules": {"type": "array", "items": {"type": "string"}},
+          "acceptanceCriteria": {"type": "array", "items": {"type": "string"}},
+          "design": {"type": "object", "additionalProperties": {"type": "string"}},
+          "components": {"type": "array", "items": {"type": "string"}},
+          "renderer": {"type": "array", "items": {"type": "string"}},
+          "uiModel": {"type": "array", "items": {"type": "string"}},
+          "ipc": {"type": "array", "items": {"type": "string"}},
+          "main": {"type": "array", "items": {"type": "string"}},
+          "application": {"type": "array", "items": {"type": "string"}},
+          "domain": {"type": "array", "items": {"type": "string"}},
+          "persistence": {"type": "array", "items": {"type": "string"}},
+          "tests": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": true
+      }
+    },
+    "overlays": {"type": "array", "items": {"type": "object", "required": ["id", "name"]}},
+    "evidencePolicy": {"type": "object"}
+  },
+  "additionalProperties": false
+}

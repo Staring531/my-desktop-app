@@ -21,6 +21,9 @@ The Version 1 PRD, Technical Design, Implementation Plan, and UI/UX package are 
 - [Product Discovery](docs/process/PRODUCT_DISCOVERY.md)
 - [Technical Design](docs/process/TECHNICAL_DESIGN.md)
 - [UI/UX Design](docs/process/UI_UX_DESIGN.md)
+- [UI/UX Engineering Standard](docs/ui-ux/ENGINEERING-STANDARD.md) · [中文](docs/ui-ux/ENGINEERING-STANDARD-zh.md)
+- [Project Adoption Checklist](docs/ui-ux/PROJECT-ADOPTION-CHECKLIST.md)
+- [UI Traceability Registry](docs/traceability/ui-traceability.json)
 - [Chinese README](README-zh.md)
 
 UI/UX English source documents and Chinese translations live in [docs/ui-ux/](docs/ui-ux/). Start with [design requirements](docs/ui-ux/00-design-requirements.md) or [中文设计需求](docs/ui-ux/00-design-requirements-zh.md).

@@ -3,15 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@10.8.0",
-  "engines": { "node": ">=22.0.0" },
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
     "dev": "pnpm --parallel --filter @app/desktop --filter @app/website --filter @app/admin --filter @app/api dev",
     "build": "pnpm -r --if-present build",
     "typecheck": "pnpm -r --if-present typecheck",
-    "lint": "pnpm -r --if-present lint",
+    "lint": "pnpm ui-ux:check && pnpm -r --if-present lint",
     "test": "pnpm -r --if-present test",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "ui-ux:tokens:check": "node scripts/ui-ux/generate-design-tokens.mjs --check",
+    "ui-ux:tokens:build": "node scripts/ui-ux/generate-design-tokens.mjs",
+    "ui-ux:traceability:check": "node scripts/ui-ux/validate-traceability.mjs",
+    "ui-ux:check": "pnpm ui-ux:tokens:check && pnpm ui-ux:traceability:check"
   },
   "devDependencies": {
     "prettier": "^3.5.3",

@@ -4,3 +4,4 @@ packages:
 
 onlyBuiltDependencies:
   - electron
+  - '@embedded-postgres/linux-x64'
