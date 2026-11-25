@@ -1,7 +1,23 @@
 import type { JSX } from 'react';
 import traceability from '../../../../../docs/traceability/ui-traceability.json';
 
-type TraceRecord = (typeof traceability.screens)[number];
+type TraceRecord = {
+  id: string;
+  name: string;
+  flows: string[];
+  businessRules: string[];
+  acceptanceCriteria: string[];
+  design?: Record<string, string>;
+  components?: string[];
+  renderer?: string[];
+  uiModel?: string[];
+  ipc?: string[];
+  main?: string[];
+  application?: string[];
+  domain?: string[];
+  persistence?: string[];
+  tests?: string[];
+};
 
 function TraceList({ title, values }: { title: string; values?: string[] }): JSX.Element | null {
   if (values === undefined || values.length === 0) return null;
@@ -25,7 +41,7 @@ export function TraceabilityInspector({
   onClose: () => void;
 }): JSX.Element | null {
   if (!open) return null;
-  const record = traceability.screens.find((item) => item.id === screen) as TraceRecord | undefined;
+  const record = traceability.screens.find((item) => item.id === screen) as unknown as TraceRecord | undefined;
   if (record === undefined) return null;
   const design = record.design as Record<string, string> | undefined;
   return (
