@@ -322,7 +322,7 @@ function Workspace({
                     </button>
                     {confirming ? (
                       <Confirm
-                        question={\`Remove \${entry.email}?\`}
+                        question={`Remove ${entry.email}?`}
                         verb="Remove"
                         pending={state.pending}
                         onCancel={() =>
