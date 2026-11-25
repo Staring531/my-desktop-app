@@ -1,9 +1,4 @@
-import {
-  useEffect,
-  useState,
-  type JSX,
-  type KeyboardEvent as ReactKeyboardEvent,
-} from 'react';
+import { useEffect, useState, type JSX, type KeyboardEvent as ReactKeyboardEvent } from 'react';
 import { TraceabilityInspector } from './TraceabilityInspector.js';
 import {
   applyProjection,
@@ -292,9 +287,7 @@ function Workspace({
             <h2 className="region-title" id="members-heading">
               Member availability
             </h2>
-            <p className="section-description">
-              Current team status at the selected instant
-            </p>
+            <p className="section-description">Current team status at the selected instant</p>
           </div>
           <span className="section-count">{projection.roster.length} members</span>
         </div>
@@ -368,10 +361,10 @@ function Workspace({
       <section className="workspace-section" aria-labelledby="events-heading">
         <div className="section-heading">
           <div>
-            <h2 className="region-title" id="events-heading">Team events</h2>
-            <p className="section-description">
-              Shared events and events visible to this session
-            </p>
+            <h2 className="region-title" id="events-heading">
+              Team events
+            </h2>
+            <p className="section-description">Shared events and events visible to this session</p>
           </div>
           <span className="section-count">{projection.events.length} events</span>
         </div>
