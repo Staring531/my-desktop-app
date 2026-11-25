@@ -8,6 +8,8 @@ const registryPath = 'docs/traceability/website-ui-traceability.json';
 const registry = JSON.parse(await readFile(path.join(root, registryPath), 'utf8'));
 const issues = [];
 const ids = new Set();
+const routes = new Set();
+const allowedStatuses = new Set(['PASS', 'FAIL', 'BLOCKED', 'NOT RUN', 'NOT VERIFIED']);
 
 async function exists(relative) {
   try {
@@ -27,6 +29,12 @@ for (const screen of registry.screens ?? []) {
   if (typeof screen.id !== 'string' || screen.id.length === 0) issues.push('A screen is missing its id.');
   if (ids.has(screen.id)) issues.push(`Duplicate screen id: ${screen.id}`);
   ids.add(screen.id);
+
+  if (typeof screen.route === 'string') {
+    if (routes.has(screen.route)) issues.push('Duplicate route: ' + screen.route);
+    routes.add(screen.route);
+  }
+  if (!allowedStatuses.has(screen.status)) issues.push(screen.id + ': invalid evidence status: ' + screen.status);
 
   for (const field of ['route', 'name', 'page']) {
     if (typeof screen[field] !== 'string' || screen[field].length === 0) {
