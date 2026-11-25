@@ -18,6 +18,9 @@
   --primitive-font-size-title: 16px;
   --primitive-font-line-body: 18px;
   --primitive-font-line-title: 20px;
+  --primitive-font-size-page-title: 20px;
+  --primitive-font-line-page-title: 26px;
+  --primitive-font-size-section: 14px;
   --primitive-space-4: 4px;
   --primitive-space-8: 8px;
   --primitive-space-12: 12px;
@@ -33,6 +36,7 @@
   --primitive-size-window-height: 800px;
   --primitive-radius-none: 0px;
   --primitive-radius-control: 4px;
+  --primitive-radius-pill: 999px;
   --primitive-elevation-none: none;
   --primitive-motion-instant: 0ms;
   --primitive-layer-base: 0;
@@ -59,6 +63,9 @@
   --semantic-font-meta-size: var(--primitive-font-size-meta);
   --semantic-font-meta-line: var(--primitive-font-line-body);
   --semantic-font-meta-weight: var(--primitive-font-weight-regular);
+  --semantic-font-page-title-size: var(--primitive-font-size-page-title);
+  --semantic-font-page-title-line: var(--primitive-font-line-page-title);
+  --semantic-font-section-size: var(--primitive-font-size-section);
   --semantic-space-inset: var(--primitive-space-16);
   --semantic-space-stack: var(--primitive-space-12);
   --semantic-space-inline: var(--primitive-space-8);
@@ -97,4 +104,8 @@
   --component-notice-text: var(--semantic-color-text-primary);
   --component-notice-rule: var(--semantic-color-border-hairline);
   --component-notice-layer: var(--semantic-layer-notice);
+  --component-workspace-status-indicator-size: 8px;
+  --component-workspace-event-card-padding: 12px;
+  --component-workspace-event-card-gap: 16px;
+  --component-workspace-visibility-radius: var(--primitive-radius-pill);
 }
