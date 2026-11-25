@@ -101,7 +101,8 @@ export function TraceabilityInspector({
         />
         <TraceList title="Automated tests" values={record.tests} />
         <p className="qa-evidence-note">
-          Runtime screenshot: {traceability.evidencePolicy.runtimeScreenshots} · Manual acceptance:{' '}
+          Runtime screenshot: {traceability.evidencePolicy.runtimeScreenshots}
+          {' · Manual acceptance: '}
           {traceability.evidencePolicy.manualAcceptance}
         </p>
         <p className="qa-footnote">
