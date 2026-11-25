@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 import traceability from '../../../../../docs/traceability/ui-traceability.json';
 
 type TraceRecord = (typeof traceability.screens)[number];
