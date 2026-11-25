@@ -1,0 +1,218 @@
+:root {
+  --color-canvas: #f6f7f8;
+  --color-surface: #ffffff;
+  --color-text-primary: #1a1d21;
+  --color-text-secondary: #3c4450;
+  --color-text-meta: #4e5663;
+  --color-text-on-action: #ffffff;
+  --color-text-danger: #8b2a22;
+  --color-border-hairline: #d3d7de;
+  --color-border-field: #5e6772;
+  --color-action: #1e4e8c;
+  --color-focus: #1e4e8c;
+  --color-selection: #e7eef6;
+  --font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --size-title: 18px;
+  --line-title: 24px;
+  --size-body: 14px;
+  --line-body: 20px;
+  --size-meta: 12px;
+  --line-meta: 16px;
+  --space-inset: 24px;
+  --space-stack: 12px;
+  --space-inline: 8px;
+  --space-region: 24px;
+  --content-max: 640px;
+  --control-height: 32px;
+  --radius: 4px;
+  --focus-width: 2px;
+  --rule: 1px;
+  --mark-size: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-canvas);
+  color: var(--color-text-primary);
+  font-family: var(--font-family);
+  font-size: var(--size-body);
+  font-weight: 400;
+  line-height: var(--line-body);
+}
+
+.column {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--space-inset);
+}
+
+h1 {
+  margin: 0 0 var(--space-region);
+  color: var(--color-text-primary);
+  font-size: var(--size-title);
+  font-weight: 600;
+  line-height: var(--line-title);
+}
+
+form,
+.region {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-stack);
+  margin-top: var(--space-region);
+  padding-top: var(--space-region);
+  border-top: var(--rule) solid var(--color-border-hairline);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-inline);
+  margin-top: var(--space-region);
+}
+
+label,
+legend {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--color-text-primary);
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+input,
+textarea {
+  min-height: var(--control-height);
+  padding: 0 var(--space-inline);
+  border: var(--rule) solid var(--color-border-field);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  font: inherit;
+}
+
+textarea {
+  min-height: calc(var(--line-body) * 3);
+  padding-block: var(--space-inline);
+  white-space: pre-wrap;
+}
+
+.figures,
+.meta {
+  font-variant-numeric: tabular-nums;
+}
+
+.meta,
+.waiting,
+.continuation {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--size-meta);
+  line-height: var(--line-meta);
+}
+
+.meta {
+  color: var(--color-text-meta);
+}
+
+button,
+.quiet-link {
+  min-height: var(--control-height);
+  padding: 0 12px;
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--color-text-primary);
+  font: inherit;
+  text-align: center;
+  text-decoration: none;
+}
+
+button.primary {
+  background: var(--color-action);
+  color: var(--color-text-on-action);
+}
+
+button.danger {
+  color: var(--color-text-danger);
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: var(--focus-width) solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.result {
+  color: var(--color-text-primary);
+}
+
+.result.failure {
+  color: var(--color-text-danger);
+}
+
+.result p {
+  margin: 0;
+}
+
+.row {
+  min-height: var(--control-height);
+  padding: var(--space-inline);
+  border-top: var(--rule) solid var(--color-border-hairline);
+  white-space: pre-wrap;
+}
+
+.row.selected {
+  border-left: var(--focus-width) solid var(--color-action);
+  background: var(--color-selection);
+}
+
+.mark {
+  display: inline-block;
+  width: var(--mark-size);
+  height: var(--mark-size);
+  margin-right: var(--space-inline);
+  vertical-align: middle;
+}
+
+.mark.public {
+  border: var(--rule) solid var(--color-text-primary);
+  border-radius: 50%;
+}
+
+.mark.private {
+  background: var(--color-text-primary);
+  border-radius: 50%;
+}
+
+.mark.skipped {
+  height: var(--rule);
+  margin-bottom: 5px;
+  background: var(--color-text-primary);
+}
+
+.mark.choice {
+  border-left: var(--rule) solid var(--color-text-primary);
+  border-right: var(--rule) solid var(--color-text-primary);
+}
+
+.confirm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-stack);
+  padding: 12px;
+  border: var(--rule) solid var(--color-border-hairline);
+  background: var(--color-canvas);
+  color: var(--color-text-primary);
+}

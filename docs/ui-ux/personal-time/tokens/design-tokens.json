@@ -1,0 +1,173 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "meta": {
+    "name": "Personal Time website design tokens",
+    "product": "docs/product/06-prd-personal-time.md",
+    "status": "APPROVED",
+    "visualDirection": "L-quiet-instrument",
+    "directionAcceptedOn": "2026-11-25",
+    "tokenBaselineApproved": true,
+    "tokenBaselineApprovedOn": "2026-11-25",
+    "theme": "light-only",
+    "mapping": "Plain CSS custom properties in apps/website after a later implementation authorization. No token build tool and no stylesheet are part of this proposal.",
+    "note": "Token baseline and core components PT-C01 through PT-C10 approved by the user on 2026-11-25. Approval does not authorize wireframes as accepted, high-fidelity pages, or application code. These values do not reuse the 2026-11-20 desktop token baseline."
+  },
+  "primitive": {
+    "color": {
+      "neutral-0": { "$type": "color", "$value": "#F6F7F8", "$description": "Page field." },
+      "neutral-0-strong": { "$type": "color", "$value": "#FFFFFF", "$description": "Field fill and selected-row contrast surface." },
+      "neutral-200": { "$type": "color", "$value": "#D3D7DE", "$description": "Hairline between regions and rows. Not a text color and not the input edge." },
+      "neutral-500": { "$type": "color", "$value": "#5E6772", "$description": "Input border. Design-time contrast is about 5.7:1 on white and about 5.4:1 on the page field. Not a status hue." },
+      "neutral-700": { "$type": "color", "$value": "#4E5663", "$description": "Meta text. Lighter than neutral-800." },
+      "neutral-800": { "$type": "color", "$value": "#3C4450", "$description": "Secondary text. Darker than neutral-700." },
+      "neutral-900": { "$type": "color", "$value": "#1A1D21", "$description": "Primary text." },
+      "blue-800": { "$type": "color", "$value": "#1E4E8C", "$description": "Single accent for the primary action, focus, and the selected-row mark. Not a status hue and not a brand borrowed from the reference site." },
+      "blue-50": { "$type": "color", "$value": "#E7EEF6", "$description": "Selected-row wash behind unchanged text." },
+      "red-800": { "$type": "color", "$value": "#8B2A22", "$description": "Failure text. The result word is still required." }
+    },
+    "font": {
+      "family-sans": {
+        "$type": "fontFamily",
+        "$value": "ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif",
+        "$description": "Operating-system sans. No bundled webfont."
+      },
+      "weight-regular": { "$type": "fontWeight", "$value": 400 },
+      "weight-emphasis": { "$type": "fontWeight", "$value": 600 },
+      "size-meta": { "$type": "dimension", "$value": "12px" },
+      "size-body": { "$type": "dimension", "$value": "14px" },
+      "size-title": { "$type": "dimension", "$value": "18px" },
+      "line-meta": { "$type": "dimension", "$value": "16px" },
+      "line-body": { "$type": "dimension", "$value": "20px" },
+      "line-title": { "$type": "dimension", "$value": "24px" },
+      "figures-tabular": { "$type": "other", "$value": "tabular-nums", "$description": "Clock times and civil dates. Not a second typeface." }
+    },
+    "space": {
+      "4": { "$type": "dimension", "$value": "4px" },
+      "8": { "$type": "dimension", "$value": "8px" },
+      "12": { "$type": "dimension", "$value": "12px" },
+      "16": { "$type": "dimension", "$value": "16px" },
+      "24": { "$type": "dimension", "$value": "24px" },
+      "32": { "$type": "dimension", "$value": "32px" }
+    },
+    "size": {
+      "control": { "$type": "dimension", "$value": "32px" },
+      "row": { "$type": "dimension", "$value": "32px" },
+      "mark": { "$type": "dimension", "$value": "12px" },
+      "focus": { "$type": "dimension", "$value": "2px" },
+      "rule": { "$type": "dimension", "$value": "1px" },
+      "content": { "$type": "dimension", "$value": "640px", "$description": "One task column. Not a breakpoint and not a second layout." }
+    },
+    "radius": {
+      "none": { "$type": "dimension", "$value": "0px" },
+      "control": { "$type": "dimension", "$value": "4px" }
+    },
+    "elevation": {
+      "none": { "$type": "shadow", "$value": { "color": "#00000000", "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "0px" } }
+    },
+    "motion": {
+      "instant": { "$type": "duration", "$value": "0ms" }
+    },
+    "layer": {
+      "base": { "$type": "number", "$value": 0 }
+    }
+  },
+  "semantic": {
+    "color": {
+      "canvas": { "$type": "color", "$value": "{primitive.color.neutral-0}" },
+      "surface": { "$type": "color", "$value": "{primitive.color.neutral-0-strong}" },
+      "text-primary": { "$type": "color", "$value": "{primitive.color.neutral-900}" },
+      "text-secondary": { "$type": "color", "$value": "{primitive.color.neutral-800}" },
+      "text-meta": { "$type": "color", "$value": "{primitive.color.neutral-700}" },
+      "text-on-action": { "$type": "color", "$value": "{primitive.color.neutral-0-strong}" },
+      "text-danger": { "$type": "color", "$value": "{primitive.color.red-800}" },
+      "border-hairline": { "$type": "color", "$value": "{primitive.color.neutral-200}" },
+      "border-field": { "$type": "color", "$value": "{primitive.color.neutral-500}" },
+      "action-primary": { "$type": "color", "$value": "{primitive.color.blue-800}" },
+      "focus": { "$type": "color", "$value": "{primitive.color.blue-800}" },
+      "selection-wash": { "$type": "color", "$value": "{primitive.color.blue-50}" }
+    },
+    "font": {
+      "family": { "$type": "fontFamily", "$value": "{primitive.font.family-sans}" },
+      "title-size": { "$type": "dimension", "$value": "{primitive.font.size-title}" },
+      "title-line": { "$type": "dimension", "$value": "{primitive.font.line-title}" },
+      "title-weight": { "$type": "fontWeight", "$value": "{primitive.font.weight-emphasis}" },
+      "body-size": { "$type": "dimension", "$value": "{primitive.font.size-body}" },
+      "body-line": { "$type": "dimension", "$value": "{primitive.font.line-body}" },
+      "body-weight": { "$type": "fontWeight", "$value": "{primitive.font.weight-regular}" },
+      "meta-size": { "$type": "dimension", "$value": "{primitive.font.size-meta}" },
+      "meta-line": { "$type": "dimension", "$value": "{primitive.font.line-meta}" },
+      "meta-weight": { "$type": "fontWeight", "$value": "{primitive.font.weight-regular}" },
+      "figures": { "$type": "other", "$value": "{primitive.font.figures-tabular}" }
+    },
+    "space": {
+      "inset": { "$type": "dimension", "$value": "{primitive.space.24}" },
+      "stack": { "$type": "dimension", "$value": "{primitive.space.12}" },
+      "inline": { "$type": "dimension", "$value": "{primitive.space.8}" },
+      "region": { "$type": "dimension", "$value": "{primitive.space.24}" }
+    },
+    "elevation": {
+      "flat": { "$type": "shadow", "$value": "{primitive.elevation.none}" }
+    },
+    "motion": {
+      "feedback": { "$type": "duration", "$value": "{primitive.motion.instant}" }
+    },
+    "layer": {
+      "content": { "$type": "number", "$value": "{primitive.layer.base}" }
+    }
+  },
+  "component": {
+    "page": {
+      "background": { "$type": "color", "$value": "{semantic.color.canvas}" },
+      "inset": { "$type": "dimension", "$value": "{semantic.space.inset}" },
+      "content-max": { "$type": "dimension", "$value": "{primitive.size.content}" },
+      "title-color": { "$type": "color", "$value": "{semantic.color.text-primary}" },
+      "elevation": { "$type": "shadow", "$value": "{semantic.elevation.flat}" }
+    },
+    "button": {
+      "height": { "$type": "dimension", "$value": "{primitive.size.control}" },
+      "radius": { "$type": "dimension", "$value": "{primitive.radius.control}" },
+      "padding-inline": { "$type": "dimension", "$value": "{primitive.space.12}" },
+      "primary-background": { "$type": "color", "$value": "{semantic.color.action-primary}" },
+      "primary-text": { "$type": "color", "$value": "{semantic.color.text-on-action}" },
+      "quiet-text": { "$type": "color", "$value": "{semantic.color.text-primary}" },
+      "danger-text": { "$type": "color", "$value": "{semantic.color.text-danger}" },
+      "focus-width": { "$type": "dimension", "$value": "{primitive.size.focus}" },
+      "focus-color": { "$type": "color", "$value": "{semantic.color.focus}" }
+    },
+    "field": {
+      "height": { "$type": "dimension", "$value": "{primitive.size.control}" },
+      "radius": { "$type": "dimension", "$value": "{primitive.radius.control}" },
+      "padding-inline": { "$type": "dimension", "$value": "{primitive.space.8}" },
+      "background": { "$type": "color", "$value": "{semantic.color.surface}" },
+      "text": { "$type": "color", "$value": "{semantic.color.text-primary}" },
+      "border": { "$type": "color", "$value": "{semantic.color.border-field}" },
+      "border-width": { "$type": "dimension", "$value": "{primitive.size.rule}" },
+      "focus-color": { "$type": "color", "$value": "{semantic.color.focus}" }
+    },
+    "row": {
+      "min-height": { "$type": "dimension", "$value": "{primitive.size.row}" },
+      "padding-inline": { "$type": "dimension", "$value": "{primitive.space.8}" },
+      "rule": { "$type": "color", "$value": "{semantic.color.border-hairline}" },
+      "selected-wash": { "$type": "color", "$value": "{semantic.color.selection-wash}" },
+      "selected-mark": { "$type": "color", "$value": "{semantic.color.action-primary}" },
+      "selected-mark-width": { "$type": "dimension", "$value": "{primitive.size.focus}" }
+    },
+    "mark": {
+      "size": { "$type": "dimension", "$value": "{primitive.size.mark}" },
+      "text": { "$type": "color", "$value": "{semantic.color.text-primary}" }
+    },
+    "result": {
+      "failure-text": { "$type": "color", "$value": "{semantic.color.text-danger}" },
+      "body-text": { "$type": "color", "$value": "{semantic.color.text-primary}" },
+      "continuation-text": { "$type": "color", "$value": "{semantic.color.text-secondary}" },
+      "duration": { "$type": "duration", "$value": "{semantic.motion.feedback}" }
+    },
+    "confirm": {
+      "padding": { "$type": "dimension", "$value": "{primitive.space.12}" },
+      "background": { "$type": "color", "$value": "{semantic.color.canvas}" },
+      "text": { "$type": "color", "$value": "{semantic.color.text-primary}" },
+      "rule": { "$type": "color", "$value": "{semantic.color.border-hairline}" },
+      "layer": { "$type": "number", "$value": "{semantic.layer.content}" }
+    }
+  }
+}
