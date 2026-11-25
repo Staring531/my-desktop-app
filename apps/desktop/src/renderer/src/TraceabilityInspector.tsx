@@ -1,7 +1,5 @@
 import type { JSX } from 'react';
-import traceability from '../../../../../docs/traceability/ui-traceability.json' with {
-  type: 'json',
-};
+import traceability from '../../../../../docs/traceability/ui-traceability.json' with { type: 'json' };
 
 type TraceRecord = {
   id: string;
@@ -106,7 +104,8 @@ export function TraceabilityInspector({
           {traceability.evidencePolicy.manualAcceptance}
         </p>
         <p className="qa-footnote">
-          This panel displays registry mappings. Empty test mappings are not evidence of passing tests.
+          This panel displays registry mappings. Empty test mappings are not evidence of passing
+          tests.
         </p>
       </div>
     </aside>
