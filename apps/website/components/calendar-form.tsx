@@ -120,7 +120,11 @@ function OccurrenceRow({
               {instant}
             </label>
           ))}
-          <CommandButton variant={chosen ? 'primary' : 'quiet'} onClick={onChoose} disabled={disabled}>
+          <CommandButton
+            variant={chosen ? 'primary' : 'quiet'}
+            onClick={onChoose}
+            disabled={disabled}
+          >
             Submit choice
           </CommandButton>
         </fieldset>
