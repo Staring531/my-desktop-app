@@ -83,7 +83,7 @@ function AccountForm({ onOk }: { onOk: (path: string) => void }) {
         }}
       >
         <TextField label="Nickname" value={nickname} onChange={setNickname} />
-        <CommandButton variant="primary" type="submit">
+        <CommandButton variant="primary" type="submit" disabled={phase === 'waiting'}>
           Save nickname
         </CommandButton>
       </form>
@@ -94,12 +94,13 @@ function AccountForm({ onOk }: { onOk: (path: string) => void }) {
         }}
       >
         <TextField label="Timezone" value={timezone} onChange={setTimezone} />
-        <CommandButton variant="primary" type="submit">
+        <CommandButton variant="primary" type="submit" disabled={phase === 'waiting'}>
           Save timezone
         </CommandButton>
       </form>
       <CommandButton
         variant="quiet"
+        disabled={phase === 'waiting'}
         onClick={() => void run('/api/sessions/current', 'DELETE', undefined, true)}
       >
         Log out
@@ -116,12 +117,14 @@ function AccountForm({ onOk }: { onOk: (path: string) => void }) {
           <p>Delete the account</p>
           <CommandButton
             variant="danger"
+            disabled={phase === 'waiting'}
             onClick={() => void run('/api/account', 'DELETE', undefined, true)}
           >
             Delete
           </CommandButton>
           <CommandButton
             variant="quiet"
+            disabled={phase === 'waiting'}
             onClick={() => {
               if (phase !== 'waiting') {
                 setConfirming(false);
