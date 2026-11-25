@@ -45,7 +45,7 @@ export function CalendarForm() {
       >
         <TextField label="From" value={from} onChange={setFrom} />
         <TextField label="To" value={to} onChange={setTo} />
-        <CommandButton variant="primary" type="submit">
+        <CommandButton variant="primary" type="submit" disabled={phase === 'waiting'}>
           Show range
         </CommandButton>
       </form>
@@ -58,6 +58,7 @@ export function CalendarForm() {
             setSelected((current) => ({ ...current, [choiceKey(occurrence)]: instant }))
           }
           onChoose={() => void choose(occurrence)}
+          disabled={phase === 'waiting'}
         />
       ))}
       <Result phase={phase} {...(body === undefined ? {} : { body })} />
@@ -71,11 +72,13 @@ function OccurrenceRow({
   selected,
   onSelect,
   onChoose,
+  disabled,
 }: {
   occurrence: Occurrence;
   selected: string | undefined;
   onSelect: (instant: string) => void;
   onChoose: () => void;
+  disabled: boolean;
 }) {
   const series = occurrence.originalStart !== undefined || occurrence.state !== 'scheduled';
   const chosen = selected !== undefined && occurrence.instants?.includes(selected) === true;
@@ -117,7 +120,7 @@ function OccurrenceRow({
               {instant}
             </label>
           ))}
-          <CommandButton variant={chosen ? 'primary' : 'quiet'} onClick={onChoose}>
+          <CommandButton variant={chosen ? 'primary' : 'quiet'} onClick={onChoose} disabled={disabled}>
             Submit choice
           </CommandButton>
         </fieldset>
