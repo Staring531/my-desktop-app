@@ -5,7 +5,12 @@ import { CommandButton, Page, Result, SignedLinks, TextField, UnsignedLinks } fr
 
 afterEach(cleanup);
 
-describe('website UI primitives', () => {\n  it('renders the home page through the shared page shell', () => {\n    render(<HomePage />);\n    expect(screen.getByRole('main', { name: 'My Desktop App' })).toBeTruthy();\n    expect(screen.getByRole('navigation', { name: 'Account navigation' })).toBeTruthy();\n  });
+describe('website UI primitives', () => {
+  it('renders the home page through the shared page shell', () => {
+    render(<HomePage />);
+    expect(screen.getByRole('main', { name: 'My Desktop App' })).toBeTruthy();
+    expect(screen.getByRole('navigation', { name: 'Account navigation' })).toBeTruthy();
+  });
   it('provides a labelled main landmark and one page-level heading', () => {
     render(
       <Page title="Calendar">
