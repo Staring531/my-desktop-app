@@ -13,7 +13,7 @@
       "page": "apps/website/app/page.tsx",
       "components": [],
       "tests": [],
-      "status": "NOT VERIFIED"
+      "status": "NOT RUN"
     },
     {
       "id": "W-02",
@@ -22,7 +22,7 @@
       "page": "apps/website/app/register/page.tsx",
       "components": ["apps/website/components/auth-forms.tsx", "apps/website/components/ui.tsx"],
       "tests": ["apps/website/components/forms.test.tsx", "apps/website/components/ui.test.tsx"],
-      "status": "PARTIALLY VERIFIED"
+      "status": "NOT RUN"
     },
     {
       "id": "W-03",
@@ -31,7 +31,7 @@
       "page": "apps/website/app/verify/page.tsx",
       "components": ["apps/website/components/auth-forms.tsx", "apps/website/components/ui.tsx"],
       "tests": [],
-      "status": "NOT VERIFIED"
+      "status": "NOT RUN"
     },
     {
       "id": "W-04",
@@ -40,7 +40,7 @@
       "page": "apps/website/app/register/cancel/page.tsx",
       "components": ["apps/website/components/auth-forms.tsx", "apps/website/components/ui.tsx"],
       "tests": [],
-      "status": "NOT VERIFIED"
+      "status": "NOT RUN"
     },
     {
       "id": "W-05",
@@ -49,7 +49,7 @@
       "page": "apps/website/app/login/page.tsx",
       "components": ["apps/website/components/auth-forms.tsx", "apps/website/components/ui.tsx"],
       "tests": [],
-      "status": "NOT VERIFIED"
+      "status": "NOT RUN"
     },
     {
       "id": "W-06",
@@ -58,7 +58,7 @@
       "page": "apps/website/app/recovery/page.tsx",
       "components": ["apps/website/components/auth-forms.tsx", "apps/website/components/ui.tsx"],
       "tests": [],
-      "status": "NOT VERIFIED"
+      "status": "NOT RUN"
     },
     {
       "id": "W-07",
@@ -67,7 +67,7 @@
       "page": "apps/website/app/recovery/complete/page.tsx",
       "components": ["apps/website/components/auth-forms.tsx", "apps/website/components/ui.tsx"],
       "tests": [],
-      "status": "NOT VERIFIED"
+      "status": "NOT RUN"
     },
     {
       "id": "W-08",
@@ -76,7 +76,7 @@
       "page": "apps/website/app/calendar/page.tsx",
       "components": ["apps/website/components/calendar-form.tsx", "apps/website/components/signed.tsx", "apps/website/components/ui.tsx"],
       "tests": ["apps/website/components/forms.test.tsx", "apps/website/components/ui.test.tsx"],
-      "status": "PARTIALLY VERIFIED"
+      "status": "NOT RUN"
     },
     {
       "id": "W-09",
@@ -85,7 +85,7 @@
       "page": "apps/website/app/events/new/page.tsx",
       "components": ["apps/website/components/event-form.tsx", "apps/website/components/signed.tsx", "apps/website/components/ui.tsx"],
       "tests": ["apps/website/components/forms.test.tsx", "apps/website/components/ui.test.tsx"],
-      "status": "PARTIALLY VERIFIED"
+      "status": "NOT RUN"
     },
     {
       "id": "W-10",
@@ -94,7 +94,7 @@
       "page": "apps/website/app/events/[id]/page.tsx",
       "components": ["apps/website/app/events/[id]/screen.tsx", "apps/website/components/event-form.tsx", "apps/website/components/ui.tsx"],
       "tests": ["apps/website/components/forms.test.tsx", "apps/website/components/ui.test.tsx"],
-      "status": "PARTIALLY VERIFIED"
+      "status": "NOT RUN"
     },
     {
       "id": "W-11",
@@ -103,7 +103,7 @@
       "page": "apps/website/app/account/page.tsx",
       "components": ["apps/website/components/signed.tsx", "apps/website/components/ui.tsx"],
       "tests": [],
-      "status": "NOT VERIFIED"
+      "status": "NOT RUN"
     }
   ],
   "evidencePolicy": {
