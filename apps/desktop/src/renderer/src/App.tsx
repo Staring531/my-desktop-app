@@ -297,9 +297,14 @@ function Workspace({
             return (
               <article className="member-row" key={entry.email}>
                 <div className="member-primary">
-                  <span className={busy ? 'status-indicator busy' : 'status-indicator free'} aria-hidden="true" />
+                  <span
+                    className={busy ? 'status-indicator busy' : 'status-indicator free'}
+                    aria-hidden="true"
+                  />
                   <div className="member-copy">
-                    <strong className={busy ? 'member-status busy-text' : 'member-status'}>{busy ? 'Busy' : 'Free'}</strong>
+                    <strong className={busy ? 'member-status busy-text' : 'member-status'}>
+                      {busy ? 'Busy' : 'Free'}
+                    </strong>
                     <span className="member-email">{entry.email}</span>
                   </div>
                 </div>
@@ -318,7 +323,9 @@ function Workspace({
                         )
                       }
                     >
-                      {state.pending === 'Making maintainer' ? 'Making maintainer' : 'Make maintainer'}
+                      {state.pending === 'Making maintainer'
+                        ? 'Making maintainer'
+                        : 'Make maintainer'}
                     </button>
                     {confirming ? (
                       <Confirm
@@ -363,15 +370,24 @@ function Workspace({
               <article className="event-card" key={event.id}>
                 <div className="event-content">
                   <div className="event-heading">
-                    <span className={event.visibility === 'team-visible' ? 'visibility-label team' : 'visibility-label private'}>
+                    <span
+                      className={
+                        event.visibility === 'team-visible'
+                          ? 'visibility-label team'
+                          : 'visibility-label private'
+                      }
+                    >
                       {event.visibility === 'team-visible' ? 'Team' : 'Only you'}
                     </span>
                     <h3>{event.title}</h3>
                   </div>
                   {event.location ? <p className="event-location">{event.location}</p> : null}
-                  {event.description ? <p className="event-description">{event.description}</p> : null}
+                  {event.description ? (
+                    <p className="event-description">{event.description}</p>
+                  ) : null}
                   <p className="event-time">
-                    {clockLabel(event.start, projection.zone)} – {clockLabel(event.end, projection.zone)}
+                    {clockLabel(event.start, projection.zone)} –{' '}
+                    {clockLabel(event.end, projection.zone)}
                   </p>
                   {event.visibility === 'team-visible' ? (
                     <p className="event-owner">Owner · {event.ownerEmail}</p>
@@ -382,7 +398,10 @@ function Workspace({
                     className="quiet"
                     type="button"
                     onClick={() =>
-                      run({ state: { ...state, viewedInstant: event.start }, effect: { type: 'none' } })
+                      run({
+                        state: { ...state, viewedInstant: event.start },
+                        effect: { type: 'none' },
+                      })
                     }
                   >
                     At start
@@ -391,7 +410,10 @@ function Workspace({
                     className="quiet"
                     type="button"
                     onClick={() =>
-                      run({ state: { ...state, viewedInstant: event.end }, effect: { type: 'none' } })
+                      run({
+                        state: { ...state, viewedInstant: event.end },
+                        effect: { type: 'none' },
+                      })
                     }
                   >
                     At end
@@ -400,7 +422,12 @@ function Workspace({
                     <button
                       className="quiet"
                       type="button"
-                      onClick={() => run({ state: openEdit(state, event.id), effect: { type: 'none' } })}
+                      onClick={() =>
+                        run({
+                          state: openEdit(state, event.id),
+                          effect: { type: 'none' },
+                        })
+                      }
                     >
                       Edit
                     </button>
@@ -410,7 +437,9 @@ function Workspace({
             ))}
           </div>
         ) : (
-          <p className="empty-state">No events yet. Create an event to add it to the team workspace.</p>
+          <p className="empty-state">
+            No events yet. Create an event to add it to the team workspace.
+          </p>
         )}
       </section>
 
@@ -423,7 +452,10 @@ function Workspace({
       </button>
 
       {projection.isMaintainer ? (
-        <section className="workspace-section management-section" aria-labelledby="management-heading">
+        <section
+          className="workspace-section management-section"
+          aria-labelledby="management-heading"
+        >
           <div className="section-heading">
             <div>
               <h2 className="region-title" id="management-heading">Team management</h2>
@@ -475,7 +507,11 @@ function Workspace({
                   }}
                 />
               </label>
-              <button className="quiet" type="button" onClick={() => void run(requestInvite(state))}>
+              <button
+                className="quiet"
+                type="button"
+                onClick={() => void run(requestInvite(state))}
+              >
                 {state.pending === 'Inviting' ? 'Inviting' : 'Invite'}
               </button>
             </div>
