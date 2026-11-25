@@ -69,24 +69,24 @@
 
 ## 8. First pilot-specific implementation: Electron
 
-- Canonical token source: \`docs/ui-ux/tokens/design-tokens.json\`.
+- Canonical token source: `docs/ui-ux/tokens/design-tokens.json`.
 - Runtime target: Electron renderer CSS custom properties.
-- Traceability source: \`docs/traceability/ui-traceability.json\`.
-- Visual and page authority: \`docs/ui-ux/05-visual-design.md\` and \`docs/ui-ux/12-page-specifications.md\`.
+- Traceability source: `docs/traceability/ui-traceability.json`.
+- Visual and page authority: `docs/ui-ux/05-visual-design.md` and `docs/ui-ux/12-page-specifications.md`.
 - Product and business authority: approved PRD and business-rule/acceptance-criteria documents.
 - The QA inspector is development-only and is not a product feature.
 
 ## 9. Web UI pilot extension
 
-The Web UI implementation method is specified in \`WEB-UI-ENGINEERING-METHOD.md\`. The website pilot is \`apps/website\` and is intentionally separate from the Electron implementation.
+The Web UI implementation method is specified in `WEB-UI-ENGINEERING-METHOD.md`. The website pilot is `apps/website` and is intentionally separate from the Electron implementation.
 
 - Runtime: Next.js App Router / React in a real browser.
-- Website token source: \`apps/website/tokens/design-tokens.json\`.
-- Generated browser artifact: \`apps/website/app/tokens.generated.css\`.
-- Website traceability: \`docs/traceability/website-ui-traceability.json\`.
-- Shared website primitives: \`apps/website/components/ui.tsx\`.
-- Browser acceptance evidence: \`docs/ui-ux/validation/website-pilot-acceptance.md\`.
-- Cursor Ask review protocol: \`docs/ui-ux/WEB-UI-CURSOR-ASK-REVIEW.md\`.
+- Website token source: `apps/website/tokens/design-tokens.json`.
+- Generated browser artifact: `apps/website/app/tokens.generated.css`.
+- Website traceability: `docs/traceability/website-ui-traceability.json`.
+- Shared website primitives: `apps/website/components/ui.tsx`.
+- Browser acceptance evidence: `docs/ui-ux/validation/website-pilot-acceptance.md`.
+- Cursor Ask review protocol: `docs/ui-ux/WEB-UI-CURSOR-ASK-REVIEW.md`.
 
 Web-specific requirements:
 
