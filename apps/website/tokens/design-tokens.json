@@ -1,0 +1,104 @@
+{
+  "meta": {
+    "name": "My Desktop App Website UI Tokens",
+    "status": "PILOT",
+    "platform": "Web",
+    "sourceOfTruth": "apps/website/tokens/design-tokens.json",
+    "generatedArtifact": "apps/website/app/tokens.generated.css"
+  },
+  "primitive": {
+    "color": {
+      "canvas": { "$type": "color", "$value": "#F6F7F8" },
+      "surface": { "$type": "color", "$value": "#FFFFFF" },
+      "text-primary": { "$type": "color", "$value": "#1A1D21" },
+      "text-secondary": { "$type": "color", "$value": "#3C4450" },
+      "text-meta": { "$type": "color", "$value": "#4E5663" },
+      "text-on-action": { "$type": "color", "$value": "#FFFFFF" },
+      "text-danger": { "$type": "color", "$value": "#8B2A22" },
+      "border-hairline": { "$type": "color", "$value": "#D3D7DE" },
+      "border-field": { "$type": "color", "$value": "#5E6772" },
+      "action": { "$type": "color", "$value": "#1E4E8C" },
+      "focus": { "$type": "color", "$value": "#1E4E8C" },
+      "selection": { "$type": "color", "$value": "#E7EEF6" }
+    },
+    "font": {
+      "family": { "$type": "fontFamily", "$value": "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" },
+      "weight-regular": { "$type": "fontWeight", "$value": 400 },
+      "weight-emphasis": { "$type": "fontWeight", "$value": 600 },
+      "size-body": { "$type": "dimension", "$value": "14px" },
+      "line-body": { "$type": "dimension", "$value": "20px" },
+      "size-title": { "$type": "dimension", "$value": "18px" },
+      "line-title": { "$type": "dimension", "$value": "24px" },
+      "size-meta": { "$type": "dimension", "$value": "12px" },
+      "line-meta": { "$type": "dimension", "$value": "16px" }
+    },
+    "space": {
+      "4": { "$type": "dimension", "$value": "4px" },
+      "8": { "$type": "dimension", "$value": "8px" },
+      "12": { "$type": "dimension", "$value": "12px" },
+      "16": { "$type": "dimension", "$value": "16px" },
+      "24": { "$type": "dimension", "$value": "24px" },
+      "32": { "$type": "dimension", "$value": "32px" }
+    },
+    "size": {
+      "control": { "$type": "dimension", "$value": "40px" },
+      "focus": { "$type": "dimension", "$value": "2px" },
+      "rule": { "$type": "dimension", "$value": "1px" }
+    },
+    "radius": {
+      "control": { "$type": "dimension", "$value": "4px" }
+    },
+    "layout": {
+      "content-max": { "$type": "dimension", "$value": "720px" },
+      "page-inset": { "$type": "dimension", "$value": "24px" },
+      "page-inset-compact": { "$type": "dimension", "$value": "16px" }
+    }
+  },
+  "semantic": {
+    "color": {
+      "canvas": { "$type": "color", "$value": "{primitive.color.canvas}" },
+      "surface": { "$type": "color", "$value": "{primitive.color.surface}" },
+      "text-primary": { "$type": "color", "$value": "{primitive.color.text-primary}" },
+      "text-secondary": { "$type": "color", "$value": "{primitive.color.text-secondary}" },
+      "text-meta": { "$type": "color", "$value": "{primitive.color.text-meta}" },
+      "text-on-action": { "$type": "color", "$value": "{primitive.color.text-on-action}" },
+      "text-danger": { "$type": "color", "$value": "{primitive.color.text-danger}" },
+      "border-hairline": { "$type": "color", "$value": "{primitive.color.border-hairline}" },
+      "border-field": { "$type": "color", "$value": "{primitive.color.border-field}" },
+      "action": { "$type": "color", "$value": "{primitive.color.action}" },
+      "focus": { "$type": "color", "$value": "{primitive.color.focus}" },
+      "selection": { "$type": "color", "$value": "{primitive.color.selection}" }
+    },
+    "font": {
+      "family": { "$type": "fontFamily", "$value": "{primitive.font.family}" },
+      "body-size": { "$type": "dimension", "$value": "{primitive.font.size-body}" },
+      "body-line": { "$type": "dimension", "$value": "{primitive.font.line-body}" },
+      "title-size": { "$type": "dimension", "$value": "{primitive.font.size-title}" },
+      "title-line": { "$type": "dimension", "$value": "{primitive.font.line-title}" },
+      "meta-size": { "$type": "dimension", "$value": "{primitive.font.size-meta}" },
+      "meta-line": { "$type": "dimension", "$value": "{primitive.font.line-meta}" }
+    },
+    "space": {
+      "inline": { "$type": "dimension", "$value": "{primitive.space.8}" },
+      "stack": { "$type": "dimension", "$value": "{primitive.space.12}" },
+      "region": { "$type": "dimension", "$value": "{primitive.space.24}" },
+      "page-inset": { "$type": "dimension", "$value": "{primitive.layout.page-inset}" },
+      "page-inset-compact": { "$type": "dimension", "$value": "{primitive.layout.page-inset-compact}" }
+    },
+    "layout": {
+      "content-max": { "$type": "dimension", "$value": "{primitive.layout.content-max}" }
+    }
+  },
+  "component": {
+    "button": {
+      "height": { "$type": "dimension", "$value": "{primitive.size.control}" },
+      "radius": { "$type": "dimension", "$value": "{primitive.radius.control}" },
+      "focus-width": { "$type": "dimension", "$value": "{primitive.size.focus}" }
+    },
+    "field": {
+      "height": { "$type": "dimension", "$value": "{primitive.size.control}" },
+      "radius": { "$type": "dimension", "$value": "{primitive.radius.control}" },
+      "focus-width": { "$type": "dimension", "$value": "{primitive.size.focus}" }
+    }
+  }
+}
