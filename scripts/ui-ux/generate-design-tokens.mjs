@@ -23,6 +23,21 @@ function visit(node, parts = []) {
 }
 
 visit(source);
+
+function assertNoAliasCycles(name, visiting = new Set(), visited = new Set()) {
+  if (visited.has(name)) return;
+  if (visiting.has(name)) throw new Error(`Circular token reference: ${[...visiting, name].join(' -> ')}`);
+  const token = tokens.get(name);
+  if (token === undefined) throw new Error(`Unresolved token reference: ${name}`);
+  visiting.add(name);
+  if (typeof token.value === 'string') {
+    const reference = /^\{([^}]+)\}$/u.exec(token.value);
+    if (reference) assertNoAliasCycles(reference[1].replaceAll('.', '-'), visiting, visited);
+  }
+  visiting.delete(name);
+  visited.add(name);
+}
+for (const name of tokens.keys()) assertNoAliasCycles(name);
 if (tokens.size === 0) throw new Error('No design tokens found');
 
 function cssValue(tokenName, token) {
