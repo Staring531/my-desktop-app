@@ -78,10 +78,16 @@ export function TraceabilityInspector({
           <strong>{record.id}</strong>
           <span>{record.name}</span>
         </div>
-        <TraceList title="Product requirements" values={record.acceptanceCriteria} />
+        <TraceList
+          title="Product requirements"
+          values={record.acceptanceCriteria}
+        />
         <TraceList title="Business rules" values={record.businessRules} />
         <TraceList title="User flows" values={record.flows} />
-        <TraceList title="Design specifications" values={Object.values(design ?? {})} />
+        <TraceList
+          title="Design specifications"
+          values={Object.values(design ?? {})}
+        />
         <TraceList title="Components" values={record.components} />
         <TraceList
           title="Renderer / UI model"
@@ -106,8 +112,8 @@ export function TraceabilityInspector({
           {traceability.evidencePolicy.manualAcceptance}
         </p>
         <p className="qa-footnote">
-          This panel displays registry mappings. Empty test mappings are not evidence of passing
-          tests.
+          This panel displays registry mappings. Empty test mappings are not evidence of
+          passing tests.
         </p>
       </div>
     </aside>
