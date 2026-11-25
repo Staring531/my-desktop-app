@@ -1,4 +1,9 @@
-import { useEffect, useState, type JSX, type KeyboardEvent as ReactKeyboardEvent } from 'react';
+import {
+  useEffect,
+  useState,
+  type JSX,
+  type KeyboardEvent as ReactKeyboardEvent,
+} from 'react';
 import { TraceabilityInspector } from './TraceabilityInspector.js';
 import {
   applyProjection,
@@ -284,10 +289,16 @@ function Workspace({
       <section className="workspace-section" aria-labelledby="members-heading">
         <div className="section-heading">
           <div>
-            <h2 className="region-title" id="members-heading">Member availability</h2>
-            <p className="section-description">Current team status at the selected instant</p>
+            <h2 className="region-title" id="members-heading">
+              Member availability
+            </h2>
+            <p className="section-description">
+              Current team status at the selected instant
+            </p>
           </div>
-          <span className="section-count">{projection.roster.length} members</span>
+          <span className="section-count">
+            {projection.roster.length} members
+          </span>
         </div>
         <div className="member-list">
           {projection.roster.map((entry) => {
@@ -360,7 +371,9 @@ function Workspace({
         <div className="section-heading">
           <div>
             <h2 className="region-title" id="events-heading">Team events</h2>
-            <p className="section-description">Shared events and events visible to this session</p>
+            <p className="section-description">
+              Shared events and events visible to this session
+            </p>
           </div>
           <span className="section-count">{projection.events.length} events</span>
         </div>
@@ -458,8 +471,12 @@ function Workspace({
         >
           <div className="section-heading">
             <div>
-              <h2 className="region-title" id="management-heading">Team management</h2>
-              <p className="section-description">Invitations and membership controls</p>
+              <h2 className="region-title" id="management-heading">
+              Team management
+            </h2>
+              <p className="section-description">
+              Invitations and membership controls
+            </p>
             </div>
           </div>
           {projection.invites.length > 0 ? (
