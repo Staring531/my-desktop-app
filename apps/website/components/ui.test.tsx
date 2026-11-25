@@ -38,7 +38,7 @@ describe('website UI primitives', () => {
   });
 
   it('exposes rejected results as alerts', () => {
-    render(<Result phase="done" body={{ result: 'not_allowed' }} />);
+    render(<Result phase="done" body={{ result: 'save_rejected' }} />);
     expect(screen.getByRole('alert').textContent).toContain('not_allowed');
   });
 
