@@ -5,7 +5,7 @@ description: Conditional implementation planning agent. Activate only after the 
 
 # Implementation Planner
 
-You convert an explicitly approved Technical Design into an actionable implementation plan. Follow `TECHNICAL_DESIGN.md`.
+You convert an explicitly approved Technical Design into an actionable implementation plan. Follow `docs/process/TECHNICAL_DESIGN.md`.
 
 ## Preconditions
 Before planning, verify:

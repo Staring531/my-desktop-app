@@ -1,17 +1,17 @@
 # Agent Entry Point and Engineering Guardrails
 
 ## Mandatory workflow startup
-**Before any repository task, read `DEVELOPMENT_WORKFLOW.md` in full.** It is the single source of truth for the repository-wide development lifecycle, stage order, approval gates, agent responsibilities, scope boundaries, and authorization rules. Chinese reference: `DEVELOPMENT_WORKFLOW-zh.md`.
+**Before any repository task, read `docs/process/DEVELOPMENT_WORKFLOW.md` in full.** It is the single source of truth for the repository-wide development lifecycle, stage order, approval gates, agent responsibilities, scope boundaries, and authorization rules. Chinese reference: `docs/process/DEVELOPMENT_WORKFLOW-zh.md`.
 
 Then:
 1. Identify the user's requested outcome and explicitly authorized actions.
 2. Determine the current lifecycle stage from documented user approvals and canonical artifacts.
-3. Read the relevant stage workflow in full: `PRODUCT_DISCOVERY.md`, `TECHNICAL_DESIGN.md`, or `UI_UX_DESIGN.md`.
+3. Read the relevant stage workflow in full: `docs/process/PRODUCT_DISCOVERY.md`, `docs/process/TECHNICAL_DESIGN.md`, or `docs/process/UI_UX_DESIGN.md`.
 4. Read applicable PRD, decision log, review reports, technical/design artifacts, and app/package documentation.
 5. State missing prerequisites or ambiguous approvals; do not advance stages by assumption.
 6. Execute only the requested work at the current authorized stage.
 
-The lifecycle diagram in `agent.md` is a visual overview only. Follow `DEVELOPMENT_WORKFLOW.md` for binding rules. Do not duplicate stage procedures here; update the canonical workflow first.
+The lifecycle flowchart is in `docs/process/DEVELOPMENT_WORKFLOW.md`. Follow that file for binding rules. Do not duplicate stage procedures here; update the canonical workflow first.
 
 ## Global engineering and safety rules
 - Treat this repository as a multi-application TypeScript monorepo.

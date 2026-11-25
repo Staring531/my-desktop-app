@@ -32,18 +32,41 @@ The required lifecycle is:
 10. **Coding & Testing** — implement only the approved scope and design, with tests and verification.
 11. **Implementation review and delivery** — review changes, verify acceptance criteria, report test evidence and limitations. Deploy/release only with separate authorization.
 
-The visual overview is in [agent.md](agent.md); the Chinese overview is in [agent-zh.md](agent-zh.md). These diagrams summarize the lifecycle; this document and the stage-specific workflow files define the binding procedures and gates.
+The flowchart below is the order. Stage procedures stay in the stage documents named in section 3. The Chinese translation carries the same chart.
+
+```mermaid
+flowchart TD
+  A["1. Product Discovery<br/>Product Interviewer"] --> B["Requirements Baseline Gate<br/>Requirements Reviewer"]
+  B --> C["PRD Draft Gate<br/>PRD Quality Auditor"]
+  C --> D["2. User approves the PRD"]
+  D --> E["3. Technical Design<br/>Technical Designer"]
+  E --> F["Architecture Baseline Gate<br/>Technical Design Reviewer"]
+  F --> G["Detailed Design Gate<br/>Technical Design Reviewer"]
+  G --> H["4. User approves Technical Design"]
+  H --> I["5. Implementation Planning<br/>Implementation Planner"]
+  I --> J["6. User confirms the plan baseline"]
+  J --> K["7. UI/UX Design<br/>UI/UX Designer"]
+  K --> L["Readiness, flows, screens, tokens, wireframes, visuals"]
+  L --> M["UI/UX Design Review Gate<br/>UI/UX Design Reviewer"]
+  M --> N["8. User approves UI/UX and readiness"]
+  N --> O{"9. Separate coding authorization?"}
+  O -- "No" --> P["Stop: no application code"]
+  O -- "Yes" --> Q["10. Coding and Testing"]
+  Q --> R["11. Implementation review and delivery"]
+  R --> S{"Separate deploy authorization?"}
+  S -- "No" --> T["Stop: no deploy or release"]
+  S -- "Yes" --> U["Deploy or release"]
+```
 
 ## 3. Canonical stage documents and activation
 
 | Stage | Canonical instructions | Activation / entry condition |
 |---|---|---|
-| Product Discovery | `PRODUCT_DISCOVERY.md` | User asks to explore/define product requirements or behavior |
-| Technical Design | `TECHNICAL_DESIGN.md` | PRD explicitly approved by user |
-| Implementation Planning | `TECHNICAL_DESIGN.md` and `docs/technical/10-implementation-plan.md` | Complete Technical Design explicitly approved |
-| UI/UX Design | `UI_UX_DESIGN.md` | PRD and Technical Design approved; implementation plan exists |
+| Product Discovery | `docs/process/PRODUCT_DISCOVERY.md` | User asks to explore/define product requirements or behavior |
+| Technical Design | `docs/process/TECHNICAL_DESIGN.md` | PRD explicitly approved by user |
+| Implementation Planning | `docs/process/TECHNICAL_DESIGN.md` and `docs/technical/10-implementation-plan.md` | Complete Technical Design explicitly approved |
+| UI/UX Design | `docs/process/UI_UX_DESIGN.md` | PRD and Technical Design approved; implementation plan exists |
 | Coding & Testing | Approved PRD, Technical Design, Implementation Plan, UI/UX package, plus applicable app/package docs | User separately authorizes implementation |
-| Cross-stage overview | `agent.md` / `agent-zh.md` | Reference diagram only; not a substitute for this file |
 
 Read the relevant stage document in full before executing that stage. Also read the corresponding review reports and decision records. Follow any more restrictive stage-specific constraint.
 
@@ -119,8 +142,8 @@ When adding or changing a lifecycle stage, gate, agent role, or authorization bo
 1. Update this canonical workflow first.
 2. Update the affected stage-specific workflow and role definitions.
 3. Update `AGENTS.md` only if its startup instructions or global constraints change.
-4. Update `agent.md` and `agent-zh.md` if the lifecycle diagram changes.
-5. Update the Chinese translation.
+4. Update the flowchart in this file when the lifecycle order changes.
+5. Update the Chinese translation, including its flowchart.
 6. Check README links and references for consistency.
 
 Do not duplicate full stage procedures in `AGENTS.md`. Keep it as the mandatory entry point and global guardrail; this file is the single repository-wide lifecycle authority.

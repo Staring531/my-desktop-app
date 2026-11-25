@@ -6,9 +6,8 @@ A cross-platform desktop application with a public website, an administration co
 The Version 1 PRD, Technical Design, Implementation Plan, and UI/UX package are accepted. Application implementation was authorized on 2026-11-20 and is underway. The current main commit has passing typecheck, lint, Vitest, and electron-vite build checks. Real Electron runtime verification, packaged-installer testing, final independent UI review, and runtime screenshot comparison remain outstanding. Deployment is not authorized.
 
 ## Development lifecycle
-- Mandatory agent instructions: [DEVELOPMENT_WORKFLOW.md](DEVELOPMENT_WORKFLOW.md)
-- Lifecycle diagram: [agent.md](agent.md)
-- Chinese workflow: [DEVELOPMENT_WORKFLOW-zh.md](DEVELOPMENT_WORKFLOW-zh.md)
+- Mandatory agent instructions and lifecycle flowchart: [docs/process/DEVELOPMENT_WORKFLOW.md](docs/process/DEVELOPMENT_WORKFLOW.md)
+- Chinese workflow: [docs/process/DEVELOPMENT_WORKFLOW-zh.md](docs/process/DEVELOPMENT_WORKFLOW-zh.md)
 
 1. Product Discovery — approved PRD.
 2. Technical Design — approved architecture and technical contracts.
@@ -19,12 +18,10 @@ The Version 1 PRD, Technical Design, Implementation Plan, and UI/UX package are 
 7. Implementation Review & Delivery — acceptance evidence and any final review; deployment/release requires separate authorization.
 
 ## Workflow documents
-- [Product Discovery](PRODUCT_DISCOVERY.md)
-- [Technical Design](TECHNICAL_DESIGN.md)
-- [UI/UX Design](UI_UX_DESIGN.md)
-- [Agent development lifecycle](agent.md)
+- [Product Discovery](docs/process/PRODUCT_DISCOVERY.md)
+- [Technical Design](docs/process/TECHNICAL_DESIGN.md)
+- [UI/UX Design](docs/process/UI_UX_DESIGN.md)
 - [Chinese README](README-zh.md)
-- [Chinese lifecycle diagram](agent-zh.md)
 
 UI/UX English source documents and Chinese translations live in [docs/ui-ux/](docs/ui-ux/). Start with [design requirements](docs/ui-ux/00-design-requirements.md) or [中文设计需求](docs/ui-ux/00-design-requirements-zh.md).
 

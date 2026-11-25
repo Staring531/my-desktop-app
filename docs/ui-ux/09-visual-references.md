@@ -4,7 +4,7 @@
 - Date: 2026-11-20
 - Status: Direction L accepted by the user on 2026-11-20. Directions P and C are not selected. This acceptance does not approve token values. Proposed tokens are in `10-design-tokens.md` and are not approved.
 - Structural baseline: accepted by the user on 2026-11-20 in `01-information-architecture.md`, `02-user-flows.md`, and `03-screen-inventory.md`.
-- This session did not fetch or store screenshots. The reference URL is the public site already named by `UI_UX_DESIGN.md`. No Linear asset is embedded or copied.
+- This session did not fetch or store screenshots. The reference URL is the public site already named by `docs/process/UI_UX_DESIGN.md`. No Linear asset is embedded or copied.
 - No independent UI/UX review was run.
 
 ## 1. What this gate decides

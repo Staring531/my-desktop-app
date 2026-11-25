@@ -6,9 +6,8 @@
 Version 1 PRD、Technical Design、Implementation Plan 和 UI/UX 设计包均已接受。用户于 2026-11-20 授权应用实现，目前正在实施。当前 main 提交已通过 Typecheck、Lint、Vitest 和 electron-vite 构建。真实 Electron 运行验证、安装包测试、最终独立 UI 复审和运行时截图对比仍未完成。部署尚未获授权。
 
 ## 开发生命周期
-- Agent 必须遵循的主流程：[DEVELOPMENT_WORKFLOW-zh.md](DEVELOPMENT_WORKFLOW-zh.md)
-- 开发流程图：[agent-zh.md](agent-zh.md)
-- English workflow：[DEVELOPMENT_WORKFLOW.md](DEVELOPMENT_WORKFLOW.md)
+- Agent 必须遵循的主流程和流程图：[docs/process/DEVELOPMENT_WORKFLOW-zh.md](docs/process/DEVELOPMENT_WORKFLOW-zh.md)
+- English workflow：[docs/process/DEVELOPMENT_WORKFLOW.md](docs/process/DEVELOPMENT_WORKFLOW.md)
 
 1. Product Discovery（产品发现）——形成并由用户批准 PRD。
 2. Technical Design（技术设计）——形成并由用户批准技术架构和技术契约。
@@ -19,12 +18,10 @@ Version 1 PRD、Technical Design、Implementation Plan 和 UI/UX 设计包均已
 7. Implementation Review & Delivery（实施评审与交付）——整理验收证据并完成必要复审；部署/发布需要单独授权。
 
 ## 正式工作流文档
-- [Product Discovery（产品发现）](PRODUCT_DISCOVERY.md)
-- [Technical Design（技术设计）](TECHNICAL_DESIGN.md)
-- [UI/UX Design（界面与体验设计）](UI_UX_DESIGN-zh.md)
-- [Agent 开发生命周期](agent-zh.md)
+- [Product Discovery（产品发现）](docs/process/PRODUCT_DISCOVERY.md)
+- [Technical Design（技术设计）](docs/process/TECHNICAL_DESIGN.md)
+- [UI/UX Design（界面与体验设计）](docs/process/UI_UX_DESIGN-zh.md)
 - [English README](README.md)
-- [English lifecycle diagram](agent.md)
 
 英文源文档及对应中文翻译位于 [docs/ui-ux/](docs/ui-ux/)。可从 [中文设计需求](docs/ui-ux/00-design-requirements-zh.md) 或 [英文设计需求](docs/ui-ux/00-design-requirements.md) 开始。
 

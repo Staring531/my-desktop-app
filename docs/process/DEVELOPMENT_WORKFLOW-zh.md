@@ -32,18 +32,41 @@
 10. **Coding & Testing（编码与测试）**——只实现已批准的范围和设计，并补充测试和验证。
 11. **Implementation Review & Delivery（实现评审与交付）**——审查变更、验证验收标准、报告测试证据和限制。部署/发布仍需单独授权。
 
-流程图见 [agent-zh.md](agent-zh.md)，英文版见 [agent.md](agent.md)。流程图用于概览；本文件和各阶段专属流程文件定义有约束力的操作步骤与门槛。
+下面的流程图表示顺序。各阶段的操作步骤仍以第 3 节列出的阶段文件为准。英文版包含同一张图。
+
+```mermaid
+flowchart TD
+  A["1. 产品发现<br/>Product Interviewer"] --> B["需求基线门槛<br/>Requirements Reviewer"]
+  B --> C["PRD 草案门槛<br/>PRD Quality Auditor"]
+  C --> D["2. 用户批准 PRD"]
+  D --> E["3. 技术设计<br/>Technical Designer"]
+  E --> F["架构基线评审<br/>Technical Design Reviewer"]
+  F --> G["详细设计评审<br/>Technical Design Reviewer"]
+  G --> H["4. 用户批准 Technical Design"]
+  H --> I["5. 实施规划<br/>Implementation Planner"]
+  I --> J["6. 用户确认计划基线"]
+  J --> K["7. UI/UX 设计<br/>UI/UX Designer"]
+  K --> L["就绪、流程、页面、令牌、线框、视觉"]
+  L --> M["UI/UX 设计评审门槛<br/>UI/UX Design Reviewer"]
+  M --> N["8. 用户批准 UI/UX 与实施就绪"]
+  N --> O{"9. 是否单独授权编码？"}
+  O -- "否" --> P["停止：不得编写应用代码"]
+  O -- "是" --> Q["10. 编码与测试"]
+  Q --> R["11. 实现评审与交付"]
+  R --> S{"是否单独授权部署？"}
+  S -- "否" --> T["停止：不得部署或发布"]
+  S -- "是" --> U["部署或发布"]
+```
 
 ## 3. 各阶段权威文件与启动条件
 
 | 阶段 | 权威说明 | 启动/进入条件 |
 |---|---|---|
-| Product Discovery | `PRODUCT_DISCOVERY.md` | 用户要求探索/定义产品需求或行为 |
-| Technical Design | `TECHNICAL_DESIGN.md` | 用户已明确批准 PRD |
-| Implementation Planning | `TECHNICAL_DESIGN.md` 和 `docs/technical/10-implementation-plan.md` | 用户明确批准完整 Technical Design |
-| UI/UX Design | `UI_UX_DESIGN.md` | PRD、Technical Design 已批准，且实施计划已存在 |
+| Product Discovery | `docs/process/PRODUCT_DISCOVERY.md` | 用户要求探索/定义产品需求或行为 |
+| Technical Design | `docs/process/TECHNICAL_DESIGN.md` | 用户已明确批准 PRD |
+| Implementation Planning | `docs/process/TECHNICAL_DESIGN.md` 和 `docs/technical/10-implementation-plan.md` | 用户明确批准完整 Technical Design |
+| UI/UX Design | `docs/process/UI_UX_DESIGN.md` | PRD、Technical Design 已批准，且实施计划已存在 |
 | Coding & Testing | 已批准 PRD、Technical Design、Implementation Plan、UI/UX 文档及对应应用文档 | 用户另行明确授权实施 |
-| 跨阶段概览 | `agent.md` / `agent-zh.md` | 仅供查看流程图，不可替代本文件 |
 
 执行某一阶段前，必须完整阅读对应阶段文件及相关评审报告、决策记录，并遵循其中更严格的约束。
 
@@ -108,8 +131,8 @@
 1. 首先更新本权威流程文件。
 2. 更新受影响的阶段专属流程和角色定义。
 3. 只有在启动说明或全局约束改变时才更新 `AGENTS.md`。
-4. 生命周期图变化时更新 `agent.md` 和 `agent-zh.md`。
-5. 更新中文翻译。
+4. 生命周期顺序变化时更新本文件中的流程图。
+5. 更新中文翻译，包括其中的流程图。
 6. 检查 README 链接和引用是否一致。
 
 不要在 `AGENTS.md` 重复完整阶段流程。它应作为强制入口和全局护栏；本文件是仓库唯一的主生命周期规范。

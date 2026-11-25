@@ -32,11 +32,11 @@
 
 `docs/technical/02-architecture.md` 到 `09-test-strategy.md`，以及 `docs/technical/technical-decisions/log.md`，已由用户于 2026-11-19 批准，包括 TD-001 到 TD-004。TD-001 是一台电脑一份本地记录。TD-002 是不验证邮箱控制权的会话绑定。TD-003 是一份以原子替换写入的 JSON 文档。TD-004 推荐 `@js-temporal/polyfill`。技术评审中的 TDR-REV-001 到 TDR-REV-030 已记录为已处理。那些评审没有批准设计。
 
-`TECHNICAL_DESIGN.md` 要求的设计集都在：仓库分析、技术需求、架构、领域、数据、应用、安全、并发、错误、测试策略、技术决策，以及两份评审报告。
+`docs/process/TECHNICAL_DESIGN.md` 要求的设计集都在：仓库分析、技术需求、架构、领域、数据、应用、安全、并发、错误、测试策略、技术决策，以及两份评审报告。
 
 ### Implementation Plan
 
-`docs/technical/10-implementation-plan.md` 已存在。它有 6 个阶段和 IMP-001 到 IMP-021，并点名 AC-001 到 AC-051。它自己的状态是仅计划。`DEVELOPMENT_WORKFLOW.md` 把计划基线确认当作单独的用户决定。仓库里没有随后的记录表明用户确认了该基线。计划已经可用，这满足 UI/UX 的进入条件。用户于 2026-11-20 说明这份未确认计划只作为顺序参考。它不是已确认基线，也不能覆盖 PRD 或 Technical Design。
+`docs/technical/10-implementation-plan.md` 已存在。它有 6 个阶段和 IMP-001 到 IMP-021，并点名 AC-001 到 AC-051。它自己的状态是仅计划。`docs/process/DEVELOPMENT_WORKFLOW.md` 把计划基线确认当作单独的用户决定。仓库里没有随后的记录表明用户确认了该基线。计划已经可用，这满足 UI/UX 的进入条件。用户于 2026-11-20 说明这份未确认计划只作为顺序参考。它不是已确认基线，也不能覆盖 PRD 或 Technical Design。
 
 计划里与界面有关的任务：
 

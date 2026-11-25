@@ -9,7 +9,7 @@
 
 ## Review scope
 
-Evidence the reviewer reported reading: `TECHNICAL_DESIGN.md`, `docs/product/04-prd.md` (APPROVED, version 0.1 draft, DEC-011), `docs/product/03-decision-log.md` (DEC-006, DEC-007, DEC-008, DEC-009, DEC-011), `docs/technical/00-repository-analysis.md`, `docs/technical/01-technical-requirements.md`, `docs/technical/02-architecture.md`. Repository checks: root `package.json`, `pnpm-workspace.yaml`, `apps/desktop/package.json`, `apps/desktop/src/main/index.ts`, `apps/desktop/src/preload/index.ts`, and `docs/architecture/overview.md`.
+Evidence the reviewer reported reading: `docs/process/TECHNICAL_DESIGN.md`, `docs/product/04-prd.md` (APPROVED, version 0.1 draft, DEC-011), `docs/product/03-decision-log.md` (DEC-006, DEC-007, DEC-008, DEC-009, DEC-011), `docs/technical/00-repository-analysis.md`, `docs/technical/01-technical-requirements.md`, `docs/technical/02-architecture.md`. Repository checks: root `package.json`, `pnpm-workspace.yaml`, `apps/desktop/package.json`, `apps/desktop/src/main/index.ts`, `apps/desktop/src/preload/index.ts`, and `docs/architecture/overview.md`.
 
 ## Strengths
 

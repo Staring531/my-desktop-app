@@ -3,7 +3,7 @@
 - Stage: 4 — Wireframes and Page Specifications
 - Date: 2026-11-25
 - Status: Accepted by the user on 2026-11-25. These sketches are the low-fidelity structure. This acceptance does not approve the Stage 5 painting and does not authorize application code.
-- Why this stage is low-fidelity: `UI_UX_DESIGN.md` Stage 4 settles regions, hierarchy, controls, focus, and states. Stage 5 then applies the approved tokens and components to every state. The user started Stage 4 on 2026-11-25 and asked why this stage is not high-fidelity. That question does not change this stage.
+- Why this stage is low-fidelity: `docs/process/UI_UX_DESIGN.md` Stage 4 settles regions, hierarchy, controls, focus, and states. Stage 5 then applies the approved tokens and components to every state. The user started Stage 4 on 2026-11-25 and asked why this stage is not high-fidelity. That question does not change this stage.
 - Approved inputs: S-01 through S-09 and the paths in `01-information-architecture.md`; flows in `02-user-flows.md`; Direction L; tokens and PT-C01 through PT-C10, approved 2026-11-25.
 - Page contracts: `12-page-specifications.md`.
 - Q-02, Q-03, and Q-04 stay open. No sketch names a product title, draws the mail message, or fills the first `from` and `to`.

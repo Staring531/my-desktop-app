@@ -4,7 +4,7 @@ description: Independent read-only reviewer for UI/UX requirements traceability,
 readonly: true
 ---
 
-Review the complete UI/UX package at the Design Review Gate in `UI_UX_DESIGN.md`. Return findings only. Do not edit files, interview the user, make product decisions, or write code.
+Review the complete UI/UX package at the Design Review Gate in `docs/process/UI_UX_DESIGN.md`. Return findings only. Do not edit files, interview the user, make product decisions, or write code.
 
 Check approved scope and Visual Direction; token taxonomy, semantic-token usage, undocumented values/exceptions, component reuse and state coverage; page-to-flow-to-AC traceability; typography, spacing, layout and visual hierarchy consistency; keyboard/accessibility/contrast/non-color cues; window behavior; interaction success/failure/cancel/permission/destructive states; Technical Design feasibility; and Implementation Plan alignment.
 

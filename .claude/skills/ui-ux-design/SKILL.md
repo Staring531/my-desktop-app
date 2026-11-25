@@ -3,7 +3,7 @@ name: ui-ux-design
 description: Reusable System-First UI/UX workflow from repository readiness through approved design-system handoff.
 ---
 
-Read `DEVELOPMENT_WORKFLOW.md`, `AGENTS.md`, and follow `UI_UX_DESIGN.md`. Read approved PRD, Technical Design, Implementation Plan, decision records, and repository evidence.
+Read `docs/process/DEVELOPMENT_WORKFLOW.md`, `AGENTS.md`, and follow `docs/process/UI_UX_DESIGN.md`. Read approved PRD, Technical Design, Implementation Plan, decision records, and repository evidence.
 
 Follow the ordered stages and user gates. Establish structural requirements, obtain approval for Linear-inspired Visual Direction, then propose and obtain approval for primitive/semantic/component tokens and core component contracts before high-fidelity design at scale. Use the machine-readable token baseline and matching documentation. Maintain requirement traceability and preserve scope.
 

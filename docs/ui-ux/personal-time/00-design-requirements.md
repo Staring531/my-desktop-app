@@ -12,7 +12,7 @@
 
 This is an inspection of the repository and the approved personal-time baseline. It records candidate surfaces and an initial trace. Those candidates are proposals. They are not a structural baseline.
 
-`UI_UX_DESIGN.md` section 2 still describes the earlier desktop product: one local team record, and no website, login, or email verification. This stage follows the later personal-time approval. TD-PT-1 makes the first delivery the existing Next.js website talking only to the existing NestJS API. Registration, verification, recovery, and the personal Calendar are in that approved scope. The desktop UI package stays the design for the other PRD.
+`docs/process/UI_UX_DESIGN.md` section 2 still describes the earlier desktop product: one local team record, and no website, login, or email verification. This stage follows the later personal-time approval. TD-PT-1 makes the first delivery the existing Next.js website talking only to the existing NestJS API. Registration, verification, recovery, and the personal Calendar are in that approved scope. The desktop UI package stays the design for the other PRD.
 
 No visual direction is chosen here. No token value is proposed. No application file is changed. The Implementation Plan is not edited.
 
