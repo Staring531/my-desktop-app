@@ -40,12 +40,6 @@ jobs:
           node-version: 22
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      - name: Prettier diagnostic (temporary)
-        working-directory: apps/desktop
-        run: |
-          pnpm exec prettier --write src/renderer/src/App.tsx src/renderer/src/TraceabilityInspector.tsx
-          git diff -- src/renderer/src/App.tsx src/renderer/src/TraceabilityInspector.tsx
-          exit 1
       - name: Type check
         run: pnpm typecheck
       - name: Lint
