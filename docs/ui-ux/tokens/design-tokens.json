@@ -2,14 +2,14 @@
   "$schema": "https://design-tokens.github.io/community-group/format/",
   "meta": {
     "name": "My Desktop App UI Design Tokens",
-    "status": "APPROVED",
+    "status": "PILOT_UPDATE_PENDING_REVIEW",
     "visualDirection": "L-quiet-instrument",
     "directionAcceptedOn": "2026-11-20",
     "tokenBaselineApproved": true,
     "tokenBaselineApprovedOn": "2026-11-20",
     "theme": "light-only",
     "mapping": "Generated CSS custom properties from this file by scripts/ui-ux/generate-design-tokens.mjs. Do not hand-edit the generated runtime stylesheet.",
-    "note": "Token baseline approved by the user on 2026-11-20. Approval does not authorize application code or high-fidelity pages.",
+    "note": "The original token baseline was approved by the user on 2026-11-20. The page-title, section, and workspace aliases added for the 2026-11-25 pilot are implementation deltas and remain pending independent visual review.",
     "tokenSourceOfTruth": "docs/ui-ux/tokens/design-tokens.json"
   },
   "primitive": {
