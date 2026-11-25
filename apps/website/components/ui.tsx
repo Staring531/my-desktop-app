@@ -13,8 +13,8 @@ const UNSIGNED = [
 
 export function Page({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <main className="column">
-      <h1>{title}</h1>
+    <main className="column" aria-labelledby="page-title">
+      <h1 id="page-title">{title}</h1>
       {children}
     </main>
   );
@@ -22,7 +22,7 @@ export function Page({ title, children }: { title: string; children: ReactNode }
 
 export function UnsignedLinks() {
   return (
-    <nav className="links">
+    <nav className="links" aria-label="Account navigation">
       {UNSIGNED.map(([href, label]) => (
         <a className="quiet-link" href={href} key={href}>
           {label}
@@ -34,7 +34,7 @@ export function UnsignedLinks() {
 
 export function SignedLinks() {
   return (
-    <nav className="links">
+    <nav className="links" aria-label="Workspace navigation">
       <a className="quiet-link" href="/calendar">
         Calendar
       </a>
@@ -54,12 +54,14 @@ export function TextField({
   onChange,
   type = 'text',
   multiline = false,
+  autoComplete,
 }: {
   label: string;
   value: string;
   onChange: (value: string) => void;
-  type?: 'text' | 'password';
+  type?: 'text' | 'password' | 'email';
   multiline?: boolean;
+  autoComplete?: string;
 }) {
   return (
     <label>
@@ -67,7 +69,12 @@ export function TextField({
       {multiline ? (
         <textarea value={value} onChange={(event) => onChange(event.target.value)} />
       ) : (
-        <input type={type} value={value} onChange={(event) => onChange(event.target.value)} />
+        <input
+          type={type}
+          value={value}
+          autoComplete={autoComplete}
+          onChange={(event) => onChange(event.target.value)}
+        />
       )}
     </label>
   );
@@ -78,14 +85,16 @@ export function CommandButton({
   children,
   type = 'button',
   onClick,
+  disabled = false,
 }: {
   variant: 'primary' | 'quiet' | 'danger';
   children: string;
   type?: 'button' | 'submit';
   onClick?: () => void;
+  disabled?: boolean;
 }) {
   return (
-    <button className={variant} type={type} onClick={onClick}>
+    <button className={variant} type={type} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   );
@@ -93,13 +102,23 @@ export function CommandButton({
 
 export function Result({ phase, body }: { phase: 'idle' | 'waiting' | 'done'; body?: ApiBody }) {
   if (phase === 'waiting') {
-    return <p className="waiting">waiting</p>;
+    return (
+      <p className="waiting" role="status" aria-live="polite">
+        waiting
+      </p>
+    );
   }
   if (phase !== 'done' || body === undefined) {
     return null;
   }
+
+  const failed = isFailure(body.result);
   return (
-    <div className={isFailure(body.result) ? 'result failure' : 'result'} role="alert">
+    <div
+      className={failed ? 'result failure' : 'result'}
+      role={failed ? 'alert' : 'status'}
+      aria-live={failed ? 'assertive' : 'polite'}
+    >
       <p>{body.result}</p>
       {body.monthTypes?.map((month) => (
         <p key={month}>{month}</p>
