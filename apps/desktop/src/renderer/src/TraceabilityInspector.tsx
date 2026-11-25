@@ -1,5 +1,7 @@
 import type { JSX } from 'react';
-import traceability from '../../../../../docs/traceability/ui-traceability.json' with { type: 'json' };
+import traceability from '../../../../../docs/traceability/ui-traceability.json' with {
+  type: 'json',
+};
 
 type TraceRecord = {
   id: string;
@@ -19,13 +21,23 @@ type TraceRecord = {
   tests?: string[];
 };
 
-function TraceList({ title, values }: { title: string; values?: string[] | undefined }): JSX.Element | null {
+function TraceList({
+  title,
+  values,
+}: {
+  title: string;
+  values?: string[] | undefined;
+}): JSX.Element | null {
   if (values === undefined || values.length === 0) return null;
   return (
     <section className="qa-trace-group">
       <h3>{title}</h3>
       <ul>
-        {values.map((value) => <li key={value}><code>{value}</code></li>)}
+        {values.map((value) => (
+          <li key={value}>
+            <code>{value}</code>
+          </li>
+        ))}
       </ul>
     </section>
   );
@@ -41,7 +53,9 @@ export function TraceabilityInspector({
   onClose: () => void;
 }): JSX.Element | null {
   if (!open) return null;
-  const record = traceability.screens.find((item) => item.id === screen) as unknown as TraceRecord | undefined;
+  const record = traceability.screens.find((item) => item.id === screen) as
+    | unknown as TraceRecord
+    | undefined;
   if (record === undefined) return null;
   const design = record.design as Record<string, string> | undefined;
   return (
@@ -51,7 +65,12 @@ export function TraceabilityInspector({
           <p className="qa-eyebrow">DEVELOPMENT / QA</p>
           <h2>Traceability</h2>
         </div>
-        <button className="quiet" type="button" onClick={onClose} aria-label="Close traceability inspector">
+        <button
+          className="quiet"
+          type="button"
+          onClick={onClose}
+          aria-label="Close traceability inspector"
+        >
           Close
         </button>
       </div>
@@ -65,19 +84,30 @@ export function TraceabilityInspector({
         <TraceList title="User flows" values={record.flows} />
         <TraceList title="Design specifications" values={Object.values(design ?? {})} />
         <TraceList title="Components" values={record.components} />
-        <TraceList title="Renderer / UI model" values={[...(record.renderer ?? []), ...(record.uiModel ?? [])]} />
-        <TraceList title="IPC / Main process" values={[...(record.ipc ?? []), ...(record.main ?? [])]} />
-        <TraceList title="Application / Domain / Persistence" values={[
-          ...(record.application ?? []),
-          ...(record.domain ?? []),
-          ...(record.persistence ?? []),
-        ]} />
+        <TraceList
+          title="Renderer / UI model"
+          values={[...(record.renderer ?? []), ...(record.uiModel ?? [])]}
+        />
+        <TraceList
+          title="IPC / Main process"
+          values={[...(record.ipc ?? []), ...(record.main ?? [])]}
+        />
+        <TraceList
+          title="Application / Domain / Persistence"
+          values={[
+            ...(record.application ?? []),
+            ...(record.domain ?? []),
+            ...(record.persistence ?? []),
+          ]}
+        />
         <TraceList title="Automated tests" values={record.tests} />
         <p className="qa-evidence-note">
-          Runtime screenshot: {traceability.evidencePolicy.runtimeScreenshots} · Manual acceptance: {traceability.evidencePolicy.manualAcceptance}
+          Runtime screenshot: {traceability.evidencePolicy.runtimeScreenshots} · Manual acceptance:{' '}
+          {traceability.evidencePolicy.manualAcceptance}
         </p>
         <p className="qa-footnote">
-          This panel displays registry mappings. Empty test mappings are not evidence of passing tests.
+          This panel displays registry mappings. Empty test mappings are not evidence of passing
+          tests.
         </p>
       </div>
     </aside>
