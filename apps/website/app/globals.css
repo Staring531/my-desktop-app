@@ -64,6 +64,11 @@ legend {
   color: var(--semantic-color-text-primary);
 }
 
+fieldset label {
+  flex-direction: row;
+  align-items: center;
+}
+
 fieldset {
   min-inline-size: 0;
   margin: 0;
