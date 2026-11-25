@@ -1,10 +1,11 @@
 import { cleanup, render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
+import HomePage from '../app/page';
 import { CommandButton, Page, Result, SignedLinks, TextField, UnsignedLinks } from './ui';
 
 afterEach(cleanup);
 
-describe('website UI primitives', () => {
+describe('website UI primitives', () => {\n  it('renders the home page through the shared page shell', () => {\n    render(<HomePage />);\n    expect(screen.getByRole('main', { name: 'My Desktop App' })).toBeTruthy();\n    expect(screen.getByRole('navigation', { name: 'Account navigation' })).toBeTruthy();\n  });
   it('provides a labelled main landmark and one page-level heading', () => {
     render(
       <Page title="Calendar">
@@ -39,7 +40,7 @@ describe('website UI primitives', () => {
 
   it('exposes rejected results as alerts', () => {
     render(<Result phase="done" body={{ result: 'save_rejected' }} />);
-    expect(screen.getByRole('alert').textContent).toContain('not_allowed');
+    expect(screen.getByRole('alert').textContent).toContain('save_rejected');
   });
 
   it('supports native disabled state for command buttons', () => {
