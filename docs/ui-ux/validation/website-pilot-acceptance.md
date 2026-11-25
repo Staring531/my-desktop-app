@@ -1,30 +1,36 @@
 # Website UI/UX Pilot Acceptance
 
 - Project: `apps/website`
-- Runtime: Next.js 15 / React 19 / Chromium-based browser (record exact browser per run)
+- Runtime: Next.js 15 / React 19 / browser
 - Standard: `docs/ui-ux/ENGINEERING-STANDARD.md`
 - Method: `docs/ui-ux/WEB-UI-ENGINEERING-METHOD.md`
-- Status: IN PROGRESS
+- Status: IN PROGRESS — automated engineering gates pass; browser and independent acceptance remain NOT RUN
 - Branch: `feat/website-ui-ux-pilot-main`
-- Baseline commit: `a537f8e8322f77d525e754431542bb5afa13374c`
+- Base commit: `d4b4a8c756d5f237f2a77c21b0a74817076e101c`
+- Verified commit: `8699df21daa8bdbfa1946e9f7e2f49de0d261551`
+- CI run: [45584107804](https://github.com/Staring531/my-desktop-app/actions/runs/45584107804)
 
 ## Automated verification
 
-| Check | Command | Status | Evidence |
-|---|---|---|---|
-| Website token generation | `pnpm ui-ux:website:tokens:check` | NOT RUN | Pending CI |
-| Website traceability | `pnpm ui-ux:website:traceability:check` | NOT RUN | Pending CI |
-| TypeScript | `pnpm --filter @app/website typecheck` | NOT RUN | Pending CI |
-| Prettier | `pnpm --filter @app/website lint` | NOT RUN | Pending CI |
-| Unit/component tests | `pnpm --filter @app/website test` | NOT RUN | Pending CI |
-| Production build | `pnpm --filter @app/website build` | NOT RUN | Pending CI |
+| Check | Actual CI evidence | Status |
+|---|---|---|
+| Website token synchronization | Website design tokens synchronized (68 tokens). | PASS |
+| Website route traceability | Registry structurally valid (11 routes). | PASS |
+| Website TypeScript | `apps/website typecheck: Done` in repository CI. | PASS |
+| Website formatting | `apps/website lint: All matched files use Prettier code style`. | PASS |
+| Website unit/component tests | 2 test files, 15 tests passed. | PASS |
+| Website production build | Next.js 15 production build compiled; all 13 route outputs generated. | PASS |
+
+The workflow also runs repository-wide checks, including an Electron smoke test. That test is a separate repository regression gate and is **not** counted as evidence for the Web UI pilot.
 
 ## Browser viewport matrix
 
+No real-browser screenshot or manual viewport review has been recorded yet.
+
 | Route / surface | 1440×900 | 1024×768 | 768×1024 | 390×844 | 320 CSS px |
 |---|---|---|---|---|---|
-| Shared page shell | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
-| Registration | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
+| Home / shared page shell | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
+| Registration and authentication | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
 | Calendar | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
 | Event editor | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
 | Account | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
@@ -35,18 +41,24 @@ For each browser run record: commit SHA, browser/version, route, viewport, zoom,
 
 | Check | Status | Evidence |
 |---|---|---|
-| Landmark and heading structure | NOT RUN | |
-| Accessible field names | NOT RUN | |
+| Landmark and heading structure in running browser | NOT RUN | Component semantics have automated tests; route-level browser review pending |
+| Accessible field names | NOT RUN | Shared TextField has component test; full route review pending |
 | Keyboard-only navigation and focus order | NOT RUN | |
 | Enter / Space activation | NOT RUN | |
-| Pending / success / error announcements | NOT RUN | |
-| Visible focus and contrast measurement | NOT RUN | |
+| Pending / success / error announcements | NOT RUN | Component tests cover role semantics; screen-reader/browser verification pending |
+| Visible focus and rendered contrast measurement | NOT RUN | |
 | 200% zoom and reduced motion | NOT RUN | |
 | Responsive overflow | NOT RUN | |
 
 ## Route traceability
 
-See `docs/traceability/website-ui-traceability.json`. Routes with empty test arrays remain unverified. A shared component test does not imply that every route or API flow is covered.
+See `docs/traceability/website-ui-traceability.json`. All 11 routes are registered. Test mappings are recorded only where existing component tests provide relevant coverage; an empty test array means no verified automated mapping exists. Component tests do not constitute route-level browser E2E coverage.
+
+## Cursor Ask review
+
+- Prompt: `docs/ui-ux/WEB-UI-CURSOR-ASK-REVIEW.md`
+- Status: NOT RUN. This repository change prepares the review protocol; it does not claim that Cursor Ask has executed.
+- After review, record the Ask model/version, date, commit SHA, files inspected, findings, false positives, and human disposition.
 
 ## Review record
 
@@ -57,4 +69,4 @@ See `docs/traceability/website-ui-traceability.json`. Routes with empty test arr
 
 ## Exit decision
 
-Pilot acceptance remains blocked until automated checks pass, browser evidence is captured, accessibility and keyboard checks are recorded, and independent review is complete. Do not convert NOT RUN to PASS based on code inspection alone.
+Automated engineering gates are PASS at the verified commit. The pilot is **not accepted yet**. Acceptance remains blocked until real-browser screenshots, responsive checks, keyboard and accessibility evidence, and independent read-only review are recorded. Do not convert NOT RUN to PASS based on code inspection or CI build success alone.
