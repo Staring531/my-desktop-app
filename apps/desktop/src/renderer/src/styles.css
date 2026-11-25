@@ -448,7 +448,6 @@ textarea {
 .qa-eyebrow {
   color: var(--semantic-color-text-meta);
   font-size: var(--semantic-font-meta-size);
-  letter-spacing: 0.04em;
 }
 .qa-inspector-content {
   min-height: 0;
