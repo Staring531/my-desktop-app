@@ -142,7 +142,7 @@ button:hover:not(:disabled),
 
 button:disabled {
   cursor: not-allowed;
-  opacity: 0.65;
+  opacity: var(--component-button-disabled-opacity);
 }
 
 button.primary {
@@ -202,7 +202,7 @@ a {
 
 .mark.public {
   border: var(--primitive-size-rule) solid var(--semantic-color-text-primary);
-  border-radius: 50%;
+  border-radius: var(--component-mark-radius);
 }
 
 .mark.private {
@@ -212,7 +212,7 @@ a {
 
 .mark.skipped {
   height: var(--primitive-size-rule);
-  margin-block-end: 5px;
+  margin-block-end: var(--primitive-space-4);
   background: var(--semantic-color-text-primary);
 }
 
