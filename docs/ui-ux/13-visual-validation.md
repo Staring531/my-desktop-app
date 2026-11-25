@@ -43,3 +43,23 @@ Q-04 was closed by the user on 2026-11-20. The confirmation step is I-15. Dismis
 ## Post-implementation verification boundary
 
 The current CI result proves typecheck, lint, Vitest, and electron-vite build only. It does not prove a running Electron window, production IPC, or an installed application. Those require a runtime test on the built app and, separately, a packaged-installer test.
+
+## UI/UX Engineering Standard pilot update — 2026-11-25
+
+The repository now contains the first draft of the reusable UI/UX Engineering Standard in \`ENGINEERING-STANDARD.md\` and its Chinese translation. This repository is the first pilot; the standard is intentionally stored here and is not yet a separate project.
+
+- Canonical token source: \`tokens/design-tokens.json\`.
+- Runtime CSS is generated into \`apps/desktop/src/renderer/src/tokens.generated.css\` by \`scripts/ui-ux/generate-design-tokens.mjs\`.
+- \`pnpm ui-ux:tokens:check\` detects generated CSS drift. \`pnpm ui-ux:check\` runs token and traceability checks; the root lint command invokes this gate.
+- The S-05 workspace markup now separates availability, events, and maintainer management. Structured member/event rows use constrained grid layouts rather than uncontrolled wrapping.
+- \`docs/traceability/ui-traceability.json\` maps S-01 through S-07 to requirements, flows, design references, renderer state, IPC, main-process, application/domain, and persistence operations. S-08 is recorded as an overlay.
+- A development-only QA Trace inspector exposes the current screen's registry mapping. It is not rendered as a production feature.
+
+Verification boundary:
+- These changes have not yet been run through the repository's pnpm checks in a local checkout.
+- The token generator and registry validator are committed but their execution result is not claimed here.
+- The registry's test arrays are currently empty where concrete test-file mappings have not yet been verified.
+- No Electron runtime screenshot, narrow-window visual review, accessibility audit, or independent manual acceptance has been completed for this follow-up.
+- The prior approval of the visual baseline remains the design authority; the updated S-05 presentation is a follow-up implementation and still requires review against that baseline.
+
+Acceptance state for this follow-up: implementation in progress; runtime and manual visual verification are NOT RUN.
