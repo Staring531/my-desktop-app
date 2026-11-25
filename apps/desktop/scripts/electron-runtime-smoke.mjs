@@ -226,7 +226,7 @@ try {
   );
   await primaryPage.eval(click('Create team'));
   await until(
-    () => primaryPage.eval(`document.querySelector('h1')?.textContent.trim() === 'Team'`),
+    () => primaryPage.eval(`document.querySelector('h1')?.textContent.trim() === 'Team workspace'`),
     'workspace surface',
   );
   await primaryPage.eval(click('New event'));
@@ -277,7 +277,7 @@ try {
   await until(
     () =>
       primaryPage.eval(
-        `document.querySelector('h1')?.textContent.trim() === 'Team' && document.body.innerText.includes('Electron smoke event')`,
+        `document.querySelector('h1')?.textContent.trim() === 'Team workspace' && document.body.innerText.includes('Electron smoke event')`,
       ),
     'saved event visible',
   );
@@ -337,7 +337,7 @@ try {
   await until(
     () =>
       restartedPage.eval(
-        `document.querySelector('h1')?.textContent.trim() === 'Team' && document.body.innerText.includes('Electron smoke event')`,
+        `document.querySelector('h1')?.textContent.trim() === 'Team workspace' && document.body.innerText.includes('Electron smoke event')`,
       ),
     'persisted record after restart',
   );
