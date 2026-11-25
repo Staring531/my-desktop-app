@@ -214,11 +214,19 @@ export function EventForm({ draft }: { draft: EventDraft }) {
         <div className="region">
           {confirming === undefined ? (
             <>
-              <CommandButton variant="quiet" onClick={() => setConfirming('event')} disabled={phase === 'waiting'}>
+              <CommandButton
+                variant="quiet"
+                onClick={() => setConfirming('event')}
+                disabled={phase === 'waiting'}
+              >
                 Delete event
               </CommandButton>
               {occurrence ? (
-                <CommandButton variant="quiet" onClick={() => setConfirming('occurrence')} disabled={phase === 'waiting'}>
+                <CommandButton
+                  variant="quiet"
+                  onClick={() => setConfirming('occurrence')}
+                  disabled={phase === 'waiting'}
+                >
                   Delete this occurrence
                 </CommandButton>
               ) : null}
