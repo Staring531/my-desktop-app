@@ -60,7 +60,7 @@ function cssValue(tokenName, token) {
 }
 
 const lines = [
-  '/* Generated from apps/website/tokens/design-tokens.json. Do not edit by hand. */',
+  '/* Generated website design tokens. Do not edit by hand. */',
   ':root {',
 ];
 for (const [name, token] of tokens) {
