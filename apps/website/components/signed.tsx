@@ -118,7 +118,7 @@ function AccountForm({ onOk }: { onOk: (path: string) => void }) {
           <CommandButton
             variant="danger"
             disabled={phase === 'waiting'}
-          onClick={() => void run('/api/account', 'DELETE', undefined, true)}
+            onClick={() => void run('/api/account', 'DELETE', undefined, true)}
           >
             Delete
           </CommandButton>
