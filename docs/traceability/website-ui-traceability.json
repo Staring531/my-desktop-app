@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "1.0.0",
+  "standardVersion": "1.0.0-pilot",
+  "project": "Staring531/my-desktop-app/apps/website",
+  "runtime": "Next.js 15 App Router / React 19 / Browser",
+  "tokenSource": "apps/website/tokens/design-tokens.json",
+  "generatedTokens": "apps/website/app/tokens.generated.css",
+  "screens": [
+    {
+      "id": "W-01",
+      "route": "/",
+      "name": "Website home",
+      "page": "apps/website/app/page.tsx",
+      "components": [],
+      "tests": [],
+      "status": "NOT VERIFIED"
+    },
+    {
+      "id": "W-02",
+      "route": "/register",
+      "name": "Register",
+      "page": "apps/website/app/register/page.tsx",
+      "components": ["apps/website/components/auth-forms.tsx", "apps/website/components/ui.tsx"],
+      "tests": ["apps/website/components/forms.test.tsx", "apps/website/components/ui.test.tsx"],
+      "status": "PARTIALLY VERIFIED"
+    },
+    {
+      "id": "W-03",
+      "route": "/verify",
+      "name": "Verify",
+      "page": "apps/website/app/verify/page.tsx",
+      "components": ["apps/website/components/auth-forms.tsx", "apps/website/components/ui.tsx"],
+      "tests": [],
+      "status": "NOT VERIFIED"
+    },
+    {
+      "id": "W-04",
+      "route": "/register/cancel",
+      "name": "Cancel registration",
+      "page": "apps/website/app/register/cancel/page.tsx",
+      "components": ["apps/website/components/auth-forms.tsx", "apps/website/components/ui.tsx"],
+      "tests": [],
+      "status": "NOT VERIFIED"
+    },
+    {
+      "id": "W-05",
+      "route": "/login",
+      "name": "Login",
+      "page": "apps/website/app/login/page.tsx",
+      "components": ["apps/website/components/auth-forms.tsx", "apps/website/components/ui.tsx"],
+      "tests": [],
+      "status": "NOT VERIFIED"
+    },
+    {
+      "id": "W-06",
+      "route": "/recovery",
+      "name": "Start recovery",
+      "page": "apps/website/app/recovery/page.tsx",
+      "components": ["apps/website/components/auth-forms.tsx", "apps/website/components/ui.tsx"],
+      "tests": [],
+      "status": "NOT VERIFIED"
+    },
+    {
+      "id": "W-07",
+      "route": "/recovery/complete",
+      "name": "Complete recovery",
+      "page": "apps/website/app/recovery/complete/page.tsx",
+      "components": ["apps/website/components/auth-forms.tsx", "apps/website/components/ui.tsx"],
+      "tests": [],
+      "status": "NOT VERIFIED"
+    },
+    {
+      "id": "W-08",
+      "route": "/calendar",
+      "name": "Own calendar",
+      "page": "apps/website/app/calendar/page.tsx",
+      "components": ["apps/website/components/calendar-form.tsx", "apps/website/components/signed.tsx", "apps/website/components/ui.tsx"],
+      "tests": ["apps/website/components/forms.test.tsx", "apps/website/components/ui.test.tsx"],
+      "status": "PARTIALLY VERIFIED"
+    },
+    {
+      "id": "W-09",
+      "route": "/events/new",
+      "name": "Create event",
+      "page": "apps/website/app/events/new/page.tsx",
+      "components": ["apps/website/components/event-form.tsx", "apps/website/components/signed.tsx", "apps/website/components/ui.tsx"],
+      "tests": ["apps/website/components/forms.test.tsx", "apps/website/components/ui.test.tsx"],
+      "status": "PARTIALLY VERIFIED"
+    },
+    {
+      "id": "W-10",
+      "route": "/events/[id]",
+      "name": "Edit event",
+      "page": "apps/website/app/events/[id]/page.tsx",
+      "components": ["apps/website/app/events/[id]/screen.tsx", "apps/website/components/event-form.tsx", "apps/website/components/ui.tsx"],
+      "tests": ["apps/website/components/forms.test.tsx", "apps/website/components/ui.test.tsx"],
+      "status": "PARTIALLY VERIFIED"
+    },
+    {
+      "id": "W-11",
+      "route": "/account",
+      "name": "Account",
+      "page": "apps/website/app/account/page.tsx",
+      "components": ["apps/website/components/signed.tsx", "apps/website/components/ui.tsx"],
+      "tests": [],
+      "status": "NOT VERIFIED"
+    }
+  ],
+  "evidencePolicy": {
+    "emptyTestsArrayMeans": "No verified automated test mapping is recorded for this route.",
+    "browserScreenshots": "NOT RUN until captured from a real browser session.",
+    "manualAccessibility": "NOT RUN until keyboard and rendered contrast checks are recorded.",
+    "independentReview": "NOT RUN until Cursor Ask review is performed and human-reviewed."
+  }
+}
