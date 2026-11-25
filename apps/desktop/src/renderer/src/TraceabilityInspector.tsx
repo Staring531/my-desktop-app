@@ -26,7 +26,7 @@ function TraceList({
   values,
 }: {
   title: string;
-  values?: string[] | undefined;
+  values?: string[];
 }): JSX.Element | null {
   if (values === undefined || values.length === 0) return null;
   return (
