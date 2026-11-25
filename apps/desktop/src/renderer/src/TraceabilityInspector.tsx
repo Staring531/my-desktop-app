@@ -53,9 +53,8 @@ export function TraceabilityInspector({
   onClose: () => void;
 }): JSX.Element | null {
   if (!open) return null;
-  const record = traceability.screens.find((item) => item.id === screen) as
-    | unknown as TraceRecord
-    | undefined;
+  const found = traceability.screens.find((item) => item.id === screen);
+  const record = found as unknown as TraceRecord | undefined;
   if (record === undefined) return null;
   const design = record.design as Record<string, string> | undefined;
   return (
