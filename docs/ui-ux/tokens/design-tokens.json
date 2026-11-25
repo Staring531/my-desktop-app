@@ -98,6 +98,18 @@
       "line-title": {
         "$type": "dimension",
         "$value": "20px"
+      },
+      "size-page-title": {
+        "$type": "dimension",
+        "$value": "20px"
+      },
+      "line-page-title": {
+        "$type": "dimension",
+        "$value": "26px"
+      },
+      "size-section": {
+        "$type": "dimension",
+        "$value": "14px"
       }
     },
     "space": {
@@ -166,6 +178,10 @@
       "control": {
         "$type": "dimension",
         "$value": "4px"
+      },
+      "pill": {
+        "$type": "dimension",
+        "$value": "999px"
       }
     },
     "elevation": {
@@ -288,6 +304,18 @@
       "meta-weight": {
         "$type": "fontWeight",
         "$value": "{primitive.font.weight-regular}"
+      },
+      "page-title-size": {
+        "$type": "dimension",
+        "$value": "{primitive.font.size-page-title}"
+      },
+      "page-title-line": {
+        "$type": "dimension",
+        "$value": "{primitive.font.line-page-title}"
+      },
+      "section-size": {
+        "$type": "dimension",
+        "$value": "{primitive.font.size-section}"
       }
     },
     "space": {
@@ -460,6 +488,24 @@
       "layer": {
         "$type": "number",
         "$value": "{semantic.layer.notice}"
+      }
+    },
+    "workspace": {
+      "status-indicator-size": {
+        "$type": "dimension",
+        "$value": "8px"
+      },
+      "event-card-padding": {
+        "$type": "dimension",
+        "$value": "12px"
+      },
+      "event-card-gap": {
+        "$type": "dimension",
+        "$value": "16px"
+      },
+      "visibility-radius": {
+        "$type": "dimension",
+        "$value": "{primitive.radius.pill}"
       }
     }
   }
