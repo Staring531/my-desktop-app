@@ -19,7 +19,7 @@ Labels:
 
 - The user approved `docs/product/06-prd-personal-time.md` version 0.1 on 2026-11-24. DEC-080 records that approval. It does not change DEC-012 through DEC-079, does not supersede `docs/product/04-prd.md`, and does not authorize technical design by itself. The user then asked to start technical design.
 - `docs/product/04-prd.md` remains APPROVED for the earlier one-computer, one-team desktop product (DEC-011).
-- `TECHNICAL_DESIGN.md` still names `docs/product/04-prd.md` as the current approved baseline. This session follows the user's later approval and request: the personal time PRD.
+- `docs/process/TECHNICAL_DESIGN.md` still names `docs/product/04-prd.md` as the current approved baseline. This session follows the user's later approval and request: the personal time PRD.
 - The personal time first delivery is a browser, with business data held by a server. It includes registration, email verification, login, password recovery, one personal Calendar, timed Events, public and private visibility, daily, weekly, and monthly repetition, conflict warnings, calendar timezone, and account deletion.
 - Search, the personal calendar page, sharing links, and teams are confirmed and are outside the first delivery. Desktop is last and uses the same server, identity, rules, and data.
 - DEC-013 states that no web framework, server framework, or desktop shell is selected.

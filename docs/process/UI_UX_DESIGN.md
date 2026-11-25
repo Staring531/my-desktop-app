@@ -7,7 +7,7 @@
 
 ## 1. Authority, activation, and startup
 
-Activate only after the PRD and Technical Design are approved and the Implementation Plan exists. The user must explicitly request UI/UX work. Every participating agent first reads `DEVELOPMENT_WORKFLOW.md`, `AGENTS.md`, this file, approved PRD/Decision Log, Technical Design/reviews, Implementation Plan, and relevant repository/package documentation.
+Activate only after the PRD and Technical Design are approved and the Implementation Plan exists. The user must explicitly request UI/UX work. Every participating agent first reads `docs/process/DEVELOPMENT_WORKFLOW.md`, `AGENTS.md`, this file, approved PRD/Decision Log, Technical Design/reviews, Implementation Plan, and relevant repository/package documentation.
 
 Authority order: approved PRD (behavior and scope) → approved Technical Design (architecture and technical contracts) → confirmed Implementation Plan (task sequencing) → user-approved UI/UX decisions (presentation and interaction only).
 

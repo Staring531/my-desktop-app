@@ -31,11 +31,11 @@ Approved scope is section 2: one team, one maintainer, invitation and membership
 
 `docs/technical/02-architecture.md` through `09-test-strategy.md`, and `docs/technical/technical-decisions/log.md`, are APPROVED by the user on 2026-11-19. That approval includes TD-001 through TD-004. TD-001 is one local record on one computer. TD-002 is session binding without inbox proof. TD-003 is one JSON document replaced atomically. TD-004 recommends `@js-temporal/polyfill`. Review findings TDR-REV-001 through TDR-REV-030 are recorded as addressed in the technical review reports. Those reports did not approve the design.
 
-The design set required by `TECHNICAL_DESIGN.md` is present: repository analysis, technical requirements, architecture, domain, data, application, security, concurrency, errors, test strategy, technical decisions, and both review reports.
+The design set required by `docs/process/TECHNICAL_DESIGN.md` is present: repository analysis, technical requirements, architecture, domain, data, application, security, concurrency, errors, test strategy, technical decisions, and both review reports.
 
 ### Implementation Plan
 
-`docs/technical/10-implementation-plan.md` exists. It has six epics and IMP-001 through IMP-021, and it names AC-001 through AC-051. Its own status is plan only. `DEVELOPMENT_WORKFLOW.md` treats plan-baseline confirmation as a separate user decision. This repository has no later record that the user confirmed that baseline. The plan is available, which is the UI/UX entry condition. On 2026-11-20 the user said this unconfirmed plan is a sequencing reference only. It is not a confirmed baseline and does not override the PRD or Technical Design.
+`docs/technical/10-implementation-plan.md` exists. It has six epics and IMP-001 through IMP-021, and it names AC-001 through AC-051. Its own status is plan only. `docs/process/DEVELOPMENT_WORKFLOW.md` treats plan-baseline confirmation as a separate user decision. This repository has no later record that the user confirmed that baseline. The plan is available, which is the UI/UX entry condition. On 2026-11-20 the user said this unconfirmed plan is a sequencing reference only. It is not a confirmed baseline and does not override the PRD or Technical Design.
 
 UI-relevant tasks already named by the plan:
 

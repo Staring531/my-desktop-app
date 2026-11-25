@@ -5,7 +5,7 @@ description: Run the primary decision-driven Product Discovery interview and orc
 
 # Product Interview
 
-Follow PRODUCT_DISCOVERY.md. Read relevant product docs and decision log. The primary Claude session is the sole user-facing interviewer.
+Follow docs/process/PRODUCT_DISCOVERY.md. Read relevant product docs and decision log. The primary Claude session is the sole user-facing interviewer.
 
 Ask one consequential question at a time; explain why, offer options/trade-offs and recommendation, then wait. Keep decision statuses distinct. At the Requirements Baseline Gate, delegate to requirements-reviewer. At the PRD Draft Gate, after material requirements findings are resolved or tracked, delegate to prd-quality-auditor.
 

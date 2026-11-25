@@ -5,7 +5,7 @@ description: After explicit Technical Design approval, create a traceable implem
 
 # Implementation Planning Skill
 
-Follow `TECHNICAL_DESIGN.md`.
+Follow `docs/process/TECHNICAL_DESIGN.md`.
 
 ## Preconditions
 - PRD status is APPROVED.

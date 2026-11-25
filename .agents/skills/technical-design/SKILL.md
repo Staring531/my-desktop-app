@@ -5,7 +5,7 @@ description: Run the approved-PRD Technical Design workflow, including repositor
 
 # Technical Design Skill
 
-Follow the canonical `TECHNICAL_DESIGN.md`. This skill is a reusable workflow, not by itself an isolated subagent.
+Follow the canonical `docs/process/TECHNICAL_DESIGN.md`. This skill is a reusable workflow, not by itself an isolated subagent.
 
 ## Startup
 1. Verify `docs/product/04-prd.md` is explicitly APPROVED and identify its version and approval decision.

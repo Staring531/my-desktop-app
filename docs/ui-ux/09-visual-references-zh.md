@@ -4,7 +4,7 @@
 - 日期：2026-11-20
 - 状态：用户于 2026-11-20 接受方向 L。方向 P 和 C 未选中。该接受不批准 Token 值。Token 提案在 `10-design-tokens.md`，尚未批准。
 - 结构基线：用户于 2026-11-20 接受，见 `01-information-architecture.md`、`02-user-flows.md` 和 `03-screen-inventory.md`。
-- 本次会话没有抓取或保存截图。参考 URL 是 `UI_UX_DESIGN.md` 已经点名的公开站点。没有嵌入或复制 Linear 的资产。
+- 本次会话没有抓取或保存截图。参考 URL 是 `docs/process/UI_UX_DESIGN.md` 已经点名的公开站点。没有嵌入或复制 Linear 的资产。
 - 没有运行独立 UI/UX 评审。
 - 英文 `09-visual-references.md` 是规范文本。本文件是对照译文。
 

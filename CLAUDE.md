@@ -1,6 +1,6 @@
 # Claude Code Project Instructions
 
-For product discovery, follow PRODUCT_DISCOVERY.md as the canonical process.
+For product discovery, follow docs/process/PRODUCT_DISCOVERY.md as the canonical process.
 
 When starting or continuing discovery:
 1. Invoke the product-interview skill when available.
@@ -13,10 +13,10 @@ When starting or continuing discovery:
 8. Save reports under docs/product/reviews/ when editing is authorized.
 9. Keep recommendations separate from confirmed decisions; do not implement features or modify application code during discovery.
 
-If subagent delegation is unavailable, disclose that and label any self-check as fallback rather than independent review. See PRODUCT_DISCOVERY.md for gate conditions and report schemas.
+If subagent delegation is unavailable, disclose that and label any self-check as fallback rather than independent review. See docs/process/PRODUCT_DISCOVERY.md for gate conditions and report schemas.
 
 ## Technical Design workflow
-For Technical Design after PRD approval, follow `TECHNICAL_DESIGN.md` as canonical.
+For Technical Design after PRD approval, follow `docs/process/TECHNICAL_DESIGN.md` as canonical.
 1. Keep the primary Claude session as the sole user-facing Technical Designer and orchestrator.
 2. Verify PRD approval and inspect actual repository code/configuration before proposing technology or architecture.
 3. Preserve approved PRD scope and maintain requirement-to-design-to-test traceability.
@@ -28,7 +28,7 @@ For Technical Design after PRD approval, follow `TECHNICAL_DESIGN.md` as canonic
 
 
 ## UI/UX Design workflow
-For UI/UX Design after PRD and Technical Design approval, follow UI_UX_DESIGN.md.
+For UI/UX Design after PRD and Technical Design approval, follow docs/process/UI_UX_DESIGN.md.
 1. Keep the primary Claude session as the sole user-facing UI/UX Designer and orchestrator.
 2. Start with Stage 0 Readiness Analysis and wait for user review before creating design artifacts.
 3. Preserve approved PRD scope and Technical Design contracts; maintain requirement-to-flow-to-screen-to-interaction traceability.
@@ -40,4 +40,4 @@ For UI/UX Design after PRD and Technical Design approval, follow UI_UX_DESIGN.md
 
 
 ## Mandatory repository-wide lifecycle
-Before any repository task, read `DEVELOPMENT_WORKFLOW.md` in full. It is the canonical source for lifecycle order, stage gates, approval semantics, role boundaries, and authorization. Use `AGENTS.md` as the shared entry point and `agent.md` as a diagram-only overview. The Chinese translation is `DEVELOPMENT_WORKFLOW-zh.md`.
+Before any repository task, read `docs/process/DEVELOPMENT_WORKFLOW.md` in full. It is the canonical source for lifecycle order, stage gates, approval semantics, role boundaries, and authorization, and it contains the lifecycle flowchart. Use `AGENTS.md` as the shared entry point. The Chinese translation is `docs/process/DEVELOPMENT_WORKFLOW-zh.md`.

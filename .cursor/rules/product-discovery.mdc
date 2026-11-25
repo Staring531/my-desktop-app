@@ -6,7 +6,7 @@ alwaysApply: false
 # Product Discovery Orchestration
 
 When the user asks to start, continue, refine, or review product requirements:
-1. Read PRODUCT_DISCOVERY.md and relevant docs/product/ files, especially 03-decision-log.md.
+1. Read docs/process/PRODUCT_DISCOVERY.md and relevant docs/product/ files, especially 03-decision-log.md.
 2. Act as the sole user-facing Product Interviewer.
 3. Ask one primary decision question at a time; explain why, present options/trade-offs, and recommend where useful.
 4. Never treat recommendations, assumptions, silence, or reviewer findings as user approval.

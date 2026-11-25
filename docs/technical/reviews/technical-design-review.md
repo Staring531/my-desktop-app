@@ -9,7 +9,7 @@
 
 ## Review scope
 
-The reviewer read the approved PRD, `02-architecture.md` through `09-test-strategy.md`, the technical decision log, `TECHNICAL_DESIGN.md`, the architecture review dispositions, and `01-technical-requirements.md` sections 2–6. Repository evidence was the desktop main process, preload, and `apps/desktop/package.json`. Acceptance IDs AC-001 through AC-051 were checked by name in the test strategy, not by running tests.
+The reviewer read the approved PRD, `02-architecture.md` through `09-test-strategy.md`, the technical decision log, `docs/process/TECHNICAL_DESIGN.md`, the architecture review dispositions, and `01-technical-requirements.md` sections 2–6. Repository evidence was the desktop main process, preload, and `apps/desktop/package.json`. Acceptance IDs AC-001 through AC-051 were checked by name in the test strategy, not by running tests.
 
 ## Strengths
 
@@ -173,7 +173,7 @@ That sentence is superseded by the pass below. The pass that claimed no TDR-REV-
 
 ### Scope reported
 
-The reviewer read `TECHNICAL_DESIGN.md`, the reviewer role, the approved PRD, DEC-006 through DEC-011, `00-repository-analysis.md` through `09-test-strategy.md`, the technical decision log, both review reports, root `package.json`, `pnpm-workspace.yaml`, `apps/desktop/package.json`, `apps/desktop/src/main/index.ts`, `apps/desktop/src/preload/index.ts`, and `docs/architecture/overview.md`. A package-name search found `@app/website`, `@app/admin`, and `@app/api` only in their own package names. Tests were not run. The time-zone package was not executed. No product decision was made.
+The reviewer read `docs/process/TECHNICAL_DESIGN.md`, the reviewer role, the approved PRD, DEC-006 through DEC-011, `00-repository-analysis.md` through `09-test-strategy.md`, the technical decision log, both review reports, root `package.json`, `pnpm-workspace.yaml`, `apps/desktop/package.json`, `apps/desktop/src/main/index.ts`, `apps/desktop/src/preload/index.ts`, and `docs/architecture/overview.md`. A package-name search found `@app/website`, `@app/admin`, and `@app/api` only in their own package names. Tests were not run. The time-zone package was not executed. No product decision was made.
 
 ### Residuals the reviewer reported
 

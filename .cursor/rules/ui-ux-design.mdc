@@ -5,7 +5,7 @@ alwaysApply: false
 
 When asked to start or continue UI/UX Design:
 
-1. Read `DEVELOPMENT_WORKFLOW.md`, `AGENTS.md`, and `UI_UX_DESIGN.md` in full, plus approved PRD, Technical Design, Implementation Plan, decision records, and relevant repository evidence.
+1. Read `docs/process/DEVELOPMENT_WORKFLOW.md`, `AGENTS.md`, and `docs/process/UI_UX_DESIGN.md` in full, plus approved PRD, Technical Design, Implementation Plan, decision records, and relevant repository evidence.
 2. Keep the primary session as the sole user-facing UI/UX Designer.
 3. Follow System-First order and stop at each user approval gate: structural baseline; Visual Direction; Design Token/core-component baseline; final UI/UX approval.
 4. Treat Linear as a visual reference only. Do not copy branding or infer unapproved features, themes, screens, or behavior.

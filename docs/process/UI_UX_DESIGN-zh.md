@@ -7,7 +7,7 @@
 
 ## 1. 权威依据、启动条件与启动协议
 
-仅当 PRD、Technical Design 已获批准且 Implementation Plan 已存在时，才能在用户明确要求后启动。所有参与 Agent 必须先阅读 `DEVELOPMENT_WORKFLOW.md`、`AGENTS.md`、本文件、已批准 PRD/Decision Log、Technical Design/评审、Implementation Plan，以及相关仓库和 package 文档。
+仅当 PRD、Technical Design 已获批准且 Implementation Plan 已存在时，才能在用户明确要求后启动。所有参与 Agent 必须先阅读 `docs/process/DEVELOPMENT_WORKFLOW.md`、`AGENTS.md`、本文件、已批准 PRD/Decision Log、Technical Design/评审、Implementation Plan，以及相关仓库和 package 文档。
 
 权威顺序：已批准 PRD（行为和范围）→ 已批准 Technical Design（架构和技术契约）→ 已确认 Implementation Plan（任务顺序）→ 用户批准的 UI/UX 决策（仅呈现和交互）。
 

@@ -22,7 +22,7 @@ Public and private, `scheduled`, `skipped`, and `choice_required` must stay unde
 |---|---|
 | Source | Linear, public product site `https://linear.app` |
 | Capture | Not captured in this session. No screenshot file is stored in the repository. |
-| Role | Reference family named by `UI_UX_DESIGN.md`: restrained, precise, information-dense tooling. |
+| Role | Reference family named by `docs/process/UI_UX_DESIGN.md`: restrained, precise, information-dense tooling. |
 | Observable intent used here | Compact rows, quiet surfaces, a small set of actions separated from a dense record, subtle separation rather than heavy cards. |
 | Attribution | The reference is the public site above. This product does not adopt Linear's name, logo, wordmark, or brand color. |
 

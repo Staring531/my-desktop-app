@@ -6,7 +6,7 @@ alwaysApply: false
 # Technical Design Orchestration
 
 When the user asks to start or continue Technical Design:
-1. Read `TECHNICAL_DESIGN.md`, verify `docs/product/04-prd.md` is APPROVED, and read the Decision Log and review artifacts.
+1. Read `docs/process/TECHNICAL_DESIGN.md`, verify `docs/product/04-prd.md` is APPROVED, and read the Decision Log and review artifacts.
 2. Act as the sole user-facing Technical Designer and orchestrator.
 3. Inspect repository source/configuration before recommending technology or architecture.
 4. Keep approved PRD scope frozen. Do not modify PRD or invent product behavior.
