@@ -1,0 +1,84 @@
+import { readFile, writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
+const sourcePath = path.join(root, 'apps/website/tokens/design-tokens.json');
+const outputPath = path.join(root, 'apps/website/app/tokens.generated.css');
+const source = JSON.parse(await readFile(sourcePath, 'utf8'));
+const tokens = new Map();
+
+function visit(node, parts = []) {
+  if (node === null || typeof node !== 'object' || Array.isArray(node)) return;
+  if (Object.hasOwn(node, '$value')) {
+    const name = parts.join('-');
+    if (tokens.has(name)) throw new Error('Duplicate token: ' + name);
+    tokens.set(name, { type: node.$type, value: node.$value });
+    return;
+  }
+  for (const [key, value] of Object.entries(node)) {
+    if (key === '$schema' || key === 'meta') continue;
+    visit(value, [...parts, key]);
+  }
+}
+
+function referenceName(value) {
+  if (typeof value !== 'string' || value.length < 3 || value[0] !== '{' || value[value.length - 1] !== '}') {
+    return null;
+  }
+  return value.slice(1, -1).replaceAll('.', '-');
+}
+
+visit(source);
+
+function assertNoAliasCycles(name, visiting = new Set(), visited = new Set()) {
+  if (visited.has(name)) return;
+  if (visiting.has(name)) throw new Error('Circular token reference: ' + [...visiting, name].join(' -> '));
+  const token = tokens.get(name);
+  if (token === undefined) throw new Error('Unresolved token reference: ' + name);
+  visiting.add(name);
+  const reference = referenceName(token.value);
+  if (reference !== null) assertNoAliasCycles(reference, visiting, visited);
+  visiting.delete(name);
+  visited.add(name);
+}
+
+for (const name of tokens.keys()) assertNoAliasCycles(name);
+if (tokens.size === 0) throw new Error('No website design tokens found');
+
+function cssValue(tokenName, token) {
+  const reference = referenceName(token.value);
+  if (reference !== null) {
+    if (!tokens.has(reference)) {
+      throw new Error('Unresolved token reference: ' + tokenName + ' -> ' + reference);
+    }
+    return 'var(--' + reference + ')';
+  }
+  if (typeof token.value === 'string') return token.value;
+  if (typeof token.value === 'number') return String(token.value);
+  throw new Error('Unsupported token value: ' + tokenName);
+}
+
+const lines = [
+  '/* Generated website design tokens. Do not edit by hand. */',
+  ':root {',
+];
+for (const [name, token] of tokens) {
+  lines.push('  --' + name + ': ' + cssValue(name, token) + ';');
+}
+lines.push('}', '');
+const output = lines.join('\n');
+const check = process.argv.includes('--check');
+
+if (check) {
+  const current = await readFile(outputPath, 'utf8').catch(() => '');
+  if (current !== output) {
+    console.error('Website design token CSS is out of date. Run: node scripts/ui-ux/generate-website-design-tokens.mjs');
+    process.exitCode = 1;
+  } else {
+    console.log('Website design tokens are synchronized (' + tokens.size + ' tokens).');
+  }
+} else {
+  await writeFile(outputPath, output, 'utf8');
+  console.log('Generated ' + tokens.size + ' website design tokens at ' + path.relative(root, outputPath) + '.');
+}

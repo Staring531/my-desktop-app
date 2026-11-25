@@ -65,9 +65,9 @@
 1. A project adopts this standard by recording the standard version, applicability, deviations, and an implementation/verification plan.
 2. Pilot evidence MUST record defects found, false positives, false negatives, automation coverage, reviewer effort, and required changes to the standard.
 3. The standard MUST be revised from pilot findings before being declared stable for broad adoption.
-4. The first pilot is this repository's Electron/React desktop application. A second, materially different UI stack is required before claiming cross-stack validation.
+4. The first pilot is this repository's Electron/React desktop application. A second, materially different UI stack is required before claiming cross-stack validation. A Web pilot using React in a different browser runtime is useful architecture validation, but does not by itself satisfy the materially-different-framework requirement.
 
-## 8. Current pilot-specific implementation
+## 8. First pilot-specific implementation: Electron
 
 - Canonical token source: `docs/ui-ux/tokens/design-tokens.json`.
 - Runtime target: Electron renderer CSS custom properties.
@@ -75,3 +75,28 @@
 - Visual and page authority: `docs/ui-ux/05-visual-design.md` and `docs/ui-ux/12-page-specifications.md`.
 - Product and business authority: approved PRD and business-rule/acceptance-criteria documents.
 - The QA inspector is development-only and is not a product feature.
+
+## 9. Web UI pilot extension
+
+The Web UI implementation method is specified in `WEB-UI-ENGINEERING-METHOD.md`. The website pilot is `apps/website` and is intentionally separate from the Electron implementation.
+
+- Runtime: Next.js App Router / React in a real browser.
+- Website token source: `apps/website/tokens/design-tokens.json`.
+- Generated browser artifact: `apps/website/app/tokens.generated.css`.
+- Website traceability: `docs/traceability/website-ui-traceability.json`.
+- Shared website primitives: `apps/website/components/ui.tsx`.
+- Browser acceptance evidence: `docs/ui-ux/validation/website-pilot-acceptance.md`.
+- Cursor Ask review protocol: `docs/ui-ux/WEB-UI-CURSOR-ASK-REVIEW.md`.
+
+Web-specific requirements:
+
+1. A Web UI project MUST define supported browsers and a viewport matrix, including a narrow-width case and a representative desktop case.
+2. Browser runtime acceptance MUST use the running application, not only Storybook, static HTML, component snapshots, or a build preview.
+3. Route, page, shared component, API operation, and test mappings MUST reflect the actual Next.js/browser architecture; Electron-only layers MUST NOT be invented.
+4. Navigation landmarks MUST have distinguishable accessible names when more than one exists. Each page MUST expose a meaningful main landmark and one page-level H1.
+5. Form controls MUST have programmatic labels. Pending, success, and failure feedback MUST use suitable live-region semantics.
+6. Responsive acceptance MUST include page overflow, content reflow, keyboard operation, focus visibility, zoom, and reduced-motion behavior.
+7. Screenshots MUST identify route, viewport, browser/version, commit, and review date. A screenshot without that metadata is not acceptance evidence.
+8. Cursor Ask MAY be used as a read-only secondary reviewer. Its report is not a substitute for a human reviewer, real-browser testing, accessibility measurement, or CI.
+
+The Web pilot is a second runtime and application-architecture exercise. Since it uses React, it MUST NOT be presented as validation across materially different UI frameworks. The standard remains draft until the required additional framework pilot and independent acceptance are complete.

@@ -17,7 +17,10 @@
     "ui-ux:tokens:check": "node scripts/ui-ux/generate-design-tokens.mjs --check",
     "ui-ux:tokens:build": "node scripts/ui-ux/generate-design-tokens.mjs",
     "ui-ux:traceability:check": "node scripts/ui-ux/validate-traceability.mjs",
-    "ui-ux:check": "pnpm ui-ux:tokens:check && pnpm ui-ux:traceability:check"
+    "ui-ux:website:tokens:check": "node scripts/ui-ux/generate-website-design-tokens.mjs --check",
+    "ui-ux:website:tokens:build": "node scripts/ui-ux/generate-website-design-tokens.mjs",
+    "ui-ux:website:traceability:check": "node scripts/ui-ux/validate-website-traceability.mjs",
+    "ui-ux:check": "pnpm ui-ux:tokens:check && pnpm ui-ux:traceability:check && pnpm ui-ux:website:tokens:check && pnpm ui-ux:website:traceability:check"
   },
   "devDependencies": {
     "prettier": "^3.5.3",

@@ -68,9 +68,34 @@
 
 ## 8. 本仓库试点配置
 
-- 唯一 Token 数据源：\`docs/ui-ux/tokens/design-tokens.json\`。
+- 唯一 Token 数据源：`docs/ui-ux/tokens/design-tokens.json`。
 - 运行时目标：Electron renderer CSS custom properties。
-- 追溯数据源：\`docs/traceability/ui-traceability.json\`。
-- 视觉和页面权威文档：\`docs/ui-ux/05-visual-design.md\`、\`docs/ui-ux/12-page-specifications.md\`。
+- 追溯数据源：`docs/traceability/ui-traceability.json`。
+- 视觉和页面权威文档：`docs/ui-ux/05-visual-design.md`、`docs/ui-ux/12-page-specifications.md`。
 - 产品与业务权威来源：已批准 PRD、业务规则和验收标准文档。
 - QA Inspector 仅用于开发/验收，不是产品功能。
+
+## 9. Web UI 试点扩展
+
+Web UI 的实施方法见 `WEB-UI-ENGINEERING-METHOD.md`。本次 Web 试点目标是 `apps/website`，与 Electron 桌面端分开验证。
+
+- 运行时：Next.js App Router / React，实际浏览器。
+- Website Token 数据源：`apps/website/tokens/design-tokens.json`。
+- 生成的浏览器样式：`apps/website/app/tokens.generated.css`。
+- Website 追溯注册表：`docs/traceability/website-ui-traceability.json`。
+- Website 共享组件：`apps/website/components/ui.tsx`。
+- 验收证据：`docs/ui-ux/validation/website-pilot-acceptance.md`。
+- Cursor Ask 只读审查流程：`docs/ui-ux/WEB-UI-CURSOR-ASK-REVIEW.md`。
+
+Web 特定要求：
+
+1. Web UI 项目必须定义支持的浏览器和视口矩阵，至少覆盖窄屏与桌面代表尺寸。
+2. 浏览器验收必须运行真实应用；Storybook、静态 HTML、组件快照或 build 预览不能替代真实浏览器验证。
+3. 路由、页面、共享组件、API 操作和测试映射必须反映真实 Next.js/browser 架构，不得虚构 Electron 专属层。
+4. 多个导航区域必须具有可区分的可访问名称。每个页面必须有语义明确的 main landmark 和一个页面级 H1。
+5. 表单控件必须有程序化标签；pending、success 和 failure 反馈必须使用合适的 live-region 语义。
+6. 响应式验收必须覆盖页面溢出、内容重排、键盘操作、焦点可见性、缩放和 reduced-motion。
+7. 截图必须记录路由、视口、浏览器/版本、commit 和复核日期，否则不能作为验收证据。
+8. Cursor Ask 可以作为只读辅助审查，但不能替代人工评审、真实浏览器测试、对比度测量或 CI。
+
+本次 Web 试点验证的是第二种运行时和应用架构。由于它仍使用 React，因此不能宣称已完成不同 UI 框架之间的跨技术栈验证。标准仍保持 Draft，直到完成另一种实质不同 UI 框架的试点和独立验收。

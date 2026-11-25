@@ -40,7 +40,7 @@ export function RegisterForm({ timeZone = browserTimeZone() }: { timeZone?: stri
         <TextField label="Email" value={email} onChange={setEmail} />
         <TextField label="Password" value={password} onChange={setPassword} type="password" />
         <TextField label="Nickname" value={nickname} onChange={setNickname} />
-        <CommandButton variant="primary" type="submit">
+        <CommandButton variant="primary" type="submit" disabled={phase === 'waiting'}>
           Register
         </CommandButton>
       </form>
@@ -89,7 +89,7 @@ export function CancelRegistrationForm() {
       >
         <TextField label="Email" value={email} onChange={setEmail} />
         <TextField label="Password" value={password} onChange={setPassword} type="password" />
-        <CommandButton variant="primary" type="submit">
+        <CommandButton variant="primary" type="submit" disabled={phase === 'waiting'}>
           Cancel registration
         </CommandButton>
       </form>
@@ -130,7 +130,7 @@ export function LoginForm({ initial, onOk }: { initial?: ApiBody; onOk: (path: s
       >
         <TextField label="Email" value={email} onChange={setEmail} />
         <TextField label="Password" value={password} onChange={setPassword} type="password" />
-        <CommandButton variant="primary" type="submit">
+        <CommandButton variant="primary" type="submit" disabled={phase === 'waiting'}>
           Log in
         </CommandButton>
       </form>
@@ -164,7 +164,7 @@ export function StartRecoveryForm() {
         }}
       >
         <TextField label="Email" value={email} onChange={setEmail} />
-        <CommandButton variant="primary" type="submit">
+        <CommandButton variant="primary" type="submit" disabled={phase === 'waiting'}>
           Start recovery
         </CommandButton>
       </form>
@@ -209,7 +209,7 @@ export function CompleteRecoveryForm({ onOk }: { onOk: (path: string) => void })
         <TextField label="Email" value={email} onChange={setEmail} />
         <TextField label="New password" value={password} onChange={setPassword} type="password" />
         <TextField label="Proof" value={proof} onChange={setProof} />
-        <CommandButton variant="primary" type="submit">
+        <CommandButton variant="primary" type="submit" disabled={phase === 'waiting'}>
           Complete recovery
         </CommandButton>
       </form>
@@ -267,7 +267,7 @@ function ProofForm({
             onChange={(value) => setValues((current) => ({ ...current, [label]: value }))}
           />
         ))}
-        <CommandButton variant="primary" type="submit">
+        <CommandButton variant="primary" type="submit" disabled={phase === 'waiting'}>
           {command}
         </CommandButton>
       </form>

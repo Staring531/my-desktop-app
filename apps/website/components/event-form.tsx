@@ -201,6 +201,7 @@ export function EventForm({ draft }: { draft: EventDraft }) {
         <CommandButton
           variant={creating && repetition === undefined ? 'quiet' : 'primary'}
           type="submit"
+          disabled={phase === 'waiting' || (creating && repetition === undefined)}
         >
           Save
         </CommandButton>
@@ -213,11 +214,19 @@ export function EventForm({ draft }: { draft: EventDraft }) {
         <div className="region">
           {confirming === undefined ? (
             <>
-              <CommandButton variant="quiet" onClick={() => setConfirming('event')}>
+              <CommandButton
+                variant="quiet"
+                onClick={() => setConfirming('event')}
+                disabled={phase === 'waiting'}
+              >
                 Delete event
               </CommandButton>
               {occurrence ? (
-                <CommandButton variant="quiet" onClick={() => setConfirming('occurrence')}>
+                <CommandButton
+                  variant="quiet"
+                  onClick={() => setConfirming('occurrence')}
+                  disabled={phase === 'waiting'}
+                >
                   Delete this occurrence
                 </CommandButton>
               ) : null}
@@ -234,6 +243,7 @@ export function EventForm({ draft }: { draft: EventDraft }) {
               <p>{confirming === 'occurrence' ? 'Delete this occurrence' : 'Delete the event'}</p>
               <CommandButton
                 variant="danger"
+                disabled={phase === 'waiting'}
                 onClick={() => {
                   if (confirming !== undefined) {
                     void remove(confirming);
@@ -244,6 +254,7 @@ export function EventForm({ draft }: { draft: EventDraft }) {
               </CommandButton>
               <CommandButton
                 variant="quiet"
+                disabled={phase === 'waiting'}
                 onClick={() => {
                   if (phase !== 'waiting') {
                     setConfirming(undefined);

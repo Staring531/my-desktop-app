@@ -1,8 +1,10 @@
+import { Page, UnsignedLinks } from '../components/ui';
+
 export default function HomePage() {
   return (
-    <main>
-      <h1>My Desktop App</h1>
+    <Page title="My Desktop App">
       <p>The public website scaffold is ready for product content.</p>
-    </main>
+      <UnsignedLinks />
+    </Page>
   );
 }
