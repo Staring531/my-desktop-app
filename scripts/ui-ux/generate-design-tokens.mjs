@@ -28,7 +28,7 @@ if (tokens.size === 0) throw new Error('No design tokens found');
 function cssValue(tokenName, token) {
   const value = token.value;
   if (typeof value === 'string') {
-    const reference = /^\\{([^}]+)\\}$/u.exec(value);
+    const reference = /^\{([^}]+)\}$/u.exec(value);
     if (reference) {
       const target = reference[1].replaceAll('.', '-');
       if (!tokens.has(target)) throw new Error(`Unresolved token reference: ${tokenName} -> ${target}`);
@@ -52,7 +52,7 @@ const lines = [
 ];
 for (const [name, token] of tokens) lines.push(`  --${name}: ${cssValue(name, token)};`);
 lines.push('}', '');
-const output = lines.join('\\n');
+const output = lines.join('\n');
 const check = process.argv.includes('--check');
 if (check) {
   const current = await readFile(outputPath, 'utf8').catch(() => '');
