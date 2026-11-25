@@ -1,5 +1,5 @@
 import type { JSX } from 'react';
-import traceability from '../../../../../docs/traceability/ui-traceability.json';
+import traceability from '../../../../../docs/traceability/ui-traceability.json' with { type: 'json' };
 
 type TraceRecord = {
   id: string;
@@ -19,7 +19,7 @@ type TraceRecord = {
   tests?: string[];
 };
 
-function TraceList({ title, values }: { title: string; values?: string[] }): JSX.Element | null {
+function TraceList({ title, values }: { title: string; values?: string[] | undefined }): JSX.Element | null {
   if (values === undefined || values.length === 0) return null;
   return (
     <section className="qa-trace-group">
