@@ -113,6 +113,24 @@ const cssVariableToToken = {
   '--choice-gap': 'semantic-space-choice-gap',
   '--name-gap': 'semantic-space-name-gap',
   '--motion': 'semantic-motion-feedback',
+  '--color-sidebar': 'semantic-color-sidebar',
+  '--color-sidebar-muted': 'semantic-color-sidebar-muted',
+  '--color-sidebar-active': 'semantic-color-sidebar-active',
+  '--color-accent-soft': 'semantic-color-accent-soft',
+  '--color-success': 'semantic-color-success',
+  '--color-success-wash': 'semantic-color-success-wash',
+  '--color-warning': 'semantic-color-warning',
+  '--color-warning-wash': 'semantic-color-warning-wash',
+  '--color-danger': 'semantic-color-danger',
+  '--color-danger-wash': 'semantic-color-danger-wash',
+  '--color-sidebar-outline': 'semantic-color-sidebar-outline',
+  '--shadow-card': 'semantic-elevation-card',
+  '--shadow-soft': 'semantic-elevation-soft',
+  '--radius-card': 'component-card-radius',
+  '--radius-pill': 'primitive-radius-pill',
+  '--sidebar-width': 'component-navigation-width',
+  '--card-padding': 'component-card-padding',
+  '--section-gap': 'semantic-space-section',
 };
 
 function normalize(value) {
@@ -126,17 +144,7 @@ for (const match of rootMatch.groups.body.matchAll(/--([\w-]+)\s*:\s*([^;]+);/gu
   declared.set(`--${match[1]}`, match[2].trim());
 }
 
-const agendaApproved =
-  source.meta?.visualDirection === 'agenda' &&
-  source.meta?.status === 'APPROVED' &&
-  source.meta?.tokenBaselineApproved === true;
 const failures = [];
-if (agendaApproved && resolve('semantic-color-canvas') !== '#f3f1ec') {
-  failures.push('Approved Agenda canvas is not #f3f1ec');
-}
-if (agendaApproved && resolve('semantic-color-action-primary') !== '#9a3412') {
-  failures.push('Approved Agenda accent is not #9a3412');
-}
 for (const [cssName, tokenName] of Object.entries(cssVariableToToken)) {
   if (!declared.has(cssName)) {
     failures.push(`${cssName} is missing from :root`);
@@ -281,6 +289,6 @@ if (failures.length > 0) {
   process.exitCode = 1;
 } else {
   console.log(
-    `Website stylesheet matches the approved Agenda baseline (${tokens.size} tokens, ${declared.size} custom properties).`,
+    `Website stylesheet matches the Personal Time design-token map (${tokens.size} tokens, ${declared.size} custom properties).`,
   );
 }
