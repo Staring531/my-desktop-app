@@ -90,129 +90,161 @@ export function EventForm({ draft }: { draft: EventDraft }) {
 
   if (body !== undefined && (body.result === 'logged_out' || body.result === 'not_found')) {
     return (
-      <Page title="Event" links={<EventLinks />}>
+      <Page title="Event" subtitle="This event is not available." links={<EventLinks />}>
         <Result phase="done" body={body} />
       </Page>
     );
   }
 
   return (
-    <Page title="Event" links={<EventLinks />}>
+    <Page
+      title={creating ? 'Create an event' : occurrence ? 'Edit this occurrence' : 'Edit event'}
+      subtitle={
+        creating
+          ? 'Add the details, choose when it happens, and decide who can see it.'
+          : 'Update the details of this event.'
+      }
+      links={<EventLinks />}
+    >
       <form
+        className="event-editor"
         onSubmit={(event) => {
           event.preventDefault();
           void save();
         }}
       >
-        <TextField label="Title" value={title} onChange={setTitle} />
-        <label>
-          Start date
-          <input
-            className="figures"
-            aria-label="Start date"
-            value={startDate}
-            onChange={(event) => setStartDate(event.target.value)}
+        <section className="form-card">
+          <div className="section-heading">
+            <span className="section-number">01</span>
+            <div className="section-heading-copy">
+              <h2>Event details</h2>
+              <p>Give this event a name and a little context.</p>
+            </div>
+          </div>
+          <TextField label="Title" value={title} onChange={setTitle} />
+          <div className="field-grid">
+            <TextField label="Start date" value={startDate} onChange={setStartDate} />
+            <TextField label="Start time" value={startTime} onChange={setStartTime} />
+            <TextField label="End date" value={endDate} onChange={setEndDate} />
+            <TextField label="End time" value={endTime} onChange={setEndTime} />
+          </div>
+          <TextField label="Location" value={location} onChange={setLocation} />
+          <TextField
+            label="Description"
+            value={description}
+            onChange={setDescription}
+            multiline
           />
-        </label>
-        <label>
-          Start time
-          <input
-            className="figures"
-            aria-label="Start time"
-            value={startTime}
-            onChange={(event) => setStartTime(event.target.value)}
-          />
-        </label>
-        <label>
-          End date
-          <input
-            className="figures"
-            aria-label="End date"
-            value={endDate}
-            onChange={(event) => setEndDate(event.target.value)}
-          />
-        </label>
-        <label>
-          End time
-          <input
-            className="figures"
-            aria-label="End time"
-            value={endTime}
-            onChange={(event) => setEndTime(event.target.value)}
-          />
-        </label>
-        <TextField label="Location" value={location} onChange={setLocation} />
-        <TextField label="Description" value={description} onChange={setDescription} multiline />
-        <fieldset>
-          <legend>Visibility</legend>
-          <label>
-            <input
-              type="radio"
-              name="visibility"
-              checked={visibility === 'private'}
-              onChange={() => setVisibility('private')}
-            />
-            private
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="visibility"
-              checked={visibility === 'public'}
-              onChange={() => setVisibility('public')}
-            />
-            public
-          </label>
-        </fieldset>
+          {draft.start !== '' || draft.end !== '' ? (
+            <div className="stored-times">
+              {draft.start !== '' ? <p>Current start: {draft.start}</p> : null}
+              {draft.end !== '' ? <p>Current end: {draft.end}</p> : null}
+            </div>
+          ) : null}
+        </section>
+
+        <section className="form-card">
+          <div className="section-heading">
+            <span className="section-number">02</span>
+            <div className="section-heading-copy">
+              <h2>Visibility</h2>
+              <p>Choose whether this event is public or private.</p>
+            </div>
+          </div>
+          <fieldset className="segmented-options">
+            <legend>Who can see this event?</legend>
+            <label className="segment-option">
+              <input
+                type="radio"
+                name="visibility"
+                checked={visibility === 'private'}
+                onChange={() => setVisibility('private')}
+              />
+              <span>Private</span>
+            </label>
+            <label className="segment-option">
+              <input
+                type="radio"
+                name="visibility"
+                checked={visibility === 'public'}
+                onChange={() => setVisibility('public')}
+              />
+              <span>Public</span>
+            </label>
+          </fieldset>
+        </section>
+
         {creating ? (
-          <fieldset>
-            <legend>Repetition</legend>
-            {REPETITIONS.map(([value, label]) => (
-              <label key={value}>
-                <input
-                  type="radio"
-                  name="repetition"
-                  checked={repetition === value}
-                  onChange={() => setRepetition(value)}
-                />
-                {label}
-              </label>
-            ))}
-          </fieldset>
+          <section className="form-card">
+            <div className="section-heading">
+              <span className="section-number">03</span>
+              <div className="section-heading-copy">
+                <h2>Repetition</h2>
+                <p>Keep this event on your calendar on a regular basis.</p>
+              </div>
+            </div>
+            <fieldset className="segmented-options">
+              <legend>How often should it repeat?</legend>
+              {REPETITIONS.map(([value, label]) => (
+                <label className="segment-option" key={value}>
+                  <input
+                    type="radio"
+                    name="repetition"
+                    checked={repetition === value}
+                    onChange={() => setRepetition(value)}
+                  />
+                  <span>{label}</span>
+                </label>
+              ))}
+            </fieldset>
+          </section>
         ) : null}
+
         {body?.result === 'save_rejected' && body.instants?.length === 2 ? (
-          <fieldset>
-            <legend>Returned instants</legend>
-            {body.instants.map((instant) => (
-              <label key={instant}>
-                <input
-                  type="radio"
-                  name="chosenStart"
-                  checked={chosenStart === instant}
-                  onChange={() => setChosenStart(instant)}
-                />
-                {instant}
-              </label>
-            ))}
-          </fieldset>
+          <section className="form-card">
+            <div className="section-heading">
+              <span className="section-number">!</span>
+              <div className="section-heading-copy">
+                <h2>Choose a start time</h2>
+                <p>Select one of the two times returned by the calendar.</p>
+              </div>
+            </div>
+            <fieldset className="segmented-options">
+              <legend>Available instants</legend>
+              {body.instants.map((instant) => (
+                <label className="segment-option" key={instant}>
+                  <input
+                    type="radio"
+                    name="chosenStart"
+                    checked={chosenStart === instant}
+                    onChange={() => setChosenStart(instant)}
+                  />
+                  <span>{instant}</span>
+                </label>
+              ))}
+            </fieldset>
+          </section>
         ) : null}
-        {draft.start !== '' ? <p className="meta">{draft.start}</p> : null}
-        {draft.end !== '' ? <p className="meta">{draft.end}</p> : null}
-        <CommandButton
-          variant={creating && repetition === undefined ? 'quiet' : 'primary'}
-          type="submit"
-        >
-          Save
-        </CommandButton>
+
+        <div className="event-editor-actions">
+          <CommandButton
+            variant={creating && repetition === undefined ? 'quiet' : 'primary'}
+            type="submit"
+          >
+            Save
+          </CommandButton>
+          <a className="quiet-link" href="/calendar">
+            Cancel
+          </a>
+        </div>
       </form>
-      <a className="quiet-link" href="/calendar">
-        Cancel
-      </a>
       <Result phase={phase} {...(body === undefined ? {} : { body })} />
       {creating ? null : (
-        <div className="region">
+        <section className="security-card">
+          <h2>Delete event</h2>
+          <p>Deleting an event cannot be undone.</p>
           {confirming === undefined ? (
-            <>
+            <div className="security-actions">
               <CommandButton variant="quiet" onClick={() => setConfirming('event')}>
                 Delete event
               </CommandButton>
@@ -221,7 +253,7 @@ export function EventForm({ draft }: { draft: EventDraft }) {
                   Delete this occurrence
                 </CommandButton>
               ) : null}
-            </>
+            </div>
           ) : (
             <div
               className="confirm"
@@ -231,7 +263,7 @@ export function EventForm({ draft }: { draft: EventDraft }) {
                 }
               }}
             >
-              <p>{confirming === 'occurrence' ? 'Delete this occurrence' : 'Delete the event'}</p>
+              <p>{confirming === 'occurrence' ? 'Delete this occurrence?' : 'Delete the event?'}</p>
               <CommandButton
                 variant="primary"
                 onClick={() => {
@@ -254,7 +286,7 @@ export function EventForm({ draft }: { draft: EventDraft }) {
               </CommandButton>
             </div>
           )}
-        </div>
+        </section>
       )}
     </Page>
   );
