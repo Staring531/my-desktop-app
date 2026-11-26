@@ -90,7 +90,7 @@ export function EventForm({ draft }: { draft: EventDraft }) {
 
   if (body !== undefined && (body.result === 'logged_out' || body.result === 'not_found')) {
     return (
-      <Page title="Event" subtitle="This event is not available." links={<EventLinks />}>
+      <Page title="Event" subtitle="This event is not available." links={<EventLinks active={creating} />}>
         <Result phase="done" body={body} />
       </Page>
     );
