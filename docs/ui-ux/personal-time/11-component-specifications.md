@@ -2,7 +2,7 @@
 
 - Stage: 3 — Design Tokens and Core Component System, User Approval Gate 2
 - Date: 2026-11-25
-- Status: Approved by the user on 2026-11-25 together with `10-design-tokens.md`, including the same-day revision that gives each command region its own primary button. Stage 6 on 2026-11-25 aligned this contract to the accepted Agenda painting in `05-visual-design.md`. That alignment removes citations of tokens absent from the Agenda baseline. This approval does not authorize application code.
+- Status: The component and interaction inventory remains useful. Its Agenda-specific visual painting was superseded for `apps/website` by the user's PRD-driven redesign authorization on 2026-11-26. Follow `05-visual-design.md` for the current Web visual draft; retain the behavior and accessibility contracts below unless explicitly marked as Agenda-only presentation.
 - Token source: `tokens/design-tokens.json`
 - Screens: the accepted inventory S-01 through S-09. Q-02, Q-03, and Q-04 stay open.
 - This file does not replace `docs/ui-ux/11-component-specifications.md`. Those components belong to the other product. Identifiers here use the `PT-C` prefix so the two sets stay distinct.
@@ -16,7 +16,7 @@ The page shows the API `result` and the returned fields. It does not recompute a
 
 The browser page for one task. Regions: a task title, the current surface, and a slot for PT-C09. The task title is the surface name from the accepted inventory. It is not a product title. Q-03 stays open, and the scaffold title is not shown as the product name.
 
-The column uses `component.page.content-max`. Page padding uses `component.page.padding-block`, `component.page.padding-inline`, and `component.page.padding-end`. The page background is `component.page.background` and `component.page.elevation`. Below `component.page.stack-below`, an S-07 tool row and occurrence row become one column. There is no navigation rail, command palette, theme control, or overlay layer.
+The former column specification is historical for Agenda. The current Web shell is specified in `05-visual-design.md`. The older component spec's general requirements about readable width and page padding were superseded. Page padding uses `component.page.padding-block`, `component.page.padding-inline`, and `component.page.padding-end`. The page background is `component.page.background` and `component.page.elevation`. Below `component.page.stack-below`, an S-07 tool row and occurrence row become one column. There is no navigation rail, command palette, theme control, or overlay layer.
 
 Unsigned surfaces link to the other unsigned surfaces with quiet navigation links. Signed surfaces keep Calendar as the primary task. Account and Event are secondary links back to the accepted paths. A guarded path without a usable session paints S-04, including `logged_out`, and does not show Calendar or Event fields.
 
