@@ -21,6 +21,7 @@ The intended feeling is organized, capable, and calm without looking like a plai
 | Main canvas | `#f4f6fb` |
 | Content surface | `#ffffff` |
 | Workspace navigation | `#151c34` |
+| Sidebar accent on dark surfaces | `#aaaaff` |
 | Primary text | `#172038` |
 | Secondary text | `#65708a` |
 | Primary action | `#5b5bd6` |
@@ -28,7 +29,7 @@ The intended feeling is organized, capable, and calm without looking like a plai
 | Divider | `#e5e9f2` |
 | Field border | `#d8dfeb` |
 | Success cue | `#117a65` with text label |
-| Choice-required cue | `#986900` with text label |
+| Choice-required cue | `#8f6300` with text label |
 | Destructive action | `#b93838` with explicit confirmation |
 
 System sans-serif typography is used. Page titles are 30/38, event titles 17/24, body text 15/23, metadata 12/18, and field labels 13/18. Main surfaces use generous spacing, 18px card corners, 12px control corners, 48px fields, and restrained surface shadows. Focus remains a distinct visible outline.
