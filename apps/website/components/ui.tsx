@@ -18,13 +18,7 @@ type PageProps = {
   variant?: 'workspace' | 'auth';
 };
 
-export function Page({
-  title,
-  subtitle,
-  links,
-  children,
-  variant = 'workspace',
-}: PageProps) {
+export function Page({ title, subtitle, links, children, variant = 'workspace' }: PageProps) {
   if (variant === 'auth') {
     return (
       <div className="auth-shell">
@@ -42,8 +36,8 @@ export function Page({
             <p className="eyebrow">PERSONAL TIME MANAGEMENT</p>
             <h2>Make room for what matters.</h2>
             <p>
-              Bring your plans into focus. Keep your time organized, your priorities clear,
-              and your calendar yours.
+              Bring your plans into focus. Keep your time organized, your priorities clear, and your
+              calendar yours.
             </p>
             <div className="auth-art" aria-hidden="true">
               <div className="auth-art-card">
