@@ -243,7 +243,6 @@ textarea {
   height: var(--space-inline);
   flex: 0 0 auto;
   place-items: center;
-  
 }
 
 .nav-icon svg {
