@@ -16,7 +16,7 @@ The page shows the API `result` and the returned fields. It does not recompute a
 
 The browser page for one task. Regions: a task title, the current surface, and a slot for PT-C09. The task title is the surface name from the accepted inventory. It is not a product title. Q-03 stays open, and the scaffold title is not shown as the product name.
 
-The former column specification is historical for Agenda. The current Web shell is specified in `05-visual-design.md`. The older component spec's general requirements about readable width and page padding were superseded. Page padding uses `component.page.padding-block`, `component.page.padding-inline`, and `component.page.padding-end`. The page background is `component.page.background` and `component.page.elevation`. Below `component.page.stack-below`, an S-07 tool row and occurrence row become one column. There is no navigation rail, command palette, theme control, or overlay layer.
+The former one-column Agenda specification is historical. The current Web shell, including the desktop navigation rail and its responsive collapse, is specified in `05-visual-design.md`. The component inventory still defines the page landmark, current surface, and result region; the current shell's padding, content width, and canvas are governed by the modern-workspace design tokens. No command palette, theme control, or new overlay layer is added.
 
 Unsigned surfaces link to the other unsigned surfaces with quiet navigation links. Signed surfaces keep Calendar as the primary task. Account and Event are secondary links back to the accepted paths. A guarded path without a usable session paints S-04, including `logged_out`, and does not show Calendar or Event fields.
 
