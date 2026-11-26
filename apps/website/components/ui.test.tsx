@@ -38,7 +38,6 @@ describe('shared website UI', () => {
     expect(screen.getByRole('navigation', { name: 'Account navigation' })).toBeTruthy();
   });
 
-
   it('renders signed-in pages in the workspace shell', () => {
     render(
       <Page title="My calendar" links={<CalendarLinks />}>
@@ -54,12 +53,17 @@ describe('shared website UI', () => {
 
   it('renders account entry pages in the split authentication shell', () => {
     render(
-      <Page variant="auth" title="Create your account" links={<UnsignedLinks active="/register" />}>
+      <Page
+        variant="auth"
+        title="Create your account"
+        links={<UnsignedLinks active="/register" />}
+      >
         <p>Registration form</p>
       </Page>,
     );
 
-    expect(screen.getByRole('main', { name: 'Create your account' }).closest('.auth-shell')).toBeTruthy();
+    const main = screen.getByRole('main', { name: 'Create your account' });
+    expect(main.closest('.auth-shell')).toBeTruthy();
     expect(screen.getByRole('heading', { name: 'Make room for what matters.' })).toBeTruthy();
     expect(screen.getByRole('link', { name: 'Register' }).getAttribute('aria-current')).toBe('page');
   });
