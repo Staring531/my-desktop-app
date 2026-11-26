@@ -219,7 +219,6 @@ textarea {
   margin-top: var(--tool-top);
 }
 
-
 .who {
   margin: var(--name-gap) 0 0;
   color: var(--color-text-meta);
