@@ -620,11 +620,11 @@
       },
       "padding-block": {
         "$type": "dimension",
-        "$value": "{semantic.space.inset-block}"
+        "$value": "{primitive.space.36}"
       },
       "padding-inline": {
         "$type": "dimension",
-        "$value": "{semantic.space.inset-inline}"
+        "$value": "{primitive.space.32}"
       },
       "padding-end": {
         "$type": "dimension",
