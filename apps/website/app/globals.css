@@ -64,6 +64,7 @@
   --motion: 160ms;
   --color-sidebar: #151c34;
   --color-sidebar-muted: #9ca8c5;
+  --color-sidebar-accent: #aaaaff;
   --color-sidebar-active: #293250;
   --color-accent-soft: #eef0ff;
   --color-success: #117a65;
@@ -407,7 +408,7 @@ h1 {
 }
 
 .auth-message .eyebrow {
-  color: var(--color-action);
+  color: var(--color-sidebar-accent);
 }
 
 .auth-message h2 {
