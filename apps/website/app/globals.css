@@ -369,7 +369,7 @@ h1 {
   position: absolute;
   right: -12%;
   bottom: -14%;
-  width: calc(var(--sidebar-width) * 2.2);
+  width: calc(var(--sidebar-width) + var(--sidebar-width));
   height: calc(var(--sidebar-width) * 2.2);
   border: var(--rule) solid var(--color-sidebar-outline);
   border-radius: 50%;
@@ -381,7 +381,7 @@ h1 {
   position: absolute;
   right: 2%;
   bottom: -2%;
-  width: calc(var(--sidebar-width) * 1.5);
+  width: calc(var(--sidebar-width) + var(--sidebar-width));
   height: calc(var(--sidebar-width) * 1.5);
   border: var(--rule) solid var(--color-sidebar-outline);
   border-radius: 50%;
@@ -853,7 +853,7 @@ a:focus-visible {
 
 .event-card {
   display: grid;
-  grid-template-columns: minmax(148px, 0.3fr) minmax(0, 1fr);
+  grid-template-columns: minmax(var(--facts-size), 0.3fr) minmax(0, 1fr);
   gap: var(--space-inline);
   min-width: 0;
   padding: var(--card-padding);
@@ -1335,6 +1335,15 @@ a:focus-visible {
 
   .auth-main {
     padding: var(--padding-block) var(--padding-inline) var(--padding-end);
+  }
+
+  .date-range-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .date-range-form button {
+    grid-column: 1 / -1;
+    justify-self: start;
   }
 
   .calendar-toolbar {
