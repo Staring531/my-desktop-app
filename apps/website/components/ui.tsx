@@ -238,14 +238,16 @@ export function CommandButton({
   children,
   type = 'button',
   onClick,
+  className,
 }: {
   variant: 'primary' | 'quiet';
   children: string;
   type?: 'button' | 'submit';
   onClick?: () => void;
+  className?: string;
 }) {
   return (
-    <button className={variant} type={type} onClick={onClick}>
+    <button className={className ? `${variant} ${className}` : variant} type={type} onClick={onClick}>
       {children}
     </button>
   );
