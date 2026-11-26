@@ -188,11 +188,11 @@
     "space": {
       "4": {
         "$type": "dimension",
-        "$value": "4px"
+        "$value": "6px"
       },
       "6": {
         "$type": "dimension",
-        "$value": "6px"
+        "$value": "12px"
       },
       "8": {
         "$type": "dimension",
@@ -200,19 +200,19 @@
       },
       "10": {
         "$type": "dimension",
-        "$value": "10px"
+        "$value": "14px"
       },
       "12": {
         "$type": "dimension",
-        "$value": "12px"
+        "$value": "16px"
       },
       "14": {
         "$type": "dimension",
-        "$value": "14px"
+        "$value": "18px"
       },
       "16": {
         "$type": "dimension",
-        "$value": "16px"
+        "$value": "18px"
       },
       "18": {
         "$type": "dimension",
@@ -220,7 +220,7 @@
       },
       "22": {
         "$type": "dimension",
-        "$value": "22px"
+        "$value": "24px"
       },
       "24": {
         "$type": "dimension",
@@ -228,7 +228,7 @@
       },
       "28": {
         "$type": "dimension",
-        "$value": "28px"
+        "$value": "32px"
       },
       "32": {
         "$type": "dimension",
@@ -240,7 +240,7 @@
       },
       "64": {
         "$type": "dimension",
-        "$value": "64px"
+        "$value": "80px"
       },
       "80": {
         "$type": "dimension",
@@ -284,7 +284,7 @@
     "radius": {
       "control": {
         "$type": "dimension",
-        "$value": "10px"
+        "$value": "12px"
       },
       "card": {
         "$type": "dimension",
