@@ -171,7 +171,7 @@ function AccountForm({ onOk }: { onOk: (path: string) => void }) {
               </CommandButton>
             </div>
           ) : (
-            <CommandButton variant="quiet" onClick={() => setConfirming(true)}>
+            <CommandButton variant="quiet" className="danger-quiet" onClick={() => setConfirming(true)}>
               Delete account
             </CommandButton>
           )}
