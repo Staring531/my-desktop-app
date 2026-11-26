@@ -2,7 +2,7 @@
 
 - Stage: 3 — Design Tokens and Core Component System, User Approval Gate 2
 - Date: 2026-11-25
-- Status: Approved by the user on 2026-11-25 together with `11-component-specifications.md`. Direction L was accepted the same day. This approval does not approve wireframes, high-fidelity pages, or application code.
+- Status: Approved by the user on 2026-11-25 together with `11-component-specifications.md` for Direction L. Later the same day the user approved the Agenda baseline in `10-design-tokens-agenda.md`. That file and `tokens/design-tokens.json` are the website token baseline. This file remains the Direction L record.
 - Machine-readable source: `tokens/design-tokens.json`
 - Visual direction: `09-visual-references.md`
 - Stack: `apps/website` is Next.js 15 and React 19. On 2026-11-25 it had no stylesheet, font file, icon set, or token compiler. The proposed later mapping is plain CSS custom properties. This stage installs nothing and writes no application file.

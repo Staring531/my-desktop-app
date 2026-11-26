@@ -2,11 +2,41 @@
 
 - 阶段：7 — 独立设计评审关口
 - 日期：2026-11-25
-- 状态：复审已于 2026-11-25 记录。评审本身不批准整套设计。用户于同日在 `15-handoff.md` 批准了整套设计，GAP-PT-01 仍被记录。UX-PT-REV-012 把中文 I-10 的结果句对齐到英文。本文件不授权应用代码。
-- 评审者：独立的只读 UI/UX 设计评审，于 2026-11-25 通过原生委派进行。评审者没有修改文件。
-- 文稿：`docs/ui-ux/personal-time/`。本文件不替换 `docs/ui-ux/08-design-review.md`。
+- 状态：Agenda 评审于 2026-11-25 通过原生委派只读 UI/UX 设计评审者记录。评审者没有修改文件。主设计会话处理了 UX-PT-AGENDA-001 至 UX-PT-AGENDA-009。复审发现 UX-PT-AGENDA-010。该追溯缺口已补上，后续复审没有新发现。这次评审不批准整套设计，也不授权应用代码。
+- 评审者：独立的只读 UI/UX 设计评审。没有检查运行时截图。
+- 文稿：已接受的 Agenda 绘制和 Stage 6 记录。Direction L 评审作为历史留在下面。
 - 英文文件是规范文本。
-- 这是设计文稿评审。没有检查运行时截图。
+
+## Agenda 发现
+
+| ID | 严重程度 | 需要产品决定 | 处理 |
+|---|---|---|---|
+| UX-PT-AGENDA-001 | major | 否 | 已处理。页眉安静链接在第一行，所以它们最先。线框、页面说明和交互说明里的焦点顺序跟随这个顺序。 |
+| UX-PT-AGENDA-002 | major | 否 | 已处理。在 Description 里按 Enter 插入换行，不激活 Save。线框和页面说明的中英文都写明了这一点。 |
+| UX-PT-AGENDA-003 | major | 否 | 已处理。浅底和强调条出现在 S-07 上焦点所在控件的那次出现，焦点离开后消失。它们不选中时刻，也不改变 Save 或 Delete。 |
+| UX-PT-AGENDA-004 | major | 否 | 已处理。低于 `component.page.stack-below` 时，工具行和出现行改成一列。标题和安静操作仍在同一行，与已批准页面一致。 |
+| UX-PT-AGENDA-005 | major | 否 | 已处理。`09-visual-references.md` 把 Agenda 写成已接受的方向。Direction L 的几何标记留在历史提案里，不被采用。 |
+| UX-PT-AGENDA-006 | major | 否 | 已处理。S-07 打印返回的 `start` 和 `end` 字符串。与这些时刻不同的时区时钟标签需要技术设计变更。该变更没有做。I-08、I-14、S-07 和 S-09 都不把 AC-P14 和 AC-P36 记为已经完成。 |
+| UX-PT-AGENDA-010 | major | 否 | 复审后已处理。I-08、S-07 和 S-09 上剩余的已覆盖追溯不再列出 AC-P14 或 AC-P36。它们指向同一个技术设计缺口。 |
+| UX-PT-AGENDA-007 | minor | 否 | 已处理。S-07 的组件列表写成 PT-C07 事实。 |
+| UX-PT-AGENDA-008 | minor | 否 | 已处理。`semantic.font.facts-line` 和 `component.row.facts-line` 别名到已有的 `primitive.font.line-facts`（16 像素）。PT-C07 把该行高和 `semantic.font.meta-size` 一起引用。 |
+| UX-PT-AGENDA-009 | minor | 否 | 已处理。AC-P23 仍是 GAP-PT-01，并从已覆盖的追溯里移出。 |
+
+## Agenda 证据
+
+- UX-PT-AGENDA-001。证据：草图把安静链接放在第一行，焦点列表却把它们放在字段之后。场景：从 Register 或 Own Calendar 顶部按 Tab。影响：焦点控件和可见顺序不一致。已按建议改成一种视觉顺序，页眉链接在先。
+- UX-PT-AGENDA-002。证据：只有 `06-interaction-specifications.md` 把 Description 排除在外。场景：在 Description 里按 Enter。影响：线框和页面说明会提交 Save。已把例外抄进两份说明和两种语言。
+- UX-PT-AGENDA-003。证据：已批准页面画出一行选中，但没有选择控件。场景：在 Own Calendar 里移动。影响：实现者会另造一种选择模式。已把浅底绑到该出现内部的焦点。
+- UX-PT-AGENDA-004。证据：已批准页面只把工具和行网格改成一列。说明还把安静操作移到标题下方。场景：窗口窄于 `component.page.stack-below`。已让标题和安静操作留在同一行。
+- UX-PT-AGENDA-005。证据：`09-visual-references.md` 第 1、3、7 节仍写用户选定 Direction L，并推荐几何标记。已把 Agenda 写成已接受方向，标记留在历史里。
+- UX-PT-AGENDA-006。证据：F-09 和 I-14 写 S-07 显示时钟标签，而已批准的出现对象只有绝对的 `start` 和 `end`。场景：改时区后再看同一范围。已改为打印返回字符串，并记录技术设计缺口。没有新开产品决定。
+- UX-PT-AGENDA-007。证据：页面说明写着 “PT-C07 marks” / “PT-C07 标记”。已改成事实。
+- UX-PT-AGENDA-008。证据：已批准的事实行是 12 像素 / 16 像素，`primitive.font.line-facts` 没有语义别名。已增加别名并引用。
+- UX-PT-AGENDA-009。证据：I-10 和 S-08 把 AC-P23 列为已覆盖，而 GAP-PT-01 写明选择画不出来。已把 AC-P23 标成已记录的缺口。
+
+## Direction L 历史评审
+
+下面的处理检查的是 Direction L 文稿。它们不是 Agenda 评审。
 
 ## 处理
 

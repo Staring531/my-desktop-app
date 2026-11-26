@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gate 1 proposal — Agenda</title>
+  <style>
+    :root {
+      --paper: #f3f1ec;
+      --ink: #1c1917;
+      --muted: #57534e;
+      --line: #e4e0d8;
+      --field: #fffcf7;
+      --edge: #c8c2b6;
+      --accent: #9a3412;
+      --wash: #f3e6dc;
+      --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 22px; }
+    .banner { padding: 8px 20px; background: #efeae2; color: var(--muted); font-size: 12px; line-height: 18px; }
+    .banner a { color: var(--ink); margin-right: 12px; }
+    .page { max-width: 760px; margin: 0 auto; padding: 28px 24px 64px; }
+    .top { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; flex-wrap: wrap; }
+    h1 { margin: 0; font-size: 22px; line-height: 28px; font-weight: 650; letter-spacing: -0.02em; }
+    .nav { display: flex; gap: 16px; margin: 0; }
+    .nav a, .quiet { color: var(--ink); text-decoration: none; font-size: 14px; }
+    .quiet:hover, .nav a:hover { text-decoration: underline; }
+    .tool { display: grid; grid-template-columns: 1fr 1fr auto; gap: 12px; align-items: end; margin: 22px 0 8px; }
+    label { display: block; font-size: 12px; line-height: 16px; color: var(--muted); }
+    input[type="text"] { display: block; width: 100%; height: 36px; margin-top: 4px; padding: 0 10px; border: 1px solid var(--edge); border-radius: 6px; background: var(--field); color: var(--ink); font: inherit; font-variant-numeric: tabular-nums; }
+    .primary { height: 36px; padding: 0 14px; border: 0; border-radius: 6px; background: var(--accent); color: white; font: inherit; font-weight: 600; cursor: pointer; }
+    .who { margin: 8px 0 0; color: var(--muted); font-size: 13px; }
+    .day { margin: 28px 0 0; padding-bottom: 6px; border-bottom: 1px solid var(--line); font-size: 12px; line-height: 16px; font-weight: 650; letter-spacing: 0.04em; font-variant-numeric: tabular-nums; }
+    .row { display: grid; grid-template-columns: 132px 1fr; gap: 8px 16px; padding: 14px 12px; border-bottom: 1px solid var(--line); }
+    .row.selected { background: var(--wash); box-shadow: inset 3px 0 0 var(--accent); }
+    .facts { margin: 0; color: var(--muted); font-size: 12px; line-height: 16px; }
+    .titleline { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+    h2 { margin: 0; font-size: 16px; line-height: 22px; font-weight: 650; }
+    .meta { margin: 4px 0 0; color: var(--muted); font-size: 12px; line-height: 18px; font-variant-numeric: tabular-nums; }
+    .body { margin: 4px 0 0; white-space: pre-wrap; }
+    .choice { display: block; margin-top: 6px; font-variant-numeric: tabular-nums; }
+    button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    @media (max-width: 640px) {
+      .tool, .row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <p class="banner">已批准 · Agenda · 令牌基线已批准 · 网站样式尚未改。
+    <a href="gate1-editorial.html">Editorial</a><a href="index.html">目录</a>
+  </p>
+  <main class="page">
+    <header class="top">
+      <h1>Own Calendar</h1>
+      <p class="nav"><a href="#">New event</a><a href="#">Account</a></p>
+    </header>
+    <form class="tool">
+      <label>From<input type="text" value="2026-06-01" readonly></label>
+      <label>To<input type="text" value="2026-06-30" readonly></label>
+      <button class="primary" type="button">Show range</button>
+    </form>
+    <p class="who">Ada</p>
+    <section>
+      <h2 class="day">2026-06-02</h2>
+      <article class="row selected">
+        <p class="facts">private<br>scheduled</p>
+        <div>
+          <div class="titleline"><h2>Studio</h2><a class="quiet" href="#">Event</a></div>
+          <p class="meta">2026-06-02T14:00:00.000Z<br>2026-06-02T15:00:00.000Z</p>
+          <p class="body">Home</p>
+          <p class="body">Bring the score.
+Leave by four.</p>
+          <p class="meta">Ada</p>
+        </div>
+      </article>
+      <h2 class="day">2026-06-04</h2>
+      <article class="row">
+        <p class="facts">public<br>scheduled</p>
+        <div>
+          <div class="titleline">
+            <h2>Rehearsal</h2>
+            <span><a class="quiet" href="#">Series</a> · <a class="quiet" href="#">This occurrence</a></span>
+          </div>
+          <p class="meta">2026-06-04T18:00:00.000Z<br>2026-06-04T19:30:00.000Z</p>
+          <p class="meta">Ada</p>
+        </div>
+      </article>
+      <h2 class="day">2026-06-08</h2>
+      <article class="row">
+        <p class="facts">skipped</p>
+        <div>
+          <div class="titleline"><h2>Old note</h2></div>
+          <p class="meta">Ada</p>
+        </div>
+      </article>
+      <h2 class="day">2026-11-01</h2>
+      <article class="row">
+        <p class="facts">choice_required</p>
+        <div>
+          <div class="titleline"><h2>Doubled hour</h2></div>
+          <p class="meta">2026-11-01</p>
+          <label class="choice"><input type="radio" name="choice-a"> 2026-11-01T05:00:00.000Z</label>
+          <label class="choice"><input type="radio" name="choice-a"> 2026-11-01T06:00:00.000Z</label>
+          <p class="meta"><button class="quiet" type="button">Submit choice</button></p>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

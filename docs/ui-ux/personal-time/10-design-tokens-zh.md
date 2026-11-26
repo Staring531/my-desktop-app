@@ -2,7 +2,7 @@
 
 - 阶段：3 — 设计令牌与核心组件，用户批准关口 2
 - 日期：2026-11-25
-- 状态：用户于 2026-11-25 与 `11-component-specifications.md` 一起批准。Direction L 于同日接受。这次批准不批准线框、高保真页面或应用代码。
+- 状态：用户于 2026-11-25 与 `11-component-specifications.md` 一起批准了 Direction L。同日晚些时候，用户批准了 `10-design-tokens-agenda.md` 中的 Agenda 基线。该文件和 `tokens/design-tokens.json` 是网站令牌基线。本文件保留 Direction L 的记录。
 - 机器可读来源：`tokens/design-tokens.json`
 - 视觉方向：`09-visual-references.md`
 - 技术栈：`apps/website` 是 Next.js 15 和 React 19。2026-11-25 检查时没有样式表、字体文件、图标集或令牌编译器。以后建议的映射是普通 CSS 自定义属性。本阶段不安装依赖，也不写应用文件。

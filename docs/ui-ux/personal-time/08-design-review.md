@@ -2,10 +2,40 @@
 
 - Stage: 7 — Independent Design Review Gate
 - Date: 2026-11-25
-- Status: Re-review recorded on 2026-11-25. The review itself does not approve the package. The user approved the package the same day in `15-handoff.md`, with GAP-PT-01 still tracked. UX-PT-REV-012 aligned the Chinese I-10 result line to the English sentence. This file does not authorize application code.
-- Reviewer: independent read-only UI/UX design reviewer, native delegation on 2026-11-25. The reviewer did not edit files.
-- Package: `docs/ui-ux/personal-time/`. This file does not replace `docs/ui-ux/08-design-review.md`.
-- This is design-artifact review. Runtime screenshots were not checked.
+- Status: Agenda review recorded on 2026-11-25 by native delegation of the read-only UI/UX design reviewer. The reviewer did not edit files. The primary designer resolved UX-PT-AGENDA-001 through UX-PT-AGENDA-009. Re-review found UX-PT-AGENDA-010. That trace gap was closed, and the follow-up re-review returned no findings. This review does not approve the package and does not authorize application code.
+- Reviewer: independent read-only UI/UX design reviewer. Runtime screenshots were not checked.
+- Package: the accepted Agenda painting and the Stage 6 record. The Direction L review remains below as history.
+
+## Agenda findings
+
+| ID | Severity | Product decision | Disposition |
+|---|---|---|---|
+| UX-PT-AGENDA-001 | major | no | Resolved. Header quiet links are first because they share the first visual line. Focus lists in the wireframes, page specs, and interaction spec follow that order. |
+| UX-PT-AGENDA-002 | major | no | Resolved. Enter in Description inserts a newline and does not activate Save. The wireframes and page specs now say so, in both languages. |
+| UX-PT-AGENDA-003 | major | no | Resolved. The wash and bar appear on the S-07 occurrence whose control contains focus, and they leave when focus leaves. They do not select an instant or change Save or Delete. |
+| UX-PT-AGENDA-004 | major | no | Resolved. Below `component.page.stack-below`, the tool row and the occurrence row become one column. The title and the quiet action stay on one line, matching the approved page. |
+| UX-PT-AGENDA-005 | major | no | Resolved. `09-visual-references.md` names Agenda as the accepted direction. Direction L's geometric marks stay in the historical proposal and are not adopted. |
+| UX-PT-AGENDA-006 | major | no | Resolved. S-07 prints the returned `start` and `end` strings. A timezone clock label distinct from those instants needs a Technical Design change. That change is not made. AC-P14 and AC-P36 are not claimed as completed on I-08, I-14, S-07, or S-09. |
+| UX-PT-AGENDA-010 | major | no | Resolved on re-review. The remaining covered traces on I-08, S-07, and S-09 no longer list AC-P14 or AC-P36. They point at the same Technical Design gap. |
+| UX-PT-AGENDA-007 | minor | no | Resolved. The S-07 component list says PT-C07 facts / 事实. |
+| UX-PT-AGENDA-008 | minor | no | Resolved. `semantic.font.facts-line` and `component.row.facts-line` alias the existing `primitive.font.line-facts` (16 px). PT-C07 cites that line with `semantic.font.meta-size`. |
+| UX-PT-AGENDA-009 | minor | no | Resolved. AC-P23 stays GAP-PT-01 and is removed from the covered traces. |
+
+## Agenda evidence
+
+- UX-PT-AGENDA-001. Evidence: the sketches put quiet links on the first line, while the focus lists put them after the fields. Scenario: Tab from the top of Register or Own Calendar. Impact: the focused control and the visible order disagreed. Recommendation applied: one visual order, header links first.
+- UX-PT-AGENDA-002. Evidence: only `06-interaction-specifications.md` exempted Description. Scenario: Enter inside Description. Impact: the wireframe and page spec would submit Save. Recommendation applied: copy the exception into both specs and both languages.
+- UX-PT-AGENDA-003. Evidence: the approved page paints one selected row and names no selection control. Scenario: moving through Own Calendar. Impact: an implementer would invent a selection mode. Recommendation applied: bind the wash to focus inside that occurrence.
+- UX-PT-AGENDA-004. Evidence: the approved page only changes the tool and row grids to one column. The specs also moved the quiet action under the title. Scenario: a window narrower than `component.page.stack-below`. Recommendation applied: keep the title and quiet action on one line.
+- UX-PT-AGENDA-005. Evidence: sections 1, 3, and 7 of `09-visual-references.md` still said the user chose Direction L and recommended geometric marks. Recommendation applied: Agenda is the accepted direction; the marks remain historical.
+- UX-PT-AGENDA-006. Evidence: F-09 and I-14 said S-07 shows clock labels, while the approved occurrence object has absolute `start` and `end` only. Scenario: a timezone change, then the same range. Recommendation applied: print the returned strings and record the Technical Design gap. No product decision was opened.
+- UX-PT-AGENDA-007. Evidence: the page spec listed "PT-C07 marks" / "PT-C07 标记". Recommendation applied: Facts / 事实.
+- UX-PT-AGENDA-008. Evidence: the approved facts line is 12 px / 16 px, and `primitive.font.line-facts` had no semantic alias. Recommendation applied: alias and cite it.
+- UX-PT-AGENDA-009. Evidence: I-10 and S-08 listed AC-P23 as covered while GAP-PT-01 says the choice cannot be painted. Recommendation applied: mark AC-P23 as the tracked gap.
+
+## Historical Direction L review
+
+The dispositions below examined the Direction L package. They are not the Agenda review.
 
 ## Disposition
 

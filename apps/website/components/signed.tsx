@@ -5,7 +5,7 @@ import { sendJson, type ApiBody } from '../lib/api';
 import { LoginForm } from './auth-forms';
 import { CalendarForm } from './calendar-form';
 import { EventForm, type EventDraft } from './event-form';
-import { CommandButton, Page, Result, SignedLinks, TextField } from './ui';
+import { AccountLinks, CommandButton, Page, Result, TextField } from './ui';
 
 export function useSession(): 'checking' | 'in' | 'out' {
   const [session, setSession] = useState<'checking' | 'in' | 'out'>('checking');
@@ -30,7 +30,7 @@ export function Guarded({
   }
   if (session === 'checking') {
     return (
-      <Page title="Log in">
+      <Page title="Log in" links={null}>
         <p className="waiting">waiting</p>
       </Page>
     );
@@ -75,7 +75,7 @@ function AccountForm({ onOk }: { onOk: (path: string) => void }) {
   }
 
   return (
-    <Page title="Account">
+    <Page title="Account" links={<AccountLinks />}>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -115,7 +115,7 @@ function AccountForm({ onOk }: { onOk: (path: string) => void }) {
         >
           <p>Delete the account</p>
           <CommandButton
-            variant="danger"
+            variant="primary"
             onClick={() => void run('/api/account', 'DELETE', undefined, true)}
           >
             Delete
@@ -137,7 +137,6 @@ function AccountForm({ onOk }: { onOk: (path: string) => void }) {
         </CommandButton>
       )}
       <Result phase={phase} {...(body === undefined ? {} : { body })} />
-      <SignedLinks />
     </Page>
   );
 }

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { sendJson, type ApiBody } from '../lib/api';
-import { CommandButton, Page, Result, SignedLinks, TextField } from './ui';
+import { CommandButton, EventLinks, Page, Result, TextField } from './ui';
 
 export type EventDraft = {
   id?: string;
@@ -90,14 +90,14 @@ export function EventForm({ draft }: { draft: EventDraft }) {
 
   if (body !== undefined && (body.result === 'logged_out' || body.result === 'not_found')) {
     return (
-      <Page title="Event">
+      <Page title="Event" links={<EventLinks />}>
         <Result phase="done" body={body} />
       </Page>
     );
   }
 
   return (
-    <Page title="Event">
+    <Page title="Event" links={<EventLinks />}>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -233,7 +233,7 @@ export function EventForm({ draft }: { draft: EventDraft }) {
             >
               <p>{confirming === 'occurrence' ? 'Delete this occurrence' : 'Delete the event'}</p>
               <CommandButton
-                variant="danger"
+                variant="primary"
                 onClick={() => {
                   if (confirming !== undefined) {
                     void remove(confirming);
@@ -256,7 +256,6 @@ export function EventForm({ draft }: { draft: EventDraft }) {
           )}
         </div>
       )}
-      <SignedLinks />
     </Page>
   );
 }

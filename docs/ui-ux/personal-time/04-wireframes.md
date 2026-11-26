@@ -2,9 +2,9 @@
 
 - Stage: 4 — Wireframes and Page Specifications
 - Date: 2026-11-25
-- Status: Accepted by the user on 2026-11-25. These sketches are the low-fidelity structure. This acceptance does not approve the Stage 5 painting and does not authorize application code.
+- Status: Agenda revision accepted by the user on 2026-11-25. It replaces the Direction L sketches as the accepted low-fidelity structure. The Stage 5 painting was accepted the same day in `05-visual-design.md`. These acceptances do not authorize application code.
 - Why this stage is low-fidelity: `docs/process/UI_UX_DESIGN.md` Stage 4 settles regions, hierarchy, controls, focus, and states. Stage 5 then applies the approved tokens and components to every state. The user started Stage 4 on 2026-11-25 and asked why this stage is not high-fidelity. That question does not change this stage.
-- Approved inputs: S-01 through S-09 and the paths in `01-information-architecture.md`; flows in `02-user-flows.md`; Direction L; tokens and PT-C01 through PT-C10, approved 2026-11-25.
+- Approved inputs: S-01 through S-09 and the paths in `01-information-architecture.md`; flows in `02-user-flows.md`; the approved Agenda page and `tokens/design-tokens.json`. PT-C01 through PT-C10 still name the controls. Their painting follows the Agenda baseline.
 - Page contracts: `12-page-specifications.md`.
 - Q-02, Q-03, and Q-04 stay open. No sketch names a product title, draws the mail message, or fills the first `from` and `to`.
 - The text sketches are the editable source. No image is the source of truth.
@@ -13,21 +13,19 @@
 
 ## Shared page
 
-Every surface uses PT-C01. The task column is `component.page.content-max` inside `component.page.inset`. A narrower viewport keeps this same vertical stack and scrolls. Row actions move under the row text. Nothing becomes a navigation rail, a second column, a month grid, or a theme control.
+Every surface uses one column, `component.page.content-max` wide, with the Agenda page padding. The task title and the quiet links share the header line. A viewport below `component.page.stack-below` stacks a tool row and an occurrence row into one column and scrolls. Nothing becomes a navigation rail, a month grid, or a theme control.
 
 ```text
 +--------------------------------------------------+
-| Task title                                       |
-| Quiet links to the other accepted destinations   |
-|--------------------------------------------------|
+| Task title              Quiet links              |
 | Command region                                   |
 | PT-C09 result of the last command on this page   |
 +--------------------------------------------------+
 ```
 
-The task title is the surface name from the accepted inventory. The scaffold title is not drawn. Unsigned surfaces link to the other unsigned surfaces. Signed surfaces use the links in each sketch below.
+The task title is the surface name from the accepted inventory. S-07 uses Own Calendar, as on the approved Agenda page. The scaffold title is not drawn. Unsigned surfaces link to the other unsigned surfaces. Signed surfaces use the links in each sketch below. Fields stay a vertical stack. S-07 is the exception: From, To, and Show range share one tool row.
 
-Focus starts at the first field or, when a surface has no field, at its primary button. Tab follows the visual order. Enter in a field activates the primary button of that field's region. Escape closes a revealed PT-C10 and sends nothing, only while that step has no command in flight.
+Focus starts at the first control in visual order. Header quiet links share the first line with the task title, so they come before the fields and the command button. Tab follows that order. Enter in a single-line field activates the primary button of that field's region. Enter in Description inserts a newline and does not activate Save. Escape closes a revealed PT-C10 and sends nothing, only while that step has no command in flight.
 
 ## S-01 Register
 
@@ -50,7 +48,7 @@ Nickname
 Result line
 ```
 
-No timezone field is drawn. The command still sends the browser IANA name. Focus: Username, Email, Password, Nickname, Register, then the quiet links. `ok` stays on this sketch and does not open the Calendar. `registration_rejected`, `send_failed`, `operation_failed`, and `save_rejected` stay here. The typed values remain. The result does not say which value was taken.
+No timezone field is drawn. The command still sends the browser IANA name. Focus: the quiet links, then Username, Email, Password, Nickname, Register. `ok` stays on this sketch and does not open the Calendar. `registration_rejected`, `send_failed`, `operation_failed`, and `save_rejected` stay here. The typed values remain. The result does not say which value was taken.
 
 ## S-02 Verify
 
@@ -67,7 +65,7 @@ Proof
 Result line
 ```
 
-Focus: Proof, Verify, then the quiet links. `ok` leaves this sketch for S-04 and does not open S-07. `verification_rejected` stays here. While the command is in flight, the result line shows `waiting`.
+Focus: the quiet links, then Proof, Verify. `ok` leaves this sketch for S-04 and does not open S-07. `verification_rejected` stays here. While the command is in flight, the result line shows `waiting`.
 
 ## S-03 Cancel registration
 
@@ -86,7 +84,7 @@ Password
 Result line
 ```
 
-Focus: Email, Password, Cancel registration, then the quiet links. `ok` and `cancellation_rejected` stay on this sketch. No verified-account deletion is drawn.
+Focus: the quiet links, then Email, Password, Cancel registration. `ok` and `cancellation_rejected` stay on this sketch. No verified-account deletion is drawn.
 
 ## S-04 Log in
 
@@ -105,7 +103,7 @@ Password
 Result line
 ```
 
-Focus: Email, Password, Log in, then the quiet links. `ok` leaves this sketch for S-07. `login_rejected` stays here. The result line is the same component used on S-05 for that same string.
+Focus: the quiet links, then Email, Password, Log in. `ok` leaves this sketch for S-07. `login_rejected` stays here. The result line is the same component used on S-05 for that same string.
 
 Opening `/calendar`, `/events/new`, `/events/:id`, or `/account` without a usable session draws this sketch and the result `logged_out`. It does not draw Calendar rows or Event fields. This stage adds no second logged-out destination.
 
@@ -124,7 +122,7 @@ Email
 Result line
 ```
 
-Focus: Email, Start recovery, then the quiet links. The result is `login_rejected` or `send_failed` or `operation_failed`. The `login_rejected` line matches S-04. The sketch has no sentence that a proof was sent.
+Focus: the quiet links, then Email, Start recovery. The result is `login_rejected` or `send_failed` or `operation_failed`. The `login_rejected` line matches S-04. The sketch has no sentence that a proof was sent.
 
 ## S-06 Complete recovery
 
@@ -145,55 +143,47 @@ Proof
 Result line
 ```
 
-Focus: Email, New password, Proof, Complete recovery, then the quiet links. `ok` leaves this sketch for S-04 and does not open S-07. `recovery_rejected` stays here. No session control is drawn. While the command is in flight, the result line shows `waiting`.
+Focus: the quiet links, then Email, New password, Proof, Complete recovery. `ok` leaves this sketch for S-04 and does not open S-07. `recovery_rejected` stays here. No session control is drawn. While the command is in flight, the result line shows `waiting`.
 
 ## S-07 Own Calendar
 
 Actor: the verified owner in this session. Path: `/calendar`. Flows F-06 and F-09.
 
 ```text
-Calendar
-New event    Account
+Own Calendar                         New event    Account
 
-From
-[________________________]
-To
-[________________________]
-[Show range]
+From [______________]  To [______________]  [Show range]
 Display name from the body
 
-scheduled row
-(o) private    scheduled
-Title
-start    end
-location
-description
-display name
-[Event]
+returned date
+visibility        Title                              [Event]
+state             start
+                  end
+                  location
+                  description
+                  display name
 
-series occurrence row
-(o) public    scheduled
-Title
-start    end
-[Series]    [This occurrence]
+returned date
+visibility        Title                    [Series] [This occurrence]
+state             start
+                  end
+                  display name
 
-skipped row
-- skipped
-Title
-display name
+returned date
+skipped           Title
+                  display name
 
-choice row
-.. choice_required
-Title
-Civil date from the body, not editable
-( ) first returned instant
-( ) second returned instant
-[Submit choice]
+returned date
+choice_required   Title
+                  civil date from the body, not editable
+                  ( ) first returned instant
+                  ( ) second returned instant
+                  [Submit choice]
 
 Result line
 ```
 
-`From` and `To` are empty. Q-04 stays open, so the sketch draws no initial dates and no rows until a range returns. Show range does not send while either date is empty. Focus: From, To, Show range, then the rows from top to bottom, then New event and Account.
+`From` and `To` are empty. Q-04 stays open, so the sketch draws no initial dates and no rows until a range returns. Show range does not send while either date is empty. Below `component.page.stack-below` the tool row and each occurrence row become one column. The title and the quiet action stay on one line. Focus: New event, Account, From, To, Show range, then the rows from top to bottom. The wash and bar appear on the occurrence whose control contains focus, and they leave when focus leaves that occurrence.
 
 A `scheduled` row shows start and end only for that state. Its Event control opens `/events/:id`. A series row adds This occurrence, which opens the occurrence state of that same path and carries the returned start. A skipped row has no cancelled mark and no delete control. A choice row lists only the two returned instants, with neither selected. Submit choice stays quiet and does not send until one of those instants is selected. The civil date shown is the date from that returned occurrence.
 
@@ -260,7 +250,7 @@ Visibility choice showing the stored value
 Result line
 ```
 
-Focus follows the fields, then the choice groups, then Save, Cancel, and a delete control when that control exists. On create, no repetition option is selected. Private is selected. Save stays quiet and does not send until one repetition option is selected. The non-repeating option sends `none`. Cancel returns to S-07 and sends nothing. Start and End are a civil date and a clock, typed together. Save on an existing Event does not send a kind. Save on one occurrence sends the detach command with the returned original start. Series returns to the edit sketch on `/events/:id` and sends nothing by itself.
+Focus: Calendar, Account, then the fields, the choice groups, Save, Cancel, and a delete control when that control exists. Enter in Description inserts a newline and does not activate Save. On create, no repetition option is selected. Private is selected. Save stays quiet and does not send until one repetition option is selected. The non-repeating option sends `none`. Cancel returns to S-07 and sends nothing. Start and End are a civil date and a clock, typed together. Save on an existing Event does not send a kind. Save on one occurrence sends the detach command with the returned original start. Series returns to the edit sketch on `/events/:id` and sends nothing by itself.
 
 A delete control reveals PT-C10 in the stack. It does not open another destination.
 
@@ -295,7 +285,7 @@ Result line
 [Delete account]
 ```
 
-Focus: Nickname, Save nickname, Timezone, Save timezone, Log out, Delete account, Calendar. Enter in Nickname activates Save nickname. Enter in Timezone activates Save timezone. No email field is drawn.
+Focus: Calendar, Nickname, Save nickname, Timezone, Save timezone, Log out, Delete account. Enter in Nickname activates Save nickname. Enter in Timezone activates Save timezone. No email field is drawn.
 
 Delete account uses the same PT-C10 pattern as S-08:
 

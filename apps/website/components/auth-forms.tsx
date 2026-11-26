@@ -29,7 +29,7 @@ export function RegisterForm({ timeZone = browserTimeZone() }: { timeZone?: stri
   }
 
   return (
-    <Page title="Register">
+    <Page title="Register" links={<UnsignedLinks />}>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -45,7 +45,6 @@ export function RegisterForm({ timeZone = browserTimeZone() }: { timeZone?: stri
         </CommandButton>
       </form>
       <Result phase={phase} {...(body === undefined ? {} : { body })} />
-      <UnsignedLinks />
     </Page>
   );
 }
@@ -80,7 +79,7 @@ export function CancelRegistrationForm() {
   }
 
   return (
-    <Page title="Cancel registration">
+    <Page title="Cancel registration" links={<UnsignedLinks />}>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -94,7 +93,6 @@ export function CancelRegistrationForm() {
         </CommandButton>
       </form>
       <Result phase={phase} {...(body === undefined ? {} : { body })} />
-      <UnsignedLinks />
     </Page>
   );
 }
@@ -121,7 +119,7 @@ export function LoginForm({ initial, onOk }: { initial?: ApiBody; onOk: (path: s
   }
 
   return (
-    <Page title="Log in">
+    <Page title="Log in" links={<UnsignedLinks />}>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -135,7 +133,6 @@ export function LoginForm({ initial, onOk }: { initial?: ApiBody; onOk: (path: s
         </CommandButton>
       </form>
       <Result phase={phase} {...(body === undefined ? {} : { body })} />
-      <UnsignedLinks />
     </Page>
   );
 }
@@ -156,7 +153,7 @@ export function StartRecoveryForm() {
   }
 
   return (
-    <Page title="Start recovery">
+    <Page title="Start recovery" links={<UnsignedLinks />}>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -169,7 +166,6 @@ export function StartRecoveryForm() {
         </CommandButton>
       </form>
       <Result phase={phase} {...(body === undefined ? {} : { body })} />
-      <UnsignedLinks />
     </Page>
   );
 }
@@ -199,7 +195,7 @@ export function CompleteRecoveryForm({ onOk }: { onOk: (path: string) => void })
   }
 
   return (
-    <Page title="Complete recovery">
+    <Page title="Complete recovery" links={<UnsignedLinks />}>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -214,7 +210,6 @@ export function CompleteRecoveryForm({ onOk }: { onOk: (path: string) => void })
         </CommandButton>
       </form>
       <Result phase={phase} {...(body === undefined ? {} : { body })} />
-      <UnsignedLinks />
     </Page>
   );
 }
@@ -252,7 +247,7 @@ function ProofForm({
   }
 
   return (
-    <Page title={title}>
+    <Page title={title} links={<UnsignedLinks />}>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -272,7 +267,6 @@ function ProofForm({
         </CommandButton>
       </form>
       <Result phase={phase} {...(body === undefined ? {} : { body })} />
-      <UnsignedLinks />
     </Page>
   );
 }

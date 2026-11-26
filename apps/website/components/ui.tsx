@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 import type { ApiBody } from '../lib/api';
-import { isFailure } from '../lib/api';
 
 const UNSIGNED = [
   ['/register', 'Register'],
@@ -11,10 +10,21 @@ const UNSIGNED = [
   ['/recovery/complete', 'Complete recovery'],
 ] as const;
 
-export function Page({ title, children }: { title: string; children: ReactNode }) {
+export function Page({
+  title,
+  links,
+  children,
+}: {
+  title: string;
+  links?: ReactNode;
+  children: ReactNode;
+}) {
   return (
     <main className="column">
-      <h1>{title}</h1>
+      <header className="top">
+        <h1>{title}</h1>
+        {links}
+      </header>
       {children}
     </main>
   );
@@ -32,7 +42,20 @@ export function UnsignedLinks() {
   );
 }
 
-export function SignedLinks() {
+export function CalendarLinks() {
+  return (
+    <nav className="links">
+      <a className="quiet-link" href="/events/new">
+        New event
+      </a>
+      <a className="quiet-link" href="/account">
+        Account
+      </a>
+    </nav>
+  );
+}
+
+export function EventLinks() {
   return (
     <nav className="links">
       <a className="quiet-link" href="/calendar">
@@ -41,8 +64,15 @@ export function SignedLinks() {
       <a className="quiet-link" href="/account">
         Account
       </a>
-      <a className="quiet-link" href="/events/new">
-        New event
+    </nav>
+  );
+}
+
+export function AccountLinks() {
+  return (
+    <nav className="links">
+      <a className="quiet-link" href="/calendar">
+        Calendar
       </a>
     </nav>
   );
@@ -79,7 +109,7 @@ export function CommandButton({
   type = 'button',
   onClick,
 }: {
-  variant: 'primary' | 'quiet' | 'danger';
+  variant: 'primary' | 'quiet';
   children: string;
   type?: 'button' | 'submit';
   onClick?: () => void;
@@ -99,7 +129,7 @@ export function Result({ phase, body }: { phase: 'idle' | 'waiting' | 'done'; bo
     return null;
   }
   return (
-    <div className={isFailure(body.result) ? 'result failure' : 'result'} role="alert">
+    <div className="result" role="alert">
       <p>{body.result}</p>
       {body.monthTypes?.map((month) => (
         <p key={month}>{month}</p>

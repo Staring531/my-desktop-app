@@ -16,8 +16,9 @@
     "format:check": "prettier --check .",
     "ui-ux:tokens:check": "node scripts/ui-ux/generate-design-tokens.mjs --check",
     "ui-ux:tokens:build": "node scripts/ui-ux/generate-design-tokens.mjs",
+    "ui-ux:website-tokens:check": "node scripts/ui-ux/validate-website-tokens.mjs",
     "ui-ux:traceability:check": "node scripts/ui-ux/validate-traceability.mjs",
-    "ui-ux:check": "pnpm ui-ux:tokens:check && pnpm ui-ux:traceability:check"
+    "ui-ux:check": "pnpm ui-ux:tokens:check && pnpm ui-ux:website-tokens:check && pnpm ui-ux:traceability:check"
   },
   "devDependencies": {
     "prettier": "^3.5.3",

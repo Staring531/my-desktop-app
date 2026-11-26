@@ -2,7 +2,7 @@
 
 - Stage: 2 — Visual Direction, User Approval Gate 1
 - Date: 2026-11-25
-- Status: Direction L accepted by the user on 2026-11-25. Directions P and C are not selected. This acceptance does not approve token values, components, wireframes, or application code.
+- Status: Direction L was accepted on 2026-11-25, and Directions P and C were not selected. Later the same day the user approved Agenda and Editorial, then named Agenda as the website token source. The user approved that extraction on 2026-11-25. `tokens/design-tokens.json` is the Agenda baseline. The website stylesheet still implements the previous baseline.
 - Structural baseline: accepted by the user on 2026-11-25 in `01-information-architecture.md`, `02-user-flows.md`, and `03-screen-inventory.md`.
 - This file does not replace `docs/ui-ux/09-visual-references.md`. Direction L accepted there on 2026-11-20 belongs to `docs/product/04-prd.md`. It does not select a direction for this product, and its tokens are not reused.
 - This session did not fetch or store screenshots. No Linear asset is embedded or copied.
@@ -10,7 +10,7 @@
 
 ## 1. What this gate decides
 
-The user chose Direction L on 2026-11-25. That choice authorizes a later token and component proposal. It does not approve those values.
+The accepted website direction is Agenda. The user approved that openable page on 2026-11-25 and named it the token source. Editorial remains an approved page and is not the token source. Direction L was accepted earlier the same day under workflow 2.0.0 and is no longer the visual authority. Directions P and C were not selected. Agenda uses words for visibility and state. It does not adopt Direction L's geometric marks.
 
 All three directions are light-surface only. None adds a theme preference, a dark theme, a command palette, or a destination outside S-01 through S-09.
 
@@ -44,7 +44,9 @@ Characteristics avoided in every direction:
 
 ## 3. Direction L — Quiet instrument
 
-Recommendation: choose this one. It is Linear-inspired and is not a Linear clone.
+Historical proposal. It is not the accepted direction. Its geometric marks are not adopted.
+
+Historical recommendation, superseded by the Agenda page. It was Linear-inspired and was not a Linear clone.
 
 | Topic | Direction |
 |---|---|
@@ -54,7 +56,7 @@ Recommendation: choose this one. It is Linear-inspired and is not a Linear clone
 | Surfaces | Light neutral field. Separation by space and hairline rules. Little or no shadow. |
 | Color strategy | Neutral text and surfaces. One accent for the primary action and the selected row only. Visibility, occurrence state, conflicts, and failures also use words. |
 | Typography | One sans family. Titles, row or field text, and meta text are three roles. No display type. Exact faces and sizes wait for Stage 3. |
-| Iconography | A small set of simple marks for public, private, skipped, and choice required, each with the word from the API state. No illustrative icons. |
+| Iconography | Historical proposal: a small set of simple marks for public, private, skipped, and choice required, each with the word from the API state. The accepted Agenda page does not adopt those marks. |
 | Motion | Almost none. A result appears in place. No entrance choreography. |
 | Fit | S-07 and the conflict list on S-08 benefit. The unsigned forms stay quiet and do not become a separate marketing system. |
 
@@ -96,4 +98,6 @@ Recommendation: choose this one. It is Linear-inspired and is not a Linear clone
 
 ## 7. Decision requested
 
-The user chose Direction L on 2026-11-25. Directions P and C are not selected. Token values were approved separately on 2026-11-25 in `10-design-tokens.md` and `tokens/design-tokens.json`. This file does not approve them.
+The accepted direction is Agenda. The user approved that page on 2026-11-25 under workflow 2.1.0, named it the token source, and approved the extraction the same day. The token record is `10-design-tokens-agenda.md` and `tokens/design-tokens.json`. Editorial remains an approved page. Direction L, Direction P, and Direction C are not the current direction. Direction L's geometric marks are not adopted. The website stylesheet still implements the previous baseline.
+
+Earlier on 2026-11-25 the user chose Direction L, and Directions P and C were not selected. That choice is the history above. The token values then recorded in `10-design-tokens.md` are the previous baseline.

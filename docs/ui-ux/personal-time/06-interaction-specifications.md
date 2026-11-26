@@ -2,7 +2,7 @@
 
 - Stage: 5 — High-Fidelity Visual Design and Interaction Specifications
 - Date: 2026-11-25
-- Status: Included in the UI package approved by the user on 2026-11-25, together with `05-visual-design.md`. These contracts add no business rule. This approval does not authorize application code. The handoff is `15-handoff.md`.
+- Status: Agenda revision accepted by the user on 2026-11-25 with `05-visual-design.md`. Stage 6 aligned the confirming Delete face to the primary button. These contracts add no business rule. This acceptance does not authorize application code. The waiting text uses `semantic.color.text-meta`.
 - Visuals: `05-visual-design.md`. Pages: `12-page-specifications.md`. Sketches: `04-wireframes.md`.
 - A command shows its `result` in PT-C09 on the page that sent it. The visible failure wording is the `result` string. The button label stays the same while the command is in flight.
 - Q-02, Q-03, and Q-04 stay open.
@@ -11,11 +11,11 @@
 
 ## 1. Shared command behavior
 
-The page sends one command from a region, then waits. While that command is in flight, the issuing button keeps its label and ignores further click, Enter, and Space. PT-C09 shows `waiting` in secondary text. That word is not an API result. There is no spinner. Cancel and Escape are available only before the command is sent. After it is sent, the page waits for the result.
+The page sends one command from a region, then waits. While that command is in flight, the issuing button keeps its label and ignores further click, Enter, and Space. PT-C09 shows `waiting` in `semantic.color.text-meta`. That word is not an API result. There is no spinner. Cancel and Escape are available only before the command is sent. After it is sent, the page waits for the result.
 
 A rejection leaves stored rows unchanged and leaves the typed values in place. No field border changes on a shared failure. On a page that stays, `ok` is shown as the string `ok` and the page redraws from the returned body. No second success sentence is added. PT-C09 is an alert when it shows a `result`. The word `waiting` is not that alert.
 
-Tab moves in visual order. A focused button activates on Enter and Space. A focused quiet link activates on Enter. Enter in a single-line field activates the primary button of that field's region. Enter in Description inserts a newline and does not activate Save. This is the one refinement of the Stage 4 rule that Enter in every field activates the region primary. A multiline description would otherwise be unable to contain a line break.
+Tab moves in visual order. Header quiet links share the first line with the task title, so Tab reaches them before the fields. A focused button activates on Enter and Space. A focused quiet link activates on Enter. Enter in a single-line field activates the primary button of that field's region. Enter in Description inserts a newline and does not activate Save. This is the one refinement of the Stage 4 rule that Enter in every field activates the region primary. A multiline description would otherwise be unable to contain a line break. On S-07, the selected wash and bar appear on the occurrence whose control contains focus. They leave when focus leaves that occurrence. The wash does not select an instant, and it does not change Save or Delete. A conflict row does not use the wash.
 
 Escape closes a revealed PT-C10 and sends nothing, only while that step has no command in flight. Revealing PT-C10 moves focus to its Delete button, then Tab reaches its Cancel button.
 
@@ -97,7 +97,7 @@ Show range and Submit choice use the quiet face and do not send until their requ
 - Before send: neither instant is selected, and Submit choice does not send.
 - Result: the page paints the returned body. Another instant is not offered.
 - Must not send: a third instant, or an instant computed from the timezone control.
-- Trace: AC-P14, AC-P27, AC-P36, AC-P38.
+- Trace: AC-P27, AC-P38. AC-P14 and AC-P36 are not completed here. S-07 prints the returned `start` and `end`. A distinct clock label needs the Technical Design change recorded on I-14.
 
 ### I-09 Open an Event
 
@@ -116,7 +116,7 @@ Show range and Submit choice use the quiet face and do not send until their requ
 - Result: `ok` stays on S-08, shows the string `ok`, and paints `conflicts` and, when true, `continuesAfterWindow`. `save_rejected` stays here. A monthly rejection paints the returned `monthTypes` and `missingDates`. A doubled entered time paints a choice only when the body includes the instants. The next save may include one of those instants.
 - Cancel: Cancel returns to S-07 and sends nothing.
 - Must not send: a repetition change, a third instant, or a delete.
-- Trace: AC-P04, AC-P05, AC-P06, AC-P07, AC-P08, AC-P09, AC-P12, AC-P13, AC-P15, AC-P19, AC-P20, AC-P23, AC-P30, AC-P31, AC-P32, AC-P35, AC-P37, AC-P40.
+- Trace: AC-P04, AC-P05, AC-P06, AC-P07, AC-P08, AC-P09, AC-P12, AC-P13, AC-P15, AC-P19, AC-P20, AC-P30, AC-P31, AC-P32, AC-P35, AC-P37, AC-P40. AC-P23 is GAP-PT-01. This interaction paints a choice only when the returned body already includes the two instants.
 
 ### I-11 Change one occurrence
 
@@ -151,9 +151,9 @@ Show range and Submit choice use the quiet face and do not send until their requ
 - Intent: store a new IANA name, or leave the current name in place.
 - Actor: the owner. Flow F-09. Screen S-09.
 - Input: the typed IANA name. The command is `PATCH /api/account/timezone`.
-- Result: `save_rejected` stays on S-09 and writes nothing. A committed change stays on S-09. The page does not recompute clock labels.
+- Result: `save_rejected` stays on S-09 and writes nothing. A committed change stays on S-09. S-07 prints the returned `start` and `end` strings from the next Calendar body. The page does not format a separate clock label from those instants. A timezone clock label distinct from the returned `start` and `end` needs a Technical Design change. This specification does not make that change.
 - Must not send: a session length.
-- Trace: AC-P14, AC-P36.
+- Trace: AC-P14 and AC-P36 are not completed by printing the returned instants. The Calendar body has absolute `start` and `end` when `scheduled`, and no clock-label field.
 
 ### I-15 Log out
 
@@ -169,7 +169,7 @@ Show range and Submit choice use the quiet face and do not send until their requ
 - Intent: retire the account after confirmation, or leave it intact.
 - Actor: the owner. Flow F-11. Screen S-09.
 - Before send: the quiet control reveals PT-C10 and sends nothing. Cancel sends nothing.
-- Input: `DELETE /api/account` only from the danger button.
+- Input: `DELETE /api/account` only from the primary Delete button inside PT-C10.
 - Result: a committed deletion paints S-04 and does not offer a partial delete. A deletion that does not commit stays on S-09 with the account fields.
 - Trace: AC-P16.
 

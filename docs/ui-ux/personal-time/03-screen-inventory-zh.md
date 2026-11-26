@@ -16,9 +16,9 @@
 | S-04 | 登录 | 没有可用会话的人 | `/login` | S-07，或 S-04 不变 | 提交邮箱和密码 | 就绪、`ok`、`login_rejected`、`logged_out` | F-04。AC-P01、AC-P25、AC-P34 |
 | S-05 | 开始找回 | 用户 | `/recovery` | 共用的开始结果。不说明证明已发送 | 提交邮箱 | 就绪、`login_rejected`、`send_failed`、`operation_failed` | F-05。AC-P26、AC-P39 |
 | S-06 | 完成找回 | 持有找回证明的人 | `/recovery/complete` | `ok` 时打开 S-04，并且不打开 S-07。`recovery_rejected` 时什么都不改变 | 提交邮箱、新密码和证明 | 就绪、`ok`、`recovery_rejected` | F-05。AC-P26 |
-| S-07 | 自己的日历 | 当前会话中的已验证所有者 | 登录后的 `/calendar`，或从 S-08、S-09 返回 | S-08、S-09，或 `logged_out` | 显示一段 `from`/`to` 正文、可见性、跳过的日期和需要的选择 | 所有者正文、空范围、`choice_required`、`skipped`、`logged_out`、没有日历和事件 | F-06、F-09。AC-P03、AC-P07、AC-P14、AC-P18、AC-P27、AC-P34、AC-P36、AC-P38 |
-| S-08 | 事件 | 所有者 | 从 S-07 进入 `/events/new` 或 `/events/:id` | 从可见的 `ok` 经 Calendar 回到 S-07，或取消后回到 S-07。`ok` 在那次返回之前留在 S-08。保存或删除没有提交时，原来的事件仍在 | 创建或编辑、分离单次出现、删除单次出现，或删除事件 | 未改、编辑中、确认删除、带 `conflicts` 且可选 `continuesAfterWindow` 的 `ok`、可选带预览的 `save_rejected`、`not_found`、`account_gone`、`logged_out` | F-07、F-08。AC-P04 至 AC-P13、AC-P15、AC-P19 至 AC-P23、AC-P28 至 AC-P32、AC-P35、AC-P37、AC-P40 |
-| S-09 | 账户 | 所有者 | 从 S-07 或 S-08 进入 `/account` | 昵称或时区有结果后回到 S-07。退出或删除已提交后进入无需会话的页面 | 修改昵称、修改时区、退出、删除账户 | 就绪、昵称已存储或已清除、`save_rejected`、确认删除、已删除、`logged_out` | F-04、F-09、F-10、F-11。AC-P14、AC-P16、AC-P33、AC-P36、AC-P39 |
+| S-07 | 自己的日历 | 当前会话中的已验证所有者 | 登录后的 `/calendar`，或从 S-08、S-09 返回 | S-08、S-09，或 `logged_out` | 显示一段 `from`/`to` 正文、可见性、跳过的日期和需要的选择 | 所有者正文、空范围、`choice_required`、`skipped`、`logged_out`、没有日历和事件 | F-06、F-09。AC-P03、AC-P07、AC-P18、AC-P27、AC-P34、AC-P38。打印返回的时刻不能完成 AC-P14 和 AC-P36 |
+| S-08 | 事件 | 所有者 | 从 S-07 进入 `/events/new` 或 `/events/:id` | 从可见的 `ok` 经 Calendar 回到 S-07，或取消后回到 S-07。`ok` 在那次返回之前留在 S-08。保存或删除没有提交时，原来的事件仍在 | 创建或编辑、分离单次出现、删除单次出现，或删除事件 | 未改、编辑中、确认删除、带 `conflicts` 且可选 `continuesAfterWindow` 的 `ok`、可选带预览的 `save_rejected`、`not_found`、`account_gone`、`logged_out` | F-07、F-08。AC-P04 至 AC-P13、AC-P15、AC-P19 至 AC-P22、AC-P28 至 AC-P32、AC-P35、AC-P37、AC-P40。AC-P23 是 GAP-PT-01 |
+| S-09 | 账户 | 所有者 | 从 S-07 或 S-08 进入 `/account` | 昵称或时区有结果后回到 S-07。退出或删除已提交后进入无需会话的页面 | 修改昵称、修改时区、退出、删除账户 | 就绪、昵称已存储或已清除、`save_rejected`、确认删除、已删除、`logged_out` | F-04、F-09、F-10、F-11。AC-P16、AC-P33、AC-P39。AC-P14 和 AC-P36 需要日历正文没有返回的时钟标签 |
 
 S-07 的生成选择和 S-08 的单次出现动作是这些界面的状态，不是额外屏幕。
 

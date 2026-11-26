@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gate 1 proposal — Editorial</title>
+  <style>
+    :root {
+      --paper: #f7f1e8;
+      --ink: #1a1612;
+      --muted: #5e564c;
+      --line: #ddd4c6;
+      --serif: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 24px; }
+    .banner { padding: 8px 24px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 12px; line-height: 18px; }
+    .banner a { color: var(--ink); margin-right: 12px; }
+    .page { max-width: 680px; margin: 0 auto; padding: 48px 28px 80px; }
+    h1 { margin: 0; font-family: var(--serif); font-size: 56px; line-height: 60px; font-weight: 500; letter-spacing: -0.03em; }
+    .nav { display: flex; gap: 20px; margin: 16px 0 0; }
+    a, button.quiet { color: var(--ink); background: none; border: 0; padding: 0; font: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+    .rule { margin: 28px 0; border: 0; border-top: 1px solid var(--line); }
+    .tool { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 32px; }
+    label span { display: block; margin-bottom: 6px; font-size: 11px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    input[type="text"] { width: 100%; border: 0; border-bottom: 1px solid var(--ink); padding: 6px 0 8px; background: transparent; color: var(--ink); font: inherit; font-variant-numeric: tabular-nums; }
+    .go { grid-column: 1 / -1; }
+    .plain { border-bottom: 2px solid var(--ink); padding-bottom: 2px; font-family: var(--serif); font-size: 22px; line-height: 28px; text-decoration: none; background: none; cursor: pointer; }
+    .who { margin: 18px 0 0; color: var(--muted); font-size: 14px; }
+    article { padding: 8px 0 28px; border-bottom: 1px solid var(--line); }
+    article.selected { padding-left: 16px; box-shadow: inset 3px 0 0 var(--ink); }
+    .kicker { margin: 0 0 6px; color: var(--muted); font-size: 12px; line-height: 16px; letter-spacing: 0.06em; text-transform: uppercase; }
+    h2 { margin: 0; font-family: var(--serif); font-size: 32px; line-height: 38px; font-weight: 500; letter-spacing: -0.02em; }
+    .meta { margin: 10px 0 0; color: var(--muted); font-size: 14px; line-height: 22px; font-variant-numeric: tabular-nums; }
+    .body { margin: 10px 0 0; font-family: var(--serif); font-size: 18px; line-height: 28px; white-space: pre-wrap; }
+    .actions { display: flex; gap: 16px; margin-top: 14px; }
+    .choice { display: block; margin-top: 8px; font-variant-numeric: tabular-nums; }
+    button:focus-visible, a:focus-visible, input:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
+    @media (max-width: 640px) {
+      h1 { font-size: 40px; line-height: 44px; }
+      .tool { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <p class="banner">已批准 · Editorial · 不是网站令牌来源。令牌来源是 Agenda。
+    <a href="gate1-agenda.html">Agenda</a><a href="index.html">目录</a>
+  </p>
+  <main class="page">
+    <header>
+      <h1>Own Calendar</h1>
+      <p class="nav"><a href="#">New event</a><a href="#">Account</a></p>
+    </header>
+    <hr class="rule">
+    <form class="tool">
+      <label><span>From</span><input type="text" value="2026-06-01" readonly></label>
+      <label><span>To</span><input type="text" value="2026-06-30" readonly></label>
+      <p class="go"><button class="plain" type="button">Show range</button></p>
+    </form>
+    <p class="who">Ada</p>
+    <hr class="rule">
+    <article class="selected">
+      <p class="kicker">private · scheduled · 2026-06-02</p>
+      <h2>Studio</h2>
+      <p class="meta">2026-06-02T14:00:00.000Z<br>2026-06-02T15:00:00.000Z</p>
+      <p class="body">Home
+Bring the score.
+Leave by four.</p>
+      <p class="meta">Ada</p>
+      <p class="actions"><a href="#">Event</a></p>
+    </article>
+    <article>
+      <p class="kicker">public · scheduled · 2026-06-04</p>
+      <h2>Rehearsal</h2>
+      <p class="meta">2026-06-04T18:00:00.000Z<br>2026-06-04T19:30:00.000Z</p>
+      <p class="meta">Ada</p>
+      <p class="actions"><a href="#">Series</a><a href="#">This occurrence</a></p>
+    </article>
+    <article>
+      <p class="kicker">skipped</p>
+      <h2>Old note</h2>
+      <p class="meta">Ada</p>
+    </article>
+    <article>
+      <p class="kicker">choice_required · 2026-11-01</p>
+      <h2>Doubled hour</h2>
+      <label class="choice"><input type="radio" name="choice-e"> 2026-11-01T05:00:00.000Z</label>
+      <label class="choice"><input type="radio" name="choice-e"> 2026-11-01T06:00:00.000Z</label>
+      <p class="actions"><button class="quiet" type="button">Submit choice</button></p>
+    </article>
+  </main>
+</body>
+</html>

@@ -2,9 +2,9 @@
 
 - 阶段：4 — 线框与页面说明
 - 日期：2026-11-25
-- 状态：用户于 2026-11-25 接受。这些草图是低保真结构。这次接受不批准 Stage 5 的上色，也不授权应用代码。
+- 状态：用户于 2026-11-25 接受 Agenda 修订。它取代 Direction L 草图，成为已接受的低保真结构。Stage 5 的绘制于同日在 `05-visual-design.md` 被接受。这些接受不授权应用代码。
 - 本阶段为什么是低保真：`docs/process/UI_UX_DESIGN.md` 的 Stage 4 先确定区域、层次、控件、焦点和状态。Stage 5 再把已批准的令牌和组件用到每一种状态上。用户于 2026-11-25 开始 Stage 4，并询问为什么这一阶段不是高保真。该问题不改变这一阶段。
-- 已批准的输入：`01-information-architecture.md` 中的 S-01 至 S-09 和路径；`02-user-flows.md` 中的流程；Direction L；2026-11-25 批准的令牌和 PT-C01 至 PT-C10。
+- 已批准的输入：`01-information-architecture.md` 中的 S-01 至 S-09 和路径；`02-user-flows.md` 中的流程；已批准的 Agenda 页面和 `tokens/design-tokens.json`。PT-C01 至 PT-C10 仍是控件名称。它们的绘制跟随 Agenda 基线。
 - 页面合同：`12-page-specifications.md`。
 - Q-02、Q-03 和 Q-04 仍开放。没有草图命名产品标题、绘制邮件，或填入第一次的 `from` 和 `to`。
 - 文字草图是可编辑的来源。图片不是依据。
@@ -14,21 +14,19 @@
 
 ## 共用页面
 
-每个表面使用 PT-C01。任务列是 `component.page.inset` 内的 `component.page.content-max`。更窄的视口保持这同一条纵向堆叠并滚动。行内动作移到行文字下方。不会变成导航轨、第二列、月网格或主题控件。
+每个表面使用一列，宽度是 `component.page.content-max`，内边距用 Agenda 页面的内边距。任务标题和安静链接在同一行。低于 `component.page.stack-below` 时，工具行和出现行改成一列并滚动。不会变成导航轨、月网格或主题控件。
 
 ```text
 +--------------------------------------------------+
-| 任务标题                                         |
-| 通往其他已接受目的地的安静链接                   |
-|--------------------------------------------------|
+| 任务标题                    安静链接             |
 | 命令区域                                         |
 | 本页上一条命令的 PT-C09 结果                     |
 +--------------------------------------------------+
 ```
 
-任务标题是已接受清单里的表面名称。脚手架标题不画出。未登录表面链接到其他未登录表面。已登录表面使用下面各草图中的链接。
+任务标题是已接受清单里的表面名称。S-07 使用 Own Calendar，与已批准的 Agenda 页面一致。脚手架标题不画出。未登录表面链接到其他未登录表面。已登录表面使用下面各草图中的链接。字段保持纵向堆叠。S-07 是例外：From、To 和 Show range 共用一行工具。
 
-焦点从第一个字段开始；表面没有字段时，从它的主要按钮开始。Tab 按视觉顺序移动。在字段里按 Enter，激活该字段所属区域的主要按钮。只有当确认步骤没有命令在途时，Escape 才关闭已展示的 PT-C10 并且不发送。
+焦点从视觉顺序上的第一个控件开始。页眉上的安静链接和任务标题在第一行，所以它们在字段和命令按钮之前。Tab 按这个顺序移动。在单行字段里按 Enter，激活该字段所属区域的主要按钮。在 Description 里按 Enter 插入换行，不激活 Save。只有当确认步骤没有命令在途时，Escape 才关闭已展示的 PT-C10 并且不发送。
 
 ## S-01 注册
 
@@ -51,7 +49,7 @@ Nickname
 Result line
 ```
 
-不画时区字段。命令仍然发送浏览器的 IANA 名称。焦点：Username、Email、Password、Nickname、Register，然后是安静链接。`ok` 留在这张草图上，不打开日历。`registration_rejected`、`send_failed`、`operation_failed` 和 `save_rejected` 留在这里。已输入的值保留。结果不说明哪个值被占用。
+不画时区字段。命令仍然发送浏览器的 IANA 名称。焦点：安静链接，然后是 Username、Email、Password、Nickname、Register。`ok` 留在这张草图上，不打开日历。`registration_rejected`、`send_failed`、`operation_failed` 和 `save_rejected` 留在这里。已输入的值保留。结果不说明哪个值被占用。
 
 ## S-02 验证
 
@@ -68,7 +66,7 @@ Proof
 Result line
 ```
 
-焦点：Proof、Verify，然后是安静链接。`ok` 离开这张草图，进入 S-04，并且不打开 S-07。`verification_rejected` 留在这里。命令在途时，结果行显示 `waiting`。
+焦点：安静链接，然后是 Proof、Verify。`ok` 离开这张草图，进入 S-04，并且不打开 S-07。`verification_rejected` 留在这里。命令在途时，结果行显示 `waiting`。
 
 ## S-03 取消注册
 
@@ -87,7 +85,7 @@ Password
 Result line
 ```
 
-焦点：Email、Password、Cancel registration，然后是安静链接。`ok` 和 `cancellation_rejected` 留在这张草图上。不画已验证账户的删除。
+焦点：安静链接，然后是 Email、Password、Cancel registration。`ok` 和 `cancellation_rejected` 留在这张草图上。不画已验证账户的删除。
 
 ## S-04 登录
 
@@ -106,7 +104,7 @@ Password
 Result line
 ```
 
-焦点：Email、Password、Log in，然后是安静链接。`ok` 离开这张草图，进入 S-07。`login_rejected` 留在这里。结果行与 S-05 上同一个字符串使用同一个组件。
+焦点：安静链接，然后是 Email、Password、Log in。`ok` 离开这张草图，进入 S-07。`login_rejected` 留在这里。结果行与 S-05 上同一个字符串使用同一个组件。
 
 没有可用会话时打开 `/calendar`、`/events/new`、`/events/:id` 或 `/account`，画出这张草图和结果 `logged_out`。不画日历行或事件字段。本阶段不增加第二个已登出目的地。
 
@@ -125,7 +123,7 @@ Email
 Result line
 ```
 
-焦点：Email、Start recovery，然后是安静链接。结果是 `login_rejected`、`send_failed` 或 `operation_failed`。`login_rejected` 这一行与 S-04 相同。草图里没有“证明已发出”这样的句子。
+焦点：安静链接，然后是 Email、Start recovery。结果是 `login_rejected`、`send_failed` 或 `operation_failed`。`login_rejected` 这一行与 S-04 相同。草图里没有“证明已发出”这样的句子。
 
 ## S-06 完成找回
 
@@ -146,55 +144,47 @@ Proof
 Result line
 ```
 
-焦点：Email、New password、Proof、Complete recovery，然后是安静链接。`ok` 离开这张草图，进入 S-04，并且不打开 S-07。`recovery_rejected` 留在这里。不画会话控件。命令在途时，结果行显示 `waiting`。
+焦点：安静链接，然后是 Email、New password、Proof、Complete recovery。`ok` 离开这张草图，进入 S-04，并且不打开 S-07。`recovery_rejected` 留在这里。不画会话控件。命令在途时，结果行显示 `waiting`。
 
 ## S-07 自己的日历
 
 行动者：本会话中已验证的所有者。路径：`/calendar`。流程 F-06 和 F-09。
 
 ```text
-Calendar
-New event    Account
+Own Calendar                         New event    Account
 
-From
-[________________________]
-To
-[________________________]
-[Show range]
+From [______________]  To [______________]  [Show range]
 Display name from the body
 
-scheduled row
-(o) private    scheduled
-Title
-start    end
-location
-description
-display name
-[Event]
+returned date
+visibility        Title                              [Event]
+state             start
+                  end
+                  location
+                  description
+                  display name
 
-series occurrence row
-(o) public    scheduled
-Title
-start    end
-[Series]    [This occurrence]
+returned date
+visibility        Title                    [Series] [This occurrence]
+state             start
+                  end
+                  display name
 
-skipped row
-- skipped
-Title
-display name
+returned date
+skipped           Title
+                  display name
 
-choice row
-.. choice_required
-Title
-Civil date from the body, not editable
-( ) first returned instant
-( ) second returned instant
-[Submit choice]
+returned date
+choice_required   Title
+                  civil date from the body, not editable
+                  ( ) first returned instant
+                  ( ) second returned instant
+                  [Submit choice]
 
 Result line
 ```
 
-`From` 和 `To` 是空的。Q-04 仍开放，因此在范围返回之前，草图不画初始日期，也不画行。任一日期为空时，Show range 不发送。焦点：From、To、Show range，然后从上到下的各行，然后是 New event 和 Account。
+`From` 和 `To` 是空的。Q-04 仍开放，因此在范围返回之前，草图不画初始日期，也不画行。任一日期为空时，Show range 不发送。低于 `component.page.stack-below` 时，工具行和每次出现改成一列。标题和安静操作仍在同一行。焦点：New event、Account、From、To、Show range，然后从上到下的各行。浅底和强调条出现在焦点所在的那次出现上，焦点离开后消失。
 
 `scheduled` 行只在该状态显示开始和结束。它的 Event 控件打开 `/events/:id`。系列行增加 This occurrence，打开同一路径的单次出现状态，并带上返回的开始时刻。跳过的行没有已取消标记，也没有删除控件。选择行列出返回的两个时刻，都不预选。在选中其中一个时刻之前，Submit choice 保持安静并且不发送。显示的公历日是该返回出现上的日期。
 
@@ -261,7 +251,7 @@ Visibility choice showing the stored value
 Result line
 ```
 
-焦点经过字段，然后是选择组，然后是 Save、Cancel，以及存在时的删除控件。创建时没有预选的重复类型。私密是选中的。在选中一种重复之前，Save 保持安静并且不发送。不重复选项发送 `none`。Cancel 回到 S-07 并且不发送。Start 和 End 是一起键入的公历日和时钟。已有事件的 Save 不发送类型。一次出现的 Save 发送分离命令和返回的原始开始时刻。Series 回到 `/events/:id` 上的编辑草图，它本身不发送。
+焦点：Calendar、Account，然后是字段、选择组、Save、Cancel，以及存在时的删除控件。在 Description 里按 Enter 插入换行，不激活 Save。创建时没有预选的重复类型。私密是选中的。在选中一种重复之前，Save 保持安静并且不发送。不重复选项发送 `none`。Cancel 回到 S-07 并且不发送。Start 和 End 是一起键入的公历日和时钟。已有事件的 Save 不发送类型。一次出现的 Save 发送分离命令和返回的原始开始时刻。Series 回到 `/events/:id` 上的编辑草图，它本身不发送。
 
 删除控件在堆叠中展示 PT-C10。它不打开另一个目的地。
 
@@ -296,7 +286,7 @@ Result line
 [Delete account]
 ```
 
-焦点：Nickname、Save nickname、Timezone、Save timezone、Log out、Delete account、Calendar。在 Nickname 里按 Enter 激活 Save nickname。在 Timezone 里按 Enter 激活 Save timezone。不画邮箱字段。
+焦点：Calendar、Nickname、Save nickname、Timezone、Save timezone、Log out、Delete account。在 Nickname 里按 Enter 激活 Save nickname。在 Timezone 里按 Enter 激活 Save timezone。不画邮箱字段。
 
 Delete account 使用与 S-08 相同的 PT-C10：
 

@@ -129,7 +129,7 @@ flowchart TD
 
 并非每个月都存在的月日期返回带 `monthTypes` 和 `missingDates` 的 `save_rejected`。页面显示这些字段，不另做一份预览。正文这样标明时，系列保存显示 `continuesAfterWindow`。那句话不是冲突。`conflicts` 只显示标题、开始和结束。没有重叠时保存仍然成功；标志为真时，系列仍显示继续句。警告不阻止保存。页面不显示邮箱。
 
-追溯：BR-P5、BR-P6、BR-P7、BR-P8、BR-P10、BR-P11。AC-P04、AC-P05、AC-P06、AC-P07、AC-P08、AC-P09、AC-P12、AC-P13、AC-P15、AC-P19、AC-P20、AC-P23、AC-P30、AC-P31、AC-P32、AC-P35、AC-P37、AC-P40。AC-P35 是本页发出的那次保存的正文。哪一次保存最后完成，由 API 的结果决定。
+追溯：BR-P5、BR-P6、BR-P7、BR-P8、BR-P10、BR-P11。AC-P04、AC-P05、AC-P06、AC-P07、AC-P08、AC-P09、AC-P12、AC-P13、AC-P15、AC-P19、AC-P20、AC-P30、AC-P31、AC-P32、AC-P35、AC-P37、AC-P40。AC-P23 是 GAP-PT-01。AC-P35 是本页发出的那次保存的正文。哪一次保存最后完成，由 API 的结果决定。
 
 ## F-08 修改单次出现或系列
 
@@ -153,11 +153,11 @@ flowchart TD
 - 进入：修改时区时为 S-09；返回的出现是 `choice_required` 或 `skipped` 时为 S-07。
 - 退出：API 提交时区及其冻结，或者什么都不写。选择写入 `chosen_instant`，或者让它保持空。
 
-S-09 把一个 IANA 名称发送到 `PATCH /api/account/timezone`。无法解析的名称是 `save_rejected`，并且不写入。页面不重新计算时钟标签。S-07 显示下一次日历正文里的标签。
+S-09 把一个 IANA 名称发送到 `PATCH /api/account/timezone`。无法解析的名称是 `save_rejected`，并且不写入。S-07 在下一次日历正文里打印返回的 `start` 和 `end` 字符串。页面不从这些时刻另排一个时钟标签。与返回的 `start` 和 `end` 不同的时区时钟标签需要技术设计变更。本流程不做这个变更。
 
 生成的开始不存在、结束不存在，或间隔跨过缺失的当地小时，显示为 `skipped`。生成的双起点显示为 `choice_required`，并带上返回的两个时刻。提交其中一个，就是把该公历日和该时刻发送到 `POST /api/events/:id/choices`。其他时刻不写入。选择之前，页面没有一段可当作冲突的已排程间隔。API 把选定的出现包含进来之后，S-07 显示返回的正文。
 
-追溯：BR-P11。AC-P14、AC-P27、AC-P36、AC-P38。手输时间的 AC-P15 和 AC-P23 属于 F-07。
+追溯：BR-P11。AC-P27、AC-P38。AC-P14 和 AC-P36 需要日历正文没有返回的时钟标签。手输时间的 AC-P15 属于 F-07。AC-P23 是 GAP-PT-01。
 
 ## F-10 昵称
 

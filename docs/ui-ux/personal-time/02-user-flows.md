@@ -129,7 +129,7 @@ An entered local time that does not exist is not stored. An entered local time t
 
 A monthly date that does not exist in every month returns `save_rejected` with `monthTypes` and `missingDates`. The page shows those fields and does not build another preview. A series save shows `continuesAfterWindow` when the body says so. That sentence is not a conflict. `conflicts` shows title, start, and end only. No overlap still succeeds, and a series still shows the continuation sentence when the flag is true. The warning does not block the save. The page shows no email.
 
-Trace: BR-P5, BR-P6, BR-P7, BR-P8, BR-P10, BR-P11. AC-P04, AC-P05, AC-P06, AC-P07, AC-P08, AC-P09, AC-P12, AC-P13, AC-P15, AC-P19, AC-P20, AC-P23, AC-P30, AC-P31, AC-P32, AC-P35, AC-P37, AC-P40. AC-P35 is the body of the save this page submitted. Which save finished last is the API's result.
+Trace: BR-P5, BR-P6, BR-P7, BR-P8, BR-P10, BR-P11. AC-P04, AC-P05, AC-P06, AC-P07, AC-P08, AC-P09, AC-P12, AC-P13, AC-P15, AC-P19, AC-P20, AC-P30, AC-P31, AC-P32, AC-P35, AC-P37, AC-P40. AC-P23 is GAP-PT-01. AC-P35 is the body of the save this page submitted. Which save finished last is the API's result.
 
 ## F-08 Change one occurrence or the series
 
@@ -153,11 +153,11 @@ Trace: BR-P5, BR-P8, BR-P9. AC-P10, AC-P11, AC-P21, AC-P22, AC-P28, AC-P29, AC-P
 - Entry: S-09 for a timezone change, or S-07 when a returned occurrence is `choice_required` or `skipped`.
 - Exit: the API commits the timezone and its freezes, or writes nothing. A choice sets `chosen_instant`, or leaves it null.
 
-S-09 sends one IANA name to `PATCH /api/account/timezone`. An unresolved name is `save_rejected` and writes nothing. The page does not recompute clock labels. S-07 shows the labels in the next Calendar body.
+S-09 sends one IANA name to `PATCH /api/account/timezone`. An unresolved name is `save_rejected` and writes nothing. S-07 prints the returned `start` and `end` strings in the next Calendar body. The page does not format a separate clock label from those instants. A timezone clock label distinct from the returned `start` and `end` needs a Technical Design change. This flow does not make that change.
 
 A generated missing start, missing end, or gap across a missing hour is shown as `skipped`. A generated doubled start is shown as `choice_required` with the two returned instants. Submitting one of them sends that civil date and that instant to `POST /api/events/:id/choices`. Any other instant writes nothing. Before the choice, the page has no scheduled interval to treat as a conflict. After the API includes the chosen occurrence, S-07 shows that returned body.
 
-Trace: BR-P11. AC-P14, AC-P27, AC-P36, AC-P38. AC-P15 and AC-P23 for an entered time are F-07.
+Trace: BR-P11. AC-P27, AC-P38. AC-P14 and AC-P36 need a clock label the Calendar body does not return. AC-P15 for an entered time is F-07. AC-P23 is GAP-PT-01.
 
 ## F-10 Nickname
 

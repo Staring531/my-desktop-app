@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { sendJson, type ApiBody, type Occurrence } from '../lib/api';
-import { CommandButton, Page, Result, SignedLinks, TextField } from './ui';
+import { CommandButton, Page, Result, CalendarLinks, TextField } from './ui';
 
 export function CalendarForm() {
   const [from, setFrom] = useState('');
@@ -35,9 +35,13 @@ export function CalendarForm() {
     setPhase('done');
   }
 
+  const ready = from !== '' && to !== '';
+  const occurrences = body?.occurrences ?? [];
+
   return (
-    <Page title="Own Calendar">
+    <Page title="Own Calendar" links={<CalendarLinks />}>
       <form
+        className="tool"
         onSubmit={(event) => {
           event.preventDefault();
           void showRange();
@@ -45,23 +49,27 @@ export function CalendarForm() {
       >
         <TextField label="From" value={from} onChange={setFrom} />
         <TextField label="To" value={to} onChange={setTo} />
-        <CommandButton variant="primary" type="submit">
+        <CommandButton variant={ready ? 'primary' : 'quiet'} type="submit">
           Show range
         </CommandButton>
       </form>
-      {body?.occurrences?.map((occurrence) => (
-        <OccurrenceRow
-          key={`${occurrence.id}-${occurrence.date}`}
-          occurrence={occurrence}
-          selected={selected[choiceKey(occurrence)]}
-          onSelect={(instant) =>
-            setSelected((current) => ({ ...current, [choiceKey(occurrence)]: instant }))
-          }
-          onChoose={() => void choose(occurrence)}
-        />
+      {groups(occurrences).map((group) => (
+        <section key={group.date}>
+          <h2 className="day">{group.date}</h2>
+          {group.items.map((occurrence) => (
+            <OccurrenceRow
+              key={`${occurrence.id}-${occurrence.date}`}
+              occurrence={occurrence}
+              selected={selected[choiceKey(occurrence)]}
+              onSelect={(instant) =>
+                setSelected((current) => ({ ...current, [choiceKey(occurrence)]: instant }))
+              }
+              onChoose={() => void choose(occurrence)}
+            />
+          ))}
+        </section>
       ))}
       <Result phase={phase} {...(body === undefined ? {} : { body })} />
-      <SignedLinks />
     </Page>
   );
 }
@@ -77,67 +85,77 @@ function OccurrenceRow({
   onSelect: (instant: string) => void;
   onChoose: () => void;
 }) {
-  const series = occurrence.originalStart !== undefined || occurrence.state !== 'scheduled';
+  const series = occurrence.state === 'scheduled' && occurrence.originalStart !== undefined;
   const chosen = selected !== undefined && occurrence.instants?.includes(selected) === true;
   return (
-    <article className="row">
-      <p>
-        <span className={`mark ${occurrence.visibility}`} />
-        {occurrence.visibility}
+    <article className="occurrence">
+      <p className="facts">
+        <span>{occurrence.visibility}</span>
+        <span>{occurrence.state}</span>
       </p>
-      <p>
-        {occurrence.state === 'scheduled' ? null : (
-          <span className={`mark ${occurrence.state === 'skipped' ? 'skipped' : 'choice'}`} />
-        )}
-        {occurrence.state}
-      </p>
-      <p>{occurrence.title}</p>
-      <p>{occurrence.displayName}</p>
-      <p className="meta">{occurrence.date}</p>
-      <p>{occurrence.location}</p>
-      <p>{occurrence.description}</p>
-      {occurrence.state === 'scheduled' ? (
-        <>
-          <p className="meta">{occurrence.start}</p>
-          <p className="meta">{occurrence.end}</p>
-        </>
-      ) : null}
-      {occurrence.state === 'choice_required' ? (
-        <fieldset>
-          <legend>Choice</legend>
-          {occurrence.instants?.map((instant) => (
-            <label key={instant}>
-              <input
-                type="radio"
-                name={choiceKey(occurrence)}
-                value={instant}
-                checked={selected === instant}
-                onChange={() => onSelect(instant)}
-              />
-              {instant}
-            </label>
-          ))}
-          <CommandButton variant={chosen ? 'primary' : 'quiet'} onClick={onChoose}>
-            Submit choice
-          </CommandButton>
-        </fieldset>
-      ) : null}
-      {series ? (
-        <>
-          <a className="quiet-link" href={eventHref(occurrence, false)}>
-            Series
-          </a>
-          <a className="quiet-link" href={eventHref(occurrence, true)}>
-            This occurrence
-          </a>
-        </>
-      ) : (
-        <a className="quiet-link" href={eventHref(occurrence, false)}>
-          Event
-        </a>
-      )}
+      <div>
+        <div className="titleline">
+          <h2>{occurrence.title}</h2>
+          {series ? (
+            <span>
+              <a className="quiet-link" href={eventHref(occurrence, false)}>
+                Series
+              </a>
+              <a className="quiet-link" href={eventHref(occurrence, true)}>
+                This occurrence
+              </a>
+            </span>
+          ) : occurrence.state === 'scheduled' ? (
+            <a className="quiet-link" href={eventHref(occurrence, false)}>
+              Event
+            </a>
+          ) : null}
+        </div>
+        {occurrence.state === 'scheduled' ? (
+          <>
+            <p className="meta">{occurrence.start}</p>
+            <p className="meta">{occurrence.end}</p>
+          </>
+        ) : null}
+        {occurrence.location === '' ? null : <p className="body">{occurrence.location}</p>}
+        {occurrence.description === '' ? null : <p className="body">{occurrence.description}</p>}
+        {occurrence.displayName === '' ? null : <p className="meta">{occurrence.displayName}</p>}
+        {occurrence.state === 'choice_required' ? (
+          <fieldset>
+            <legend>Choice</legend>
+            {occurrence.instants?.map((instant) => (
+              <label className="choice" key={instant}>
+                <input
+                  type="radio"
+                  name={choiceKey(occurrence)}
+                  value={instant}
+                  checked={selected === instant}
+                  onChange={() => onSelect(instant)}
+                />
+                {instant}
+              </label>
+            ))}
+            <CommandButton variant={chosen ? 'primary' : 'quiet'} onClick={onChoose}>
+              Submit choice
+            </CommandButton>
+          </fieldset>
+        ) : null}
+      </div>
     </article>
   );
+}
+
+function groups(occurrences: Occurrence[]): Array<{ date: string; items: Occurrence[] }> {
+  const grouped: Array<{ date: string; items: Occurrence[] }> = [];
+  for (const occurrence of occurrences) {
+    const current = grouped.find((group) => group.date === occurrence.date);
+    if (current === undefined) {
+      grouped.push({ date: occurrence.date, items: [occurrence] });
+    } else {
+      current.items.push(occurrence);
+    }
+  }
+  return grouped;
 }
 
 function choiceKey(occurrence: Occurrence): string {

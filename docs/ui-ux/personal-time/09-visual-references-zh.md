@@ -2,7 +2,7 @@
 
 - 阶段：2 — 视觉方向，用户批准关口 1
 - 日期：2026-11-25
-- 状态：用户于 2026-11-25 接受 Direction L。Direction P 和 Direction C 未选。这次接受不批准令牌取值、组件、线框或应用代码。
+- 状态：Direction L 于 2026-11-25 接受，Direction P 和 Direction C 未选。同日晚些时候，用户批准了 Agenda 和 Editorial，并指定 Agenda 为网站令牌来源。用户于 2026-11-25 批准了该提取。`tokens/design-tokens.json` 是 Agenda 基线。网站样式表仍实现先前的基线。
 - 结构基线：用户于 2026-11-25 在 `01-information-architecture.md`、`02-user-flows.md` 和 `03-screen-inventory.md` 中接受。
 - 本文件不替换 `docs/ui-ux/09-visual-references.md`。那里在 2026-11-20 接受的 Direction L 属于 `docs/product/04-prd.md`。它不为本产品选定方向，其令牌也不复用。
 - 这次没有抓取或保存截图。没有嵌入或复制 Linear 的素材。
@@ -11,7 +11,7 @@
 
 ## 1. 这一关决定什么
 
-用户于 2026-11-25 选定 Direction L。该选择授权之后提出令牌和组件方案。它不批准那些取值。
+已接受的网站方向是 Agenda。用户于 2026-11-25 批准了那张可打开的页面，并指定它为令牌来源。Editorial 仍是已批准页面，不是令牌来源。Direction L 于同日较早时候在工作流 2.0.0 下被接受，现在不再是视觉依据。Direction P 和 Direction C 未选。Agenda 用词表示可见性和状态。它不采用 Direction L 的几何标记。
 
 三个方向都只有浅色表面。都不增加主题偏好、深色主题、命令面板，或 S-01 至 S-09 之外的目的地。
 
@@ -45,7 +45,9 @@
 
 ## 3. Direction L — 安静的工具
 
-推荐选择这一套。它受 Linear 启发，但不是 Linear 的复制品。
+历史提案。它不是已接受的方向。它的几何标记不被采用。
+
+历史推荐，已被 Agenda 页面取代。它受 Linear 启发，但不是 Linear 的复制品。
 
 | 主题 | 方向 |
 |---|---|
@@ -55,7 +57,7 @@
 | 表面 | 浅色中性底。用间距和发丝线分隔。很少或没有阴影。 |
 | 颜色策略 | 中性的文字和表面。一种强调色只用于主要动作和选中的行。可见性、出现状态、冲突和失败同时使用文字。 |
 | 字体 | 一套无衬线。标题、行或字段文字、辅助文字是三种角色。没有展示用大标题字体。具体字体和字号等到 Stage 3。 |
-| 图标 | 一小套简单标记，表示公开、私密、跳过和需要选择，每个都带上 API 状态的文字。没有插画式图标。 |
+| 图标 | 历史提案：一小套简单标记，表示公开、私密、跳过和需要选择，每个都带上 API 状态的文字。已接受的 Agenda 页面不采用这些标记。 |
 | 动效 | 几乎没有。结果就地出现。没有入场编排。 |
 | 契合 | 适合 S-07 和 S-08 上的冲突列表。无需会话的表单保持安静，不变成另一套营销系统。 |
 
@@ -97,4 +99,6 @@
 
 ## 7. 需要的决定
 
-用户于 2026-11-25 选定 Direction L。Direction P 和 Direction C 未选。令牌取值已于 2026-11-25 在 `10-design-tokens.md` 和 `tokens/design-tokens.json` 中另行批准。本文件不批准那些取值。
+已接受的方向是 Agenda。用户于 2026-11-25 在工作流 2.1.0 下批准了该页面，指定它为令牌来源，并在同日批准了提取。令牌记录是 `10-design-tokens-agenda.md` 和 `tokens/design-tokens.json`。Editorial 仍是已批准页面。Direction L、Direction P 和 Direction C 不是当前方向。Direction L 的几何标记不被采用。网站样式表仍实现先前的基线。
+
+同日较早时候，用户选定 Direction L，Direction P 和 Direction C 未选。该选择是上面的历史。当时记在 `10-design-tokens.md` 里的令牌取值是先前的基线。

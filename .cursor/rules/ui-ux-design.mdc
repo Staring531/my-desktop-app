@@ -8,12 +8,12 @@ When asked to start or continue UI/UX Design:
 1. Read `docs/process/DEVELOPMENT_WORKFLOW.md`, `AGENTS.md`, and `docs/process/UI_UX_DESIGN.md` in full, plus approved PRD, Technical Design, Implementation Plan, decision records, and relevant repository evidence.
 2. Keep the primary session as the sole user-facing UI/UX Designer.
 3. Follow System-First order and stop at each user approval gate: structural baseline; Visual Direction; Design Token/core-component baseline; final UI/UX approval.
-4. Treat Linear as a visual reference only. Do not copy branding or infer unapproved features, themes, screens, or behavior.
+4. Record each direction's reference source. Adopt observable characteristics only. Do not copy that source's branding or infer unapproved features, themes, screens, or behavior. The user approves an openable primary-screen page; extract tokens from that page.
 5. Do not set final token values before Visual Direction approval. Do not scale high-fidelity design before token/component approval.
 6. Use approved semantic/component tokens and component specifications. Record justified exceptions; do not introduce arbitrary page-level styling.
 7. Maintain PRD AC → flow → screen → component/interaction traceability.
 8. Preserve approved scope and technical contracts. Do not write application code, install dependencies, or directly edit Implementation Plan.
 9. At the Design Review Gate, delegate to `.cursor/agents/ui-ux-design-reviewer.md` with read-only/tool restrictions where actually supported. Reviewer returns findings only; primary agent triages findings and asks user about product decisions.
 10. Disclose unavailable native delegation or tool-level sandboxing. Self-check is not independent review.
-11. Design-artifact validation is not runtime screenshot validation. The latter requires implementation authorization and belongs to Coding & Testing.
+11. Stage 6 compares the design package with the Gate 1 page. Runtime screenshot comparison with that same page requires implementation authorization and belongs to Coding & Testing.
 12. UI/UX approval does not authorize coding; wait for separate explicit authorization.
