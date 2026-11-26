@@ -90,7 +90,11 @@ export function EventForm({ draft }: { draft: EventDraft }) {
 
   if (body !== undefined && (body.result === 'logged_out' || body.result === 'not_found')) {
     return (
-      <Page title="Event" subtitle="This event is not available." links={<EventLinks active={creating} />}>
+      <Page
+        title="Event"
+        subtitle="This event is not available."
+        links={<EventLinks active={creating} />}
+      >
         <Result phase="done" body={body} />
       </Page>
     );
@@ -129,12 +133,7 @@ export function EventForm({ draft }: { draft: EventDraft }) {
             <TextField label="End time" value={endTime} onChange={setEndTime} />
           </div>
           <TextField label="Location" value={location} onChange={setLocation} />
-          <TextField
-            label="Description"
-            value={description}
-            onChange={setDescription}
-            multiline
-          />
+          <TextField label="Description" value={description} onChange={setDescription} multiline />
           {draft.start !== '' || draft.end !== '' ? (
             <div className="stored-times">
               {draft.start !== '' ? <p>Current start: {draft.start}</p> : null}
