@@ -188,11 +188,11 @@ export function CalendarLinks() {
   );
 }
 
-export function EventLinks() {
+export function EventLinks({ active }: { active?: boolean }) {
   return (
     <nav className="primary-nav" aria-label="Event navigation">
       <NavItem href="/calendar" label="Calendar" icon="calendar" />
-      <NavItem href="/events/new" label="New event" icon="new" active />
+      <NavItem href="/events/new" label="New event" icon="new" active={active} />
       <NavItem href="/account" label="Account" icon="account" />
     </nav>
   );
