@@ -123,7 +123,11 @@ export function CommandButton({
 
 export function Result({ phase, body }: { phase: 'idle' | 'waiting' | 'done'; body?: ApiBody }) {
   if (phase === 'waiting') {
-    return (\n      <p className="waiting" role="status" aria-live="polite">\n        waiting\n      </p>\n    );
+    return (
+      <p className="waiting" role="status" aria-live="polite">
+        waiting
+      </p>
+    );
   }
   if (phase !== 'done' || body === undefined) {
     return null;
