@@ -3,53 +3,96 @@
   "meta": {
     "name": "Personal Time website design tokens",
     "product": "docs/product/06-prd-personal-time.md",
-    "status": "APPROVED",
-    "visualDirection": "agenda",
-    "sourcePage": "docs/ui-ux/personal-time/previews/gate1-agenda.html",
-    "sourceNamedOn": "2026-11-25",
-    "tokenBaselineApproved": true,
-    "tokenBaselineApprovedOn": "2026-11-25",
-    "theme": "light-only",
-    "mapping": "Plain CSS custom properties in apps/website after a later implementation authorization. The current stylesheet still implements the previous baseline.",
-    "note": "Approved by the user on 2026-11-25 as the website token baseline, extracted from the Agenda page. This replaces the Direction L values previously stored in this file. Approval does not authorize application code. Editorial remains an approved page and is not a token source. The banner color on the Agenda page is not a token."
+    "status": "WORKING",
+    "visualDirection": "modern-workspace",
+    "sourcePage": "apps/website",
+    "sourceNamedOn": "2026-11-26",
+    "tokenBaselineApproved": false,
+    "theme": "light content canvas with deep-indigo workspace navigation",
+    "mapping": "Semantic and component tokens are mapped to CSS custom properties in apps/website/app/globals.css. This web-only draft supersedes the earlier Agenda token baseline for implementation review.",
+    "note": "Working redesign derived from the approved Personal Time PRD on 2026-11-26. Not yet independently accepted; contrast and runtime browser validation remain open."
   },
   "primitive": {
     "color": {
       "paper": {
         "$type": "color",
-        "$value": "#f3f1ec"
+        "$value": "#f4f6fb"
       },
       "ink": {
         "$type": "color",
-        "$value": "#1c1917"
+        "$value": "#172038"
       },
       "muted": {
         "$type": "color",
-        "$value": "#57534e"
+        "$value": "#65708a"
       },
       "line": {
         "$type": "color",
-        "$value": "#e4e0d8"
+        "$value": "#e5e9f2"
       },
       "field": {
         "$type": "color",
-        "$value": "#fffcf7"
+        "$value": "#ffffff"
       },
       "edge": {
         "$type": "color",
-        "$value": "#c8c2b6"
+        "$value": "#d8dfeb"
       },
       "accent": {
         "$type": "color",
-        "$value": "#9a3412"
+        "$value": "#5b5bd6"
       },
       "wash": {
         "$type": "color",
-        "$value": "#f3e6dc"
+        "$value": "#eef0ff"
       },
       "on-accent": {
         "$type": "color",
         "$value": "#ffffff"
+      },
+      "sidebar": {
+        "$type": "color",
+        "$value": "#151c34"
+      },
+      "sidebar-muted": {
+        "$type": "color",
+        "$value": "#9ca8c5"
+      },
+      "sidebar-active": {
+        "$type": "color",
+        "$value": "#293250"
+      },
+      "accent-soft": {
+        "$type": "color",
+        "$value": "#eef0ff"
+      },
+      "success": {
+        "$type": "color",
+        "$value": "#117a65"
+      },
+      "success-wash": {
+        "$type": "color",
+        "$value": "#e9f7f2"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "#986900"
+      },
+      "warning-wash": {
+        "$type": "color",
+        "$value": "#fff6dd"
+      },
+      "danger": {
+        "$type": "color",
+        "$value": "#b93838"
+      },
+      "danger-wash": {
+        "$type": "color",
+        "$value": "#fff1f0"
+      },
+      "sidebar-outline": {
+        "$type": "color",
+        "$value": "#303a58"
       }
     },
     "font": {
@@ -67,11 +110,11 @@
       },
       "weight-title": {
         "$type": "fontWeight",
-        "$value": 650
+        "$value": 700
       },
       "size-day": {
         "$type": "dimension",
-        "$value": "12px"
+        "$value": "13px"
       },
       "size-meta": {
         "$type": "dimension",
@@ -79,7 +122,7 @@
       },
       "size-label": {
         "$type": "dimension",
-        "$value": "12px"
+        "$value": "13px"
       },
       "size-name": {
         "$type": "dimension",
@@ -95,11 +138,11 @@
       },
       "size-occurrence": {
         "$type": "dimension",
-        "$value": "16px"
+        "$value": "17px"
       },
       "size-title": {
         "$type": "dimension",
-        "$value": "22px"
+        "$value": "30px"
       },
       "line-day": {
         "$type": "dimension",
@@ -107,7 +150,7 @@
       },
       "line-label": {
         "$type": "dimension",
-        "$value": "16px"
+        "$value": "18px"
       },
       "line-facts": {
         "$type": "dimension",
@@ -119,19 +162,19 @@
       },
       "line-body": {
         "$type": "dimension",
-        "$value": "22px"
+        "$value": "23px"
       },
       "line-occurrence": {
         "$type": "dimension",
-        "$value": "22px"
+        "$value": "24px"
       },
       "line-title": {
         "$type": "dimension",
-        "$value": "28px"
+        "$value": "38px"
       },
       "track-title": {
         "$type": "dimension",
-        "$value": "-0.02em"
+        "$value": "-0.03em"
       },
       "track-day": {
         "$type": "dimension",
@@ -171,6 +214,10 @@
         "$type": "dimension",
         "$value": "16px"
       },
+      "18": {
+        "$type": "dimension",
+        "$value": "18px"
+      },
       "22": {
         "$type": "dimension",
         "$value": "22px"
@@ -183,19 +230,31 @@
         "$type": "dimension",
         "$value": "28px"
       },
+      "32": {
+        "$type": "dimension",
+        "$value": "32px"
+      },
+      "36": {
+        "$type": "dimension",
+        "$value": "36px"
+      },
       "64": {
         "$type": "dimension",
         "$value": "64px"
+      },
+      "80": {
+        "$type": "dimension",
+        "$value": "80px"
       }
     },
     "size": {
       "control": {
         "$type": "dimension",
-        "$value": "36px"
+        "$value": "48px"
       },
       "focus": {
         "$type": "dimension",
-        "$value": "2px"
+        "$value": "3px"
       },
       "rule": {
         "$type": "dimension",
@@ -207,21 +266,33 @@
       },
       "facts": {
         "$type": "dimension",
-        "$value": "132px"
+        "$value": "148px"
       },
       "content": {
         "$type": "dimension",
-        "$value": "760px"
+        "$value": "1120px"
       },
       "stack-below": {
         "$type": "dimension",
-        "$value": "640px"
+        "$value": "820px"
+      },
+      "sidebar-width": {
+        "$type": "dimension",
+        "$value": "256px"
       }
     },
     "radius": {
       "control": {
         "$type": "dimension",
-        "$value": "6px"
+        "$value": "10px"
+      },
+      "card": {
+        "$type": "dimension",
+        "$value": "18px"
+      },
+      "pill": {
+        "$type": "dimension",
+        "$value": "999px"
       }
     },
     "elevation": {
@@ -239,7 +310,17 @@
     "motion": {
       "instant": {
         "$type": "duration",
-        "$value": "0ms"
+        "$value": "160ms"
+      }
+    },
+    "shadow": {
+      "card": {
+        "$type": "string",
+        "$value": "0 18px 48px rgba(22, 31, 58, 0.08)"
+      },
+      "soft": {
+        "$type": "string",
+        "$value": "0 6px 20px rgba(22, 31, 58, 0.06)"
       }
     }
   },
@@ -288,6 +369,50 @@
       "selection-mark": {
         "$type": "color",
         "$value": "{primitive.color.accent}"
+      },
+      "sidebar": {
+        "$type": "color",
+        "$value": "{primitive.color.sidebar}"
+      },
+      "sidebar-muted": {
+        "$type": "color",
+        "$value": "{primitive.color.sidebar-muted}"
+      },
+      "sidebar-active": {
+        "$type": "color",
+        "$value": "{primitive.color.sidebar-active}"
+      },
+      "accent-soft": {
+        "$type": "color",
+        "$value": "{primitive.color.accent-soft}"
+      },
+      "success": {
+        "$type": "color",
+        "$value": "{primitive.color.success}"
+      },
+      "success-wash": {
+        "$type": "color",
+        "$value": "{primitive.color.success-wash}"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "{primitive.color.warning}"
+      },
+      "warning-wash": {
+        "$type": "color",
+        "$value": "{primitive.color.warning-wash}"
+      },
+      "danger": {
+        "$type": "color",
+        "$value": "{primitive.color.danger}"
+      },
+      "danger-wash": {
+        "$type": "color",
+        "$value": "{primitive.color.danger-wash}"
+      },
+      "sidebar-outline": {
+        "$type": "color",
+        "$value": "{primitive.color.sidebar-outline}"
       }
     },
     "font": {
@@ -444,12 +569,24 @@
       "page-end": {
         "$type": "dimension",
         "$value": "{primitive.space.64}"
+      },
+      "section": {
+        "$type": "dimension",
+        "$value": "{primitive.space.24}"
       }
     },
     "elevation": {
       "flat": {
         "$type": "shadow",
         "$value": "{primitive.elevation.none}"
+      },
+      "card": {
+        "$type": "string",
+        "$value": "{primitive.shadow.card}"
+      },
+      "soft": {
+        "$type": "string",
+        "$value": "{primitive.shadow.soft}"
       }
     },
     "motion": {
@@ -508,6 +645,10 @@
       "elevation": {
         "$type": "shadow",
         "$value": "{semantic.elevation.flat}"
+      },
+      "content-wide": {
+        "$type": "dimension",
+        "$value": "{primitive.size.content}"
       }
     },
     "field": {
@@ -676,6 +817,26 @@
       "selected-mark-width": {
         "$type": "dimension",
         "$value": "{primitive.size.selected-mark}"
+      }
+    },
+    "navigation": {
+      "width": {
+        "$type": "dimension",
+        "$value": "{primitive.size.sidebar-width}"
+      }
+    },
+    "card": {
+      "radius": {
+        "$type": "dimension",
+        "$value": "{primitive.radius.card}"
+      },
+      "padding": {
+        "$type": "dimension",
+        "$value": "{primitive.space.24}"
+      },
+      "shadow": {
+        "$type": "string",
+        "$value": "{semantic.elevation.card}"
       }
     }
   }
