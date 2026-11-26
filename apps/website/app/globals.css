@@ -740,6 +740,15 @@ a:focus-visible {
   margin: 0;
 }
 
+.result--ok {
+  border-left-color: var(--color-success);
+}
+
+.result--ok .result-mark {
+  background: var(--color-success-wash);
+  color: var(--color-success);
+}
+
 .result-header {
   display: flex;
   align-items: center;
@@ -1216,6 +1225,20 @@ a:focus-visible {
   display: flex;
   flex-wrap: wrap;
   gap: var(--choice-gap);
+}
+
+.security-actions button.quiet:last-child {
+  color: var(--color-danger);
+}
+
+.security-actions button.quiet:last-child:hover {
+  background: var(--color-danger-wash);
+  color: var(--color-danger);
+}
+
+.confirm .primary {
+  background: var(--color-danger);
+  box-shadow: var(--shadow-soft);
 }
 
 .security-actions .danger-quiet {
