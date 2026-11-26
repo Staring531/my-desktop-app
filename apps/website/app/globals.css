@@ -1227,15 +1227,6 @@ a:focus-visible {
   gap: var(--choice-gap);
 }
 
-.security-actions button.quiet:last-child {
-  color: var(--color-danger);
-}
-
-.security-actions button.quiet:last-child:hover {
-  background: var(--color-danger-wash);
-  color: var(--color-danger);
-}
-
 .confirm .primary {
   background: var(--color-danger);
   box-shadow: var(--shadow-soft);
