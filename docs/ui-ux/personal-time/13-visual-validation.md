@@ -2,8 +2,8 @@
 
 - Stage: 6 — Design-System and Visual Validation
 - Date: 2026-11-25
-- Status: Agenda design-artifact checks recorded by the primary designer after the user accepted the painting. This record replaces the earlier Direction L rows in this file. It is not an independent review and not a runtime screenshot check. It does not authorize application code.
-- Package checked: `previews/gate1-agenda.html`, `tokens/design-tokens.json`, `05-visual-design.md`, `06-interaction-specifications.md`, `11-component-specifications.md`, `04-wireframes.md`, `12-page-specifications.md`.
+- Status: Historical Agenda design-artifact checks recorded by the primary designer on 2026-11-25. They validate only the Agenda painting that was superseded for Web presentation on 2026-11-26. They are not evidence of validation for the current modern-workspace draft, are not an independent review, and are not runtime screenshot checks.
+- Historical package checked: `previews/gate1-agenda.html`, the former Agenda version of `tokens/design-tokens.json`, the former `05-visual-design.md`, `06-interaction-specifications.md`, `11-component-specifications.md`, `04-wireframes.md`, `12-page-specifications.md`.
 - Source page: the approved Agenda page. Editorial is an approved page and is not the comparison source.
 - This file does not replace `docs/ui-ux/13-visual-validation.md`.
 
