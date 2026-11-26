@@ -164,7 +164,7 @@ function NavItem({
   href: string;
   label: string;
   icon: 'calendar' | 'new' | 'account';
-  active?: boolean;
+  active?: boolean | undefined;
 }) {
   return (
     <a
