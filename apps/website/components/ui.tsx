@@ -20,9 +20,9 @@ export function Page({
   children: ReactNode;
 }) {
   return (
-    <main className="column">
+    <main className="column" aria-labelledby="page-title">
       <header className="top">
-        <h1>{title}</h1>
+        <h1 id="page-title">{title}</h1>
         {links}
       </header>
       {children}
@@ -32,7 +32,7 @@ export function Page({
 
 export function UnsignedLinks() {
   return (
-    <nav className="links">
+    <nav className="links" aria-label="Account navigation">
       {UNSIGNED.map(([href, label]) => (
         <a className="quiet-link" href={href} key={href}>
           {label}
@@ -44,7 +44,7 @@ export function UnsignedLinks() {
 
 export function CalendarLinks() {
   return (
-    <nav className="links">
+    <nav className="links" aria-label="Calendar navigation">
       <a className="quiet-link" href="/events/new">
         New event
       </a>
@@ -57,7 +57,7 @@ export function CalendarLinks() {
 
 export function EventLinks() {
   return (
-    <nav className="links">
+    <nav className="links" aria-label="Event navigation">
       <a className="quiet-link" href="/calendar">
         Calendar
       </a>
@@ -70,7 +70,7 @@ export function EventLinks() {
 
 export function AccountLinks() {
   return (
-    <nav className="links">
+    <nav className="links" aria-label="Account navigation">
       <a className="quiet-link" href="/calendar">
         Calendar
       </a>
@@ -123,13 +123,17 @@ export function CommandButton({
 
 export function Result({ phase, body }: { phase: 'idle' | 'waiting' | 'done'; body?: ApiBody }) {
   if (phase === 'waiting') {
-    return <p className="waiting">waiting</p>;
+    return (
+      <p className="waiting" role="status" aria-live="polite">
+        waiting
+      </p>
+    );
   }
   if (phase !== 'done' || body === undefined) {
     return null;
   }
   return (
-    <div className="result" role="alert">
+    <div className="result" role="alert" aria-live="assertive">
       <p>{body.result}</p>
       {body.monthTypes?.map((month) => (
         <p key={month}>{month}</p>
