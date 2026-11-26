@@ -3,8 +3,8 @@ import type { ReactNode } from 'react';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'My Desktop App',
-  description: 'Official website for My Desktop App.',
+  title: 'Personal Time',
+  description: 'A personal calendar for managing your time and events.',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
