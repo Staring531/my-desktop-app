@@ -227,6 +227,7 @@ const keywords = new Set([
   'inherit',
   'none',
   'solid',
+  'dashed',
   'inset',
 ]);
 
