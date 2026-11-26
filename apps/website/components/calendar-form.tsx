@@ -139,9 +139,7 @@ function OccurrenceCard({
             <span className={`status-chip ${occurrence.state}`}>{occurrence.state}</span>
           </div>
         </div>
-        {occurrence.location === '' ? null : (
-          <p className="event-meta">{occurrence.location}</p>
-        )}
+        {occurrence.location === '' ? null : <p className="event-meta">{occurrence.location}</p>}
         {occurrence.description === '' ? null : (
           <p className="event-description">{occurrence.description}</p>
         )}
