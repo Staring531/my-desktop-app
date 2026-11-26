@@ -245,11 +245,19 @@ export function EventForm({ draft }: { draft: EventDraft }) {
           <p>Deleting an event cannot be undone.</p>
           {confirming === undefined ? (
             <div className="security-actions">
-              <CommandButton variant="quiet" className="danger-quiet" onClick={() => setConfirming('event')}>
+              <CommandButton
+                variant="quiet"
+                className="danger-quiet"
+                onClick={() => setConfirming('event')}
+              >
                 Delete event
               </CommandButton>
               {occurrence ? (
-                <CommandButton variant="quiet" className="danger-quiet" onClick={() => setConfirming('occurrence')}>
+                <CommandButton
+                  variant="quiet"
+                  className="danger-quiet"
+                  onClick={() => setConfirming('occurrence')}
+                >
                   Delete this occurrence
                 </CommandButton>
               ) : null}
