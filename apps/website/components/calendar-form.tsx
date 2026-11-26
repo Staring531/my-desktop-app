@@ -124,7 +124,7 @@ function OccurrenceCard({
             <span className="event-time-value">{occurrence.end}</span>
           </>
         ) : (
-          <span className="event-time-value">{occurrence.state}</span>
+          <span className="event-time-value">{occurrence.state === 'skipped' ? 'No occurrence generated' : 'Choose a start time'}</span>
         )}
       </div>
       <div className="event-content">
