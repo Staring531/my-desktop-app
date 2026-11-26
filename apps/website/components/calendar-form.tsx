@@ -112,7 +112,9 @@ function OccurrenceCard({
   const series = occurrence.state === 'scheduled' && occurrence.originalStart !== undefined;
   const chosen = selected !== undefined && occurrence.instants?.includes(selected) === true;
   return (
-    <article className={`event-card event-card--${occurrence.visibility} event-card--${occurrence.state}`}>
+    <article
+      className={`event-card event-card--${occurrence.visibility} event-card--${occurrence.state}`}
+    >
       <div className="event-time">
         <span className="event-time-label">
           {occurrence.state === 'scheduled' ? 'Scheduled time' : 'Occurrence status'}
@@ -124,7 +126,9 @@ function OccurrenceCard({
             <span className="event-time-value">{occurrence.end}</span>
           </>
         ) : (
-          <span className="event-time-value">{occurrence.state === 'skipped' ? 'No occurrence generated' : 'Choose a start time'}</span>
+          <span className="event-time-value">
+            {occurrence.state === 'skipped' ? 'No occurrence generated' : 'Choose a start time'}
+          </span>
         )}
       </div>
       <div className="event-content">
