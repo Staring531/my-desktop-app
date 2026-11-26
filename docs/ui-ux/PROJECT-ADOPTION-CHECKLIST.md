@@ -5,6 +5,7 @@ Use this checklist when applying the UI/UX Engineering Standard to a project.
 ## Project profile
 - Project:
 - Standard version:
+- UI/UX Design workflow version followed:
 - Product/platform:
 - UI technology:
 - Supported viewport/window sizes:
@@ -28,6 +29,12 @@ Use this checklist when applying the UI/UX Engineering Standard to a project.
 - [ ] Critical user flows have automated tests.
 - [ ] Manual acceptance checklist and PASS/FAIL/BLOCKED/NOT RUN rules adopted.
 - [ ] Deviations have approver, rationale, scope, and review date.
+- [ ] Visual brief confirmed by the user: audience, personality adjectives, anti-goals, density, shell posture.
+- [ ] Scope constraints and Taste constraints listed separately.
+- [ ] Gate 1 page set covers the primary screen, an entry or form screen, a state-heavy screen, and the navigation shell.
+- [ ] State matrix defines every state the requirements need, including danger, success, warning, and empty where they apply.
+- [ ] Rendered screenshots at one narrow and one wide viewport are stored with viewport metadata.
+- [ ] Contrast ratios are measured and recorded for every text/background and focus-indicator pair.
 
 ## Acceptance record
 | Gate | Status | Evidence | Owner |
@@ -38,6 +45,7 @@ Use this checklist when applying the UI/UX Engineering Standard to a project.
 | Traceability | NOT RUN | | |
 | Functional verification | NOT RUN | | |
 | Visual verification | NOT RUN | | |
+| Visual brief fit | NOT RUN | | |
 | Accessibility | NOT RUN | | |
 | Manual acceptance | NOT RUN | | |
 

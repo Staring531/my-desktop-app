@@ -1,6 +1,6 @@
 # Agent 主开发流程
 
-> 版本：1.1.0  
+> 版本：1.2.0  
 > 状态：仓库级权威工作流  
 > 适用对象：在本仓库工作的所有 AI 编码、规划、设计、评审和文档 Agent
 
@@ -95,6 +95,12 @@ flowchart TD
 - 如果低阶段产物要求修改上游内容，应记录建议变更，并通过所属工作流和用户审批处理。
 - 未经用户明确授权，不得 commit、push、merge 或 release。不得直接 push 到 main 或 force-push；应使用独立分支和 PR。
 
+### 设计质量与项目适用范围
+- 本生命周期和每个阶段文件适用于本仓库的每个产品和项目，也适用于所有由本仓库启动的新项目。本仓库之外的项目通过 `docs/ui-ux/PROJECT-ADOPTION-CHECKLIST.md` 采用。
+- 每条设计约束都要归类为范围（Scope，来自已批准的 PRD 或 Technical Design）或品味（Taste，视觉偏好）。只有范围约束才约束后续重设计。用户可以通过批准替换方案来取代品味约束。见 `docs/process/UI_UX_DESIGN.md` 第 4A 节。
+- 视觉质量以渲染结果为准：窄视口和宽视口的截图，以及测量得到的对比度。Token 校验、lint、类型检查、测试和文字描述是必要的，但永远不能证明视觉质量。缺少渲染证据属于 NOT RUN，不是 PASS。
+- 项目不得跳过或削弱阶段文件的要求，除非有用户已批准并记录的偏差。
+
 ## 5. Gate 与批准状态
 
 阶段 Gate 表示该阶段的进入条件和评审工作已完成，**不代表用户已批准产物**。
@@ -134,5 +140,6 @@ flowchart TD
 4. 生命周期顺序变化时更新本文件中的流程图。
 5. 更新中文翻译，包括其中的流程图。
 6. 检查 README 链接和引用是否一致。
+7. 设计质量 Gate 发生变化时，同步更新 `docs/ui-ux/ENGINEERING-STANDARD.md`、`docs/ui-ux/PROJECT-ADOPTION-CHECKLIST.md`，以及 `.claude/`、`.cursor/`、`.codex/`、`.agents/` 下所有角色和 skill 镜像。
 
 不要在 `AGENTS.md` 重复完整阶段流程。它应作为强制入口和全局护栏；本文件是仓库唯一的主生命周期规范。
