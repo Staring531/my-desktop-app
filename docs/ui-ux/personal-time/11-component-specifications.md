@@ -2,7 +2,7 @@
 
 - Stage: 3 — Design Tokens and Core Component System, User Approval Gate 2
 - Date: 2026-11-25
-- Status: The component and interaction inventory remains useful. Its Agenda-specific visual painting was superseded for `apps/website` by the user's PRD-driven redesign authorization on 2026-11-26. Follow `05-visual-design.md` for the current Web visual draft; retain the behavior and accessibility contracts below unless explicitly marked as Agenda-only presentation.
+- Status: The component and interaction inventory remains useful. Its Agenda-specific visual painting was superseded for `apps/website` by the user's PRD-driven redesign authorization on 2026-11-26. Follow `05-visual-design.md` for the current Web visual draft. All visual composition and painting rules below are historical Agenda details unless separately confirmed in the current visual design; the control, behavior, and accessibility contracts remain useful where consistent with the PRD.
 - Token source: `tokens/design-tokens.json`
 - Screens: the accepted inventory S-01 through S-09. Q-02, Q-03, and Q-04 stay open.
 - This file does not replace `docs/ui-ux/11-component-specifications.md`. Those components belong to the other product. Identifiers here use the `PT-C` prefix so the two sets stay distinct.
