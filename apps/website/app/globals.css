@@ -46,7 +46,7 @@
   --rule: 1px;
   --button-padding: 18px;
   --focus-width: 3px;
-  --focus-offset: 2px;
+  --focus-offset: 3px;
   --facts-size: 148px;
   --row-gap-block: 8px;
   --row-gap-inline: 18px;
@@ -139,7 +139,7 @@ textarea {
   flex: 0 0 auto;
   place-items: center;
   border-radius: var(--radius);
-  background: linear-gradient(145deg, #7778f4, #4d4fc1);
+  background: var(--color-action);
   color: var(--color-text-on-action);
   font-size: var(--size-action);
   font-weight: var(--weight-action);
@@ -189,7 +189,7 @@ textarea {
 }
 
 .sidebar .brand-mark {
-  background: linear-gradient(145deg, #7778f4, #4d4fc1);
+  background: var(--color-action);
 }
 
 .sidebar .brand-copy small {
@@ -242,7 +242,7 @@ textarea {
   height: var(--space-inline);
   flex: 0 0 auto;
   place-items: center;
-  color: currentColor;
+  
 }
 
 .nav-icon svg {
@@ -407,7 +407,7 @@ h1 {
 }
 
 .auth-message .eyebrow {
-  color: #aaaaff;
+  color: var(--color-action);
 }
 
 .auth-message h2 {
@@ -593,7 +593,7 @@ h1 {
 .auth-link:hover,
 .auth-link.is-active {
   color: var(--color-action);
-  text-decoration-color: currentColor;
+  text-decoration-
 }
 
 /* Fields, controls, and action states */
@@ -720,7 +720,7 @@ a:focus-visible {
 }
 
 .form-actions .primary {
-  min-width: 144px;
+  min-width: var(--control-height);
 }
 
 .result {
@@ -749,8 +749,8 @@ a:focus-visible {
 
 .result-mark {
   display: inline-grid;
-  width: 24px;
-  height: 24px;
+  width: var(--tool-top);
+  height: var(--tool-top);
   flex: 0 0 auto;
   place-items: center;
   border-radius: 50%;
@@ -762,7 +762,7 @@ a:focus-visible {
 .result-body {
   display: grid;
   gap: var(--choice-gap);
-  padding-left: calc(24px + var(--tool-gap));
+  padding-left: calc(var(--tool-top) + var(--tool-gap));
 }
 
 .result .meta {
@@ -1169,7 +1169,7 @@ a:focus-visible {
 }
 
 .event-editor-actions .primary {
-  min-width: 160px;
+  min-width: var(--control-height);
 }
 
 .stored-times {
@@ -1278,7 +1278,7 @@ a:focus-visible {
   }
 
   .nav-link {
-    min-height: 40px;
+    min-height: var(--control-height);
     padding: 0 var(--choice-gap);
     font-size: var(--size-meta);
   }
