@@ -53,11 +53,7 @@ describe('shared website UI', () => {
 
   it('renders account entry pages in the split authentication shell', () => {
     render(
-      <Page
-        variant="auth"
-        title="Create your account"
-        links={<UnsignedLinks active="/register" />}
-      >
+      <Page variant="auth" title="Create your account" links={<UnsignedLinks active="/register" />}>
         <p>Registration form</p>
       </Page>,
     );
@@ -65,9 +61,9 @@ describe('shared website UI', () => {
     const main = screen.getByRole('main', { name: 'Create your account' });
     expect(main.closest('.auth-shell')).toBeTruthy();
     expect(screen.getByRole('heading', { name: 'Make room for what matters.' })).toBeTruthy();
-    expect(
-      screen.getByRole('link', { name: 'Register' }).getAttribute('aria-current'),
-    ).toBe('page');
+    expect(screen.getByRole('link', { name: 'Register' }).getAttribute('aria-current')).toBe(
+      'page',
+    );
   });
 
   it('associates a visible field label with its control', () => {
