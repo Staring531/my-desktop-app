@@ -238,16 +238,16 @@ textarea {
 
 .nav-icon {
   display: inline-grid;
-  width: 22px;
-  height: 22px;
+  width: var(--space-inline);
+  height: var(--space-inline);
   flex: 0 0 auto;
   place-items: center;
   color: currentColor;
 }
 
 .nav-icon svg {
-  width: 20px;
-  height: 20px;
+  width: var(--space-inline);
+  height: var(--space-inline);
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
@@ -267,13 +267,13 @@ textarea {
 }
 
 .sidebar-footer-mark {
-  width: 10px;
-  height: 10px;
+  width: var(--choice-gap);
+  height: var(--choice-gap);
   flex: 0 0 auto;
   margin-top: var(--meta-gap);
   border-radius: 50%;
   background: var(--color-success);
-  box-shadow: 0 0 0 4px rgba(17, 122, 101, 0.16);
+  box-shadow: var(--shadow-soft);
 }
 
 .sidebar-footer-copy {
@@ -414,14 +414,14 @@ h1 {
   max-width: var(--auth-card-width);
   margin: var(--space-inline) 0;
   color: var(--color-text-on-action);
-  font-size: 44px;
+  font-size: var(--size-title);
   font-weight: var(--weight-title);
-  line-height: 1.12;
+  line-height: var(--line-title);
   letter-spacing: -0.04em;
 }
 
 .auth-message p {
-  max-width: 420px;
+  max-width: var(--auth-card-width);
   margin: 0;
   color: var(--color-sidebar-muted);
   font-size: var(--size-body);
@@ -432,7 +432,7 @@ h1 {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 360px;
+  max-width: var(--auth-card-width);
   aspect-ratio: 1.8;
   margin-top: var(--padding-end);
 }
@@ -442,7 +442,7 @@ h1 {
   right: 0;
   bottom: 0;
   display: flex;
-  width: 82%;
+  width: 100%;
   flex-direction: column;
   gap: var(--space-inline);
   padding: var(--card-padding);
@@ -473,8 +473,8 @@ h1 {
 }
 
 .auth-art-dots span {
-  width: 8px;
-  height: 8px;
+  width: var(--choice-gap);
+  height: var(--choice-gap);
   border-radius: 50%;
   background: var(--color-action);
 }
@@ -494,16 +494,18 @@ h1 {
 }
 
 .auth-art-line::before {
-  width: 36%;
-  height: 8px;
+  width: 100%;
+  height: var(--choice-gap);
+  flex: 0 0 36%;
   border-radius: var(--radius-pill);
   background: var(--color-action);
   content: '';
 }
 
 .auth-art-line::after {
-  width: 24%;
-  height: 8px;
+  width: 100%;
+  height: var(--choice-gap);
+  flex: 0 0 24%;
   border-radius: var(--radius-pill);
   background: var(--color-sidebar-muted);
   content: '';
@@ -645,9 +647,9 @@ textarea:focus {
 }
 
 input[type='radio'] {
-  width: 18px;
+  width: var(--space-inline);
   min-height: 0;
-  height: 18px;
+  height: var(--space-inline);
   margin: 0;
   padding: 0;
   accent-color: var(--color-action);
@@ -799,7 +801,8 @@ a:focus-visible {
 
 .date-range-form {
   display: grid;
-  width: min(100%, 620px);
+  width: 100%;
+  max-width: var(--auth-card-width);
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
   align-items: end;
   gap: var(--tool-gap);
@@ -917,7 +920,7 @@ a:focus-visible {
 
 .status-chip {
   display: inline-flex;
-  min-height: 24px;
+  min-height: var(--line-meta);
   align-items: center;
   padding: 0 var(--choice-gap);
   border-radius: var(--radius-pill);
@@ -975,7 +978,7 @@ a:focus-visible {
 }
 
 .event-actions .quiet-link {
-  min-height: 34px;
+  min-height: var(--line-title);
   padding: 0 var(--choice-gap);
   font-size: var(--size-meta);
 }
@@ -1005,7 +1008,7 @@ a:focus-visible {
 
 .choice-option {
   display: inline-flex;
-  min-height: 40px;
+  min-height: var(--line-title);
   align-items: center;
   gap: var(--choice-gap);
   padding: 0 var(--space-inline);
@@ -1031,8 +1034,8 @@ a:focus-visible {
 
 .empty-state-mark {
   display: inline-grid;
-  width: 48px;
-  height: 48px;
+  width: var(--control-height);
+  height: var(--control-height);
   place-items: center;
   border-radius: 50%;
   background: var(--color-accent-soft);
@@ -1077,8 +1080,8 @@ a:focus-visible {
 
 .section-number {
   display: inline-grid;
-  width: 32px;
-  height: 32px;
+  width: var(--line-title);
+  height: var(--line-title);
   flex: 0 0 auto;
   place-items: center;
   border-radius: var(--radius);
@@ -1149,8 +1152,8 @@ a:focus-visible {
 }
 
 .segment-option input {
-  width: 18px;
-  height: 18px;
+  width: var(--space-inline);
+  height: var(--space-inline);
   flex: 0 0 auto;
   min-height: 0;
   margin: 0;
