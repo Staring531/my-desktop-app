@@ -279,6 +279,14 @@
       "sidebar-width": {
         "$type": "dimension",
         "$value": "256px"
+      },
+      "viewport-height": {
+        "$type": "dimension",
+        "$value": "100vh"
+      },
+      "auth-card-width": {
+        "$type": "dimension",
+        "$value": "560px"
       }
     },
     "radius": {
@@ -649,6 +657,10 @@
       "content-wide": {
         "$type": "dimension",
         "$value": "{primitive.size.content}"
+      },
+      "viewport-height": {
+        "$type": "dimension",
+        "$value": "{primitive.size.viewport-height}"
       }
     },
     "field": {
@@ -837,6 +849,12 @@
       "shadow": {
         "$type": "string",
         "$value": "{semantic.elevation.card}"
+      }
+    },
+    "auth": {
+      "card-width": {
+        "$type": "dimension",
+        "$value": "{primitive.size.auth-card-width}"
       }
     }
   }
