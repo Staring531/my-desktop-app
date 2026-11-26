@@ -115,6 +115,7 @@ const cssVariableToToken = {
   '--motion': 'semantic-motion-feedback',
   '--color-sidebar': 'semantic-color-sidebar',
   '--color-sidebar-muted': 'semantic-color-sidebar-muted',
+  '--color-sidebar-accent': 'semantic-color-sidebar-accent',
   '--color-sidebar-active': 'semantic-color-sidebar-active',
   '--color-accent-soft': 'semantic-color-accent-soft',
   '--color-success': 'semantic-color-success',
