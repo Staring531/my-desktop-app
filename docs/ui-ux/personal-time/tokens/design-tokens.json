@@ -76,7 +76,7 @@
       },
       "warning": {
         "$type": "color",
-        "$value": "#986900"
+        "$value": "#8f6300"
       },
       "warning-wash": {
         "$type": "color",
@@ -93,6 +93,10 @@
       "sidebar-outline": {
         "$type": "color",
         "$value": "#303a58"
+      },
+      "sidebar-accent": {
+        "$type": "color",
+        "$value": "#aaaaff"
       }
     },
     "font": {
@@ -421,6 +425,10 @@
       "sidebar-outline": {
         "$type": "color",
         "$value": "{primitive.color.sidebar-outline}"
+      },
+      "sidebar-accent": {
+        "$type": "color",
+        "$value": "{primitive.color.sidebar-accent}"
       }
     },
     "font": {
