@@ -131,6 +131,8 @@ const cssVariableToToken = {
   '--sidebar-width': 'component-navigation-width',
   '--card-padding': 'component-card-padding',
   '--section-gap': 'semantic-space-section',
+  '--viewport-height': 'component-page-viewport-height',
+  '--auth-card-width': 'component-auth-card-width',
 };
 
 function normalize(value) {
