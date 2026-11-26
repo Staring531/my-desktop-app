@@ -29,7 +29,12 @@ export function RegisterForm({ timeZone = browserTimeZone() }: { timeZone?: stri
   }
 
   return (
-    <Page variant="auth" title="Create your account" subtitle="A few details are all it takes to get your personal calendar started." links={<UnsignedLinks active="/register" />}>
+    <Page
+      variant="auth"
+      title="Create your account"
+      subtitle="A few details are all it takes to get your personal calendar started."
+      links={<UnsignedLinks active="/register" />}
+    >
       <form
         className="auth-form"
         onSubmit={(event) => {
@@ -82,7 +87,12 @@ export function CancelRegistrationForm() {
   }
 
   return (
-    <Page variant="auth" title="Cancel registration" subtitle="Remove a registration that has not been verified." links={<UnsignedLinks active="/register/cancel" />}>
+    <Page
+      variant="auth"
+      title="Cancel registration"
+      subtitle="Remove a registration that has not been verified."
+      links={<UnsignedLinks active="/register/cancel" />}
+    >
       <form
         className="auth-form"
         onSubmit={(event) => {
@@ -123,7 +133,12 @@ export function LoginForm({ initial, onOk }: { initial?: ApiBody; onOk: (path: s
   }
 
   return (
-    <Page variant="auth" title="Welcome back" subtitle="Sign in to open your personal calendar." links={<UnsignedLinks active="/login" />}>
+    <Page
+      variant="auth"
+      title="Welcome back"
+      subtitle="Sign in to open your personal calendar."
+      links={<UnsignedLinks active="/login" />}
+    >
       <form
         className="auth-form"
         onSubmit={(event) => {
@@ -158,7 +173,12 @@ export function StartRecoveryForm() {
   }
 
   return (
-    <Page variant="auth" title="Recover your password" subtitle="Enter the email associated with your account." links={<UnsignedLinks active="/recovery" />}>
+    <Page
+      variant="auth"
+      title="Recover your password"
+      subtitle="Enter the email associated with your account."
+      links={<UnsignedLinks active="/recovery" />}
+    >
       <form
         className="auth-form"
         onSubmit={(event) => {
@@ -201,7 +221,12 @@ export function CompleteRecoveryForm({ onOk }: { onOk: (path: string) => void })
   }
 
   return (
-    <Page variant="auth" title="Choose a new password" subtitle="Use your recovery proof to restore access to your account." links={<UnsignedLinks active="/recovery/complete" />}>
+    <Page
+      variant="auth"
+      title="Choose a new password"
+      subtitle="Use your recovery proof to restore access to your account."
+      links={<UnsignedLinks active="/recovery/complete" />}
+    >
       <form
         className="auth-form"
         onSubmit={(event) => {
@@ -258,7 +283,12 @@ function ProofForm({
   }
 
   return (
-    <Page variant="auth" title={title} subtitle={subtitle} links={<UnsignedLinks active={active} />}>
+    <Page
+      variant="auth"
+      title={title}
+      subtitle={subtitle}
+      links={<UnsignedLinks active={active} />}
+    >
       <form
         className="auth-form"
         onSubmit={(event) => {
