@@ -221,9 +221,6 @@ textarea {
   margin-top: var(--tool-top);
 }
 
-.tool button {
-  min-width: max-content;
-}
 
 .who {
   margin: var(--name-gap) 0 0;
@@ -349,14 +346,9 @@ button.primary {
   font-weight: var(--weight-action);
 }
 
-button.primary:hover:not(:disabled) {
-  filter: brightness(0.94);
-}
-
 button.quiet:hover:not(:disabled),
 .quiet-link:hover {
   text-decoration: underline;
-  text-underline-offset: var(--label-gap);
 }
 
 button:disabled {
