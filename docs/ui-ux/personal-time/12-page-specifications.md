@@ -2,14 +2,14 @@
 
 - Stage: 4 — Wireframes and Page Specifications
 - Date: 2026-11-25
-- Status: Agenda revision accepted by the user on 2026-11-25 with `04-wireframes.md`. It replaces the Direction L page specifications. The Stage 5 painting was accepted the same day in `05-visual-design.md`. These acceptances do not authorize application code.
-- Sketches: `04-wireframes.md`.
-- Tokens: the approved Agenda baseline in `tokens/design-tokens.json`. Pages use semantic or component tokens. No new raw values.
+- Status: The screen and behavior inventory remains a reference for first-delivery content and flows. Its Agenda-specific page composition is historical and was superseded for Web presentation by the PRD-driven redesign authorized on 2026-11-26. Current visual composition is in `05-visual-design.md`.
+- Historical sketches: `04-wireframes.md`.
+- Current Web visual direction: `05-visual-design.md` and the working tokens in `tokens/design-tokens.json`.
 - Q-02, Q-03, and Q-04 stay open.
 - This file does not replace `docs/ui-ux/12-page-specifications.md`.
 - No independent UI/UX review was run.
 
-Shared behavior: the column is one stack. The task title and quiet links share the header line. Below `component.page.stack-below`, an S-07 tool row or occurrence row stacks into one column. A narrower viewport scrolls the page. PT-C09 is on the page that sent the command and is not its own destination. A rejected command leaves stored rows unchanged and keeps the typed values. The page renders the returned body and does not recompute an instant, an overlap, a monthly preview, or a proof outcome. Shared failures use the same result string and the same result component. No page explains which value was taken or whether an account exists or is verified.
+Shared behavior: the visual shell is defined by `05-visual-design.md`; the one-column Agenda layout and header composition below are historical. PT-C09 is on the page that sent the command and is not its own destination. A rejected command leaves stored rows unchanged and keeps the typed values. The page renders the returned body and does not recompute an instant, an overlap, a monthly preview, or a proof outcome. Shared failures use the same result string and the same result component. No page explains which value was taken or whether an account exists or is verified.
 
 ## S-01 Register
 
