@@ -39,25 +39,40 @@ export function CalendarForm() {
   const occurrences = body?.occurrences ?? [];
 
   return (
-    <Page title="Own Calendar" links={<CalendarLinks />}>
-      <form
-        className="tool"
-        onSubmit={(event) => {
-          event.preventDefault();
-          void showRange();
-        }}
-      >
-        <TextField label="From" value={from} onChange={setFrom} />
-        <TextField label="To" value={to} onChange={setTo} />
-        <CommandButton variant={ready ? 'primary' : 'quiet'} type="submit">
-          Show range
-        </CommandButton>
-      </form>
+    <Page
+      title="My calendar"
+      subtitle="A clear view of the events that make up your time."
+      links={<CalendarLinks />}
+    >
+      <section className="calendar-toolbar" aria-label="Calendar date range">
+        <div className="toolbar-copy">
+          <strong>View your dates</strong>
+          <span>Choose the range you want to see.</span>
+        </div>
+        <form
+          className="date-range-form"
+          onSubmit={(event) => {
+            event.preventDefault();
+            void showRange();
+          }}
+        >
+          <TextField label="From" value={from} onChange={setFrom} />
+          <TextField label="To" value={to} onChange={setTo} />
+          <CommandButton variant={ready ? 'primary' : 'quiet'} type="submit">
+            Show range
+          </CommandButton>
+        </form>
+      </section>
       {groups(occurrences).map((group) => (
-        <section key={group.date}>
-          <h2 className="day">{group.date}</h2>
+        <section className="day-group" key={group.date} aria-label={group.date}>
+          <div className="day-heading">
+            <h2>{group.date}</h2>
+            <span>
+              {group.items.length} {group.items.length === 1 ? 'event' : 'events'}
+            </span>
+          </div>
           {group.items.map((occurrence) => (
-            <OccurrenceRow
+            <OccurrenceCard
               key={`${occurrence.id}-${occurrence.date}`}
               occurrence={occurrence}
               selected={selected[choiceKey(occurrence)]}
@@ -69,12 +84,21 @@ export function CalendarForm() {
           ))}
         </section>
       ))}
+      {body?.result === 'ok' && occurrences.length === 0 ? (
+        <div className="empty-state">
+          <span className="empty-state-mark" aria-hidden="true">
+            ◷
+          </span>
+          <strong>No events in this range</strong>
+          <p>Try adjusting the dates above or add a new event.</p>
+        </div>
+      ) : null}
       <Result phase={phase} {...(body === undefined ? {} : { body })} />
     </Page>
   );
 }
 
-function OccurrenceRow({
+function OccurrenceCard({
   occurrence,
   selected,
   onSelect,
@@ -88,56 +112,78 @@ function OccurrenceRow({
   const series = occurrence.state === 'scheduled' && occurrence.originalStart !== undefined;
   const chosen = selected !== undefined && occurrence.instants?.includes(selected) === true;
   return (
-    <article className="occurrence">
-      <p className="facts">
-        <span>{occurrence.visibility}</span>
-        <span>{occurrence.state}</span>
-      </p>
-      <div>
-        <div className="titleline">
-          <h2>{occurrence.title}</h2>
-          {series ? (
-            <span>
-              <a className="quiet-link" href={eventHref(occurrence, false)}>
-                Series
-              </a>
-              <a className="quiet-link" href={eventHref(occurrence, true)}>
-                This occurrence
-              </a>
-            </span>
-          ) : occurrence.state === 'scheduled' ? (
-            <a className="quiet-link" href={eventHref(occurrence, false)}>
-              Event
-            </a>
-          ) : null}
-        </div>
+    <article className={`event-card event-card--${occurrence.visibility} event-card--${occurrence.state}`}>
+      <div className="event-time">
+        <span className="event-time-label">
+          {occurrence.state === 'scheduled' ? 'Scheduled time' : 'Occurrence status'}
+        </span>
         {occurrence.state === 'scheduled' ? (
           <>
-            <p className="meta">{occurrence.start}</p>
-            <p className="meta">{occurrence.end}</p>
+            <span className="event-time-value">{occurrence.start}</span>
+            <span className="event-time-arrow">to</span>
+            <span className="event-time-value">{occurrence.end}</span>
           </>
+        ) : (
+          <span className="event-time-value">{occurrence.state}</span>
+        )}
+      </div>
+      <div className="event-content">
+        <div className="event-heading">
+          <h3>{occurrence.title}</h3>
+          <div className="event-chips">
+            <span className={`status-chip ${occurrence.visibility}`}>{occurrence.visibility}</span>
+            <span className={`status-chip ${occurrence.state}`}>{occurrence.state}</span>
+          </div>
+        </div>
+        {occurrence.location === '' ? null : (
+          <p className="event-meta">{occurrence.location}</p>
+        )}
+        {occurrence.description === '' ? null : (
+          <p className="event-description">{occurrence.description}</p>
+        )}
+        {occurrence.displayName === '' ? null : (
+          <p className="event-meta">{occurrence.displayName}</p>
+        )}
+        {series || occurrence.state === 'scheduled' ? (
+          <div className="event-actions">
+            {series ? (
+              <>
+                <a className="quiet-link" href={eventHref(occurrence, false)}>
+                  Edit series
+                </a>
+                <a className="quiet-link" href={eventHref(occurrence, true)}>
+                  This occurrence
+                </a>
+              </>
+            ) : (
+              <a className="quiet-link" href={eventHref(occurrence, false)}>
+                Edit event
+              </a>
+            )}
+          </div>
         ) : null}
-        {occurrence.location === '' ? null : <p className="body">{occurrence.location}</p>}
-        {occurrence.description === '' ? null : <p className="body">{occurrence.description}</p>}
-        {occurrence.displayName === '' ? null : <p className="meta">{occurrence.displayName}</p>}
         {occurrence.state === 'choice_required' ? (
-          <fieldset>
-            <legend>Choice</legend>
-            {occurrence.instants?.map((instant) => (
-              <label className="choice" key={instant}>
-                <input
-                  type="radio"
-                  name={choiceKey(occurrence)}
-                  value={instant}
-                  checked={selected === instant}
-                  onChange={() => onSelect(instant)}
-                />
-                {instant}
-              </label>
-            ))}
-            <CommandButton variant={chosen ? 'primary' : 'quiet'} onClick={onChoose}>
-              Submit choice
-            </CommandButton>
+          <fieldset className="choice-panel">
+            <legend>Choose one of the returned times</legend>
+            <div className="choice-options">
+              {occurrence.instants?.map((instant) => (
+                <label className="choice-option" key={instant}>
+                  <input
+                    type="radio"
+                    name={choiceKey(occurrence)}
+                    value={instant}
+                    checked={selected === instant}
+                    onChange={() => onSelect(instant)}
+                  />
+                  <span>{instant}</span>
+                </label>
+              ))}
+            </div>
+            <div>
+              <CommandButton variant={chosen ? 'primary' : 'quiet'} onClick={onChoose}>
+                Submit choice
+              </CommandButton>
+            </div>
           </fieldset>
         ) : null}
       </div>
