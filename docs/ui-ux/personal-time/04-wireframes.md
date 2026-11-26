@@ -2,9 +2,9 @@
 
 - Stage: 4 — Wireframes and Page Specifications
 - Date: 2026-11-25
-- Status: Agenda revision accepted by the user on 2026-11-25. It replaces the Direction L sketches as the accepted low-fidelity structure. The Stage 5 painting was accepted the same day in `05-visual-design.md`. These acceptances do not authorize application code.
+- Status: Historical Agenda wireframes. On 2026-11-26 the user authorized a PRD-driven Web redesign that supersedes their page composition. These sketches remain a record of the earlier exploration and of the original content/flow inventory, not the current Web visual layout.
 - Why this stage is low-fidelity: `docs/process/UI_UX_DESIGN.md` Stage 4 settles regions, hierarchy, controls, focus, and states. Stage 5 then applies the approved tokens and components to every state. The user started Stage 4 on 2026-11-25 and asked why this stage is not high-fidelity. That question does not change this stage.
-- Approved inputs: S-01 through S-09 and the paths in `01-information-architecture.md`; flows in `02-user-flows.md`; the approved Agenda page and `tokens/design-tokens.json`. PT-C01 through PT-C10 still name the controls. Their painting follows the Agenda baseline.
+- Reference inputs: S-01 through S-09 and the paths in `01-information-architecture.md`; flows in `02-user-flows.md`; PT-C01 through PT-C10. Agenda-specific visual composition is historical. Current Web layout and painting are defined in `05-visual-design.md`.
 - Page contracts: `12-page-specifications.md`.
 - Q-02, Q-03, and Q-04 stay open. No sketch names a product title, draws the mail message, or fills the first `from` and `to`.
 - The text sketches are the editable source. No image is the source of truth.
@@ -13,7 +13,7 @@
 
 ## Shared page
 
-Every surface uses one column, `component.page.content-max` wide, with the Agenda page padding. The task title and the quiet links share the header line. A viewport below `component.page.stack-below` stacks a tool row and an occurrence row into one column and scrolls. Nothing becomes a navigation rail, a month grid, or a theme control.
+Historical Agenda sketch: every surface uses one column, `component.page.content-max` wide, with the Agenda page padding. The task title and quiet links share the header line. This composition was superseded for Web on 2026-11-26; see `05-visual-design.md` for the current workspace shell.
 
 ```text
 +--------------------------------------------------+

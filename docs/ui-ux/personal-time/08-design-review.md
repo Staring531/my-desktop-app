@@ -2,11 +2,11 @@
 
 - Stage: 7 — Independent Design Review Gate
 - Date: 2026-11-25
-- Status: Agenda review recorded on 2026-11-25 by native delegation of the read-only UI/UX design reviewer. The reviewer did not edit files. The primary designer resolved UX-PT-AGENDA-001 through UX-PT-AGENDA-009. Re-review found UX-PT-AGENDA-010. That trace gap was closed, and the follow-up re-review returned no findings. This review does not approve the package and does not authorize application code.
+- Status: Historical independent review of the Agenda design on 2026-11-25. It does not review or accept the modern-workspace Web redesign authorized on 2026-11-26, and its resolved findings are not evidence of review of the current draft.
 - Reviewer: independent read-only UI/UX design reviewer. Runtime screenshots were not checked.
 - Package: the accepted Agenda painting and the Stage 6 record. The Direction L review remains below as history.
 
-## Agenda findings
+## Historical Agenda findings
 
 | ID | Severity | Product decision | Disposition |
 |---|---|---|---|

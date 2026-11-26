@@ -30,8 +30,15 @@ export function Guarded({
   }
   if (session === 'checking') {
     return (
-      <Page title="Log in" links={null}>
-        <p className="waiting">waiting</p>
+      <Page
+        variant="auth"
+        title="Checking your session"
+        subtitle="Just a moment while we open your personal space."
+        links={null}
+      >
+        <p className="waiting" role="status" aria-live="polite">
+          waiting
+        </p>
       </Page>
     );
   }
@@ -75,67 +82,105 @@ function AccountForm({ onOk }: { onOk: (path: string) => void }) {
   }
 
   return (
-    <Page title="Account" links={<AccountLinks />}>
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          void run('/api/account', 'PATCH', { nickname });
-        }}
-      >
-        <TextField label="Nickname" value={nickname} onChange={setNickname} />
-        <CommandButton variant="primary" type="submit">
-          Save nickname
-        </CommandButton>
-      </form>
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          void run('/api/account/timezone', 'PATCH', { timezone });
-        }}
-      >
-        <TextField label="Timezone" value={timezone} onChange={setTimezone} />
-        <CommandButton variant="primary" type="submit">
-          Save timezone
-        </CommandButton>
-      </form>
-      <CommandButton
-        variant="quiet"
-        onClick={() => void run('/api/sessions/current', 'DELETE', undefined, true)}
-      >
-        Log out
-      </CommandButton>
-      {confirming ? (
-        <div
-          className="confirm"
-          onKeyDown={(event) => {
-            if (event.key === 'Escape' && phase !== 'waiting') {
-              setConfirming(false);
-            }
+    <Page
+      title="Account"
+      subtitle="Manage the details and timezone for your personal calendar."
+      links={<AccountLinks />}
+    >
+      <section className="settings-card">
+        <div className="section-heading">
+          <span className="section-number">01</span>
+          <div className="section-heading-copy">
+            <h2>Profile</h2>
+            <p>Choose the name shown with your public events.</p>
+          </div>
+        </div>
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            void run('/api/account', 'PATCH', { nickname });
           }}
         >
-          <p>Delete the account</p>
-          <CommandButton
-            variant="primary"
-            onClick={() => void run('/api/account', 'DELETE', undefined, true)}
-          >
-            Delete
-          </CommandButton>
+          <TextField label="Nickname" value={nickname} onChange={setNickname} />
+          <div className="form-actions">
+            <CommandButton variant="primary" type="submit">
+              Save nickname
+            </CommandButton>
+          </div>
+        </form>
+      </section>
+
+      <section className="settings-card">
+        <div className="section-heading">
+          <span className="section-number">02</span>
+          <div className="section-heading-copy">
+            <h2>Calendar timezone</h2>
+            <p>Event entry, repetition, and displayed times use this timezone.</p>
+          </div>
+        </div>
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            void run('/api/account/timezone', 'PATCH', { timezone });
+          }}
+        >
+          <TextField label="Timezone" value={timezone} onChange={setTimezone} />
+          <div className="form-actions">
+            <CommandButton variant="primary" type="submit">
+              Save timezone
+            </CommandButton>
+          </div>
+        </form>
+      </section>
+
+      <section className="security-card">
+        <h2>Security and access</h2>
+        <p>Sign out of this session or permanently delete your account and its calendar.</p>
+        <div className="security-actions">
           <CommandButton
             variant="quiet"
-            onClick={() => {
-              if (phase !== 'waiting') {
-                setConfirming(false);
-              }
-            }}
+            onClick={() => void run('/api/sessions/current', 'DELETE', undefined, true)}
           >
-            Cancel
+            Log out
           </CommandButton>
+          {confirming ? (
+            <div
+              className="confirm"
+              onKeyDown={(event) => {
+                if (event.key === 'Escape' && phase !== 'waiting') {
+                  setConfirming(false);
+                }
+              }}
+            >
+              <p>Delete the account and its calendar?</p>
+              <CommandButton
+                variant="primary"
+                onClick={() => void run('/api/account', 'DELETE', undefined, true)}
+              >
+                Delete
+              </CommandButton>
+              <CommandButton
+                variant="quiet"
+                onClick={() => {
+                  if (phase !== 'waiting') {
+                    setConfirming(false);
+                  }
+                }}
+              >
+                Cancel
+              </CommandButton>
+            </div>
+          ) : (
+            <CommandButton
+              variant="quiet"
+              className="danger-quiet"
+              onClick={() => setConfirming(true)}
+            >
+              Delete account
+            </CommandButton>
+          )}
         </div>
-      ) : (
-        <CommandButton variant="quiet" onClick={() => setConfirming(true)}>
-          Delete account
-        </CommandButton>
-      )}
+      </section>
       <Result phase={phase} {...(body === undefined ? {} : { body })} />
     </Page>
   );

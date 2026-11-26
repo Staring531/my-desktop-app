@@ -29,8 +29,14 @@ export function RegisterForm({ timeZone = browserTimeZone() }: { timeZone?: stri
   }
 
   return (
-    <Page title="Register" links={<UnsignedLinks />}>
+    <Page
+      variant="auth"
+      title="Create your account"
+      subtitle="A few details are all it takes to get your personal calendar started."
+      links={<UnsignedLinks active="/register" />}
+    >
       <form
+        className="auth-form"
         onSubmit={(event) => {
           event.preventDefault();
           void submit();
@@ -52,7 +58,9 @@ export function RegisterForm({ timeZone = browserTimeZone() }: { timeZone?: stri
 export function VerifyForm({ onOk }: { onOk: (path: string) => void }) {
   return (
     <ProofForm
-      title="Verify"
+      title="Verify your email"
+      subtitle="Enter the one-time proof associated with this registration."
+      active="/verify"
       fields={['Proof']}
       command="Verify"
       path="/api/registrations/verify"
@@ -79,8 +87,14 @@ export function CancelRegistrationForm() {
   }
 
   return (
-    <Page title="Cancel registration" links={<UnsignedLinks />}>
+    <Page
+      variant="auth"
+      title="Cancel registration"
+      subtitle="Remove a registration that has not been verified."
+      links={<UnsignedLinks active="/register/cancel" />}
+    >
       <form
+        className="auth-form"
         onSubmit={(event) => {
           event.preventDefault();
           void submit();
@@ -119,8 +133,14 @@ export function LoginForm({ initial, onOk }: { initial?: ApiBody; onOk: (path: s
   }
 
   return (
-    <Page title="Log in" links={<UnsignedLinks />}>
+    <Page
+      variant="auth"
+      title="Welcome back"
+      subtitle="Sign in to open your personal calendar."
+      links={<UnsignedLinks active="/login" />}
+    >
       <form
+        className="auth-form"
         onSubmit={(event) => {
           event.preventDefault();
           void submit();
@@ -153,8 +173,14 @@ export function StartRecoveryForm() {
   }
 
   return (
-    <Page title="Start recovery" links={<UnsignedLinks />}>
+    <Page
+      variant="auth"
+      title="Recover your password"
+      subtitle="Enter the email associated with your account."
+      links={<UnsignedLinks active="/recovery" />}
+    >
       <form
+        className="auth-form"
         onSubmit={(event) => {
           event.preventDefault();
           void submit();
@@ -195,8 +221,14 @@ export function CompleteRecoveryForm({ onOk }: { onOk: (path: string) => void })
   }
 
   return (
-    <Page title="Complete recovery" links={<UnsignedLinks />}>
+    <Page
+      variant="auth"
+      title="Choose a new password"
+      subtitle="Use your recovery proof to restore access to your account."
+      links={<UnsignedLinks active="/recovery/complete" />}
+    >
       <form
+        className="auth-form"
         onSubmit={(event) => {
           event.preventDefault();
           void submit();
@@ -216,6 +248,8 @@ export function CompleteRecoveryForm({ onOk }: { onOk: (path: string) => void })
 
 function ProofForm({
   title,
+  subtitle,
+  active,
   fields,
   command,
   path,
@@ -223,6 +257,8 @@ function ProofForm({
   onOk,
 }: {
   title: string;
+  subtitle: string;
+  active: string;
   fields: string[];
   command: string;
   path: string;
@@ -247,8 +283,14 @@ function ProofForm({
   }
 
   return (
-    <Page title={title} links={<UnsignedLinks />}>
+    <Page
+      variant="auth"
+      title={title}
+      subtitle={subtitle}
+      links={<UnsignedLinks active={active} />}
+    >
       <form
+        className="auth-form"
         onSubmit={(event) => {
           event.preventDefault();
           void submit();

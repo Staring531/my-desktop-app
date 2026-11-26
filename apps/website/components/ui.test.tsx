@@ -38,6 +38,34 @@ describe('shared website UI', () => {
     expect(screen.getByRole('navigation', { name: 'Account navigation' })).toBeTruthy();
   });
 
+  it('renders signed-in pages in the workspace shell', () => {
+    render(
+      <Page title="My calendar" links={<CalendarLinks />}>
+        <p>Calendar content</p>
+      </Page>,
+    );
+
+    expect(screen.getByRole('main', { name: 'My calendar' }).parentElement?.className).toBe(
+      'workspace-shell',
+    );
+    expect(screen.getByRole('navigation', { name: 'Calendar navigation' })).toBeTruthy();
+  });
+
+  it('renders account entry pages in the split authentication shell', () => {
+    render(
+      <Page variant="auth" title="Create your account" links={<UnsignedLinks active="/register" />}>
+        <p>Registration form</p>
+      </Page>,
+    );
+
+    const main = screen.getByRole('main', { name: 'Create your account' });
+    expect(main.closest('.auth-shell')).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Make room for what matters.' })).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'Register' }).getAttribute('aria-current')).toBe(
+      'page',
+    );
+  });
+
   it('associates a visible field label with its control', () => {
     render(<TextField label="Email" value="" onChange={() => undefined} />);
 
