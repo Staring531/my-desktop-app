@@ -247,7 +247,11 @@ export function CommandButton({
   className?: string;
 }) {
   return (
-    <button className={className ? `${variant} ${className}` : variant} type={type} onClick={onClick}>
+    <button
+      className={className ? `${variant} ${className}` : variant}
+      type={type}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
@@ -265,7 +269,11 @@ export function Result({ phase, body }: { phase: 'idle' | 'waiting' | 'done'; bo
     return null;
   }
   return (
-    <div className={body.result === 'ok' ? 'result result--ok' : 'result'} role="alert" aria-live="assertive">
+    <div
+      className={body.result === 'ok' ? 'result result--ok' : 'result'}
+      role="alert"
+      aria-live="assertive"
+    >
       <div className="result-header">
         <span className="result-mark" aria-hidden="true">
           {body.result === 'ok' ? '✓' : '!'}
