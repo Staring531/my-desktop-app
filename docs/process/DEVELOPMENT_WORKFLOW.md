@@ -1,6 +1,6 @@
 # Agent Development Workflow
 
-> Version: 1.1.0  
+> Version: 1.2.0  
 > Status: Canonical repository-wide agent workflow  
 > Audience: Every AI coding, planning, design, review, and documentation agent working in this repository
 
@@ -95,6 +95,12 @@ Read the relevant stage document in full before executing that stage. Also read 
 - If a lower-stage artifact requires an upstream change, document the proposed delta and route it through the owning workflow and user approval.
 - Do not commit, push, merge, or release unless the user explicitly authorizes the relevant Git operation. Never push directly to main or force-push; use a focused branch and PR.
 
+### Design quality and project applicability
+- This lifecycle and every stage document apply to every product and project in this repository and to every new project started from it. A project outside this repository adopts them through `docs/ui-ux/PROJECT-ADOPTION-CHECKLIST.md`.
+- Classify each design constraint as Scope (from the approved PRD or Technical Design) or Taste (a visual preference). Only Scope binds a later redesign. The user may supersede a Taste constraint by approving a replacement. See `docs/process/UI_UX_DESIGN.md` section 4A.
+- Visual quality is judged on rendered output: screenshots at a narrow and a wide viewport, and measured contrast. Token validation, lint, type checking, tests, and written descriptions are necessary but never establish it. Missing rendered evidence is NOT RUN, not PASS.
+- A stage document may not be skipped or weakened for a project without a deviation the user has approved and recorded.
+
 ## 5. Gate and approval semantics
 
 A stage gate means its documented entry criteria and review work are complete. It does **not** mean the user has approved the resulting artifact.
@@ -145,5 +151,6 @@ When adding or changing a lifecycle stage, gate, agent role, or authorization bo
 4. Update the flowchart in this file when the lifecycle order changes.
 5. Update the Chinese translation, including its flowchart.
 6. Check README links and references for consistency.
+7. When a design-quality gate changes, update `docs/ui-ux/ENGINEERING-STANDARD.md`, `docs/ui-ux/PROJECT-ADOPTION-CHECKLIST.md`, and every role and skill mirror under `.claude/`, `.cursor/`, `.codex/`, and `.agents/`.
 
 Do not duplicate full stage procedures in `AGENTS.md`. Keep it as the mandatory entry point and global guardrail; this file is the single repository-wide lifecycle authority.
