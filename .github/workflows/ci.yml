@@ -42,6 +42,10 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Type check
         run: pnpm typecheck
+      - name: Temporary test formatting diagnostic
+        run: |
+          pnpm --filter @app/website exec prettier --write components/ui.test.tsx
+          git diff -- apps/website/components/ui.test.tsx
       - name: Lint
         run: pnpm lint
       - name: Test
